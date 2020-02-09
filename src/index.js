@@ -1,10 +1,12 @@
 import ReactDOM from 'react-dom';
+import '../node_modules/font-awesome/css/font-awesome.min.css';
 import React from 'react';
 import Header from './Header.js';
 import Separator from './Separator.js';
 import Section from './Section.js';
 import Card from './Card.js';
 import Colors from './values/Colors.js';
+import Footer from './Footer.js';
 
 export const App = () => {
   const workCards = [
@@ -22,19 +24,6 @@ export const App = () => {
       }}
     />,
     <Card 
-      key='yorku' 
-      link='https://lassonde.yorku.ca/'
-      title='York University · Teacher Assistant' 
-      secondaryTitle='Spring 2020' 
-      description='Led weekly classes for undergraduate Computer Science students, teaching object-oriented programming for mobile application development.' 
-      image='yorku.png'
-      imageStyle={{
-        height: '50%',
-        top: '55px',
-        left: '15px',
-      }}
-    />,
-    <Card 
       key='srvice'
       link='https://www.srvice.ca/' 
       title='Srvice · Full-Stack Developer' 
@@ -45,6 +34,19 @@ export const App = () => {
         height: '110%',
         top: '-13px',
         left: '-12px',
+      }}
+    />,
+    <Card 
+      key='yorku' 
+      link='https://lassonde.yorku.ca/'
+      title='York University · Teacher Assistant' 
+      secondaryTitle='Spring 2020' 
+      description='Led weekly classes for undergraduate Computer Science students, teaching object-oriented programming for mobile application development.' 
+      image='yorku.png'
+      imageStyle={{
+        height: '50%',
+        top: '55px',
+        left: '15px',
       }}
     />,
   ];
@@ -123,6 +125,8 @@ export const App = () => {
         title='Project + Hackathon ' 
         cards={projectHackathonCards}
       />
+      <Separator />
+      <Footer />
     </div>
   );
 };

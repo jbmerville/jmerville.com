@@ -1,8 +1,9 @@
 import React from 'react';
 import useWindowSize from './WindowSize.js';
+import Button from './Button.js';
 import Colors from './values/Colors.js';
 
-const Header = () => {
+const Footer = () => {
 
   const [width] = useWindowSize();
   const styles = {
@@ -16,35 +17,36 @@ const Header = () => {
       position: 'relative',
       backgroundColor: 'white',
       width: 'auto',
-      padding: '40px',
+      padding: '150px',
+      paddingTop: '100px',
+      paddingBottom: '0px',
       height: '700px',
     },
     leftContainer: {
       float: 'left',
       width: '45%',
-      height: '100%',
+      height: 'fit-content',
       posistion: 'relative',
       // backgroundColor: 'blue',
     },
     rightContainer: {
       display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+      alignItems: 'right',
+      justifyContent: 'flex-end',
       float: 'right',
       width: '55%',
-      height: '100%',
+      height: 'inherit',
       posistion: 'relative',
-      // backgroundColor: 'yellow',
     },
     ballon: {
-      height: '90%'
+      height: '500px',
+      left: '100px',
     },
     text: {
-      position: 'absolute',
-      marginLeft: '10%',
+      position: 'relative',
     },
     title: {
-      marginTop: '150px',
+      marginTop: '0px',
       textTransform: 'uppercase',
       fontWeight: '600',
       fontSize: '2.3em',
@@ -70,28 +72,36 @@ const Header = () => {
       lineHeight: '1.5em',
       width: '500px',
       color: Colors.primary,
+    },
+    buttonContainer: {
+      height: 'fit-content',
+      width: '300px',
+      position: 'relative',
     }
   };
-
   return (
     <div style={styles.outerContainer}>
       <div style={styles.innerContainer}>
         <div style={styles.leftContainer}>
           <div style={styles.text}>
-            <div style={styles.title}>Jean Baptiste Merville</div>
-            <div style={styles.secondaryTitle}>Developer & Student</div>
-            <div style={styles.separationBar}></div>
+            <div style={styles.title}>Get in touch with me</div>
             <div style={styles.description}>
-                Hey, my name is Jean, a Full-Stack Developer from Paris, France. I also attend York University In Toronto, where I am majoring in Computer Science! I am currently a teacher assistant at York University and working with amazing people at Srvice. Soon to be an Amazonian during the summer!
+                you can find me here :)
+            </div>
+            <div style={styles.buttonContainer}>
+              <Button link='https://github.com/jbmerville' fontAwesomeIcon='fa fa-github' text='GitHub'/>
+              <Button link='https://www.linkedin.com/in/jean-baptiste-merville-861800189/' fontAwesomeIcon='fa fa-linkedin' text='LinkeIn'/>
+              <Button link='mailto:jbmer@my.yorku.ca' fontAwesomeIcon='fa fa-envelope' text='jbmer@my.yorku.ca' size='20px'/>
+              <Button link='' fontAwesomeIcon='fa fa-file' text='my resume :)' size='20px'/>
             </div>
           </div>
         </div>
         <div style={styles.rightContainer}>
-          <img style={styles.ballon} src='images/balloon.png'/>
+          <img style={styles.ballon} src='images/bird.png'/>
         </div>
       </div>
     </div>
   );
 };
 
-export default Header;
+export default Footer;
