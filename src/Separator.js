@@ -3,7 +3,7 @@ import React from 'react';
 export const Separator = () => {
   const styles = {
     separotor: {
-      height: '20px',
+      height: '15px',
       width: '100%',
     }
   };

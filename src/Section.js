@@ -1,13 +1,13 @@
 import React from 'react';
 import Colors from './values/Colors';
-import Card from './Card.js';
+import PropTypes from 'prop-types';
 
 const Section = (props) => {
   const styles = {
     outerContainer: {
       position: 'relative',
       // temporary
-      height: '1000px',
+      height: 'fit-content',
       width: '-webkit-fill-available',
       padding: '150px',
       background: Colors.background,
@@ -17,6 +17,7 @@ const Section = (props) => {
       fontWeight: '600',
       fontSize: '2.3em',
       color: Colors.primary,
+      marginTop: '-30px',
     },
     titleBar: {
       marginTop: '7px',
@@ -25,13 +26,19 @@ const Section = (props) => {
       background: Colors.primary,
     }
   };
+  
   return (
     <div style={styles.outerContainer}>
       <div style={styles.title}>{props.title}</div>
       <div style={styles.titleBar}></div>
-      <Card image={'amazon.png'}/>
+      {props.cards}
     </div>
   );
+};
+
+Section.propTypes = {
+  title: PropTypes.string.isRequired,
+  cards: PropTypes.any,
 };
 
 export default Section;

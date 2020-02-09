@@ -2,7 +2,7 @@ import React from 'react';
 import useWindowSize from './WindowSize.js';
 import Colors from './values/Colors.js';
 
-export const Header = () => {
+const Header = () => {
   const [width] = useWindowSize();
     
   const getHeight = (width) => {
@@ -26,19 +26,6 @@ export const Header = () => {
       padding: '40px',
       height: '700px',
     },
-    title: {
-      marginTop: '150px',
-      textTransform: 'uppercase',
-      fontWeight: '600',
-      fontSize: '2.3em',
-      color: Colors.primary,
-    },
-    secondaryTitle: {
-      marginTop: '20px',
-      fontWeight: '400',
-      fontSize: '1.9em',
-      color: Colors.primary,
-    },
     leftContainer: {
       float: 'left',
       width: '45%',
@@ -60,6 +47,19 @@ export const Header = () => {
     text: {
       position: 'absolute',
       marginLeft: '10%',
+    },
+    title: {
+      marginTop: '150px',
+      textTransform: 'uppercase',
+      fontWeight: '600',
+      fontSize: '2.3em',
+      color: Colors.primary,
+    },
+    secondaryTitle: {
+      marginTop: '20px',
+      fontWeight: '400',
+      fontSize: '1.9em',
+      color: Colors.primary,
     },
     separationBar: {
       marginTop: '25px',
