@@ -9,6 +9,7 @@ import Colors from './values/Colors.js';
 import Footer from './Footer.js';
 
 export const App = () => {
+    
   const workCards = [
     <Card 
       key='amazon' 
@@ -19,8 +20,6 @@ export const App = () => {
       image='amazon.png'
       imageStyle={{
         height: '110%',
-        top: '-5px',
-        left: '5px',
       }}
     />,
     <Card 
@@ -31,10 +30,9 @@ export const App = () => {
       description='Since fall 2019 I have been an active developer at Srvice’s. Srvice’s vision is to bring customers closer to local services with the help of technology. Using agile methodologies I build iOS and Android applications using frameworks like React and React-Native.' 
       image='srvice.png' 
       imageStyle={{
-        height: '110%',
-        top: '-13px',
-        left: '-12px',
+        height: '30%',
       }}
+      backgroundColor={Colors.srvice}
     />,
     <Card 
       key='yorku' 
@@ -45,8 +43,6 @@ export const App = () => {
       image='yorku.png'
       imageStyle={{
         height: '50%',
-        top: '55px',
-        left: '15px',
       }}
     />,
   ];
@@ -61,8 +57,6 @@ export const App = () => {
       image='genesys.png'
       imageStyle={{
         height: '80%',
-        top: '20px',
-        left: '-45px',
       }}
     />,
     <Card 
@@ -74,8 +68,6 @@ export const App = () => {
       image='csbot.png'
       imageStyle={{
         height: '90%',
-        top: '-10px',
-        left: '82px',
       }}
       imageCaption='csbot'
       backgroundColor={Colors.facebook}
@@ -89,8 +81,7 @@ export const App = () => {
       image='maze.png' 
       imageStyle={{
         height: '75%',
-        top: '30px',
-        left: '0px',
+        marginLeft: '10px',
       }}
       imageCaption='maze app'
       backgroundColor={Colors.lightBlue}
@@ -104,8 +95,6 @@ export const App = () => {
       image='hide-your-notes.png' 
       imageStyle={{
         height: '80%',
-        top: '10px',
-        left: '110px',
       }}
       imageCaption='hide your notes'
       backgroundColor={Colors.green}

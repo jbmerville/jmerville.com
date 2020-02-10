@@ -1,9 +1,12 @@
 import React from 'react';
 import Colors from './values/Colors.js';
 import PropTypes from 'prop-types';
+import useWindowSize from './WindowSize.js';
 
 const CardText = (props) => {
 
+  const [width] = useWindowSize();
+  
   const styles = {
     separationBar: {
       marginTop: '25px',
@@ -36,15 +39,39 @@ const CardText = (props) => {
     }
   };
 
+  // Mobile style
+  if (width < 600) {
+    styles.text = {
+      position: 'relative',
+    };
+    styles.title = {
+      marginTop: '20px',
+      fontWeight: '400',
+      fontSize: '1.2em',
+      color: Colors.primary,
+    };
+    styles.secondaryTitle = {
+      marginTop: '25px',
+      fontSize: '1em',
+      color: Colors.primary,
+    };
+    styles.description = {
+      marginTop: '25px',
+      height: 'fit-content',
+      fontWeight: '200',
+      fontSize: '0.9em',
+      lineHeight: '1.8em',
+      color: Colors.primary,
+    };
+  }
+
   return (
-    <div>
-      <div style={styles.text}>
-        <div style={styles.title}>{props.title}</div>
-        <div style={styles.separationBar}></div>
-        <div style={styles.secondaryTitle}>{props.secondaryTitle}</div>
-        <div style={styles.description}>{props.description}</div>
-      </div>    
-    </div>
+    <div style={styles.text}>
+      <div style={styles.title}>{props.title}</div>
+      <div style={styles.separationBar}></div>
+      <div style={styles.secondaryTitle}>{props.secondaryTitle}</div>
+      <div style={styles.description}>{props.description}</div>
+    </div>    
   );
 };
 

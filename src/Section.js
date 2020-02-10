@@ -1,14 +1,16 @@
 import React from 'react';
 import Colors from './values/Colors';
+import useWindowSize from './WindowSize.js';
 import PropTypes from 'prop-types';
 
 const Section = (props) => {
-  const styles = {
+
+  const [width] = useWindowSize();
+  
+  let styles = {
     outerContainer: {
       position: 'relative',
-      // temporary
       height: 'fit-content',
-      width: '-webkit-fill-available',
       padding: '150px',
       background: Colors.background,
     }, 
@@ -26,6 +28,23 @@ const Section = (props) => {
       background: Colors.primary,
     }
   };
+
+  // Mobile style
+  if (width < 600) {
+    styles.outerContainer = {
+      position: 'relative',
+      height: 'fit-content',
+      padding: '20px',
+      background: Colors.background,
+    };
+    styles.title = {
+      textTransform: 'uppercase',
+      fontWeight: '600',
+      fontSize: '1.5em',
+      color: Colors.primary,
+      marginTop: '10px',
+    };
+  }
   
   return (
     <div style={styles.outerContainer}>

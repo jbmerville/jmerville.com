@@ -5,18 +5,20 @@ import Colors from './values/Colors.js';
 const Header = () => {
 
   const [width] = useWindowSize();
-  const styles = {
+  
+  let styles = {
     outerContainer: {
       position: 'relative',
       backgroundColor: Colors.lightGray,
       width: '100%',
-      height: width,
+      height: '100%',
+      overflow: 'hidden',
     },
     innerContainer: {
       position: 'relative',
       backgroundColor: 'white',
       width: 'auto',
-      padding: '40px',
+      padding: '150px',
       height: '700px',
     },
     leftContainer: {
@@ -24,7 +26,6 @@ const Header = () => {
       width: '45%',
       height: '100%',
       posistion: 'relative',
-      // backgroundColor: 'blue',
     },
     rightContainer: {
       display: 'flex',
@@ -34,14 +35,9 @@ const Header = () => {
       width: '55%',
       height: '100%',
       posistion: 'relative',
-      // backgroundColor: 'yellow',
     },
-    ballon: {
+    balloon: {
       height: '90%'
-    },
-    text: {
-      position: 'absolute',
-      marginLeft: '10%',
     },
     title: {
       marginTop: '150px',
@@ -71,23 +67,63 @@ const Header = () => {
       width: '500px',
       color: Colors.primary,
     }
-  };
+  }; 
 
+  // Mobile style
+  if (width < 600) {
+    styles.innerContainer = {
+      position: 'relative',
+      backgroundColor: 'white',
+      width: 'auto',
+      padding: '20px',
+      height: '700px',
+    };
+    styles.balloon = {
+      height: '30%',
+      position: 'absolute',
+      right: '0',
+    };
+    styles.rightContainer = {
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      display: 'flex',
+      alignItems: 'flex-end',
+      justifyContent: 'center',
+      width: '100%',
+      height: '100%',
+      posistion: 'relative',
+    };
+    styles.leftContainer = {
+      position: 'relative',
+      width: '100%',
+      height: 'fit-content',
+      posistion: 'relative',
+      zIndex: 1,
+    };
+    styles.description = {
+      marginTop: '25px',
+      height: 'fit-content',
+      fontWeight: '200',
+      fontSize: '0.9em',
+      lineHeight: '1.8em',
+      color: Colors.primary,
+    };
+  } 
+  
   return (
     <div style={styles.outerContainer}>
       <div style={styles.innerContainer}>
         <div style={styles.leftContainer}>
-          <div style={styles.text}>
-            <div style={styles.title}>Jean Baptiste Merville</div>
-            <div style={styles.secondaryTitle}>Developer & Student</div>
-            <div style={styles.separationBar}></div>
-            <div style={styles.description}>
+          <div style={styles.title}>Jean Baptiste Merville</div>
+          <div style={styles.secondaryTitle}>Developer & Student</div>
+          <div style={styles.separationBar}></div>
+          <div style={styles.description}>
                 Hey, my name is Jean, a Full-Stack Developer from Paris, France. I also attend York University In Toronto, where I am majoring in Computer Science! I am currently a teacher assistant at York University and working with amazing people at Srvice. Soon to be an Amazonian during the summer!
-            </div>
           </div>
         </div>
         <div style={styles.rightContainer}>
-          <img style={styles.ballon} src='images/balloon.png'/>
+          <img style={styles.balloon} src='images/balloon.png'/>
         </div>
       </div>
     </div>

@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Colors from './values/Colors.js';
+import useWindowSize from './WindowSize.js';
 
 const Button = (props) => {
 
   const { text, link, fontAwesomeIcon, size } = props;
+  const [width] = useWindowSize();
+  
   const styles = {
     buttonContainer: {
       marginTop: '40px',
@@ -43,6 +46,26 @@ const Button = (props) => {
       position: 'relative',
     }
   };
+
+  // Mobile style
+  if (width < 600) {
+    styles.buttonText = {
+      display: 'inline-block',
+      position: 'relative',
+      fontSize: '1em',
+      padding: '10px',
+      paddingRight: '15px',
+      width: 'fit-content',
+      color: Colors.primary,
+    };
+    styles.buttonContainer = {
+      marginTop: '20px',
+      cursor: 'pointer',
+      height: 'fit-content',
+      width: 'fit-content',
+      borderRadius: '4px',
+    };
+  }
 
   return (
     <a style={styles.link} href={link}>

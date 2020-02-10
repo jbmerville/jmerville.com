@@ -10,11 +10,7 @@ function useWindowSize() {
     updateSize();
     return () => window.removeEventListener('resize', updateSize);
   }, []);
-  if (size > 1000) {
-    return '100%';
-  } else {
-    return '500px';
-  }
+  return size;
 }
 
 export default useWindowSize;

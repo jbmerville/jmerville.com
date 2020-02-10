@@ -1,11 +1,18 @@
 import React from 'react';
 import Colors from './values/Colors';
 import PropTypes from 'prop-types';
+import useWindowSize from './WindowSize.js';
 
-const ImageCard = (props) => {
+const CardImage = (props) => {
 
-  const styles = {
+  const { image, imageCaption, imageStyle, link } = props;
+  const [width] = useWindowSize();
+
+  let styles = {
     outerContainer: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
       position: 'relative',
       top: '40px',
       transition: 'transform .2s',
@@ -34,14 +41,29 @@ const ImageCard = (props) => {
       fontSize: '1.2em',
       position: 'relative',
       textAlign: 'center',
-      top: '190px',
+      top: '200px',
       color: Colors.background,
     }
   };
 
-  const { image, imageCaption, imageStyle, link } = props;
+  if (width < 600) {
+    styles.outerContainer = {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'relative',
+      top: '40px',
+      transition: 'transform .2s',
+      cursor: 'pointer',
+      height: '230px',
+      width: '100%',
+      background: props.backgroundColor ? props.backgroundColor: Colors.lightGray,
+      overflow: 'hidden',
+    };
+  }
+
   const imageCard = imageCaption ? (
-    <div
+    <a href={link}
       className='card'
       style={styles.outerContainer} 
     >
@@ -53,24 +75,22 @@ const ImageCard = (props) => {
           {imageCaption}
         </div>
       </div>
-    </div>
+    </a>
   ) : (
-    <div 
+    <a href={link} 
       className='card'
       style={styles.outerContainer} 
     >
       <img style={{...styles.image, ...imageStyle}} src={`images/${image}`} />
-    </div>
+    </a>
   );
 
   return (
-    <a href={link}>
-      {imageCard}
-    </a>
+    imageCard
   ); 
 };
 
-ImageCard.propTypes = {
+CardImage.propTypes = {
   image: PropTypes.string.isRequired,
   imageStyle: PropTypes.any,
   imageCaption: PropTypes.string,
@@ -78,4 +98,4 @@ ImageCard.propTypes = {
   link: PropTypes.string.isRequired,
 };
 
-export default ImageCard;
+export default CardImage;

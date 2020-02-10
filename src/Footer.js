@@ -6,20 +6,23 @@ import Colors from './values/Colors.js';
 const Footer = () => {
 
   const [width] = useWindowSize();
-  const styles = {
+  
+  let styles = {
     outerContainer: {
       position: 'relative',
       backgroundColor: Colors.lightGray,
       width: '100%',
-      height: width,
+      height: '100%',
+      overflow: 'hidden',
     },
     innerContainer: {
       position: 'relative',
+      display: 'flex',
       backgroundColor: 'white',
       width: 'auto',
       padding: '150px',
       paddingTop: '100px',
-      paddingBottom: '0px',
+      paddingBottom: '100px',
       height: '700px',
     },
     leftContainer: {
@@ -38,11 +41,10 @@ const Footer = () => {
       height: 'inherit',
       posistion: 'relative',
     },
-    ballon: {
+    balloon: {
       height: '500px',
-      left: '100px',
-    },
-    text: {
+      left: '15px',
+      top: '100px',
       position: 'relative',
     },
     title: {
@@ -79,25 +81,74 @@ const Footer = () => {
       position: 'relative',
     }
   };
+
+  // Mobile style
+  if (width < 600) {
+    styles.innerContainer = {
+      position: 'relative',
+      backgroundColor: 'white',
+      width: 'auto',
+      padding: '20px',
+      minHeight: '600px',
+    };
+    styles.balloon = {
+      height: '30%',
+      position: 'absolute',
+      right: '0',
+    };
+    styles.rightContainer = {
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      display: 'flex',
+      alignItems: 'flex-end',
+      justifyContent: 'center',
+      width: '100%',
+      height: '100%',
+      posistion: 'relative',
+    };
+    styles.leftContainer = {
+      position: 'relative',
+      width: '100%',
+      height: 'fit-content',
+      posistion: 'relative',
+      zIndex: 1,
+    };
+    styles.title = {
+      marginTop: '10px',
+      textTransform: 'uppercase',
+      fontWeight: '600',
+      fontSize: '1.5em',
+      color: Colors.primary,
+    };
+    styles.description = {
+      marginTop: '15px',
+      height: '100px',
+      fontWeight: '200',
+      fontSize: '1.2em',
+      lineHeight: '1.5em',
+      width: '500px',
+      color: Colors.primary,
+    };
+  }
+
   return (
     <div style={styles.outerContainer}>
       <div style={styles.innerContainer}>
         <div style={styles.leftContainer}>
-          <div style={styles.text}>
-            <div style={styles.title}>Get in touch with me</div>
-            <div style={styles.description}>
-                you can find me here :)
-            </div>
-            <div style={styles.buttonContainer}>
-              <Button link='https://github.com/jbmerville' fontAwesomeIcon='fa fa-github' text='GitHub'/>
-              <Button link='https://www.linkedin.com/in/jean-baptiste-merville-861800189/' fontAwesomeIcon='fa fa-linkedin' text='LinkeIn'/>
-              <Button link='mailto:jbmer@my.yorku.ca' fontAwesomeIcon='fa fa-envelope' text='jbmer@my.yorku.ca' size='20px'/>
-              <Button link='' fontAwesomeIcon='fa fa-file' text='my resume :)' size='20px'/>
-            </div>
+          <div style={styles.title}>Get in touch with me</div>
+          <div style={styles.description}>
+            You can find me here :)
+          </div>
+          <div style={styles.buttonContainer}>
+            <Button link='https://github.com/jbmerville' fontAwesomeIcon='fa fa-github' text='GitHub'/>
+            <Button link='https://www.linkedin.com/in/jean-baptiste-merville-861800189/' fontAwesomeIcon='fa fa-linkedin' text='LinkeIn'/>
+            <Button link='mailto:jbmer@my.yorku.ca' fontAwesomeIcon='fa fa-envelope' text='jbmer@my.yorku.ca' size='20px'/>
+            <Button link='' fontAwesomeIcon='fa fa-file' text='my resume' size='20px'/>
           </div>
         </div>
         <div style={styles.rightContainer}>
-          <img style={styles.ballon} src='images/bird.png'/>
+          <img style={styles.balloon} src='images/bird.png'/>
         </div>
       </div>
     </div>

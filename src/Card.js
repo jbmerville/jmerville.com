@@ -1,17 +1,29 @@
 import React from 'react';
-import ImageCard from './ImageCard.js';
+import CardImage from './CardImage.js';
 import CardText from './CardText';
 import PropTypes from 'prop-types';
+import useWindowSize from './WindowSize.js';
 
 const Card = (props) => {
 
-  const styles = {
+  const [width] = useWindowSize();
+  let styles = {
     outerContainer: {
       marginTop: '100px',
       height: '300px',
       width: '100%',
     },
   };
+
+  // Mobile style
+  if (width < 600) {
+    styles.outerContainer = {
+      marginTop: '100px',
+      paddingBottom: '50px',
+      height: 'fit-content',
+      width: '100%',
+    };
+  }
 
   const {title, secondaryTitle, description, image, imageStyle, imageCaption, backgroundColor, link} = props;
   return (
@@ -21,7 +33,7 @@ const Card = (props) => {
         secondaryTitle={secondaryTitle} 
         description={description}
       />
-      <ImageCard 
+      <CardImage 
         image={image}
         imageStyle={imageStyle}
         imageCaption={imageCaption}

@@ -7,4 +7,5 @@ export default {
   green: '#6ACC49',
   accent: '#0185D0',
   facebook: '#3B5998',
+  srvice: '#00569b',
 };
