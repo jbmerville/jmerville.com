@@ -44,6 +44,20 @@ const Section = (props) => {
       color: Colors.primary,
       marginTop: '10px',
     };
+  } else if (width < 1200) {
+    styles.outerContainer = {
+      position: 'relative',
+      height: 'fit-content',
+      padding: '100px',
+      background: Colors.background,
+    };
+    styles.title = {
+      textTransform: 'uppercase',
+      fontWeight: '600',
+      fontSize: '1.8em',
+      color: Colors.primary,
+      marginTop: '10px',
+    };
   }
   
   return (

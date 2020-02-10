@@ -17,35 +17,29 @@ const Footer = () => {
     },
     innerContainer: {
       position: 'relative',
-      display: 'flex',
       backgroundColor: 'white',
       width: 'auto',
       padding: '150px',
-      paddingTop: '100px',
-      paddingBottom: '100px',
-      height: '700px',
+      height: '550px',
     },
     leftContainer: {
       float: 'left',
       width: '45%',
       height: 'fit-content',
       posistion: 'relative',
-      // backgroundColor: 'blue',
+      zIndex: '1',
     },
     rightContainer: {
       display: 'flex',
-      alignItems: 'right',
-      justifyContent: 'flex-end',
+      alignItems: 'center',
+      justifyContent: 'right',
       float: 'right',
       width: '55%',
-      height: 'inherit',
+      height: '100%',
       posistion: 'relative',
     },
     balloon: {
-      height: '500px',
-      left: '15px',
-      top: '100px',
-      position: 'relative',
+      height: '110%',
     },
     title: {
       marginTop: '0px',
@@ -130,6 +124,26 @@ const Footer = () => {
       width: '500px',
       color: Colors.primary,
     };
+  } else if (width < 1200) {
+    styles.rightContainer = {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'right',
+      float: 'right',
+      width: '55%',
+      height: '100%',
+      posistion: 'relative',
+    };
+  } else {
+    styles.rightContainer = {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'flex-end',
+      float: 'right',
+      width: '55%',
+      height: '100%',
+      posistion: 'relative',
+    };
   }
 
   return (
@@ -144,7 +158,7 @@ const Footer = () => {
             <Button link='https://github.com/jbmerville' fontAwesomeIcon='fa fa-github' text='GitHub'/>
             <Button link='https://www.linkedin.com/in/jean-baptiste-merville-861800189/' fontAwesomeIcon='fa fa-linkedin' text='LinkeIn'/>
             <Button link='mailto:jbmer@my.yorku.ca' fontAwesomeIcon='fa fa-envelope' text='jbmer@my.yorku.ca' size='20px'/>
-            <Button link='' fontAwesomeIcon='fa fa-file' text='my resume' size='20px'/>
+            <Button link='/images/resume.pdf' target='_blank' fontAwesomeIcon='fa fa-file' text='Resumé' size='20px'/>
           </div>
         </div>
         <div style={styles.rightContainer}>

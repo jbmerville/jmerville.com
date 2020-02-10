@@ -60,6 +60,20 @@ const CardImage = (props) => {
       background: props.backgroundColor ? props.backgroundColor: Colors.lightGray,
       overflow: 'hidden',
     };
+  } else if (width < 1200) {
+    styles.outerContainer = {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'relative',
+      top: '40px',
+      transition: 'transform .2s',
+      cursor: 'pointer',
+      height: '230px',
+      width: '100%',
+      background: props.backgroundColor ? props.backgroundColor: Colors.lightGray,
+      overflow: 'hidden',
+    };
   }
 
   const imageCard = imageCaption ? (

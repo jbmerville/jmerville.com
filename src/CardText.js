@@ -14,7 +14,7 @@ const CardText = (props) => {
       width: '120px',
       background: Colors.accent,
     },
-    text: {
+    textContainer: {
       position: 'absolute',
     },
     title: {
@@ -41,7 +41,7 @@ const CardText = (props) => {
 
   // Mobile style
   if (width < 600) {
-    styles.text = {
+    styles.textContainer = {
       position: 'relative',
     };
     styles.title = {
@@ -63,10 +63,24 @@ const CardText = (props) => {
       lineHeight: '1.8em',
       color: Colors.primary,
     };
+  } else if (width < 1200) {
+    styles.textContainer = {
+      position: 'relative',
+      height: 'fit-content'
+    };
+    styles.description = {
+      marginTop: '25px',
+      height: 'fit-content',
+      fontWeight: '200',
+      fontSize: '1.2em',
+      lineHeight: '1.5em',
+      textAlign: 'justify',
+      color: Colors.primary,
+    };
   }
 
   return (
-    <div style={styles.text}>
+    <div style={styles.textContainer}>
       <div style={styles.title}>{props.title}</div>
       <div style={styles.separationBar}></div>
       <div style={styles.secondaryTitle}>{props.secondaryTitle}</div>

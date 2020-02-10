@@ -5,7 +5,7 @@ import Colors from './values/Colors.js';
 const Header = () => {
 
   const [width] = useWindowSize();
-  
+  console.log(width);
   let styles = {
     outerContainer: {
       position: 'relative',
@@ -19,25 +19,26 @@ const Header = () => {
       backgroundColor: 'white',
       width: 'auto',
       padding: '150px',
-      height: '700px',
+      height: '550px',
     },
     leftContainer: {
       float: 'left',
       width: '45%',
       height: '100%',
-      posistion: 'relative',
+      position: 'relative',
+      zIndex: '1',
     },
     rightContainer: {
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'right',
       float: 'right',
       width: '55%',
       height: '100%',
       posistion: 'relative',
     },
     balloon: {
-      height: '90%'
+      height: '110%'
     },
     title: {
       marginTop: '150px',
@@ -98,7 +99,6 @@ const Header = () => {
       position: 'relative',
       width: '100%',
       height: 'fit-content',
-      posistion: 'relative',
       zIndex: 1,
     };
     styles.description = {
@@ -109,7 +109,27 @@ const Header = () => {
       lineHeight: '1.8em',
       color: Colors.primary,
     };
-  } 
+  } else if (width < 1200) {
+    styles.rightContainer = {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'right',
+      float: 'right',
+      width: '55%',
+      height: '100%',
+      posistion: 'relative',
+    };
+  } else {
+    styles.rightContainer = {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'flex-end',
+      float: 'right',
+      width: '55%',
+      height: '100%',
+      posistion: 'relative',
+    };
+  }
   
   return (
     <div style={styles.outerContainer}>

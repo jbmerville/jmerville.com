@@ -68,6 +68,7 @@ export const App = () => {
       image='csbot.png'
       imageStyle={{
         height: '90%',
+        marginTop: '-10px',
       }}
       imageCaption='csbot'
       backgroundColor={Colors.facebook}

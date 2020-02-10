@@ -23,6 +23,13 @@ const Card = (props) => {
       height: 'fit-content',
       width: '100%',
     };
+  } else if (width < 1200) {
+    styles.outerContainer = {
+      marginTop: '100px',
+      paddingBottom: '50px',
+      height: 'fit-content',
+      width: '100%',
+    };
   }
 
   const {title, secondaryTitle, description, image, imageStyle, imageCaption, backgroundColor, link} = props;
