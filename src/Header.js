@@ -139,7 +139,7 @@ const Header = () => {
           <div style={styles.secondaryTitle}>Developer & Student</div>
           <div style={styles.separationBar}></div>
           <div style={styles.description}>
-                Hey, my name is Jean, a Full-Stack Developer from Paris, France. I also attend York University In Toronto, where I am majoring in Computer Science! I am currently a teacher assistant at York University and working with amazing people at Srvice. Soon to be an Amazonian during the summer!
+                Hey, my name is Jean, a Full-Stack Developer from Paris, France. I also attend York University in Toronto, where I am majoring in Computer Science! I am currently a teacher assistant at York University and working with amazing people at Srvice. Soon to be an Amazonian during the summer!
           </div>
         </div>
         <div style={styles.rightContainer}>

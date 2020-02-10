@@ -7,7 +7,7 @@ const Button = (props) => {
 
   const { text, link, fontAwesomeIcon, size } = props;
   const [width] = useWindowSize();
-  
+
   const styles = {
     buttonContainer: {
       marginTop: '40px',
@@ -38,7 +38,7 @@ const Button = (props) => {
       position: 'relative',
       fontSize: '1.3em',
       padding: '10px',
-      paddingRight: '15px',
+      paddingRight: '20px',
       width: 'fit-content',
       color: Colors.primary,
     },
