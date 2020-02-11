@@ -1,7 +1,7 @@
 import React from 'react';
-import Colors from './values/Colors';
+import Colors from './../values';
 import PropTypes from 'prop-types';
-import useWindowSize from './WindowSize.js';
+import useWindowSize from './../WindowSize.js';
 
 const CardImage = (props) => {
 
@@ -81,7 +81,7 @@ const CardImage = (props) => {
       className='card'
       style={styles.outerContainer} 
     >
-      <img style={{...styles.image, ...imageStyle}} src={`images/${image}`} />
+      <img style={{ ...styles.image, ...imageStyle }} alt='If you see this follow me on github and linkedin :)' src={`images/${image}`} />
       <div 
         style={styles.outerCaption}
         className='caption'
@@ -95,7 +95,7 @@ const CardImage = (props) => {
       className='card'
       style={styles.outerContainer} 
     >
-      <img style={{...styles.image, ...imageStyle}} src={`images/${image}`} />
+      <img style={{ ...styles.image, ...imageStyle }} alt='If you see this follow me on github and linkedin :)' src={`images/${image}`} />
     </a>
   );
 

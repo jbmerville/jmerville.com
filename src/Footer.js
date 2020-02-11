@@ -1,7 +1,7 @@
 import React from 'react';
 import useWindowSize from './WindowSize.js';
 import Button from './Button.js';
-import Colors from './values/Colors.js';
+import Colors from './values';
 
 const Footer = () => {
 
@@ -32,14 +32,14 @@ const Footer = () => {
     rightContainer: {
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'right',
+      justifyContent: 'flex-end',
       float: 'right',
       width: '55%',
       height: '100%',
       posistion: 'relative',
     },
     balloon: {
-      height: '110%',
+      height: '100%',
     },
     title: {
       marginTop: '0px',
@@ -47,18 +47,6 @@ const Footer = () => {
       fontWeight: '600',
       fontSize: '2.3em',
       color: Colors.primary,
-    },
-    secondaryTitle: {
-      marginTop: '20px',
-      fontWeight: '400',
-      fontSize: '1.9em',
-      color: Colors.primary,
-    },
-    separationBar: {
-      marginTop: '25px',
-      height: '7px',
-      width: '120px',
-      background: Colors.accent,
     },
     description: {
       marginTop: '25px',
@@ -120,8 +108,6 @@ const Footer = () => {
       height: '100px',
       fontWeight: '200',
       fontSize: '1.2em',
-      lineHeight: '1.5em',
-      width: '500px',
       color: Colors.primary,
     };
   } else if (width < 1200) {
@@ -134,15 +120,13 @@ const Footer = () => {
       height: '100%',
       posistion: 'relative',
     };
-  } else {
-    styles.rightContainer = {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-end',
-      float: 'right',
-      width: '55%',
-      height: '100%',
-      posistion: 'relative',
+  } else if (width > 1500) {
+    styles.innerContainer = {
+      position: 'relative',
+      backgroundColor: 'white',
+      width: 'auto',
+      padding: '250px',
+      height: '550px',
     };
   }
 
@@ -162,11 +146,12 @@ const Footer = () => {
           </div>
         </div>
         <div style={styles.rightContainer}>
-          <img style={styles.balloon} src='images/bird.png'/>
+          <img style={styles.balloon} alt='If you see this follow me on github and linkedin :)' src='images/bird.png'/>
         </div>
       </div>
     </div>
   );
+  
 };
 
 export default Footer;

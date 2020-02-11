@@ -2,7 +2,7 @@ import React from 'react';
 import CardImage from './CardImage.js';
 import CardText from './CardText';
 import PropTypes from 'prop-types';
-import useWindowSize from './WindowSize.js';
+import useWindowSize from './../WindowSize.js';
 
 const Card = (props) => {
 
@@ -32,7 +32,7 @@ const Card = (props) => {
     };
   }
 
-  const {title, secondaryTitle, description, image, imageStyle, imageCaption, backgroundColor, link} = props;
+  const { title, secondaryTitle, description, image, imageStyle, imageCaption, backgroundColor, link } = props;
   return (
     <div style={styles.outerContainer}>
       <CardText 

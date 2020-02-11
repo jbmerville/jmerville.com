@@ -1,6 +1,6 @@
 import React from 'react';
 import useWindowSize from './WindowSize.js';
-import Colors from './values/Colors.js';
+import Colors from './values';
 
 const Header = () => {
 
@@ -31,7 +31,7 @@ const Header = () => {
     rightContainer: {
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'right',
+      justifyContent: 'flex-end',
       float: 'right',
       width: '55%',
       height: '100%',
@@ -62,7 +62,7 @@ const Header = () => {
     description: {
       marginTop: '25px',
       height: '100px',
-      fontWeight: '200',
+      fontWeight: '400',
       fontSize: '1.2em',
       lineHeight: '1.5em',
       width: '500px',
@@ -104,12 +104,19 @@ const Header = () => {
     styles.description = {
       marginTop: '25px',
       height: 'fit-content',
-      fontWeight: '200',
-      fontSize: '0.9em',
+      fontWeight: '400',
+      fontSize: '1em',
       lineHeight: '1.8em',
       color: Colors.primary,
     };
   } else if (width < 1200) {
+    styles.innerContainer = {
+      position: 'relative',
+      backgroundColor: 'white',
+      width: 'auto',
+      padding: '100px',
+      height: '550px',
+    };
     styles.rightContainer = {
       display: 'flex',
       alignItems: 'center',
@@ -119,15 +126,13 @@ const Header = () => {
       height: '100%',
       posistion: 'relative',
     };
-  } else {
-    styles.rightContainer = {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-end',
-      float: 'right',
-      width: '55%',
-      height: '100%',
-      posistion: 'relative',
+  } else if (width > 1500) {
+    styles.innerContainer = {
+      position: 'relative',
+      backgroundColor: 'white',
+      width: 'auto',
+      padding: '250px',
+      height: '550px',
     };
   }
   
@@ -143,11 +148,12 @@ const Header = () => {
           </div>
         </div>
         <div style={styles.rightContainer}>
-          <img style={styles.balloon} src='images/balloon.png'/>
+          <img style={styles.balloon} alt='If you see this follow me on github and linkedin :)' src='images/balloon.png'/>
         </div>
       </div>
     </div>
   );
+
 };
 
 export default Header;

@@ -4,9 +4,10 @@ import React from 'react';
 import Header from './Header.js';
 import Separator from './Separator.js';
 import Section from './Section.js';
-import Card from './Card.js';
+import Card from './card';
 import Colors from './values/Colors.js';
 import Footer from './Footer.js';
+import Blog from './blog';
 
 export const App = () => {
     
@@ -30,7 +31,7 @@ export const App = () => {
       description='Since fall 2019 I have been an active developer at Srvice’s. Srvice’s vision is to bring customers closer to local services with the help of technology. Using agile methodologies I build iOS and Android applications using frameworks like React and React-Native.' 
       image='srvice.png' 
       imageStyle={{
-        height: '30%',
+        height: '20%',
       }}
       backgroundColor={Colors.srvice}
     />,
@@ -42,7 +43,7 @@ export const App = () => {
       description='Led weekly classes for undergraduate Computer Science students, teaching object-oriented programming for mobile application development.' 
       image='yorku.png'
       imageStyle={{
-        height: '50%',
+        height: '40%',
       }}
     />,
   ];
@@ -105,7 +106,7 @@ export const App = () => {
   return (
     <div>
       <Header />
-      <Separator />
+      <Blog />
       <Section 
         title='Work' 
         cards={workCards}

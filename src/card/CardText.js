@@ -1,7 +1,7 @@
 import React from 'react';
-import Colors from './values/Colors.js';
+import Colors from './../values';
 import PropTypes from 'prop-types';
-import useWindowSize from './WindowSize.js';
+import useWindowSize from './../WindowSize.js';
 
 const CardText = (props) => {
 
@@ -25,15 +25,14 @@ const CardText = (props) => {
     },
     secondaryTitle: {
       marginTop: '25px',
+      fontWeight: '200',
       fontSize: '1.2em',
       color: Colors.primary,
     },
     description: {
       marginTop: '25px',
       height: '100px',
-      fontWeight: '200',
       fontSize: '1.2em',
-      lineHeight: '1.5em',
       width: '530px',
       color: Colors.primary,
     }
@@ -52,14 +51,14 @@ const CardText = (props) => {
     };
     styles.secondaryTitle = {
       marginTop: '25px',
+      fontWeight: '200',
       fontSize: '1em',
       color: Colors.primary,
     };
     styles.description = {
       marginTop: '25px',
       height: 'fit-content',
-      fontWeight: '200',
-      fontSize: '0.9em',
+      fontSize: '1em',
       lineHeight: '1.8em',
       color: Colors.primary,
     };
@@ -71,9 +70,7 @@ const CardText = (props) => {
     styles.description = {
       marginTop: '25px',
       height: 'fit-content',
-      fontWeight: '200',
       fontSize: '1.2em',
-      lineHeight: '1.5em',
       textAlign: 'justify',
       color: Colors.primary,
     };
@@ -90,7 +87,6 @@ const CardText = (props) => {
 };
 
 CardText.propTypes = {
-  image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   secondaryTitle: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

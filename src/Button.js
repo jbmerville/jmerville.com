@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Colors from './values/Colors.js';
+import Colors from './values';
 import useWindowSize from './WindowSize.js';
 
 const Button = (props) => {
@@ -77,12 +77,13 @@ const Button = (props) => {
       </div>
     </a>
   );
+  
 };
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
-  size: PropTypes.string.isRequired,
+  size: PropTypes.string,
   fontAwesomeIcon: PropTypes.string.isRequired,
 };
 

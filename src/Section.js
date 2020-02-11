@@ -1,5 +1,5 @@
 import React from 'react';
-import Colors from './values/Colors';
+import Colors from './values';
 import useWindowSize from './WindowSize.js';
 import PropTypes from 'prop-types';
 
@@ -58,6 +58,13 @@ const Section = (props) => {
       color: Colors.primary,
       marginTop: '10px',
     };
+  } else if (width > 1500) {
+    styles.outerContainer = {
+      position: 'relative',
+      height: 'fit-content',
+      padding: '250px',
+      background: Colors.background,
+    };
   }
   
   return (
@@ -67,6 +74,7 @@ const Section = (props) => {
       {props.cards}
     </div>
   );
+  
 };
 
 Section.propTypes = {
