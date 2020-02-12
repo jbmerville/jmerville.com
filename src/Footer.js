@@ -43,7 +43,7 @@ const Footer = () => {
       height: '-webkit-fill-available',
       posistion: 'relative',
     },
-    balloon: {
+    handshake: {
       display: 'block',
       height: '90%',
       position: 'absolute',
@@ -82,7 +82,7 @@ const Footer = () => {
       padding: '20px',
       minHeight: '600px',
     };
-    styles.balloon = {
+    styles.handshake = {
       height: '30%',
       position: 'absolute',
       right: '0',
@@ -165,7 +165,7 @@ const Footer = () => {
           </div>
         </div>
         <div style={styles.rightContainer}>
-          <img style={styles.balloon} alt='If you see this follow me on github and linkedin :)' src='images/bird.png'/>
+          <img style={styles.handshake} alt='If you see this follow me on github and linkedin :)' src='images/handshake.png'/>
         </div>
       </div>
     </div>

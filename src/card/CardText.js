@@ -66,7 +66,7 @@ const CardText = (props) => {
       marginTop: '25px',
       height: 'fit-content',
       fontSize: '1em',
-      lineHeight: '1.8em',
+      lineHeight: '1.5em',
       color: Colors.primary,
       transitionDelay: '.4s',
     };

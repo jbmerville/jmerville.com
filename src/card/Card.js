@@ -9,7 +9,7 @@ const Card = (props) => {
   const [width] = UseWindowSize();
   let styles = {
     outerContainer: {
-      marginTop: '100px',
+      marginBottom: '100px',
       height: '300px',
       width: '100%',
     },
@@ -18,8 +18,8 @@ const Card = (props) => {
   // Mobile style
   if (width < 600) {
     styles.outerContainer = {
-      marginTop: '100px',
-      paddingBottom: '50px',
+      marginTop: '50px',
+      paddingBottom: '100px',
       height: 'fit-content',
       width: '100%',
     };

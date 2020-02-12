@@ -100,6 +100,20 @@ const Blog = () => {
       position: 'relative',
       paddingLeft: '20px',
     };
+    styles.title = {
+      textTransform: 'uppercase',
+      fontWeight: '600',
+      fontSize: '1.2em',
+      color: Colors.primary,
+      marginTop: '-30px',
+    };
+    styles.secondaryTitle = {
+      marginTop: '20px',
+      fontWeight: '400',
+      fontSize: '1em',
+      color: Colors.primary,
+      transitionDelay: '.2s',
+    };
   } else if (width < 1200) {
     styles.outerContainer = {
       overflow: 'hidden',

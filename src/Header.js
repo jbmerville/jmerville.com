@@ -50,7 +50,7 @@ const Header = () => {
       height: '-webkit-fill-available',
       posistion: 'relative',
     },
-    balloon: {
+    mountain: {
       display: 'block',
       height: '90%',
       position: 'absolute',
@@ -98,7 +98,7 @@ const Header = () => {
       padding: '20px',
       height: '700px',
     };
-    styles.balloon = {
+    styles.mountain = {
       height: '30%',
       position: 'absolute',
       right: '0',
@@ -170,7 +170,7 @@ const Header = () => {
           </div>
         </div>
         <div style={styles.rightContainer}>
-          <img style={styles.balloon} alt='If you see this follow me on github and linkedin :)' src='images/balloon.png'/>
+          <img style={styles.mountain} alt='If you see this follow me on github and linkedin :)' src='images/mountain.png'/>
         </div>
       </div>
     </div>
