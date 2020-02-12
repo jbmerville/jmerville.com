@@ -28,7 +28,7 @@ export const App = () => {
       link='https://www.srvice.ca/' 
       title='Srvice · Full-Stack Developer' 
       secondaryTitle='Fall 2019 - Present' 
-      description='Since fall 2019 I have been an active developer at Srvice’s. Srvice’s vision is to bring customers closer to local services with the help of technology. Using agile methodologies I build iOS and Android applications using frameworks like React and React-Native.' 
+      description='Since fall 2019 I have been an active developer at Srvice’s. Srvice’s vision is to bring customers closer to local services with the help of technology. Using agile methodologies I build iOS and Android applications with frameworks like React and React-Native.' 
       image='srvice.png' 
       imageStyle={{
         height: '20%',

@@ -14,10 +14,12 @@ const Blog = () => {
   const leftColumn = [
     [Colors.facebook, '🤖', 'Gatsby tutorial', false],
     [Colors.lightBlue, '👽', 'Placeholder', true],
+    [Colors.purple, '🤞', 'Placeholder', false],
   ];
   const rightColumn = [
-    [Colors.lightBlue, '👽', 'Placeholder', true],
+    [Colors.purple, '🤞', 'Placeholder', false],
     [Colors.facebook, '🤖', 'Gatsby tutorial', false],
+    [Colors.lightBlue, '👽', 'Placeholder', true],
   ];
 
   let styles = {
@@ -63,7 +65,7 @@ const Blog = () => {
       fontWeight: '400',
       fontSize: '1.2em',
       color: Colors.primary,
-      transitionDelay: '.2s',
+      transitionDelay: '.1s',
     },
   };
 
@@ -112,7 +114,7 @@ const Blog = () => {
       fontWeight: '400',
       fontSize: '1em',
       color: Colors.primary,
-      transitionDelay: '.2s',
+      transitionDelay: '.1s',
     };
   } else if (width < 1200) {
     styles.outerContainer = {
@@ -123,8 +125,7 @@ const Blog = () => {
       paddingRight: '100px',
       background: Colors.lightGray,
     };
-  } else if (width < 1500) {
-  } else {
+  } else if (width > 1500) {
     styles.outerContainer = {
       overflow: 'hidden',
       position: 'relative',

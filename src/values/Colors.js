@@ -6,6 +6,7 @@ export default {
   lightPurple: '#F4F7FF',
   green: '#6ACC49',
   yellow: '#f2bc00',
+  purple: '#81cbc4',
   accent: '#0185D0',
   facebook: '#3B5998',
   srvice: '#00569b',

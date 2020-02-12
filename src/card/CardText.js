@@ -25,14 +25,14 @@ const CardText = (props) => {
       height: '5px',
       width: '120px',
       background: Colors.accent,
-      transitionDelay: '.2s',
+      transitionDelay: '.1s',
     },
     secondaryTitle: {
       marginTop: '25px',
       fontWeight: '200',
       fontSize: '1.2em',
       color: Colors.primary,
-      transitionDelay: '.2s',
+      transitionDelay: '.1s',
     },
     description: {
       marginTop: '25px',
@@ -40,7 +40,7 @@ const CardText = (props) => {
       fontSize: '1.2em',
       width: '530px',
       color: Colors.primary,
-      transitionDelay: '.4s',
+      transitionDelay: '.2s',
     }
   };
 
@@ -60,7 +60,7 @@ const CardText = (props) => {
       fontWeight: '200',
       fontSize: '1em',
       color: Colors.primary,
-      transitionDelay: '.2s',
+      transitionDelay: '.1s',
     };
     styles.description = {
       marginTop: '25px',
@@ -68,7 +68,7 @@ const CardText = (props) => {
       fontSize: '1em',
       lineHeight: '1.5em',
       color: Colors.primary,
-      transitionDelay: '.4s',
+      transitionDelay: '.2s',
     };
   } else if (width < 1200) {
     styles.textContainer = {
@@ -81,7 +81,7 @@ const CardText = (props) => {
       fontSize: '1.2em',
       textAlign: 'justify',
       color: Colors.primary,
-      transitionDelay: '.4s',
+      transitionDelay: '.2s',
     };
   }
 

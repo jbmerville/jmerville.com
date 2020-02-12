@@ -69,13 +69,13 @@ const Header = () => {
       fontWeight: '400',
       fontSize: '1.9em',
       color: Colors.primary,
-      transitionDelay: '.2s',
+      transitionDelay: '.1s',
     },
     separationBar: {
       marginTop: '25px',
       height: '7px',
       width: '120px',
-      transitionDelay: '.2s',
+      transitionDelay: '.1s',
       background: Colors.accent,
     },
     description: {
@@ -85,7 +85,7 @@ const Header = () => {
       fontSize: '1.2em',
       lineHeight: '1.5em',
       width: '500px',
-      transitionDelay: '.4s',
+      transitionDelay: '.2s',
       color: Colors.primary,
     }
   }; 
