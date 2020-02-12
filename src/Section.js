@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useRef }  from 'react';
 import Colors from './values';
-import useWindowSize from './WindowSize.js';
+import UseWindowSize from './WindowSize.js';
+import IsComponentVisible from './ComponentVisibility.js';
 import PropTypes from 'prop-types';
 
 const Section = (props) => {
 
-  const [width] = useWindowSize();
-  
+  const [width] = UseWindowSize();
+  // const ref = useRef();
+  // const isVisible = IsComponentVisible(ref);
   let styles = {
     outerContainer: {
       position: 'relative',

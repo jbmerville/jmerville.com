@@ -2,11 +2,11 @@ import React from 'react';
 import CardImage from './CardImage.js';
 import CardText from './CardText';
 import PropTypes from 'prop-types';
-import useWindowSize from './../WindowSize.js';
+import UseWindowSize from './../WindowSize.js';
 
 const Card = (props) => {
 
-  const [width] = useWindowSize();
+  const [width] = UseWindowSize();
   let styles = {
     outerContainer: {
       marginTop: '100px',

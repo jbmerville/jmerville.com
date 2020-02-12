@@ -1,48 +1,57 @@
 import React from 'react';
-import useWindowSize from './WindowSize.js';
+import UseWindowSize from './WindowSize.js';
 import Button from './Button.js';
 import Colors from './values';
 
 const Footer = () => {
 
-  const [width] = useWindowSize();
+  const [width] = UseWindowSize();
   
   let styles = {
     outerContainer: {
       position: 'relative',
-      backgroundColor: Colors.lightGray,
+      backgroundColor: Colors.background,
       width: '100%',
       height: '100%',
       overflow: 'hidden',
     },
     innerContainer: {
+      overflow: 'auto',
       position: 'relative',
-      backgroundColor: 'white',
+      height: '-webkit-fill-available',
       width: 'auto',
       padding: '150px',
-      height: '550px',
+      minHeight: '550px',
     },
     leftContainer: {
       float: 'left',
       width: '45%',
-      height: 'fit-content',
-      posistion: 'relative',
+      height: '-webkit-fill-available',
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
       zIndex: '1',
     },
     rightContainer: {
+      position: 'relative',
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'flex-end',
+      justifyContent: 'center',
       float: 'right',
       width: '55%',
-      height: '100%',
+      height: '-webkit-fill-available',
       posistion: 'relative',
     },
     balloon: {
-      height: '100%',
+      display: 'block',
+      height: '90%',
+      position: 'absolute',
+      left: '50%',
+      top: '50%',
+      transform: 'translate(-40%, -50%)'
     },
     title: {
-      marginTop: '0px',
       textTransform: 'uppercase',
       fontWeight: '600',
       fontSize: '2.3em',
@@ -50,7 +59,7 @@ const Footer = () => {
     },
     description: {
       marginTop: '25px',
-      height: '100px',
+      height: 'fit-content',
       fontWeight: '200',
       fontSize: '1.2em',
       lineHeight: '1.5em',
@@ -105,28 +114,38 @@ const Footer = () => {
     };
     styles.description = {
       marginTop: '15px',
-      height: '100px',
+      height: 'fit-content',
       fontWeight: '200',
       fontSize: '1.2em',
       color: Colors.primary,
     };
   } else if (width < 1200) {
+    styles.innerContainer = {
+      overflow: 'auto',
+      position: 'relative',
+      height: '-webkit-fill-available',
+      width: 'auto',
+      padding: '100px',
+      minHeight: '550px',
+    };
     styles.rightContainer = {
+      position: 'relative',
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'right',
+      justifyContent: 'center',
       float: 'right',
       width: '55%',
-      height: '100%',
+      height: '-webkit-fill-available',
       posistion: 'relative',
     };
   } else if (width > 1500) {
     styles.innerContainer = {
+      overflow: 'auto',
       position: 'relative',
-      backgroundColor: 'white',
+      height: '-webkit-fill-available',
       width: 'auto',
       padding: '250px',
-      height: '550px',
+      minHeight: '550px',
     };
   }
 

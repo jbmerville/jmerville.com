@@ -1,19 +1,16 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Colors from './../values';
 import PropTypes from 'prop-types';
-import useWindowSize from './../WindowSize.js';
+import UseWindowSize from './../WindowSize.js';
+import IsComponentVisible from './../ComponentVisibility.js';
 
 const CardText = (props) => {
 
-  const [width] = useWindowSize();
-  
+  const [width] = UseWindowSize();
+  const ref = useRef();
+  const isVisible = IsComponentVisible(ref, 0);
+
   const styles = {
-    separationBar: {
-      marginTop: '25px',
-      height: '5px',
-      width: '120px',
-      background: Colors.accent,
-    },
     textContainer: {
       position: 'absolute',
     },
@@ -23,11 +20,19 @@ const CardText = (props) => {
       fontSize: '1.6em',
       color: Colors.primary,
     },
+    separationBar: {
+      marginTop: '25px',
+      height: '5px',
+      width: '120px',
+      background: Colors.accent,
+      transitionDelay: '.2s',
+    },
     secondaryTitle: {
       marginTop: '25px',
       fontWeight: '200',
       fontSize: '1.2em',
       color: Colors.primary,
+      transitionDelay: '.2s',
     },
     description: {
       marginTop: '25px',
@@ -35,6 +40,7 @@ const CardText = (props) => {
       fontSize: '1.2em',
       width: '530px',
       color: Colors.primary,
+      transitionDelay: '.4s',
     }
   };
 
@@ -54,6 +60,7 @@ const CardText = (props) => {
       fontWeight: '200',
       fontSize: '1em',
       color: Colors.primary,
+      transitionDelay: '.2s',
     };
     styles.description = {
       marginTop: '25px',
@@ -61,6 +68,7 @@ const CardText = (props) => {
       fontSize: '1em',
       lineHeight: '1.8em',
       color: Colors.primary,
+      transitionDelay: '.4s',
     };
   } else if (width < 1200) {
     styles.textContainer = {
@@ -73,15 +81,16 @@ const CardText = (props) => {
       fontSize: '1.2em',
       textAlign: 'justify',
       color: Colors.primary,
+      transitionDelay: '.4s',
     };
   }
 
   return (
-    <div style={styles.textContainer}>
-      <div style={styles.title}>{props.title}</div>
-      <div style={styles.separationBar}></div>
-      <div style={styles.secondaryTitle}>{props.secondaryTitle}</div>
-      <div style={styles.description}>{props.description}</div>
+    <div ref={ref} style={styles.textContainer}>
+      <div className={isVisible} style={styles.title}>{props.title}</div>
+      <div className={isVisible} style={styles.separationBar}></div>
+      <div className={isVisible} style={styles.secondaryTitle}>{props.secondaryTitle}</div>
+      <div className={isVisible} style={styles.description}>{props.description}</div>
     </div>    
   );
 };

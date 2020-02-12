@@ -1,12 +1,12 @@
 import React from 'react';
 import Colors from './../values';
 import PropTypes from 'prop-types';
-import useWindowSize from './../WindowSize.js';
+import UseWindowSize from './../WindowSize.js';
 
 const CardBlog = (props) => {
 
   const { color, emoji, title, isColorLight, widths } = props;
-  const [width] = useWindowSize();
+  const [width] = UseWindowSize();
 
   let styles = {
     outerContainer: {
@@ -76,7 +76,7 @@ const CardBlog = (props) => {
 
   let bars = [];
   for (let i = 0; i < 3; i++){
-    bars.push(<div style={{ ...styles.bar, width: widths[i] }}></div>);
+    bars.push(<div key={i} style={{ ...styles.bar, width: widths[i] }}></div>);
   }
   
   return (

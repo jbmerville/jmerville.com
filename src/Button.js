@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Colors from './values';
-import useWindowSize from './WindowSize.js';
+import UseWindowSize from './WindowSize.js';
 
 const Button = (props) => {
 
   const { text, link, fontAwesomeIcon, size } = props;
-  const [width] = useWindowSize();
+  const [width] = UseWindowSize();
 
   const styles = {
     buttonContainer: {
@@ -44,6 +44,9 @@ const Button = (props) => {
     },
     link: {
       position: 'relative',
+      height: 'fit-content',
+      width: 'fit-content',
+      display: 'block',
     }
   };
 
@@ -77,7 +80,7 @@ const Button = (props) => {
       </div>
     </a>
   );
-  
+
 };
 
 Button.propTypes = {

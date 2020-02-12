@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import useWindowSize from './../WindowSize.js';
+import UseWindowSize from './../WindowSize.js';
 import CardBlog from './CardBlog.js';
 
 const Column = (props) => {
     
-  const [width] = useWindowSize();
+  const [width] = UseWindowSize();
   const { cards, offset } = props;
   const styles = {
     column: {

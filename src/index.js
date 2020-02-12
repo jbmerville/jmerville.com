@@ -103,8 +103,16 @@ export const App = () => {
     />,
   ];
 
+  const styles = {
+    container: {
+      height: '100%',
+      width: '100%',
+      position: '100%',
+    }
+  };
+
   return (
-    <div>
+    <div style={styles.container}>
       <Header />
       <Blog />
       <Section 

@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Colors from './../values';
-import useWindowSize from './../WindowSize.js';
+import UseWindowSize from './../WindowSize.js';
+import IsComponentVisible from './../ComponentVisibility.js';
 import Column from './Column.js';
 
 const Blog = () => {
 
-  const [width] = useWindowSize();
+  const [width] = UseWindowSize();
+  const ref = useRef();
+  const isVisible = IsComponentVisible(ref, 300);
+
+  // const positionY = useScrollPosition();
   const leftColumn = [
     [Colors.facebook, '🤖', 'Gatsby tutorial', false],
     [Colors.lightBlue, '👽', 'Placeholder', true],
@@ -58,6 +63,7 @@ const Blog = () => {
       fontWeight: '400',
       fontSize: '1.2em',
       color: Colors.primary,
+      transitionDelay: '.2s',
     },
   };
 
@@ -103,7 +109,8 @@ const Blog = () => {
       paddingRight: '100px',
       background: Colors.lightGray,
     };
-  } else if (width > 1500) {
+  } else if (width < 1500) {
+  } else {
     styles.outerContainer = {
       overflow: 'hidden',
       position: 'relative',
@@ -124,12 +131,12 @@ const Blog = () => {
   </div>);
 
   return (
-    <div style={styles.outerContainer}>
+    <div ref={ref} style={styles.outerContainer}>
       {columns}
       <div style={styles.rightContainer}>
         <div style={styles.textContainer}>
-          <div style={styles.title}>Articles & Blog Posts </div>
-          <div style={styles.secondaryTitle}>I enjoy documenting my developer journey on Medium. I also like to share short documentation on new techonologies!</div>
+          <div className={isVisible} style={styles.title}>Articles & Blog Posts </div>
+          <div className={isVisible} style={styles.secondaryTitle}>I enjoy documenting my developer journey on Medium. I also like to share short documentation on new techonologies!</div>
         </div>
       </div>
     </div>

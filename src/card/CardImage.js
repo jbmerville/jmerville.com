@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Colors from './../values';
 import PropTypes from 'prop-types';
-import useWindowSize from './../WindowSize.js';
+import UseWindowSize from './../WindowSize.js';
+import IsComponentVisible from './../ComponentVisibility.js';
 
 const CardImage = (props) => {
 
   const { image, imageCaption, imageStyle, link } = props;
-  const [width] = useWindowSize();
+  const [width] = UseWindowSize();
+  const ref = useRef();
+  const isVisible = IsComponentVisible(ref, 0);
 
   let styles = {
     outerContainer: {
@@ -75,10 +78,11 @@ const CardImage = (props) => {
       overflow: 'hidden',
     };
   }
-
+  
   const imageCard = imageCaption ? (
     <a href={link}
-      className='card'
+      ref={ref}
+      className={`card ${isVisible}-image`}
       style={styles.outerContainer} 
     >
       <img style={{ ...styles.image, ...imageStyle }} alt='If you see this follow me on github and linkedin :)' src={`images/${image}`} />
@@ -92,7 +96,8 @@ const CardImage = (props) => {
     </a>
   ) : (
     <a href={link} 
-      className='card'
+      ref={ref}
+      className={`card ${isVisible}-image`}
       style={styles.outerContainer} 
     >
       <img style={{ ...styles.image, ...imageStyle }} alt='If you see this follow me on github and linkedin :)' src={`images/${image}`} />
