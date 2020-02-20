@@ -10,23 +10,24 @@ const Footer = () => {
   let styles = {
     outerContainer: {
       position: 'relative',
+      display: 'grid',
       backgroundColor: Colors.background,
       width: '100%',
       height: '100%',
+      minHeight: 'fit-content',
       overflow: 'hidden',
     },
     innerContainer: {
-      overflow: 'auto',
       position: 'relative',
       height: '-webkit-fill-available',
       width: 'auto',
       padding: '150px',
-      minHeight: '550px',
+      display: 'flex',
     },
     leftContainer: {
       float: 'left',
       width: '45%',
-      height: '-webkit-fill-available',
+      height: 'auto',
       position: 'relative',
       display: 'flex',
       flexDirection: 'column',
@@ -34,14 +35,15 @@ const Footer = () => {
       zIndex: '1',
     },
     rightContainer: {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
       float: 'right',
       width: '55%',
-      height: '-webkit-fill-available',
-      posistion: 'relative',
+      height: 'auto',
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      minHeight: '550px',
+      zIndex: '1',
     },
     handshake: {
       display: 'block',
@@ -80,7 +82,6 @@ const Footer = () => {
       backgroundColor: 'white',
       width: 'auto',
       padding: '20px',
-      minHeight: '600px',
     };
     styles.handshake = {
       height: '30%',
@@ -106,7 +107,7 @@ const Footer = () => {
       zIndex: 1,
     };
     styles.title = {
-      marginTop: '10px',
+      marginTop: '40px',
       textTransform: 'uppercase',
       fontWeight: '600',
       fontSize: '1.5em',
@@ -121,12 +122,12 @@ const Footer = () => {
     };
   } else if (width < 1200) {
     styles.innerContainer = {
-      overflow: 'auto',
+      overflow: 'hidden',
+      display: 'flex',
       position: 'relative',
-      height: '-webkit-fill-available',
+      height: 'auto',
       width: 'auto',
       padding: '100px',
-      minHeight: '550px',
     };
     styles.rightContainer = {
       position: 'relative',
@@ -135,8 +136,9 @@ const Footer = () => {
       justifyContent: 'center',
       float: 'right',
       width: '55%',
-      height: '-webkit-fill-available',
+      height: 'auto',
       posistion: 'relative',
+      minHeight: '550px',
     };
   } else if (width > 1500) {
     styles.innerContainer = {
@@ -145,7 +147,6 @@ const Footer = () => {
       height: '-webkit-fill-available',
       width: 'auto',
       padding: '250px',
-      minHeight: '550px',
     };
   }
 
@@ -159,7 +160,7 @@ const Footer = () => {
           </div>
           <div style={styles.buttonContainer}>
             <Button link='https://github.com/jbmerville' fontAwesomeIcon='fa fa-github' text='GitHub'/>
-            <Button link='https://www.linkedin.com/in/jean-baptiste-merville-861800189/' fontAwesomeIcon='fa fa-linkedin' text='LinkedIn'/>
+            <Button link='www.linkedin.com/in/jbmerville' fontAwesomeIcon='fa fa-linkedin' text='LinkedIn'/>
             <Button link='mailto:jbmer@my.yorku.ca' fontAwesomeIcon='fa fa-envelope' text='jbmer@my.yorku.ca' size='20px'/>
             <Button link='images/JeanBaptisteMervilleResume.pdf' target='_blank' fontAwesomeIcon='fa fa-file' text='Resumé' size='20px'/>
           </div>

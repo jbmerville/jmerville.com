@@ -17,23 +17,25 @@ const Header = () => {
   let styles = {
     outerContainer: {
       position: 'relative',
+      display: 'grid',
       backgroundColor: Colors.background,
       width: '100%',
-      height: '100%',
+      height: 'auto',
+      minHeight: 'fit-content',
       overflow: 'hidden',
     },
     innerContainer: {
-      overflow: 'auto',
       position: 'relative',
-      height: '-webkit-fill-available',
+      height: 'auto',
       width: 'auto',
+      display: 'flex',
       padding: '150px',
-      minHeight: '550px',
+      // minHeight: '550px',
     },
     leftContainer: {
       float: 'left',
       width: '45%',
-      height: '-webkit-fill-available',
+      height: 'auto',
       position: 'relative',
       display: 'flex',
       flexDirection: 'column',
@@ -47,7 +49,7 @@ const Header = () => {
       justifyContent: 'center',
       float: 'right',
       width: '55%',
-      height: '-webkit-fill-available',
+      height: 'auto',
       posistion: 'relative',
     },
     mountain: {
@@ -92,11 +94,21 @@ const Header = () => {
 
   // Mobile style
   if (width < 600) {
+    styles.outerContainer = {
+      position: 'relative',
+      display: 'table',
+      backgroundColor: Colors.background,
+      width: '100%',
+      height: '100%',
+      minHeight: 'fit-content',
+      overflow: 'hidden',
+    };
     styles.innerContainer = {
       position: 'relative',
       width: 'auto',
       padding: '20px',
-      height: '700px',
+      height: '100%',
+      minHeight: 'fit-content',
     };
     styles.mountain = {
       height: '30%',
@@ -119,6 +131,8 @@ const Header = () => {
       width: '100%',
       height: 'fit-content',
       zIndex: 1,
+      marginTop: '20%',
+      marginBottom: '20%',
     };
     styles.description = {
       marginTop: '25px',
@@ -130,12 +144,12 @@ const Header = () => {
     };
   } else if (width < 1200) {
     styles.innerContainer = {
-      overflow: 'auto',
+      overflow: 'hidden',
       position: 'relative',
-      height: '-webkit-fill-available',
+      display: 'flex',
+      height: 'auto',
       width: 'auto',
       padding: '100px',
-      minHeight: '550px',
     };
     styles.rightContainer = {
       position: 'relative',
@@ -144,17 +158,16 @@ const Header = () => {
       justifyContent: 'center',
       float: 'right',
       width: '55%',
-      height: '-webkit-fill-available',
+      height: 'auto',
       posistion: 'relative',
     };
   } else if (width > 1500) {
     styles.innerContainer = {
-      overflow: 'auto',
       position: 'relative',
-      height: '-webkit-fill-available',
+      height: 'auto',
       width: 'auto',
+      display: 'flex',
       padding: '250px',
-      minHeight: '550px',
     };
   }
   

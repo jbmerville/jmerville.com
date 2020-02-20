@@ -42,7 +42,7 @@ const Section = (props) => {
       fontWeight: '600',
       fontSize: '1.5em',
       color: Colors.primary,
-      marginTop: '10px',
+      marginTop: '40px',
     };
   } else if (width < 1200) {
     styles.outerContainer = {
