@@ -5,12 +5,12 @@ import UseWindowSize from './WindowSize.js';
 
 const Button = (props) => {
 
-  const { text, link, fontAwesomeIcon, size } = props;
+  const { text, link, fontAwesomeIcon, size, isFirst } = props;
   const [width] = UseWindowSize();
 
   const styles = {
     buttonContainer: {
-      marginTop: '40px',
+      marginTop: isFirst? '' : '40px',
       cursor: 'pointer',
       height: 'fit-content',
       width: 'fit-content',
@@ -62,7 +62,7 @@ const Button = (props) => {
       color: Colors.primary,
     };
     styles.buttonContainer = {
-      marginTop: '20px',
+      marginTop: isFirst? '' : '20px',
       cursor: 'pointer',
       height: 'fit-content',
       width: 'fit-content',
@@ -88,6 +88,7 @@ Button.propTypes = {
   link: PropTypes.string.isRequired,
   size: PropTypes.string,
   fontAwesomeIcon: PropTypes.string.isRequired,
+  isFirst: PropTypes.bool,
 };
 
 export default Button;

@@ -6,7 +6,7 @@ import IsComponentVisible from './../ComponentVisibility.js';
 
 const CardImage = (props) => {
 
-  const { image, imageCaption, imageStyle, link } = props;
+  const { image, imageCaption, imageStyle, link, backgroundColor } = props;
   const [width] = UseWindowSize();
   const ref = useRef();
   const isVisible = IsComponentVisible(ref, 0);
@@ -23,7 +23,7 @@ const CardImage = (props) => {
       height: '230px',
       width: '350px',
       float: 'right',
-      background: props.backgroundColor ? props.backgroundColor: Colors.lightGray,
+      background: backgroundColor ? backgroundColor: Colors.lightGray,
       overflow: 'hidden',
     },
     image: {
@@ -46,6 +46,7 @@ const CardImage = (props) => {
       textAlign: 'center',
       top: '200px',
       color: Colors.background,
+      userSelect: 'none',
     }
   };
 
@@ -60,7 +61,7 @@ const CardImage = (props) => {
       cursor: 'pointer',
       height: '230px',
       width: '100%',
-      background: props.backgroundColor ? props.backgroundColor: Colors.lightGray,
+      background: backgroundColor ? backgroundColor: Colors.lightGray,
       overflow: 'hidden',
     };
   } else if (width < 1200) {
@@ -74,7 +75,7 @@ const CardImage = (props) => {
       cursor: 'pointer',
       height: '230px',
       width: '100%',
-      background: props.backgroundColor ? props.backgroundColor: Colors.lightGray,
+      background: backgroundColor ? backgroundColor: Colors.lightGray,
       overflow: 'hidden',
     };
   }
@@ -114,7 +115,7 @@ CardImage.propTypes = {
   imageStyle: PropTypes.any,
   imageCaption: PropTypes.string,
   backgroundColor: PropTypes.string,
-  link: PropTypes.string.isRequired,
+  link: PropTypes.string,
 };
 
 export default CardImage;

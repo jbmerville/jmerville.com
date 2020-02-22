@@ -9,7 +9,7 @@ const Card = (props) => {
   const [width] = UseWindowSize();
   let styles = {
     outerContainer: {
-      marginBottom: '100px',
+      marginTop: '100px',
       height: '300px',
       width: '100%',
     },
@@ -32,8 +32,24 @@ const Card = (props) => {
     };
   }
 
-  const { title, secondaryTitle, description, image, imageStyle, imageCaption, backgroundColor, link } = props;
-  return (
+  const { title, secondaryTitle, description, image, imageStyle, imageCaption, backgroundColor, link, onClick } = props;
+
+  const card = onClick? (
+    <div onClick={onClick} style={styles.outerContainer}>
+      <CardText 
+        title={title} 
+        secondaryTitle={secondaryTitle} 
+        description={description}
+      />
+      <CardImage 
+        image={image}
+        imageStyle={imageStyle}
+        imageCaption={imageCaption}
+        link={link}
+        backgroundColor={backgroundColor}
+      />
+    </div> 
+  ) : (
     <div style={styles.outerContainer}>
       <CardText 
         title={title} 
@@ -47,11 +63,12 @@ const Card = (props) => {
         link={link}
         backgroundColor={backgroundColor}
       />
-    </div>
-  );
+    </div>);
+  return card;
 };
 
 Card.propTypes = {
+  onClick: PropTypes.func,
   title: PropTypes.string.isRequired,
   secondaryTitle: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
