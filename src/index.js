@@ -74,6 +74,7 @@ export const App = () => {
         }}
         imageCaption='csbot'
         backgroundColor={Colors.facebook}
+        showClickIcon={true}
       />}
       extra={[{
         image: 'images/csbot1.png',
@@ -117,6 +118,7 @@ export const App = () => {
         }}
         imageCaption='maze app'
         backgroundColor={Colors.lightBlue}
+        showClickIcon={true}
       />}
       extra={[{
         image: 'images/maze1.png',
@@ -160,6 +162,7 @@ export const App = () => {
         }}
         imageCaption='hide your notes'
         backgroundColor={Colors.green}
+        showClickIcon={true}
       />}
       extra={[{
         image: 'images/hide-your-notes1.png',

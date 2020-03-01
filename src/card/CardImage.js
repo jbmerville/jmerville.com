@@ -6,7 +6,7 @@ import IsComponentVisible from './../ComponentVisibility.js';
 
 const CardImage = (props) => {
 
-  const { image, imageCaption, imageStyle, link, backgroundColor } = props;
+  const { image, imageCaption, imageStyle, link, backgroundColor, showClickIcon } = props;
   const [width] = UseWindowSize();
   const ref = useRef();
   const isVisible = IsComponentVisible(ref, 0);
@@ -47,7 +47,27 @@ const CardImage = (props) => {
       top: '200px',
       color: Colors.background,
       userSelect: 'none',
-    }
+    },
+    iconContainer: {
+      position: 'absolute',
+      bottom: '10px',
+      right: '10px',
+      display: 'table',
+      height: '45px',
+      width: '45px',
+      borderRadius: '25px',
+      zIndex: 1,
+      backgroundColor: Colors.lightPurple,
+    },
+    icon: {
+      position: 'relative',
+      fontSize: '22px',
+      left: '3px',
+      color: Colors.facebook,
+      display: 'table-cell',
+      textAlign: 'center',
+      verticalAlign: 'middle'
+    },
   };
 
   if (width < 600) {
@@ -79,6 +99,12 @@ const CardImage = (props) => {
       overflow: 'hidden',
     };
   }
+
+  const clickIcon = showClickIcon ? (
+    <div style={styles.iconContainer}>
+      <i style={styles.icon} className="fa fa-mouse-pointer"></i>
+    </div> 
+  ) : '';
   
   const imageCard = imageCaption ? (
     <a href={link}
@@ -86,11 +112,13 @@ const CardImage = (props) => {
       className={`card ${isVisible}-image`}
       style={styles.outerContainer} 
     >
+      {clickIcon}
       <img style={{ ...styles.image, ...imageStyle }} alt='If you see this follow me on github and linkedin :)' src={`images/${image}`} />
       <div 
         style={styles.outerCaption}
         className='caption'
-      > <div style={styles.innerCaption}>
+      > 
+        <div style={styles.innerCaption}>
           {imageCaption}
         </div>
       </div>
@@ -101,6 +129,7 @@ const CardImage = (props) => {
       className={`card ${isVisible}-image`}
       style={styles.outerContainer} 
     >
+      {clickIcon}
       <img style={{ ...styles.image, ...imageStyle }} alt='If you see this follow me on github and linkedin :)' src={`images/${image}`} />
     </a>
   );
@@ -116,6 +145,7 @@ CardImage.propTypes = {
   imageCaption: PropTypes.string,
   backgroundColor: PropTypes.string,
   link: PropTypes.string,
+  showClickIcon: PropTypes.bool,
 };
 
 export default CardImage;
