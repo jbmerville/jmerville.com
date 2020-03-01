@@ -18,7 +18,7 @@ export const App = () => {
       link='https://www.amazon.jobs/en/working/working-amazon'
       title='Amazon · Upcoming Software Engineer Intern' 
       secondaryTitle='Summer 2020' 
-      description='I will be interning with the Amazon Prime Video team in London, UK. Amazon is the most customer centric company, it’s mission is to always meet each customers needs, innovating new solutions to make things easier, faster, better, and more cost-effective.' 
+      description='I will be interning with the Amazon Prime Video team in London, UK. Amazon is the most customer centric company. It’s mission is to always meet each customer&apos;s needs, innovating new solutions to make things easier, faster, better, and more cost-effective.' 
       image='amazon.png'
       imageStyle={{
         height: '110%',
@@ -127,6 +127,11 @@ export const App = () => {
         image: 'images/maze2.png' ,
         imageWidth: '230px',
         title: 'Pick an alogirthm 🤖',
+        caption: 'Select an algorithm from a few popular maze solving algorithms!',
+      },
+      { 
+        image: 'images/maze3.gif' ,
+        title: 'Solve the maze 🚀',
         caption: 'Watch colorful animations for different popular graph algorithms!',
       }]}
       howWasItMade='I built Maze App using React and Node. After getting into React through a Udemy turorial and building project along the way I wanted to use what I just learned to make something of my own.'
@@ -160,7 +165,7 @@ export const App = () => {
         image: 'images/hide-your-notes1.png',
         imageWidth: '170px',
         title: 'Select what type of text to hide 💭',
-        caption: 'Hide Your Notes uses the attribute of the documents like font-size and color',
+        caption: 'Hide Your Notes uses the attributes of the document like font-size and color',
       }, 
       {
         image: 'images/hide-your-notes2.png',

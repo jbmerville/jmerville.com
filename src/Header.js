@@ -132,7 +132,7 @@ const Header = () => {
       height: 'fit-content',
       zIndex: 1,
       marginTop: '20%',
-      marginBottom: '20%',
+      marginBottom: '50%',
     };
     styles.description = {
       marginTop: '25px',

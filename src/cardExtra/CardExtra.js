@@ -4,17 +4,20 @@ import Card from './../card';
 import Button from './../Button.js';
 import CardExtraPic from './CardExtraPic.js';
 import Colors from './../values';
+import UseWindowSize from './../WindowSize.js';
 
 const CardExtra = props => {
+
   const { extra, card, howWasItMade, buttons } = props;
   const [isClicked, setIsClicked] = useState(false);
+  const [width] = UseWindowSize();
 
   const newCard = (<Card {...card.props} onClick={() => setIsClicked(!isClicked)}/>);
-  const size = (extra.length + 1) * 270 ;
+  const size = width < 600 ? (extra.length + 1) * 490 : (extra.length + 1) * 270 ;
   const extraContainer = isClicked ? `${size}px`: '0px';
   let isLeft = extra.length % 2 === 0;
   
-  const styles = {
+  let styles = {
     outerContainer: {
       display: 'grid',
       height: 'fit-content',
@@ -22,7 +25,7 @@ const CardExtra = props => {
     },
     extraContainer: {
       height: extraContainer,
-      transition: 'height 0.5s cubic-bezier(0.215,0.61,0.355,1) 0s',
+      transition: 'height 0.5s  ease-in-out 0s',
       overflow: 'hidden',
     },
     info: {
@@ -64,6 +67,33 @@ const CardExtra = props => {
     },
   };
 
+  // Mobile style
+  if (width < 600) {
+    styles.info = {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      height: 'fit-content',
+      padding: '20px',
+      background: isLeft? Colors.lightGray: Colors.background,
+    };
+    styles.textContainer = {
+      width: '260px',
+      padding: '40px',
+      alignSelf: 'center',
+      color: Colors.primary,
+    };
+    styles.howWasItMadeContainer = {
+      height: '170px',
+      justifyContent: 'center',
+      display: 'flex',
+      flexDirection: 'column',
+      position: 'relative',
+      padding: '40px',
+    };
+  }
+
   const extraPics = [];
   isLeft = true;
   for (let i = 0; i < extra.length; i++) {
@@ -81,7 +111,7 @@ const CardExtra = props => {
   for (let i = 0; i < buttons.length; i++) {
     buttonsComponents.push(
       <Button
-        isFirst={i == 0}
+        isFirst={i === 0}
         key={i}
         {...buttons[i]}
       />
