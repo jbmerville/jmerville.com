@@ -32,7 +32,7 @@ const Card = (props) => {
     };
   }
 
-  const { title, secondaryTitle, description, image, imageStyle, imageCaption, backgroundColor, link, onClick, showClickIcon } = props;
+  const { title, secondaryTitle, description, image, imageStyle, imageCaption, backgroundColor, link, onClick, showClickIcon, imageCaptionColor } = props;
 
   const card = onClick? (
     <div onClick={onClick} style={styles.outerContainer}>
@@ -45,6 +45,7 @@ const Card = (props) => {
         image={image}
         imageStyle={imageStyle}
         imageCaption={imageCaption}
+        imageCaptionColor={imageCaptionColor}
         link={link}
         backgroundColor={backgroundColor}
         showClickIcon={showClickIcon}
@@ -61,6 +62,7 @@ const Card = (props) => {
         image={image}
         imageStyle={imageStyle}
         imageCaption={imageCaption}
+        imageCaptionColor={imageCaptionColor}
         link={link}
         backgroundColor={backgroundColor}
         showClickIcon={showClickIcon}
@@ -77,6 +79,7 @@ Card.propTypes = {
   image: PropTypes.string.isRequired,
   imageStyle: PropTypes.any,
   imageCaption: PropTypes.string,
+  imageCaptionColor: PropTypes.string,
   backgroundColor: PropTypes.string,
   link: PropTypes.string.isRequired,
   showClickIcon: PropTypes.bool,

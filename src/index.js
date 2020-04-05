@@ -62,6 +62,51 @@ export const App = () => {
       }}
     />,
     <CardExtra
+      key='sortvisualizer' 
+      card={<Card 
+        title='Sort Visualizer'
+        secondaryTitle='Fall 2019' 
+        description='Sort Visualizer is a web app that visualizes how common sorting algorithms operate on a data set.'
+        image='sortvisualizer.png' 
+        imageStyle={{
+          height: '75%',
+          marginLeft: '10px',
+        }}
+        imageCaption='Sort visualizer'
+        imageCaptionColor={Colors.primary}
+        backgroundColor={Colors.lightGray}
+        showClickIcon={true}
+      />}
+      extra={[{
+        image: 'images/sortvisualizer1.png',
+        title: 'Select a sorting algorithm ✨',
+        caption: 'Choose from a list of 6 popular algorithms',
+      }, 
+      { 
+        image: 'images/sortvisualizer2.png' ,
+        title: 'Follow along some code 🤖',
+        caption: '',
+      },
+      { 
+        image: 'images/sortvisualizer3.gif' ,
+        title: 'Enjoy comprehensive animations 🚀',
+        caption: 'See which element is being treated and control the speed of the animation!',
+      }]}
+      howWasItMade='I built Sort Visualizer using React and TypeScript. Srvice, the startup I was working for, decided to make the switch to TypeScript and I previously made a project similar to this one. I revamped this famous and simple project as an exercise to learn TypeScript.'
+      buttons={[
+        {
+          link: 'https://github.com/jbmerville/sort-visualizer',
+          text: 'GitHub',
+          fontAwesomeIcon: 'fa fa-github',
+        }, {
+          link: 'https://sort-visualizer.jmerville.com/',
+          text: 'View Project',
+          fontAwesomeIcon: 'fa fa-window-maximize',
+          size: '18px',
+        }
+      ]}
+    />,
+    <CardExtra
       key='csbot' 
       card={<Card 
         title='CSbot' 

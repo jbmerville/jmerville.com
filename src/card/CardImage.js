@@ -6,11 +6,10 @@ import IsComponentVisible from './../ComponentVisibility.js';
 
 const CardImage = (props) => {
 
-  const { image, imageCaption, imageStyle, link, backgroundColor, showClickIcon } = props;
+  const { image, imageCaption, imageStyle, link, backgroundColor, showClickIcon, imageCaptionColor } = props;
   const [width] = UseWindowSize();
   const ref = useRef();
   const isVisible = IsComponentVisible(ref, 0);
-
   let styles = {
     outerContainer: {
       display: 'flex',
@@ -45,7 +44,7 @@ const CardImage = (props) => {
       position: 'relative',
       textAlign: 'center',
       top: '200px',
-      color: Colors.background,
+      color: imageCaptionColor? imageCaptionColor: Colors.background,
       userSelect: 'none',
     },
     iconContainer: {
@@ -143,6 +142,7 @@ CardImage.propTypes = {
   image: PropTypes.string.isRequired,
   imageStyle: PropTypes.any,
   imageCaption: PropTypes.string,
+  imageCaptionColor: PropTypes.string,
   backgroundColor: PropTypes.string,
   link: PropTypes.string,
   showClickIcon: PropTypes.bool,
