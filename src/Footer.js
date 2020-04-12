@@ -160,7 +160,7 @@ const Footer = () => {
           </div>
           <div style={styles.buttonContainer}>
             <Button link='https://github.com/jbmerville' fontAwesomeIcon='fa fa-github' text='GitHub'/>
-            <Button link='www.linkedin.com/in/jbmerville' fontAwesomeIcon='fa fa-linkedin' text='LinkedIn'/>
+            <Button link='https://www.linkedin.com/in/jbmerville/' fontAwesomeIcon='fa fa-linkedin' text='LinkedIn'/>
             <Button link='mailto:jbmer@my.yorku.ca' fontAwesomeIcon='fa fa-envelope' text='jbmer@my.yorku.ca' size='20px'/>
             <Button link='images/JeanBaptisteMervilleResume.pdf' target='_blank' fontAwesomeIcon='fa fa-file' text='Resumé' size='20px'/>
           </div>
