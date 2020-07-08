@@ -1,16 +1,33 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Colors from './values';
-import UseWindowSize from './WindowSize.js';
 
-const Button = (props) => {
+import CSS from 'csstype';
+import { ICard } from 'types';
 
-  const { text, link, fontAwesomeIcon, size, isFirst } = props;
+import UseWindowSize from '../hooks/WindowSize';
+import { Colors } from '../values';
+
+interface Styles {
+  buttonContainer: CSS.Properties;
+  iconContainer: CSS.Properties;
+  icon: CSS.Properties;
+  buttonText: CSS.Properties;
+  link: CSS.Properties;
+}
+
+interface ButtonProps {
+  button: ICard.Button;
+  isFirst?: Boolean;
+}
+
+const Button = (props: ButtonProps) => {
+  const { button, isFirst } = props;
+  const { text, link, icon } = button;
+  const { fontAwesomeIcon, size } = icon;
   const [width] = UseWindowSize();
 
-  const styles = {
+  const styles: Styles = {
     buttonContainer: {
-      marginTop: isFirst? '' : '40px',
+      marginTop: isFirst ? '' : '40px',
       cursor: 'pointer',
       height: 'fit-content',
       width: 'fit-content',
@@ -24,14 +41,14 @@ const Button = (props) => {
       width: '45px',
       marginLeft: '5px',
       borderRadius: '25px',
-      backgroundColor: Colors.lightPurple,
+      backgroundColor: Colors.PURPLE_LIGHT,
     },
     icon: {
-      fontSize: size ? size: '25px',
+      fontSize: size ? size : '25px',
       display: 'table-cell',
       textAlign: 'center',
       verticalAlign: 'middle',
-      color: Colors.facebook,
+      color: Colors.FACEBOOK,
     },
     buttonText: {
       display: 'inline-block',
@@ -40,14 +57,14 @@ const Button = (props) => {
       padding: '10px',
       paddingRight: '20px',
       width: 'fit-content',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
     },
     link: {
       position: 'relative',
       height: 'fit-content',
       width: 'fit-content',
       display: 'block',
-    }
+    },
   };
 
   // Mobile style
@@ -59,36 +76,28 @@ const Button = (props) => {
       padding: '10px',
       paddingRight: '15px',
       width: 'fit-content',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
     };
     styles.buttonContainer = {
-      marginTop: isFirst? '' : '20px',
+      marginTop: isFirst ? '' : '20px',
       cursor: 'pointer',
       height: 'fit-content',
       width: 'fit-content',
       borderRadius: '4px',
     };
   }
-
   return (
     <a style={styles.link} href={link}>
-      <div className='button' style={styles.buttonContainer}>
+      <div className="button" style={styles.buttonContainer}>
         <div style={styles.iconContainer}>
           <i style={styles.icon} className={fontAwesomeIcon}></i>
-        </div>   
-        <div className='buttonText' style={styles.buttonText}>{text}</div>
+        </div>
+        <div className="buttonText" style={styles.buttonText}>
+          {text}
+        </div>
       </div>
     </a>
   );
-
-};
-
-Button.propTypes = {
-  text: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-  size: PropTypes.string,
-  fontAwesomeIcon: PropTypes.string.isRequired,
-  isFirst: PropTypes.bool,
 };
 
 export default Button;

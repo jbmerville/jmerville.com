@@ -1,13 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import UseWindowSize from './../WindowSize.js';
-import CardBlog from './CardBlog.js';
 
-const Column = (props) => {
-    
+import CSS from 'csstype';
+import UseWindowSize from 'hooks/WindowSize';
+
+import CardBlog from './CardBlog';
+
+interface Styles {
+  column: CSS.Properties;
+}
+
+interface ColumnProps {
+  cards: any[];
+  offset: string;
+}
+
+const Column = (props: ColumnProps) => {
   const [width] = UseWindowSize();
   const { cards, offset } = props;
-  const styles = {
+  const styles: Styles = {
     column: {
       position: 'relative',
       display: 'flex',
@@ -32,37 +42,31 @@ const Column = (props) => {
   }
 
   let cardsComponent = [];
-  for (let i = 0; i < 40; i++){
+  for (let i = 0; i < 40; i++) {
     const index = i % cards.length;
     const [color, emoji, title, isColorLight] = cards[index];
     let widths = [];
-    for (let i = 0; i < 3; i++){
+    for (let i = 0; i < 3; i++) {
       const barWidth = Math.floor(Math.random() * 100) + 20;
       widths.push(`${barWidth}px`);
     }
     cardsComponent.push(
-      <CardBlog 
-        key={i} 
-        color={color} 
-        emoji={emoji} 
+      <CardBlog
+        key={i}
+        color={color}
+        emoji={emoji}
         title={title}
-        isColorLight={isColorLight} 
+        isColorLight={isColorLight}
         widths={widths}
       />
     );
   }
 
   return (
-    <div className='column' style={styles.column}>
+    <div className="column" style={styles.column}>
       {cardsComponent}
     </div>
   );
-
-};
-
-Column.propTypes = {
-  cards: PropTypes.any.isRequired,
-  offset: PropTypes.string.isRequired,
 };
 
 export default Column;

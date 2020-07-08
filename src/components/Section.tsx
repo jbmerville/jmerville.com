@@ -1,32 +1,47 @@
 import React from 'react';
-import Colors from './values';
-import UseWindowSize from './WindowSize.js';
-import PropTypes from 'prop-types';
 
-const Section = (props) => {
+import CSS from 'csstype';
 
+import UseWindowSize from '../hooks/WindowSize';
+import { Colors } from '../values';
+
+interface SectionProps {
+  section: {
+    id: string;
+    title: string;
+  };
+  content: JSX.Element[];
+}
+
+interface Styles {
+  outerContainer: CSS.Properties;
+  title: CSS.Properties;
+  titleBar: CSS.Properties;
+}
+
+const Section = (props: SectionProps) => {
   const [width] = UseWindowSize();
-  
-  let styles = {
+
+  let styles: Styles = {
     outerContainer: {
       position: 'relative',
       height: 'fit-content',
       padding: '150px',
-      background: Colors.background,
-    }, 
+      background: Colors.BACKGROUND,
+    },
     title: {
       textTransform: 'uppercase',
-      fontWeight: '600',
+      fontWeight: 'bold',
       fontSize: '2.3em',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
       marginTop: '-30px',
     },
     titleBar: {
       marginTop: '7px',
       height: '1px',
       width: 'auto',
-      background: Colors.primary,
-    }
+      background: Colors.PRIMARY,
+    },
   };
 
   // Mobile style
@@ -35,13 +50,13 @@ const Section = (props) => {
       position: 'relative',
       height: 'fit-content',
       padding: '20px',
-      background: Colors.background,
+      background: Colors.BACKGROUND,
     };
     styles.title = {
       textTransform: 'uppercase',
-      fontWeight: '600',
+      fontWeight: 'bold',
       fontSize: '1.5em',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
       marginTop: '40px',
     };
   } else if (width < 1200) {
@@ -49,13 +64,13 @@ const Section = (props) => {
       position: 'relative',
       height: 'fit-content',
       padding: '100px',
-      background: Colors.background,
+      background: Colors.BACKGROUND,
     };
     styles.title = {
       textTransform: 'uppercase',
-      fontWeight: '600',
+      fontWeight: 'bold',
       fontSize: '1.8em',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
       marginTop: '10px',
     };
   } else if (width > 1500) {
@@ -63,23 +78,17 @@ const Section = (props) => {
       position: 'relative',
       height: 'fit-content',
       padding: '250px',
-      background: Colors.background,
+      background: Colors.BACKGROUND,
     };
   }
-  
+
   return (
-    <div style={styles.outerContainer}>
-      <div style={styles.title}>{props.title}</div>
+    <div key={props.section.id} style={styles.outerContainer}>
+      <div style={styles.title}>{props.section.title}</div>
       <div style={styles.titleBar}></div>
-      {props.cards}
+      {props.content}
     </div>
   );
-  
-};
-
-Section.propTypes = {
-  title: PropTypes.string.isRequired,
-  cards: PropTypes.any,
 };
 
 export default Section;

@@ -1,12 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import UseWindowSize from './WindowSize.js';
-import Colors from './values';
+import React, { useEffect, useState } from 'react';
+
+import CSS from 'csstype';
+import UseWindowSize from 'hooks/WindowSize';
+import { Colors } from 'values';
+
+import { CONTENT } from './header-config';
+
+interface Styles {
+  outerContainer: CSS.Properties;
+  innerContainer: CSS.Properties;
+  leftContainer: CSS.Properties;
+  rightContainer: CSS.Properties;
+  mountain: CSS.Properties;
+  title: CSS.Properties;
+  secondaryTitle: CSS.Properties;
+  separationBar: CSS.Properties;
+  description: CSS.Properties;
+}
 
 const Header = () => {
-
   const [width] = UseWindowSize();
-
   const [animationClasses, setAnimationClasses] = useState('animate');
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       setAnimationClasses('animate animate-scroll');
@@ -14,11 +29,11 @@ const Header = () => {
     return () => clearInterval(timeout);
   }, []);
 
-  let styles = {
+  let styles: Styles = {
     outerContainer: {
       position: 'relative',
       display: 'grid',
-      backgroundColor: Colors.background,
+      backgroundColor: Colors.BACKGROUND,
       width: '100%',
       height: 'auto',
       minHeight: 'fit-content',
@@ -30,7 +45,6 @@ const Header = () => {
       width: 'auto',
       display: 'flex',
       padding: '150px',
-      // minHeight: '550px',
     },
     leftContainer: {
       float: 'left',
@@ -40,7 +54,7 @@ const Header = () => {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      zIndex: '1',
+      zIndex: 1,
     },
     rightContainer: {
       position: 'relative',
@@ -50,54 +64,53 @@ const Header = () => {
       float: 'right',
       width: '55%',
       height: 'auto',
-      posistion: 'relative',
     },
     mountain: {
       display: 'block',
-      height: '90%',
+      height: '110%',
       position: 'absolute',
       left: '50%',
       top: '50%',
-      transform: 'translate(-40%, -50%)'
+      transform: 'translate(-40%, -50%)',
     },
     title: {
       textTransform: 'uppercase',
-      fontWeight: '600',
+      fontWeight: 'bold',
       fontSize: '2.3em',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
     },
     secondaryTitle: {
       marginTop: '20px',
-      fontWeight: '400',
+      fontWeight: 'normal',
       fontSize: '1.9em',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
       transitionDelay: '.1s',
     },
     separationBar: {
       marginTop: '25px',
-      height: '7px',
+      height: '5px',
       width: '120px',
       transitionDelay: '.1s',
-      background: Colors.accent,
+      background: Colors.ACCENT,
     },
     description: {
       marginTop: '25px',
       height: 'fit-content',
-      fontWeight: '400',
+      fontWeight: 'normal',
       fontSize: '1.2em',
       lineHeight: '1.5em',
       width: '500px',
       transitionDelay: '.2s',
-      color: Colors.primary,
-    }
-  }; 
+      color: Colors.PRIMARY,
+    },
+  };
 
   // Mobile style
   if (width < 600) {
     styles.outerContainer = {
       position: 'relative',
       display: 'table',
-      backgroundColor: Colors.background,
+      backgroundColor: Colors.BACKGROUND,
       width: '100%',
       height: '100%',
       minHeight: 'fit-content',
@@ -124,7 +137,6 @@ const Header = () => {
       justifyContent: 'center',
       width: '100%',
       height: '100%',
-      posistion: 'relative',
     };
     styles.leftContainer = {
       position: 'relative',
@@ -137,10 +149,10 @@ const Header = () => {
     styles.description = {
       marginTop: '25px',
       height: 'fit-content',
-      fontWeight: '400',
+      fontWeight: 'normal',
       fontSize: '1em',
       lineHeight: '1.8em',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
     };
   } else if (width < 1200) {
     styles.innerContainer = {
@@ -159,7 +171,6 @@ const Header = () => {
       float: 'right',
       width: '55%',
       height: 'auto',
-      posistion: 'relative',
     };
   } else if (width > 1500) {
     styles.innerContainer = {
@@ -170,25 +181,32 @@ const Header = () => {
       padding: '250px',
     };
   }
-  
+
   return (
     <div style={styles.outerContainer}>
       <div style={styles.innerContainer}>
         <div style={styles.leftContainer}>
-          <div className={animationClasses} style={styles.title}>Jean Baptiste Merville</div>
-          <div className={animationClasses} style={styles.secondaryTitle}>Developer & Student</div>
+          <div className={animationClasses} style={styles.title}>
+            {CONTENT.title.primary}
+          </div>
+          <div className={animationClasses} style={styles.secondaryTitle}>
+            {CONTENT.title.secondary}
+          </div>
           <div className={animationClasses} style={styles.separationBar}></div>
           <div className={animationClasses} style={styles.description}>
-                Hey, my name is Jean, a Full-Stack Developer from Paris, France. I also attend York University in Toronto, where I am majoring in Computer Science! I am currently a teacher assistant at York University and working with amazing people at Srvice. Soon to be an Amazonian during the summer!
+            {CONTENT.description}
           </div>
         </div>
         <div style={styles.rightContainer}>
-          <img style={styles.mountain} alt='If you see this follow me on github and linkedin :)' src='images/mountain.png'/>
+          <img
+            style={styles.mountain}
+            alt="If you see this follow me on github and linkedin :)"
+            src="images/mountain.png"
+          />
         </div>
       </div>
     </div>
   );
-
 };
 
 export default Header;

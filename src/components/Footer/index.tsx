@@ -1,17 +1,31 @@
 import React from 'react';
-import UseWindowSize from './WindowSize.js';
-import Button from './Button.js';
-import Colors from './values';
+
+import Button from 'components/Button';
+import CSS from 'csstype';
+import UseWindowSize from 'hooks/WindowSize';
+import { Colors } from 'values';
+
+import { BUTTONS } from './footer-config';
+
+interface Styles {
+  outerContainer: CSS.Properties;
+  innerContainer: CSS.Properties;
+  leftContainer: CSS.Properties;
+  rightContainer: CSS.Properties;
+  handshake: CSS.Properties;
+  title: CSS.Properties;
+  description: CSS.Properties;
+  buttonContainer: CSS.Properties;
+}
 
 const Footer = () => {
-
   const [width] = UseWindowSize();
-  
-  let styles = {
+
+  const styles: Styles = {
     outerContainer: {
       position: 'relative',
       display: 'grid',
-      backgroundColor: Colors.background,
+      backgroundColor: Colors.BACKGROUND,
       width: '100%',
       height: '100%',
       minHeight: 'fit-content',
@@ -32,7 +46,7 @@ const Footer = () => {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      zIndex: '1',
+      zIndex: 1,
     },
     rightContainer: {
       float: 'right',
@@ -43,7 +57,7 @@ const Footer = () => {
       flexDirection: 'column',
       justifyContent: 'center',
       minHeight: '550px',
-      zIndex: '1',
+      zIndex: 1,
     },
     handshake: {
       display: 'block',
@@ -51,28 +65,28 @@ const Footer = () => {
       position: 'absolute',
       left: '50%',
       top: '50%',
-      transform: 'translate(-40%, -50%)'
+      transform: 'translate(-40%, -50%)',
     },
     title: {
       textTransform: 'uppercase',
-      fontWeight: '600',
+      fontWeight: 'bold',
       fontSize: '2.3em',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
     },
     description: {
       marginTop: '25px',
       height: 'fit-content',
-      fontWeight: '200',
+      fontWeight: 'lighter',
       fontSize: '1.2em',
       lineHeight: '1.5em',
       width: '500px',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
     },
     buttonContainer: {
       height: 'fit-content',
       width: '300px',
       position: 'relative',
-    }
+    },
   };
 
   // Mobile style
@@ -89,7 +103,6 @@ const Footer = () => {
       right: '0',
     };
     styles.rightContainer = {
-      position: 'absolute',
       top: '0',
       left: '0',
       display: 'flex',
@@ -97,28 +110,27 @@ const Footer = () => {
       justifyContent: 'center',
       width: '100%',
       height: '100%',
-      posistion: 'relative',
+      position: 'relative',
     };
     styles.leftContainer = {
-      position: 'relative',
       width: '100%',
       height: 'fit-content',
-      posistion: 'relative',
+      position: 'relative',
       zIndex: 1,
     };
     styles.title = {
       marginTop: '40px',
       textTransform: 'uppercase',
-      fontWeight: '600',
+      fontWeight: 'bold',
       fontSize: '1.5em',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
     };
     styles.description = {
       marginTop: '15px',
       height: 'fit-content',
-      fontWeight: '200',
+      fontWeight: 'lighter',
       fontSize: '1.2em',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
     };
   } else if (width < 1200) {
     styles.innerContainer = {
@@ -137,7 +149,6 @@ const Footer = () => {
       float: 'right',
       width: '55%',
       height: 'auto',
-      posistion: 'relative',
       minHeight: '550px',
     };
   } else if (width > 1500) {
@@ -155,23 +166,23 @@ const Footer = () => {
       <div style={styles.innerContainer}>
         <div style={styles.leftContainer}>
           <div style={styles.title}>Get in touch with me</div>
-          <div style={styles.description}>
-            You can find me here :)
-          </div>
+          <div style={styles.description}>You can find me here :)</div>
           <div style={styles.buttonContainer}>
-            <Button link='https://github.com/jbmerville' fontAwesomeIcon='fa fa-github' text='GitHub'/>
-            <Button link='https://www.linkedin.com/in/jbmerville/' fontAwesomeIcon='fa fa-linkedin' text='LinkedIn'/>
-            <Button link='mailto:jbmer@my.yorku.ca' fontAwesomeIcon='fa fa-envelope' text='jbmer@my.yorku.ca' size='20px'/>
-            <Button link='images/JeanBaptisteMervilleResume.pdf' target='_blank' fontAwesomeIcon='fa fa-file' text='Resumé' size='20px'/>
+            {BUTTONS.map((button) => (
+              <Button button={button} />
+            ))}
           </div>
         </div>
         <div style={styles.rightContainer}>
-          <img style={styles.handshake} alt='If you see this follow me on github and linkedin :)' src='images/handshake.png'/>
+          <img
+            style={styles.handshake}
+            alt="If you see this follow me on github and linkedin :)"
+            src="images/handshake.png"
+          />
         </div>
       </div>
     </div>
   );
-  
 };
 
 export default Footer;

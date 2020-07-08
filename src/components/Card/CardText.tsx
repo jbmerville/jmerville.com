@@ -1,37 +1,51 @@
 import React, { useRef } from 'react';
-import Colors from './../values';
-import PropTypes from 'prop-types';
-import UseWindowSize from './../WindowSize.js';
-import IsComponentVisible from './../ComponentVisibility.js';
 
-const CardText = (props) => {
+import CSS from 'csstype';
+import IsComponentVisible from 'hooks/ComponentVisibility';
+import UseWindowSize from 'hooks/WindowSize';
+import { ICard } from 'types';
+import { Colors } from 'values';
 
+interface Styles {
+  separationBar: CSS.Properties;
+  description: CSS.Properties;
+  textContainer: CSS.Properties;
+  title: CSS.Properties;
+  secondaryTitle: CSS.Properties;
+}
+
+interface CardTextProps {
+  title: ICard.Title;
+  description: string;
+}
+
+const CardText = (props: CardTextProps) => {
   const [width] = UseWindowSize();
-  const ref = useRef();
+  const ref = useRef(null);
   const isVisible = IsComponentVisible(ref, 0);
 
-  const styles = {
+  const styles: Styles = {
     textContainer: {
       position: 'absolute',
     },
     title: {
       marginTop: '20px',
-      fontWeight: '400',
+      fontWeight: 'normal',
       fontSize: '1.6em',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
     },
     separationBar: {
       marginTop: '25px',
       height: '5px',
       width: '120px',
-      background: Colors.accent,
+      background: Colors.ACCENT,
       transitionDelay: '.1s',
     },
     secondaryTitle: {
       marginTop: '25px',
-      fontWeight: '200',
+      fontWeight: 'lighter',
       fontSize: '1.2em',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
       transitionDelay: '.1s',
     },
     description: {
@@ -39,9 +53,9 @@ const CardText = (props) => {
       height: '100px',
       fontSize: '1.2em',
       width: '530px',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
       transitionDelay: '.2s',
-    }
+    },
   };
 
   // Mobile style
@@ -51,15 +65,15 @@ const CardText = (props) => {
     };
     styles.title = {
       marginTop: '20px',
-      fontWeight: '400',
+      fontWeight: 'normal',
       fontSize: '1.2em',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
     };
     styles.secondaryTitle = {
       marginTop: '25px',
-      fontWeight: '200',
+      fontWeight: 'normal',
       fontSize: '1em',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
       transitionDelay: '.1s',
     };
     styles.description = {
@@ -67,38 +81,38 @@ const CardText = (props) => {
       height: 'fit-content',
       fontSize: '1em',
       lineHeight: '1.5em',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
       transitionDelay: '.2s',
     };
   } else if (width < 1200) {
     styles.textContainer = {
       position: 'relative',
-      height: 'fit-content'
+      height: 'fit-content',
     };
     styles.description = {
       marginTop: '25px',
       height: 'fit-content',
       fontSize: '1.2em',
       textAlign: 'justify',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
       transitionDelay: '.2s',
     };
   }
 
   return (
     <div ref={ref} style={styles.textContainer}>
-      <div className={isVisible} style={styles.title}>{props.title}</div>
+      <div className={isVisible} style={styles.title}>
+        {props.title.primary}
+      </div>
       <div className={isVisible} style={styles.separationBar}></div>
-      <div className={isVisible} style={styles.secondaryTitle}>{props.secondaryTitle}</div>
-      <div className={isVisible} style={styles.description}>{props.description}</div>
-    </div>    
+      <div className={isVisible} style={styles.secondaryTitle}>
+        {props.title.secondary}
+      </div>
+      <div className={isVisible} style={styles.description}>
+        {props.description}
+      </div>
+    </div>
   );
-};
-
-CardText.propTypes = {
-  title: PropTypes.string.isRequired,
-  secondaryTitle: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
 };
 
 export default CardText;

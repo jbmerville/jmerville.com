@@ -1,16 +1,34 @@
 import React, { useRef } from 'react';
-import Colors from './../values';
-import PropTypes from 'prop-types';
-import UseWindowSize from './../WindowSize.js';
-import IsComponentVisible from './../ComponentVisibility.js';
 
-const CardImage = (props) => {
+import CSS from 'csstype';
+import IsComponentVisible from 'hooks/ComponentVisibility';
+import UseWindowSize from 'hooks/WindowSize';
+import { ICard } from 'types';
+import { Colors } from 'values';
 
-  const { image, imageCaption, imageStyle, link, backgroundColor, showClickIcon, imageCaptionColor } = props;
+interface Styles {
+  outerContainer: CSS.Properties;
+  image: CSS.Properties;
+  outerCaption: CSS.Properties;
+  innerCaption: CSS.Properties;
+  iconContainer: CSS.Properties;
+  icon: CSS.Properties;
+}
+
+interface CardImageProps {
+  link?: string;
+  image: ICard.Image;
+  showClickIcon: boolean;
+}
+
+const CardImage = (props: CardImageProps) => {
+  const { link, image, showClickIcon } = props;
+  const { backgroundColor, caption, url, style } = image;
   const [width] = UseWindowSize();
-  const ref = useRef();
+  const ref = useRef(null);
   const isVisible = IsComponentVisible(ref, 0);
-  let styles = {
+
+  const styles: Styles = {
     outerContainer: {
       display: 'flex',
       justifyContent: 'center',
@@ -22,7 +40,7 @@ const CardImage = (props) => {
       height: '230px',
       width: '350px',
       float: 'right',
-      background: backgroundColor ? backgroundColor: Colors.lightGray,
+      background: backgroundColor ? backgroundColor : Colors.GRAY_LIGHT,
       overflow: 'hidden',
     },
     image: {
@@ -30,21 +48,21 @@ const CardImage = (props) => {
       transition: 'transform .2s',
       position: 'absolute',
     },
-    outerCaption: {      
+    outerCaption: {
       height: '110%',
       width: '110%',
-      top:' -5%',
+      top: ' -5%',
       left: '-5%',
       transition: 'transform .2s',
       position: 'absolute',
     },
     innerCaption: {
-      fontWeight: '400',
+      fontWeight: 'normal',
       fontSize: '1.2em',
       position: 'relative',
       textAlign: 'center',
       top: '200px',
-      color: imageCaptionColor? imageCaptionColor: Colors.background,
+      color: caption?.color ? caption?.color : Colors.BACKGROUND,
       userSelect: 'none',
     },
     iconContainer: {
@@ -56,16 +74,16 @@ const CardImage = (props) => {
       width: '45px',
       borderRadius: '25px',
       zIndex: 1,
-      backgroundColor: Colors.lightPurple,
+      backgroundColor: Colors.PURPLE_LIGHT,
     },
     icon: {
       position: 'relative',
       fontSize: '22px',
       left: '3px',
-      color: Colors.facebook,
+      color: Colors.FACEBOOK,
       display: 'table-cell',
       textAlign: 'center',
-      verticalAlign: 'middle'
+      verticalAlign: 'middle',
     },
   };
 
@@ -80,7 +98,7 @@ const CardImage = (props) => {
       cursor: 'pointer',
       height: '230px',
       width: '100%',
-      background: backgroundColor ? backgroundColor: Colors.lightGray,
+      background: backgroundColor ? backgroundColor : Colors.GRAY_LIGHT,
       overflow: 'hidden',
     };
   } else if (width < 1200) {
@@ -94,7 +112,7 @@ const CardImage = (props) => {
       cursor: 'pointer',
       height: '230px',
       width: '100%',
-      background: backgroundColor ? backgroundColor: Colors.lightGray,
+      background: backgroundColor ? backgroundColor : Colors.GRAY_LIGHT,
       overflow: 'hidden',
     };
   }
@@ -102,50 +120,35 @@ const CardImage = (props) => {
   const clickIcon = showClickIcon ? (
     <div style={styles.iconContainer}>
       <i style={styles.icon} className="fa fa-mouse-pointer"></i>
-    </div> 
-  ) : '';
-  
-  const imageCard = imageCaption ? (
-    <a href={link}
-      ref={ref}
-      className={`card ${isVisible}-image`}
-      style={styles.outerContainer} 
-    >
+    </div>
+  ) : (
+    ''
+  );
+
+  const imageCard = caption ? (
+    <a href={link} ref={ref} className={`card ${isVisible}-image`} style={styles.outerContainer}>
       {clickIcon}
-      <img style={{ ...styles.image, ...imageStyle }} alt='If you see this follow me on github and linkedin :)' src={`images/${image}`} />
-      <div 
-        style={styles.outerCaption}
-        className='caption'
-      > 
-        <div style={styles.innerCaption}>
-          {imageCaption}
-        </div>
+      <img
+        style={{ ...styles.image, ...style }}
+        alt="If you see this follow me on github and linkedin :)"
+        src={`images/${url}`}
+      />
+      <div style={styles.outerCaption} className="caption">
+        <div style={styles.innerCaption}>{caption.text}</div>
       </div>
     </a>
   ) : (
-    <a href={link} 
-      ref={ref}
-      className={`card ${isVisible}-image`}
-      style={styles.outerContainer} 
-    >
+    <a href={link} ref={ref} className={`card ${isVisible}-image`} style={styles.outerContainer}>
       {clickIcon}
-      <img style={{ ...styles.image, ...imageStyle }} alt='If you see this follow me on github and linkedin :)' src={`images/${image}`} />
+      <img
+        style={{ ...styles.image, ...style }}
+        alt="If you see this follow me on github and linkedin :)"
+        src={`images/${url}`}
+      />
     </a>
   );
 
-  return (
-    imageCard
-  ); 
-};
-
-CardImage.propTypes = {
-  image: PropTypes.string.isRequired,
-  imageStyle: PropTypes.any,
-  imageCaption: PropTypes.string,
-  imageCaptionColor: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  link: PropTypes.string,
-  showClickIcon: PropTypes.bool,
+  return imageCard;
 };
 
 export default CardImage;

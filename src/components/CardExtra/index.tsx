@@ -1,23 +1,37 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import Card from './../card';
-import Button from './../Button.js';
-import CardExtraPic from './CardExtraPic.js';
-import Colors from './../values';
-import UseWindowSize from './../WindowSize.js';
 
-const CardExtra = props => {
+import CSS from 'csstype';
+import { ICard } from 'types';
 
-  const { extra, card, howWasItMade, buttons } = props;
+import UseWindowSize from '../../hooks/WindowSize';
+import { Colors } from '../../values';
+import Button from '../Button';
+import Card from '../Card';
+import CardExtraPic from './CardExtraPic';
+
+interface Styles {
+  outerContainer: CSS.Properties;
+  extraContainer: CSS.Properties;
+  info: CSS.Properties;
+  howWasItMadeContainer: CSS.Properties;
+  howWasItMadeTitle: CSS.Properties;
+  howWasItMade: CSS.Properties;
+  links: CSS.Properties;
+  textContainer: CSS.Properties;
+}
+
+const CardExtra = (props: { item: ICard.CardExtra }) => {
+  const { extra, ...item } = props.item;
+  const { sections, buttons, howWasItMade } = extra;
   const [isClicked, setIsClicked] = useState(false);
   const [width] = UseWindowSize();
 
-  const newCard = (<Card {...card.props} onClick={() => setIsClicked(!isClicked)}/>);
-  const size = width < 600 ? (extra.length + 1) * 490 : (extra.length + 1) * 270 ;
-  const extraContainer = isClicked ? `${size}px`: '0px';
-  let isLeft = extra.length % 2 === 0;
-  
-  let styles = {
+  const newCard = <Card item={item} onClick={() => setIsClicked(!isClicked)} />;
+  const size = width < 600 ? (sections.length + 1) * 490 : (sections.length + 1) * 270;
+  const extraContainer = isClicked ? `${size}px` : '0px';
+  let isLeft = sections.length % 2 === 0;
+
+  const styles: Styles = {
     outerContainer: {
       display: 'grid',
       height: 'fit-content',
@@ -31,12 +45,13 @@ const CardExtra = props => {
     info: {
       position: 'relative',
       display: 'flex',
-      flexDirection: isLeft? 'row-reverse': 'row',
+      flexDirection: isLeft ? 'row-reverse' : 'row',
       justifyContent: 'space-between',
       height: '270px',
       padding: '20px',
-      background: isLeft? Colors.lightGray: Colors.background,
+      background: isLeft ? Colors.GRAY_LIGHT : Colors.BACKGROUND,
     },
+    textContainer: {},
     howWasItMadeContainer: {
       height: '170px',
       width: '40%',
@@ -49,7 +64,7 @@ const CardExtra = props => {
     howWasItMadeTitle: {
       fontWeight: 'bold',
       fontSize: '1.2em',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
     },
     howWasItMade: {
       marginTop: '10px',
@@ -76,13 +91,13 @@ const CardExtra = props => {
       justifyContent: 'space-between',
       height: 'fit-content',
       padding: '20px',
-      background: isLeft? Colors.lightGray: Colors.background,
+      background: isLeft ? Colors.GRAY_LIGHT : Colors.BACKGROUND,
     };
     styles.textContainer = {
       width: '260px',
       padding: '40px',
       alignSelf: 'center',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
     };
     styles.howWasItMadeContainer = {
       height: '170px',
@@ -94,59 +109,27 @@ const CardExtra = props => {
     };
   }
 
-  const extraPics = [];
-  isLeft = true;
-  for (let i = 0; i < extra.length; i++) {
-    extraPics.push(
-      <CardExtraPic 
-        key={i}
-        isLeft={isLeft}
-        {...extra[i]}
-      />
-    );
-    isLeft = !isLeft;
-  }
-
-  const buttonsComponents = [];
-  for (let i = 0; i < buttons.length; i++) {
-    buttonsComponents.push(
-      <Button
-        isFirst={i === 0}
-        key={i}
-        {...buttons[i]}
-      />
-    );
-  }
-
   return (
     <div style={styles.outerContainer}>
       {newCard}
-      <div style={styles.extraContainer}> 
-        {extraPics}
+      <div style={styles.extraContainer}>
+        {sections.map((section, index) => (
+          <CardExtraPic key={index} isLeft={index % 2 === 0} section={section} />
+        ))}
         <div style={styles.info}>
           <div style={styles.howWasItMadeContainer}>
-            <div style={styles.howWasItMadeTitle}>
-              How was it made?
-            </div> 
-            <div style={styles.howWasItMade}>
-              {howWasItMade}
-            </div>
+            <div style={styles.howWasItMadeTitle}>How was it made?</div>
+            <div style={styles.howWasItMade}>{howWasItMade}</div>
           </div>
           <div style={styles.links}>
-            {buttonsComponents}
+            {buttons.map((button, index) => (
+              <Button isFirst={index === 0} key={index} button={button} />
+            ))}
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-CardExtra.propTypes = {
-  card: PropTypes.element.isRequired,
-  isClicked: PropTypes.bool.isRequired,
-  extra: PropTypes.array.isRequired,
-  howWasItMade: PropTypes.string,
-  buttons: PropTypes.array,
 };
 
 export default CardExtra;

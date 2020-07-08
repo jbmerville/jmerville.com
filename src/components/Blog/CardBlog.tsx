@@ -1,14 +1,32 @@
 import React from 'react';
-import Colors from './../values';
-import PropTypes from 'prop-types';
-import UseWindowSize from './../WindowSize.js';
 
-const CardBlog = (props) => {
+import CSS from 'csstype';
 
+import UseWindowSize from '../../hooks/WindowSize';
+import { Colors } from '../../values';
+
+interface Styles {
+  outerContainer: CSS.Properties;
+  innerContainer: CSS.Properties;
+  emoji: CSS.Properties;
+  title: CSS.Properties;
+  barContainer: CSS.Properties;
+  bar: CSS.Properties;
+}
+
+interface CardBlogProps {
+  color: string;
+  emoji: string;
+  title: string;
+  isColorLight: boolean;
+  widths: string[];
+}
+
+const CardBlog = (props: CardBlogProps) => {
   const { color, emoji, title, isColorLight, widths } = props;
   const [width] = UseWindowSize();
 
-  let styles = {
+  let styles: Styles = {
     outerContainer: {
       transition: 'transform 0.5s cubic-bezier(0.215,0.61,0.355,1) 0s',
       cursor: 'pointer',
@@ -31,15 +49,15 @@ const CardBlog = (props) => {
       height: '50px',
       width: '50px',
       borderRadius: '25px',
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.TRANSPARENT,
       textAlign: 'center',
     },
     title: {
       textTransform: 'uppercase',
-      fontWeight: '600',
+      fontWeight: 'bold',
       fontSize: '1em',
       paddingTop: '20px',
-      color: isColorLight? Colors.primary: Colors.background,
+      color: isColorLight ? Colors.PRIMARY : Colors.BACKGROUND,
     },
     barContainer: {
       paddingTop: '20px',
@@ -48,10 +66,10 @@ const CardBlog = (props) => {
     },
     bar: {
       marginBottom: '7px',
-      positin: 'relative',
+      position: 'relative',
       height: '7px',
       borderRadius: '4px',
-      background: Colors.transparent,
+      background: Colors.TRANSPARENT,
     },
   };
 
@@ -75,34 +93,19 @@ const CardBlog = (props) => {
   }
 
   let bars = [];
-  for (let i = 0; i < 3; i++){
+  for (let i = 0; i < 3; i++) {
     bars.push(<div key={i} style={{ ...styles.bar, width: widths[i] }}></div>);
   }
-  
+
   return (
-    <div className='card-blog' style={styles.outerContainer}>
+    <div className="card-blog" style={styles.outerContainer}>
       <div style={styles.innerContainer}>
-        <div style={styles.emoji}>
-          {emoji}
-        </div>
-        <div style={styles.title}>
-          {title}
-        </div>
-        <div style={styles.barContainer}>
-          {bars}
-        </div>
+        <div style={styles.emoji}>{emoji}</div>
+        <div style={styles.title}>{title}</div>
+        <div style={styles.barContainer}>{bars}</div>
       </div>
     </div>
   );
-
-};
-
-CardBlog.propTypes = {
-  color: PropTypes.string.isRequired,
-  emoji: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  isColorLight: PropTypes.bool.isRequired,
-  widths: PropTypes.array.isRequired,
 };
 
 export default CardBlog;

@@ -1,26 +1,42 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Colors from './../values';
-import UseWindowSize from './../WindowSize.js';
 
-const CardExtraPic = props => {
+import CSS from 'csstype';
+import { ICard } from 'types';
 
+import UseWindowSize from '../../hooks/WindowSize';
+import { Colors } from '../../values';
+
+interface Styles {
+  outerContainer: CSS.Properties;
+  picture: CSS.Properties;
+  textContainer: CSS.Properties;
+  title: CSS.Properties;
+  caption: CSS.Properties;
+}
+
+interface CardExtraPicProps {
+  isLeft: boolean;
+  section: ICard.Section;
+}
+
+const CardExtraPic = (props: CardExtraPicProps) => {
   const [width] = UseWindowSize();
-  const { isLeft, image, imageWidth, title, caption } = props;
+  const { isLeft, section } = props;
+  const { image, imageWidth, title, caption } = section;
 
-  const styles = {
+  const styles: Styles = {
     outerContainer: {
       position: 'relative',
       display: 'flex',
-      flexDirection: isLeft? 'row': 'row-reverse',
+      flexDirection: isLeft ? 'row' : 'row-reverse',
       justifyContent: 'space-between',
       height: 'fit-content',
       padding: '20px',
-      background: isLeft? Colors.lightGray: Colors.background,
+      background: isLeft ? Colors.GRAY_LIGHT : Colors.BACKGROUND,
     },
     picture: {
       height: '230px',
-      width: imageWidth? imageWidth: '350px',
+      width: imageWidth ? imageWidth : '350px',
       backgroundImage: `url(${image})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center right',
@@ -30,7 +46,7 @@ const CardExtraPic = props => {
       padding: '40px',
       alignSelf: 'center',
       marginTop: '25px',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
     },
     title: {
       fontWeight: 'bold',
@@ -39,7 +55,7 @@ const CardExtraPic = props => {
     caption: {
       marginTop: '10px',
       fontSize: '1em',
-    }
+    },
   };
 
   // Mobile style
@@ -51,7 +67,7 @@ const CardExtraPic = props => {
       justifyContent: 'space-between',
       height: 'fit-content',
       padding: '20px',
-      background: isLeft? Colors.lightGray: Colors.background,
+      background: isLeft ? Colors.GRAY_LIGHT : Colors.BACKGROUND,
     };
     styles.picture = {
       height: '230px',
@@ -64,32 +80,19 @@ const CardExtraPic = props => {
       width: '260px',
       padding: '40px',
       alignSelf: 'center',
-      color: Colors.primary,
+      color: Colors.PRIMARY,
     };
   }
 
   return (
     <div style={styles.outerContainer}>
-      <div style={styles.picture}>
-      </div>  
+      <div style={styles.picture}></div>
       <div style={styles.textContainer}>
-        <div style={styles.title}>
-          {title}
-        </div>
-        <div style={styles.caption}>
-          {caption}
-        </div> 
+        <div style={styles.title}>{title}</div>
+        <div style={styles.caption}>{caption}</div>
       </div>
     </div>
   );
-};
-
-CardExtraPic.propTypes = {
-  isLeft: PropTypes.bool.isRequired,
-  image: PropTypes.string.isRequired,
-  imageWidth: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  caption: PropTypes.string.isRequired,
 };
 
 export default CardExtraPic;
