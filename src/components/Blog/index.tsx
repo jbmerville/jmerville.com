@@ -1,11 +1,14 @@
 import React, { useRef } from 'react';
 
 import CSS from 'csstype';
-import { SideMargin } from 'values/Style';
+import IsComponentVisible from 'hooks/ComponentVisibility';
+import UseWindowSize from 'hooks/WindowSize';
+import { getPaddingsFromWidth } from 'utils';
+import {
+  Colors,
+  Paddings
+} from 'values';
 
-import IsComponentVisible from '../../hooks/ComponentVisibility';
-import UseWindowSize from '../../hooks/WindowSize';
-import { Colors } from '../../values';
 import Column from './Column';
 
 interface Styles {
@@ -38,8 +41,9 @@ const Blog = () => {
       overflow: 'hidden',
       position: 'relative',
       height: '400px',
-      paddingLeft: SideMargin.COMPUTER,
-      paddingRight: SideMargin.COMPUTER,
+      padding: getPaddingsFromWidth(width).ALL,
+      paddingTop: '0',
+      paddingBottom: '0',
       background: Colors.GRAY_LIGHT,
     },
     leftContainer: {
@@ -65,7 +69,7 @@ const Blog = () => {
     title: {
       textTransform: 'uppercase',
       fontWeight: 'bold',
-      fontSize: '1.8em',
+      fontSize: '2.5em',
       color: Colors.PRIMARY,
       marginTop: '-30px',
     },
@@ -84,8 +88,9 @@ const Blog = () => {
       overflow: 'hidden',
       position: 'relative',
       height: '400px',
-      paddingLeft: SideMargin.PHONE,
-      paddingRight: SideMargin.PHONE,
+      padding: Paddings.PHONE.ALL,
+      paddingTop: '0 !important',
+      paddingBottom: '0 !important',
       background: Colors.GRAY_LIGHT,
     };
     styles.leftContainer = {
@@ -124,24 +129,6 @@ const Blog = () => {
       fontSize: '1em',
       color: Colors.TEXT,
       transitionDelay: '.1s',
-    };
-  } else if (width < 1200) {
-    styles.outerContainer = {
-      overflow: 'hidden',
-      position: 'relative',
-      height: '400px',
-      paddingLeft: SideMargin.TABLET,
-      paddingRight: SideMargin.TABLET,
-      background: Colors.GRAY_LIGHT,
-    };
-  } else if (width > 1500) {
-    styles.outerContainer = {
-      overflow: 'hidden',
-      position: 'relative',
-      height: '400px',
-      paddingLeft: SideMargin.TV,
-      paddingRight: SideMargin.TV,
-      background: Colors.GRAY_LIGHT,
     };
   }
 

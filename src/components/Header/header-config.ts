@@ -15,7 +15,7 @@ export const LINKS: Link[] = [
   },
   {
     id: 'resume',
-    label: 'View Resume',
+    label: 'Resume',
     url: '/resume',
     isButton: true,
   },

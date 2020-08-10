@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react';
+import {
+  useEffect,
+  useState
+} from 'react';
 
 const IsComponentVisible = (ref: React.RefObject<any>, offset: number) => {
   const [visible, setVisible] = useState(0);

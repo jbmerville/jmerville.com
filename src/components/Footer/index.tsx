@@ -1,21 +1,21 @@
 import React from 'react';
 
-import Button from 'components/ButtonOld';
+import Button from 'components/Button';
 import CSS from 'csstype';
 import UseWindowSize from 'hooks/WindowSize';
+import { getPaddingsFromWidth } from 'utils';
 import { Colors } from 'values';
+import { Paddings } from 'values/Style';
 
 import { BUTTONS } from './footer-config';
 
 interface Styles {
   outerContainer: CSS.Properties;
   innerContainer: CSS.Properties;
-  leftContainer: CSS.Properties;
-  rightContainer: CSS.Properties;
-  handshake: CSS.Properties;
   title: CSS.Properties;
   description: CSS.Properties;
   buttonContainer: CSS.Properties;
+  button: CSS.Properties;
 }
 
 const Footer = () => {
@@ -27,7 +27,6 @@ const Footer = () => {
       display: 'grid',
       backgroundColor: Colors.BACKGROUND,
       width: '100%',
-      height: '100%',
       minHeight: 'fit-content',
       overflow: 'hidden',
     },
@@ -35,42 +34,15 @@ const Footer = () => {
       position: 'relative',
       height: '-webkit-fill-available',
       width: 'auto',
-      padding: '150px',
-      display: 'flex',
-    },
-    leftContainer: {
-      float: 'left',
-      width: '45%',
-      height: 'auto',
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      zIndex: 1,
-    },
-    rightContainer: {
-      float: 'right',
-      width: '55%',
-      height: 'auto',
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      minHeight: '550px',
-      zIndex: 1,
-    },
-    handshake: {
+      padding: getPaddingsFromWidth(width).ALL,
       display: 'block',
-      height: '90%',
-      position: 'absolute',
-      left: '50%',
-      top: '50%',
-      transform: 'translate(-40%, -50%)',
     },
     title: {
+      width: '-webkit-fill-available',
       textTransform: 'uppercase',
       fontWeight: 'bold',
-      fontSize: '2.3em',
+      fontSize: '3em',
+      marginBottom: '20px',
       color: Colors.PRIMARY,
     },
     description: {
@@ -84,40 +56,19 @@ const Footer = () => {
     },
     buttonContainer: {
       height: 'fit-content',
-      width: '300px',
+      width: '-webkit-fill-available',
       position: 'relative',
+      display: 'block',
+    },
+    button: {
+      marginRight: '20px',
+      display: 'inline-block',
     },
   };
 
   // Mobile style
   if (width < 600) {
-    styles.innerContainer = {
-      position: 'relative',
-      backgroundColor: 'white',
-      width: 'auto',
-      padding: '20px',
-    };
-    styles.handshake = {
-      height: '30%',
-      position: 'absolute',
-      right: '0',
-    };
-    styles.rightContainer = {
-      top: '0',
-      left: '0',
-      display: 'flex',
-      alignItems: 'flex-end',
-      justifyContent: 'center',
-      width: '100%',
-      height: '100%',
-      position: 'relative',
-    };
-    styles.leftContainer = {
-      width: '100%',
-      height: 'fit-content',
-      position: 'relative',
-      zIndex: 1,
-    };
+    styles.button.padding = '20px 0';
     styles.title = {
       marginTop: '40px',
       textTransform: 'uppercase',
@@ -139,46 +90,27 @@ const Footer = () => {
       position: 'relative',
       height: 'auto',
       width: 'auto',
-      padding: '100px',
-    };
-    styles.rightContainer = {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      float: 'right',
-      width: '55%',
-      height: 'auto',
-      minHeight: '550px',
-    };
-  } else if (width > 1500) {
-    styles.innerContainer = {
-      overflow: 'auto',
-      position: 'relative',
-      height: '-webkit-fill-available',
-      width: 'auto',
-      padding: '250px',
+      padding: Paddings.TABLET.ALL,
     };
   }
 
   return (
     <div style={styles.outerContainer}>
       <div style={styles.innerContainer}>
-        <div style={styles.leftContainer}>
-          <div style={styles.title}>Get in touch with me</div>
-          <div style={styles.description}>You can find me here :)</div>
-          <div style={styles.buttonContainer}>
-            {BUTTONS.map((button) => (
-              <Button button={button} />
-            ))}
-          </div>
-        </div>
-        <div style={styles.rightContainer}>
-          <img
-            style={styles.handshake}
-            alt="If you see this follow me on github and linkedin :)"
-            src="images/handshake.png"
-          />
+        <div style={styles.title}>Find me here!</div>
+        <div style={styles.buttonContainer}>
+          {BUTTONS.map((button) => (
+            <div style={styles.button}>
+              <Button
+                link={button.link}
+                icon={button.icon}
+                width="100px"
+                backgrounColor={Colors.PRIMARY}
+                textColor={Colors.BACKGROUND}
+                hoverColor={Colors.SECONDARY}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>

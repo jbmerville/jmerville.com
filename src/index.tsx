@@ -1,28 +1,22 @@
-import '../node_modules/font-awesome/css/font-awesome.min.css';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import CSS from 'csstype';
 import HomePage from 'pages/Homepage';
-
-interface Styles {
-  container: CSS.Properties;
-}
+import {
+  BrowserRouter,
+  Route,
+  Switch
+} from 'react-router-dom';
+import GA from 'utils/GoogleAnalytics';
 
 export const App = () => {
-  const styles: Styles = {
-    container: {
-      height: '100%',
-      width: '100%',
-      position: 'relative',
-    },
-  };
-
   return (
-    <div style={styles.container}>
-      <HomePage />
-    </div>
+    <BrowserRouter>
+      {GA.init() && <GA.RouteTracker />}
+      <Switch>
+        <Route path="/" component={HomePage} />
+      </Switch>
+    </BrowserRouter>
   );
 };
 

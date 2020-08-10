@@ -1,34 +1,33 @@
-import { ICard } from 'types';
-
-export const BUTTONS: ICard.Button[] = [
+export const BUTTONS = [
   {
-    link: 'https://github.com/jbmerville',
+    link: {
+      id: 'github',
+      url: 'https://github.com/jbmerville',
+      label: 'GitHub',
+    },
     icon: {
       fontAwesomeIcon: 'fa fa-github',
     },
-    text: 'GitHub',
   },
   {
-    link: 'https://www.linkedin.com/in/jbmerville/',
+    link: {
+      id: 'linkedin',
+      url: 'https://www.linkedin.com/in/jbmerville/',
+      label: 'LinkedIn',
+    },
     icon: {
       fontAwesomeIcon: 'fa fa-linkedin',
     },
-    text: 'LinkedIn',
   },
   {
-    link: 'mailto:jbmer@my.yorku.ca',
+    link: {
+      id: 'email',
+      url: 'mailto:jbmer@my.yorku.ca',
+      label: 'Email',
+    },
     icon: {
       fontAwesomeIcon: 'fa fa-envelope',
       size: '20px',
     },
-    text: 'jbmer@my.yorku.ca',
-  },
-  {
-    link: 'images/JeanBaptisteMervilleResume.pdf',
-    icon: {
-      fontAwesomeIcon: 'fa fa-file',
-      size: '20px',
-    },
-    text: 'Resumé',
   },
 ];

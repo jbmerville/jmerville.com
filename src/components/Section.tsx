@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import CSS from 'csstype';
-import { SideMargin } from 'values/Style';
-
-import UseWindowSize from '../hooks/WindowSize';
-import { Colors } from '../values';
+import IsComponentVisible from 'hooks/ComponentVisibility';
+import UseWindowSize from 'hooks/WindowSize';
+import { getPaddingsFromWidth } from 'utils';
+import {
+  Colors,
+  Paddings
+} from 'values';
 
 interface SectionProps {
   section: {
@@ -22,12 +25,14 @@ interface Styles {
 
 const Section = (props: SectionProps) => {
   const [width] = UseWindowSize();
+  const ref = useRef(null);
+  const isVisible = IsComponentVisible(ref, 300);
 
   let styles: Styles = {
     outerContainer: {
       position: 'relative',
       height: 'fit-content',
-      padding: SideMargin.COMPUTER,
+      padding: getPaddingsFromWidth(width).ALL,
       paddingBottom: '10px',
       background: Colors.BACKGROUND,
     },
@@ -49,41 +54,23 @@ const Section = (props: SectionProps) => {
 
   // Mobile style
   if (width < 600) {
-    styles.outerContainer = {
-      position: 'relative',
-      height: 'fit-content',
-      padding: SideMargin.PHONE,
-      paddingBottom: 0,
-      background: Colors.BACKGROUND,
-    };
     styles.title = {
       textTransform: 'uppercase',
       fontWeight: 'bold',
-      fontSize: '1.5em',
+      fontSize: '3.5em',
       color: Colors.PRIMARY,
-      marginTop: '40px',
+      margin: Paddings.PHONE.ALL,
+      padding: Paddings.PHONE.ALL,
     };
-  } else if (width < 1200) {
-    styles.outerContainer = {
-      position: 'relative',
-      height: 'fit-content',
-      padding: SideMargin.TABLET,
-      paddingBottom: '10px',
-      background: Colors.BACKGROUND,
-    };
-  } else if (width > 1500) {
-    styles.outerContainer = {
-      position: 'relative',
-      height: 'fit-content',
-      padding: SideMargin.TV,
-      paddingBottom: '10px',
-      background: Colors.BACKGROUND,
-    };
+    // Overide padding
+    styles.outerContainer.padding = '10px';
   }
 
   return (
-    <section key={props.section.id} style={styles.outerContainer}>
-      <div style={styles.title}>{props.section.title}</div>
+    <section ref={ref} key={props.section.id} style={styles.outerContainer}>
+      <div className={isVisible} style={styles.title}>
+        {props.section.title}
+      </div>
       {props.content}
     </section>
   );

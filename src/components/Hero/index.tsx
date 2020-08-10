@@ -6,17 +6,21 @@ import React, {
 import Button from 'components/Button';
 import CSS from 'csstype';
 import UseWindowSize from 'hooks/WindowSize';
-import { Colors } from 'values';
-import { SideMargin } from 'values/Style';
+import { getPaddingsFromWidth } from 'utils';
+import {
+  Colors,
+  Paddings
+} from 'values';
+import { ScreenWidth } from 'values/ScreenSizes';
 
 import { CONTENT } from './hero-config';
 
 interface Styles {
   outerContainer: CSS.Properties;
   innerContainer: CSS.Properties;
-  leftContainer: CSS.Properties;
-  rightContainer: CSS.Properties;
-  mountain: CSS.Properties;
+  textContainer: CSS.Properties;
+  imageContainer: CSS.Properties;
+  image: CSS.Properties;
   title: CSS.Properties;
   secondaryTitle: CSS.Properties;
   separationBar: CSS.Properties;
@@ -50,9 +54,9 @@ const Hero = () => {
       height: 'auto',
       width: 'auto',
       display: 'flex',
-      padding: SideMargin.COMPUTER,
+      padding: getPaddingsFromWidth(width).ALL,
     },
-    leftContainer: {
+    textContainer: {
       float: 'left',
       width: '45%',
       height: 'auto',
@@ -62,7 +66,7 @@ const Hero = () => {
       justifyContent: 'center',
       zIndex: 1,
     },
-    rightContainer: {
+    imageContainer: {
       position: 'relative',
       display: 'flex',
       alignItems: 'center',
@@ -71,9 +75,9 @@ const Hero = () => {
       width: '55%',
       height: 'auto',
     },
-    mountain: {
+    image: {
       display: 'block',
-      height: '130%',
+      height: '120%',
       position: 'absolute',
       left: '50%',
       top: '50%',
@@ -121,7 +125,7 @@ const Hero = () => {
   };
 
   // Mobile style
-  if (width < 600) {
+  if (width < ScreenWidth.PHONE) {
     styles.outerContainer = {
       position: 'relative',
       display: 'table',
@@ -134,26 +138,23 @@ const Hero = () => {
     styles.innerContainer = {
       position: 'relative',
       width: 'auto',
-      padding: SideMargin.PHONE,
+      padding: Paddings.PHONE.ALL,
       height: '100%',
       minHeight: 'fit-content',
     };
-    styles.mountain = {
-      height: '30%',
+    styles.image = {
+      height: '35%',
       position: 'absolute',
       right: '0',
     };
-    styles.rightContainer = {
-      position: 'absolute',
-      top: '0',
-      left: '0',
-      display: 'flex',
-      alignItems: 'flex-end',
-      justifyContent: 'center',
+    styles.imageContainer = {
+      position: 'relative',
+      display: 'block',
       width: '100%',
-      height: '100%',
+      height: 'fit-content',
+      zIndex: 1,
     };
-    styles.leftContainer = {
+    styles.textContainer = {
       position: 'relative',
       width: '100%',
       height: 'fit-content',
@@ -169,16 +170,8 @@ const Hero = () => {
       lineHeight: '1.8em',
       color: Colors.TEXT,
     };
-  } else if (width < 1200) {
-    styles.innerContainer = {
-      overflow: 'hidden',
-      position: 'relative',
-      display: 'flex',
-      height: 'auto',
-      width: 'auto',
-      padding: SideMargin.TABLET,
-    };
-    styles.rightContainer = {
+  } else if (width < ScreenWidth.TABLET) {
+    styles.imageContainer = {
       position: 'relative',
       display: 'flex',
       alignItems: 'center',
@@ -187,20 +180,12 @@ const Hero = () => {
       width: '55%',
       height: 'auto',
     };
-  } else if (width > 1500) {
-    styles.innerContainer = {
-      position: 'relative',
-      height: 'auto',
-      width: 'auto',
-      display: 'flex',
-      padding: SideMargin.TV,
-    };
   }
 
   return (
     <section style={styles.outerContainer}>
       <div style={styles.innerContainer}>
-        <div style={styles.leftContainer}>
+        <div style={styles.textContainer}>
           <div className={animationClasses} style={styles.title}>
             {CONTENT.title.primary}
           </div>
@@ -211,18 +196,20 @@ const Hero = () => {
           <div className={animationClasses} style={styles.description}>
             {CONTENT.description}
           </div>
-          <div className={animationClasses} style={styles.callForAction}>
-            <Button
-              link={{ id: 'callForAction', label: 'View Projects', url: '' }}
-              backgrounColor={Colors.GRAY}
-              textColor={Colors.SECONDARY}
-              hoverColor={Colors.GRAY_LIGHT}
-            />
-          </div>
+          {width > 600 && (
+            <div className={animationClasses} style={styles.callForAction}>
+              <Button
+                link={{ id: 'callForAction', label: 'View Projects', url: '' }}
+                backgrounColor={Colors.GRAY}
+                textColor={Colors.PRIMARY}
+                hoverColor={Colors.GRAY_LIGHT}
+              />
+            </div>
+          )}
         </div>
-        <div style={styles.rightContainer}>
+        <div style={styles.imageContainer}>
           <img
-            style={styles.mountain}
+            style={styles.image}
             alt="If you see this follow me on github and linkedin :)"
             src="images/eastwood-come-back-later.png"
           />

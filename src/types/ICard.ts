@@ -1,33 +1,17 @@
-import CSS from 'csstype';
 import { Colors } from 'values';
-
-export enum CardTypes {
-  NORMAL = 'NORMAL',
-  EXTENDED = 'EXTENDED',
-}
-
-export interface Title {
-  primary: string;
-  secondary?: string;
-}
 
 export interface Image {
   url: string;
-  style: CSS.Properties;
   backgroundColor: Colors;
-  caption?: {
-    text: string;
-    color?: Colors;
-  };
 }
 
 export interface Card {
   id: string;
-  type: CardTypes;
-  link?: string;
-  description: string;
+  websiteUrl?: string;
+  codeUrl?: string;
+  description: string | JSX.Element;
   category: string;
-  title: Title;
+  title: string;
   image: Image;
 }
 
@@ -54,5 +38,5 @@ export interface Button {
 }
 
 export interface CardExtra extends Card {
-  extra: Extra;
+  extra?: Extra;
 }
