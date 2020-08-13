@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 
-import CSS from 'csstype';
+import { Styles } from 'types';
 
-interface Styles {
-  button: CSS.Properties;
-  icon: CSS.Properties;
-}
+import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export interface Link {
   id: string;
@@ -23,11 +21,12 @@ interface ButtonProps {
   showShadowHover?: boolean;
   capitalize?: boolean;
   icon?: {
-    fontAwesomeIcon: string;
+    fontAwesomeIcon: IconDefinition;
     size?: string;
   };
   size?: '0.8em' | '1em' | '1.2em';
   width?: string;
+  onClick?: Function;
 }
 
 const Button = (props: ButtonProps) => {
@@ -42,6 +41,7 @@ const Button = (props: ButtonProps) => {
     showShadow,
     showShadowHover,
     width,
+    onClick,
   } = props;
   const [isHover, setIsHover] = useState(false);
   let styles: Styles = {
@@ -79,7 +79,7 @@ const Button = (props: ButtonProps) => {
       color: textColor,
     },
   };
-  return icon ? (
+  return (
     <a
       onMouseEnter={() => {
         setIsHover(true);
@@ -89,21 +89,13 @@ const Button = (props: ButtonProps) => {
       }}
       href={link.url}
       style={styles.button}
+      onClick={() => onClick}
     >
-      <i style={styles.icon} className={icon.fontAwesomeIcon} />
-      {link.label}
-    </a>
-  ) : (
-    <a
-      onMouseEnter={() => {
-        setIsHover(true);
-      }}
-      onMouseLeave={() => {
-        setIsHover(false);
-      }}
-      href={link.url}
-      style={styles.button}
-    >
+      {icon && (
+        <div style={styles.icon}>
+          <FontAwesomeIcon icon={icon.fontAwesomeIcon} size="lg" />
+        </div>
+      )}
       {link.label}
     </a>
   );

@@ -24,7 +24,7 @@ export const SECTION_CONTENT: ICard.Card[] = [
   {
     id: 'amazon',
     category: Categories.WORK_HISTORY,
-    websiteUrl: 'https://www.amazon.jobs/en/working/working-amazon',
+    projectUrl: 'https://www.amazon.jobs/en/working/working-amazon',
     title: 'Amazon · Upcoming Software Engineer Intern',
     description:
       'I am currently interning with the Amazon Prime Video team in London, UK. Where I am working on adding searching capabilities to internal websites using ElasticSearch.',
@@ -36,7 +36,7 @@ export const SECTION_CONTENT: ICard.Card[] = [
   {
     id: 'srvice',
     category: Categories.WORK_HISTORY,
-    websiteUrl: 'https://www.srvice.ca/',
+    projectUrl: 'https://www.srvice.ca/',
     title: 'Srvice · Full-Stack Developer',
     description:
       'Since fall 2019 I have been an active developer at Srvice’s. Srvice’s vision is to bring customers closer to local services with the help of technology. Using agile methodologies I build iOS and Android applications with frameworks like React and React-Native.',
@@ -48,7 +48,7 @@ export const SECTION_CONTENT: ICard.Card[] = [
   {
     id: 'yorku',
     category: Categories.WORK_HISTORY,
-    websiteUrl: 'https://lassonde.yorku.ca/',
+    projectUrl: 'https://lassonde.yorku.ca/',
     title: 'York University · Teacher Assistant',
     description:
       'Led weekly classes for undergraduate Computer Science students, teaching object-oriented programming for mobile application development.',
@@ -66,7 +66,7 @@ export const SECTION_CONTENT: ICard.Card[] = [
       url: 'images/jmerville.png',
       backgroundColor: Colors.GRAY_DARK,
     },
-    codeUrl: 'https://github.com/jbmerville/jmerville.com',
+    githubUrl: 'https://github.com/jbmerville/jmerville.com',
   },
   {
     id: 'sortingVisualizer',
@@ -83,8 +83,8 @@ export const SECTION_CONTENT: ICard.Card[] = [
       url: 'images/sorting-visualizer.png',
       backgroundColor: Colors.YELLOW,
     },
-    codeUrl: 'https://github.com/jbmerville/sort-visualizer',
-    websiteUrl: 'https://sort-visualizer.jmerville.com/',
+    githubUrl: 'https://github.com/jbmerville/sort-visualizer',
+    projectUrl: 'https://sort-visualizer.jmerville.com/',
   },
   {
     id: 'csbot',
@@ -102,7 +102,7 @@ export const SECTION_CONTENT: ICard.Card[] = [
       url: 'images/cs-bot.png',
       backgroundColor: Colors.FACEBOOK,
     },
-    codeUrl: 'https://github.com/jbmerville/CSBot',
+    githubUrl: 'https://github.com/jbmerville/CSBot',
   },
   {
     id: 'maze',
@@ -121,8 +121,8 @@ export const SECTION_CONTENT: ICard.Card[] = [
       url: 'images/path-finder.png',
       backgroundColor: Colors.PURPLE_LIGHT,
     },
-    codeUrl: 'https://github.com/jbmerville/MazeApp',
-    websiteUrl: 'path-finder.jmerville.com/',
+    githubUrl: 'https://github.com/jbmerville/MazeApp',
+    projectUrl: 'path-finder.jmerville.com/',
   },
   {
     id: 'hideYourNotes',
@@ -140,6 +140,6 @@ export const SECTION_CONTENT: ICard.Card[] = [
       url: 'images/hide-your-notes.png',
       backgroundColor: Colors.GREEN,
     },
-    codeUrl: 'https://github.com/jbmerville/HideYourNotes',
+    githubUrl: 'https://github.com/jbmerville/HideYourNotes',
   },
 ];

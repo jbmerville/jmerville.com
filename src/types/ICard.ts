@@ -7,8 +7,8 @@ export interface Image {
 
 export interface Card {
   id: string;
-  websiteUrl?: string;
-  codeUrl?: string;
+  projectUrl?: string;
+  githubUrl?: string;
   description: string | JSX.Element;
   category: string;
   title: string;

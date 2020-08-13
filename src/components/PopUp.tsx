@@ -4,6 +4,9 @@ import CSS from 'csstype';
 import UseWindowSize from 'hooks/WindowSize';
 import { Colors } from 'values';
 
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 interface PopUpProps {}
 
 interface Styles {
@@ -75,13 +78,15 @@ const PopUp = (props: PopUpProps) => {
     <>
       <div style={styles.outerContainer}>
         <div style={styles.innerContainer}>
-          <i
-            onClick={() => setClicked(true)}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            className="fa fa-times-circle"
-            style={styles.button}
-          />
+          <div style={styles.button}>
+            <FontAwesomeIcon
+              onClick={() => setClicked(true)}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+              icon={faTimesCircle}
+              size="sm"
+            />
+          </div>
           <div style={styles.text}>This website uses cookies to enhance the user experience</div>
         </div>
       </div>

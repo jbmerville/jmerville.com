@@ -5,24 +5,25 @@ import React, {
 } from 'react';
 
 import Button from 'components/Button';
-import CSS from 'csstype';
 import UseWindowSize from 'hooks/WindowSize';
-import { ICard } from 'types';
+import {
+  ICard,
+  Styles
+} from 'types';
 import { getPaddingsFromWidth } from 'utils';
 import { Colors } from 'values';
+
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import {
+  faExternalLinkSquareAlt,
+  IconDefinition
+} from '@fortawesome/free-solid-svg-icons';
 
 interface CardProps {
   item: ICard.Card;
   onClick?: () => void;
 }
-interface Styles {
-  container: CSS.Properties;
-  imageContainer: CSS.Properties;
-  headline: CSS.Properties;
-  description: CSS.Properties;
-  button: CSS.Properties;
-  buttonContainer: CSS.Properties;
-}
+
 const Card = (props: CardProps) => {
   const [width, height] = UseWindowSize();
   const ref = useRef<HTMLDivElement>(null);
@@ -47,7 +48,7 @@ const Card = (props: CardProps) => {
   };
 
   const { item } = props;
-  const { title, description, image, websiteUrl, codeUrl } = item;
+  const { title, description, image, projectUrl, githubUrl } = item;
   const { url, backgroundColor } = image;
 
   let styles: Styles = {
@@ -125,29 +126,16 @@ const Card = (props: CardProps) => {
     styles.headline.margin = '20px';
   } else if (width < 1200) {
   }
-  const websiteButton = websiteUrl && (
+  const getButton = (id: string, label: string, url: string, icon: IconDefinition) => (
     <div style={styles.button}>
       <Button
-        link={{ id: websiteUrl, label: 'View Project', url: '' }}
+        link={{ id, label, url }}
         backgrounColor={Colors.PRIMARY}
         textColor={Colors.BACKGROUND}
         hoverColor={Colors.SECONDARY}
         showShadow={false}
         width={'130px'}
-        icon={{ fontAwesomeIcon: 'fa fa-external-link-square' }}
-      />
-    </div>
-  );
-  const codeButton = codeUrl && (
-    <div style={styles.button}>
-      <Button
-        link={{ id: codeUrl, label: 'View Code', url: '' }}
-        backgrounColor={Colors.PRIMARY}
-        textColor={Colors.BACKGROUND}
-        hoverColor={Colors.SECONDARY}
-        showShadow={false}
-        width={'130px'}
-        icon={{ fontAwesomeIcon: 'fa fa-github' }}
+        icon={{ fontAwesomeIcon: icon }}
       />
     </div>
   );
@@ -161,8 +149,8 @@ const Card = (props: CardProps) => {
       <div style={styles.description}>
         {description}
         <div style={styles.buttonContainer}>
-          {codeButton}
-          {websiteButton}
+          {projectUrl && getButton('demo-link', 'View Project', projectUrl, faExternalLinkSquareAlt)}
+          {githubUrl && getButton('code', 'View Code', githubUrl, faGithub)}
         </div>
       </div>
     </div>

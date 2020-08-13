@@ -1,3 +1,9 @@
+import {
+  faGithub,
+  faLinkedin
+} from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+
 export const BUTTONS = [
   {
     link: {
@@ -6,7 +12,7 @@ export const BUTTONS = [
       label: 'GitHub',
     },
     icon: {
-      fontAwesomeIcon: 'fa fa-github',
+      fontAwesomeIcon: faGithub,
     },
   },
   {
@@ -16,7 +22,7 @@ export const BUTTONS = [
       label: 'LinkedIn',
     },
     icon: {
-      fontAwesomeIcon: 'fa fa-linkedin',
+      fontAwesomeIcon: faLinkedin,
     },
   },
   {
@@ -26,7 +32,7 @@ export const BUTTONS = [
       label: 'Email',
     },
     icon: {
-      fontAwesomeIcon: 'fa fa-envelope',
+      fontAwesomeIcon: faEnvelope,
       size: '20px',
     },
   },
