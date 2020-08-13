@@ -9,7 +9,6 @@ interface GoogleAnalyticsProps {
     pathname: string;
     search: string;
   };
-  options: any;
 }
 
 class GoogleAnalytics extends Component<GoogleAnalyticsProps, {}> {
@@ -17,13 +16,10 @@ class GoogleAnalytics extends Component<GoogleAnalyticsProps, {}> {
     this.logPageChange(this.props.location.pathname, this.props.location.search);
   }
 
-  componentDidUpdate(prevProps: GoogleAnalyticsProps) {
-    const {
-      location: { pathname, search },
-    } = this.props;
-    const isDifferentPathname = pathname !== prevProps.location.pathname;
-    const isDifferentSearch = search !== prevProps.location.search;
-
+  componentDidUpdate(prevLocation: GoogleAnalyticsProps) {
+    const { pathname, search } = this.props.location;
+    const isDifferentPathname = pathname !== prevLocation.location.pathname;
+    const isDifferentSearch = search !== prevLocation.location.search;
     if (isDifferentPathname || isDifferentSearch) {
       this.logPageChange(pathname, search);
     }
@@ -35,7 +31,6 @@ class GoogleAnalytics extends Component<GoogleAnalyticsProps, {}> {
     ReactGA.set({
       page,
       location: `${location.origin}${page}`,
-      ...this.props.options,
     });
     ReactGA.pageview(page);
   }
@@ -47,13 +42,11 @@ class GoogleAnalytics extends Component<GoogleAnalyticsProps, {}> {
 
 const RouteTracker = () => <Route component={GoogleAnalytics} />;
 
-const init = (options = {}) => {
+const init = (options?: Object) => {
   const isGAEnabled = process.env.NODE_ENV === 'production';
-
   if (isGAEnabled) {
-    ReactGA.initialize((process.env as ProcessEnv).TRACKING_ID);
+    ReactGA.initialize((process.env as ProcessEnv).REACT_APP_TRACKING_ID, options);
   }
-
   return isGAEnabled;
 };
 

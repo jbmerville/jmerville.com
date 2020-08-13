@@ -1,8 +1,9 @@
 import * as ICard from './ICard';
 import {
+  Link,
   ProcessEnv,
   Styles
 } from './other';
 
-export type { ProcessEnv, Styles };
+export type { Link, ProcessEnv, Styles };
 export { ICard };

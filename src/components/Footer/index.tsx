@@ -1,22 +1,13 @@
 import React from 'react';
 
 import Button from 'components/Button';
-import CSS from 'csstype';
 import UseWindowSize from 'hooks/WindowSize';
+import { Styles } from 'types';
 import { getPaddingsFromWidth } from 'utils';
 import { Colors } from 'values';
 import { Paddings } from 'values/Style';
 
 import { BUTTONS } from './footer-config';
-
-interface Styles {
-  outerContainer: CSS.Properties;
-  innerContainer: CSS.Properties;
-  title: CSS.Properties;
-  description: CSS.Properties;
-  buttonContainer: CSS.Properties;
-  button: CSS.Properties;
-}
 
 const Footer = () => {
   const [width] = UseWindowSize();

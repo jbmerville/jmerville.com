@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 
-import { Styles } from 'types';
+import {
+  Link,
+  Styles
+} from 'types';
 
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-export interface Link {
-  id: string;
-  label: string;
-  url: string;
-  isButton?: boolean;
-}
 
 interface ButtonProps {
   link: Link;
@@ -30,19 +26,7 @@ interface ButtonProps {
 }
 
 const Button = (props: ButtonProps) => {
-  const {
-    icon,
-    size,
-    link,
-    backgrounColor,
-    textColor,
-    capitalize,
-    hoverColor,
-    showShadow,
-    showShadowHover,
-    width,
-    onClick,
-  } = props;
+  const { icon, size, link, backgrounColor, textColor, capitalize, hoverColor, showShadow, showShadowHover, width, onClick } = props;
   const [isHover, setIsHover] = useState(false);
   let styles: Styles = {
     button: {
@@ -81,12 +65,8 @@ const Button = (props: ButtonProps) => {
   };
   return (
     <a
-      onMouseEnter={() => {
-        setIsHover(true);
-      }}
-      onMouseLeave={() => {
-        setIsHover(false);
-      }}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
       href={link.url}
       style={styles.button}
       onClick={() => onClick}

@@ -1,23 +1,13 @@
 import React, { useState } from 'react';
 
-import CSS from 'csstype';
 import UseWindowSize from 'hooks/WindowSize';
+import { Styles } from 'types';
 import { Colors } from 'values';
 
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-interface PopUpProps {}
-
-interface Styles {
-  outerContainer: CSS.Properties;
-  innerContainer: CSS.Properties;
-  shadow: CSS.Properties;
-  text: CSS.Properties;
-  button: CSS.Properties;
-}
-
-const PopUp = (props: PopUpProps) => {
+const PopUp = () => {
   const [isClicked, setClicked] = useState(false);
   const [isHover, setHover] = useState(false);
   const [width] = UseWindowSize();

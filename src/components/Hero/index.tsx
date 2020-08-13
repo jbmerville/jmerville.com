@@ -4,8 +4,8 @@ import React, {
 } from 'react';
 
 import Button from 'components/Button';
-import CSS from 'csstype';
 import UseWindowSize from 'hooks/WindowSize';
+import { Styles } from 'types';
 import { getPaddingsFromWidth } from 'utils';
 import {
   Colors,
@@ -14,19 +14,6 @@ import {
 import { ScreenWidth } from 'values/ScreenSizes';
 
 import { CONTENT } from './hero-config';
-
-interface Styles {
-  outerContainer: CSS.Properties;
-  innerContainer: CSS.Properties;
-  textContainer: CSS.Properties;
-  imageContainer: CSS.Properties;
-  image: CSS.Properties;
-  title: CSS.Properties;
-  secondaryTitle: CSS.Properties;
-  separationBar: CSS.Properties;
-  description: CSS.Properties;
-  callForAction: CSS.Properties;
-}
 
 const Hero = () => {
   const [width] = UseWindowSize();
@@ -208,11 +195,7 @@ const Hero = () => {
           )}
         </div>
         <div style={styles.imageContainer}>
-          <img
-            style={styles.image}
-            alt="If you see this follow me on github and linkedin :)"
-            src="images/eastwood-come-back-later.png"
-          />
+          <img style={styles.image} alt="If you see this follow me on github and linkedin :)" src="images/eastwood-come-back-later.png" />
         </div>
       </div>
     </section>

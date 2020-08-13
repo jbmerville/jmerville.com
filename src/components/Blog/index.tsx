@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 
-import CSS from 'csstype';
 import IsComponentVisible from 'hooks/ComponentVisibility';
 import UseWindowSize from 'hooks/WindowSize';
+import { Styles } from 'types';
 import { getPaddingsFromWidth } from 'utils';
 import {
   Colors,
@@ -10,15 +10,6 @@ import {
 } from 'values';
 
 import Column from './Column';
-
-interface Styles {
-  outerContainer: CSS.Properties;
-  leftContainer: CSS.Properties;
-  rightContainer: CSS.Properties;
-  textContainer: CSS.Properties;
-  title: CSS.Properties;
-  secondaryTitle: CSS.Properties;
-}
 
 const Blog = () => {
   const [width] = UseWindowSize();

@@ -37,7 +37,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "set NODE_ENV=production && gh-pages -d build",
+    "deploy": "set NODE_ENV=production && echo 'jmerville.com' > ./build/CNAME && gh-pages -d build",
     "format": "prettier --write \"**/*.+(js|jsx|tsx|ts|json|css|md)\""
   },
   "eslintConfig": {

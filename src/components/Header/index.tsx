@@ -3,21 +3,14 @@ import './style.css';
 import React from 'react';
 
 import Button from 'components/Button';
-import CSS from 'csstype';
 import UseWindowSize from 'hooks/WindowSize';
+import { Styles } from 'types';
 import { Colors } from 'values';
 
 import Hamburger from './Hamburger';
 import { LINKS } from './header-config';
 
 const style = require('./style.css');
-
-interface Styles {
-  container: CSS.Properties;
-  innerContainer: CSS.Properties;
-  link: CSS.Properties;
-  button: CSS.Properties;
-}
 
 const Header = () => {
   const [width] = UseWindowSize();

@@ -1,4 +1,4 @@
-import { Link } from 'components/Button';
+import { Link } from 'types';
 
 export const LINKS: Link[] = [
   {

@@ -7,3 +7,10 @@ export interface Styles {
 export interface ProcessEnv {
   [key: string]: string;
 }
+
+export interface Link {
+  id: string;
+  label: string;
+  url: string;
+  isButton?: boolean;
+}
