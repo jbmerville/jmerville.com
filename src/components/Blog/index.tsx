@@ -3,9 +3,10 @@ import React, { useRef } from 'react';
 import IsComponentVisible from 'hooks/ComponentVisibility';
 import UseWindowSize from 'hooks/WindowSize';
 import { Styles } from 'types';
-import { getPaddingsFromWidth } from 'utils';
 import {
   Colors,
+  FontSize,
+  MaxWidth,
   Paddings
 } from 'values';
 
@@ -32,10 +33,13 @@ const Blog = () => {
       overflow: 'hidden',
       position: 'relative',
       height: '400px',
-      padding: getPaddingsFromWidth(width).ALL,
-      paddingTop: '0',
-      paddingBottom: '0',
       background: Colors.GRAY_LIGHT,
+    },
+    innerContainer: {
+      position: 'relative',
+      maxWidth: MaxWidth,
+      height: '100%',
+      margin: '0 auto',
     },
     leftContainer: {
       float: 'left',
@@ -60,7 +64,7 @@ const Blog = () => {
     title: {
       textTransform: 'uppercase',
       fontWeight: 'bold',
-      fontSize: '2.5em',
+      fontSize: FontSize.XL,
       color: Colors.PRIMARY,
       marginTop: '-30px',
     },
@@ -137,14 +141,16 @@ const Blog = () => {
 
   return (
     <div ref={ref} style={styles.outerContainer}>
-      {columns}
-      <div style={styles.rightContainer}>
-        <div style={styles.textContainer}>
-          <div className={isVisible} style={styles.title}>
-            Articles & Blog Posts
-          </div>
-          <div className={isVisible} style={styles.secondaryTitle}>
-            Coming soon!
+      <div style={styles.innerContainer}>
+        {columns}
+        <div style={styles.rightContainer}>
+          <div style={styles.textContainer}>
+            <div className={isVisible} style={styles.title}>
+              Articles & Blog Posts
+            </div>
+            <div className={isVisible} style={styles.secondaryTitle}>
+              Coming soon!
+            </div>
           </div>
         </div>
       </div>

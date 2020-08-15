@@ -10,7 +10,6 @@ import {
   ICard,
   Styles
 } from 'types';
-import { getPaddingsFromWidth } from 'utils';
 import { Colors } from 'values';
 
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -64,9 +63,7 @@ const Card = (props: CardProps) => {
       minHeight: '600px',
       width: 'webkit-fill-available',
       background: Colors.GRAY_LIGHT,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      margin: `${getPaddingsFromWidth(width).TOPBOTTOM} 0px`,
+      margin: '400px 0',
       transform: `matrix(1, 0, 0, 1, 0, ${getAnimationFactor()})`,
     },
     headline: {
@@ -107,16 +104,22 @@ const Card = (props: CardProps) => {
 
   // Mobile style
   if (width < 600) {
-    styles.container.display = 'block';
+    styles.container = {
+      display: 'block',
+      gridTemplateColumns:
+        '[margin-start] 38px [headline-start excerpt-start cta-start] 1fr [media-start headline-end excerpt-end cta-end copy-start] 1fr [margin-end media-end]',
+      gridTemplateRows:
+        '[margin-start media-start] 96px [headline-start copy-start] max-content [headline-end excerpt-start] auto [excerpt-end copy-end cta-start] max-content [cta-end] 40px [margin-end media-end]',
+      borderRadius: '30px',
+      overflow: 'hidden',
+      position: 'relative',
+      minHeight: '600px',
+      width: 'webkit-fill-available',
+      background: Colors.GRAY_LIGHT,
+      margin: '100px 0px',
+      transform: `matrix(${getAnimationFactor(true)}, 0, 0, ${getAnimationFactor(true)}, 0, 0)`,
+    };
     styles.imageContainer.height = '400px';
-    styles.container.margin = '60px 0px';
-    styles.container.gridTemplateColumns =
-      '[margin-start] 38px [headline-start excerpt-start cta-start] 1fr [media-start headline-end excerpt-end cta-end copy-start] 1fr [margin-end media-end]';
-    styles.container.gridTemplateRows =
-      '[margin-start media-start] 96px [headline-start copy-start] max-content [headline-end excerpt-start] auto [excerpt-end copy-end cta-start] max-content [cta-end] 40px [margin-end media-end]';
-    styles.container.transform = `matrix(${getAnimationFactor(true)}, 0, 0, ${getAnimationFactor(
-      true
-    )}, 0, 0)`;
     styles.imageContainer.marginBottom = '50px';
     styles.buttonContainer.position = 'relative';
     styles.buttonContainer.padding = '20px 0';
@@ -124,7 +127,6 @@ const Card = (props: CardProps) => {
     styles.button.padding = '10px 0';
     styles.description.margin = '20px';
     styles.headline.margin = '20px';
-  } else if (width < 1200) {
   }
   const getButton = (id: string, label: string, url: string, icon: IconDefinition) => (
     <div style={styles.button}>
@@ -134,7 +136,7 @@ const Card = (props: CardProps) => {
         textColor={Colors.BACKGROUND}
         hoverColor={Colors.SECONDARY}
         showShadow={false}
-        width={'130px'}
+        width={'110px'}
         icon={{ fontAwesomeIcon: icon }}
       />
     </div>
@@ -149,8 +151,8 @@ const Card = (props: CardProps) => {
       <div style={styles.description}>
         {description}
         <div style={styles.buttonContainer}>
-          {projectUrl && getButton('demo-link', 'View Project', projectUrl, faExternalLinkSquareAlt)}
-          {githubUrl && getButton('code', 'View Code', githubUrl, faGithub)}
+          {projectUrl && getButton('demo-link', 'Project', projectUrl, faExternalLinkSquareAlt)}
+          {githubUrl && getButton('code', 'Code', githubUrl, faGithub)}
         </div>
       </div>
     </div>

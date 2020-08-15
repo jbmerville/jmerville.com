@@ -54,7 +54,7 @@ const Header = () => {
           return link.isButton ? (
             <div style={styles.button}>
               <Button
-                link={{ ...link, label: 'View ' + link.label }}
+                link={{ ...link, label: link.label }}
                 backgrounColor={Colors.PRIMARY}
                 textColor={Colors.BACKGROUND}
                 hoverColor={Colors.SECONDARY}

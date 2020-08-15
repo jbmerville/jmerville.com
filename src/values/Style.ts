@@ -13,14 +13,14 @@ export interface Padding {
 
 export const Paddings: IPaddings = {
   TV: {
-    TOPBOTTOM: '250px',
-    LEFTRIGHT: '350px',
-    ALL: '250px 350px',
+    TOPBOTTOM: 'auto',
+    LEFTRIGHT: 'auto',
+    ALL: 'auto',
   },
   COMPUTER: {
-    TOPBOTTOM: '160px',
-    LEFTRIGHT: '200px',
-    ALL: '160px 200px',
+    TOPBOTTOM: 'auto',
+    LEFTRIGHT: 'auto',
+    ALL: 'auto',
   },
   TABLET: {
     TOPBOTTOM: '80px',
@@ -33,3 +33,13 @@ export const Paddings: IPaddings = {
     ALL: '15px 20px',
   },
 };
+
+export enum FontSize {
+  XS = '0.8em',
+  S = '0.9em',
+  M = '1em',
+  L = '2em',
+  XL = '3em',
+}
+
+export const MaxWidth = '1200px';

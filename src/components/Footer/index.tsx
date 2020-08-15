@@ -4,8 +4,11 @@ import Button from 'components/Button';
 import UseWindowSize from 'hooks/WindowSize';
 import { Styles } from 'types';
 import { getPaddingsFromWidth } from 'utils';
-import { Colors } from 'values';
-import { Paddings } from 'values/Style';
+import {
+  Colors,
+  MaxWidth,
+  Paddings
+} from 'values';
 
 import { BUTTONS } from './footer-config';
 
@@ -14,19 +17,18 @@ const Footer = () => {
 
   const styles: Styles = {
     outerContainer: {
-      position: 'relative',
-      display: 'grid',
-      backgroundColor: Colors.BACKGROUND,
-      width: '100%',
-      minHeight: 'fit-content',
       overflow: 'hidden',
+      position: 'relative',
+      display: 'flex',
+      verticalAlign: 'center',
+      height: '400px',
     },
     innerContainer: {
       position: 'relative',
-      height: '-webkit-fill-available',
-      width: 'auto',
-      padding: getPaddingsFromWidth(width).ALL,
-      display: 'block',
+      maxWidth: MaxWidth,
+      width: '100%',
+      height: 'fit-content',
+      margin: getPaddingsFromWidth(width).ALL,
     },
     title: {
       width: '-webkit-fill-available',
@@ -95,7 +97,7 @@ const Footer = () => {
               <Button
                 link={button.link}
                 icon={button.icon}
-                width="100px"
+                width="110px"
                 backgrounColor={Colors.PRIMARY}
                 textColor={Colors.BACKGROUND}
                 hoverColor={Colors.SECONDARY}

@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 
-import CSS from 'csstype';
+import { Styles } from 'types';
 import {
   Colors,
   Paddings
 } from 'values';
 
-import { LINKS } from './header-config';
+import {
+  faBars,
+  faTimes
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-interface Styles {
-  button: CSS.Properties;
-  menu: CSS.Properties;
-  cross: CSS.Properties;
-  linkContainer: CSS.Properties;
-  link: CSS.Properties;
-}
+import { LINKS } from './header-config';
 
 const Hamburger = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -77,19 +75,17 @@ const Hamburger = () => {
   return (
     <>
       <div onClick={() => setIsClicked(true)} style={styles.button}>
-        <i className="fa fa-bars" />
+        <FontAwesomeIcon icon={faBars} size="sm" />
       </div>
 
       <div style={styles.menu}>
-        <i onClick={() => setIsClicked(false)} className="fa fa-times" style={styles.cross} />
+        <div onClick={() => setIsClicked(false)} style={styles.cross}>
+          <FontAwesomeIcon icon={faTimes} size="sm" />
+        </div>
         <div style={styles.linkContainer}>
           {LINKS.map((link) => {
             return (
-              <a
-                key={link.id}
-                style={{ background: link.isButton ? Colors.GRAY_LIGHT : '', ...styles.link }}
-                href={link.url}
-              >
+              <a key={link.id} style={{ background: link.isButton ? Colors.GRAY_LIGHT : '', ...styles.link }} href={link.url}>
                 {link.label}
               </a>
             );

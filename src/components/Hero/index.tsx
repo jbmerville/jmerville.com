@@ -9,6 +9,7 @@ import { Styles } from 'types';
 import { getPaddingsFromWidth } from 'utils';
 import {
   Colors,
+  MaxWidth,
   Paddings
 } from 'values';
 import { ScreenWidth } from 'values/ScreenSizes';
@@ -26,7 +27,7 @@ const Hero = () => {
     return () => clearInterval(timeout);
   }, []);
 
-  let styles: Styles = {
+  const styles: Styles = {
     outerContainer: {
       position: 'relative',
       display: 'grid',
@@ -35,6 +36,7 @@ const Hero = () => {
       height: '100%',
       minHeight: 'fit-content',
       overflow: 'hidden',
+      maxHeight: '800px',
     },
     innerContainer: {
       position: 'relative',
@@ -101,13 +103,12 @@ const Hero = () => {
       color: Colors.TEXT,
     },
     callForAction: {
-      position: 'absolute',
+      position: 'relative',
       transitionDelay: '.7s',
       transitionDuration: '1.5s',
       width: 'fit-content',
-      marginTop: '20px',
+      marginTop: '30px',
       zIndex: 100,
-      bottom: '-10px',
     },
   };
 
@@ -115,30 +116,29 @@ const Hero = () => {
   if (width < ScreenWidth.PHONE) {
     styles.outerContainer = {
       position: 'relative',
-      display: 'table',
       backgroundColor: Colors.BACKGROUND,
       width: '100%',
       height: '100%',
-      minHeight: 'fit-content',
       overflow: 'hidden',
     };
     styles.innerContainer = {
       position: 'relative',
+      display: 'flex',
+      flexFlow: 'column',
       width: 'auto',
       padding: Paddings.PHONE.ALL,
       height: '100%',
-      minHeight: 'fit-content',
     };
     styles.image = {
-      height: '35%',
-      position: 'absolute',
-      right: '0',
+      width: '100%',
+      position: 'relative',
     };
     styles.imageContainer = {
       position: 'relative',
-      display: 'block',
+      display: 'flex',
       width: '100%',
-      height: 'fit-content',
+      height: '-webkit-fill-available',
+      alignItems: 'flex-end',
       zIndex: 1,
     };
     styles.textContainer = {
@@ -147,7 +147,6 @@ const Hero = () => {
       height: 'fit-content',
       zIndex: 1,
       marginTop: '20%',
-      marginBottom: '50%',
     };
     styles.description = {
       marginTop: '25px',
@@ -167,6 +166,30 @@ const Hero = () => {
       width: '55%',
       height: 'auto',
     };
+  } else {
+    styles.innerContainer = {
+      position: 'relative',
+      width: MaxWidth,
+      minHeight: 'fit-content',
+      margin: 'auto',
+    };
+    styles.imageContainer = {
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '400px',
+    };
+    // styles.outerContainer= {
+    //   position: 'relative',
+    //   display: 'grid',
+    //   backgroundColor: Colors.BACKGROUND,
+    //   width: '100%',
+    //   height: '100%',
+    //   minHeight:
+    //   minHeight: 'fit-content',
+    //   overflow: 'hidden',
+    // };
   }
 
   return (
@@ -186,7 +209,7 @@ const Hero = () => {
           {width > 600 && (
             <div className={animationClasses} style={styles.callForAction}>
               <Button
-                link={{ id: 'callForAction', label: 'View Projects', url: '' }}
+                link={{ id: 'callForAction', label: 'Projects', url: '' }}
                 backgrounColor={Colors.GRAY}
                 textColor={Colors.PRIMARY}
                 hoverColor={Colors.GRAY_LIGHT}

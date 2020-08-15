@@ -6,7 +6,7 @@ import { Styles } from 'types';
 import { getPaddingsFromWidth } from 'utils';
 import {
   Colors,
-  Paddings
+  MaxWidth
 } from 'values';
 
 interface SectionProps {
@@ -26,9 +26,14 @@ const Section = (props: SectionProps) => {
     outerContainer: {
       position: 'relative',
       height: 'fit-content',
-      padding: getPaddingsFromWidth(width).ALL,
-      paddingBottom: '10px',
       background: Colors.BACKGROUND,
+    },
+    innerContainer: {
+      position: 'relative',
+      maxWidth: MaxWidth,
+      height: '100%',
+      padding: '100px 0',
+      margin: `0 ${getPaddingsFromWidth(width).LEFTRIGHT}`,
     },
     title: {
       textTransform: 'uppercase',
@@ -53,19 +58,20 @@ const Section = (props: SectionProps) => {
       fontWeight: 'bold',
       fontSize: '3.5em',
       color: Colors.PRIMARY,
-      margin: Paddings.PHONE.ALL,
-      padding: Paddings.PHONE.ALL,
     };
     // Overide padding
     styles.outerContainer.padding = '10px';
+    styles.innerContainer.margin = '0';
   }
 
   return (
     <section ref={ref} key={props.section.id} style={styles.outerContainer}>
-      <div className={isVisible} style={styles.title}>
-        {props.section.title}
+      <div style={styles.innerContainer}>
+        <div className={isVisible} style={styles.title}>
+          {props.section.title}
+        </div>
+        {props.content}
       </div>
-      {props.content}
     </section>
   );
 };

@@ -76,7 +76,7 @@ const Button = (props: ButtonProps) => {
           <FontAwesomeIcon icon={icon.fontAwesomeIcon} size="lg" />
         </div>
       )}
-      {link.label}
+      {link.label.toUpperCase()}
     </a>
   );
 };
