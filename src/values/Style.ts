@@ -38,8 +38,10 @@ export enum FontSize {
   XS = '0.8em',
   S = '0.9em',
   M = '1em',
-  L = '2em',
-  XL = '3em',
+  L = '1.2em',
+  XL = '2em',
+  XXL = '3em',
+  XXXL = '4em',
 }
 
 export const MaxWidth = '1200px';

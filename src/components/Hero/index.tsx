@@ -9,6 +9,7 @@ import { Styles } from 'types';
 import { getPaddingsFromWidth } from 'utils';
 import {
   Colors,
+  FontSize,
   MaxWidth,
   Paddings
 } from 'values';
@@ -75,7 +76,7 @@ const Hero = () => {
     title: {
       textTransform: 'uppercase',
       fontWeight: 'bold',
-      fontSize: '3.5em',
+      fontSize: FontSize.XXXL,
       color: Colors.PRIMARY,
     },
     secondaryTitle: {

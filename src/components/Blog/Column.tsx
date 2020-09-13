@@ -14,6 +14,12 @@ interface ColumnProps {
   offset: string;
 }
 
+const BAR_WIDTH = [
+  [50, 30, 60],
+  [30, 50, 40],
+  [60, 20, 40],
+];
+
 const Column = (props: ColumnProps) => {
   const [width] = UseWindowSize();
   const { cards, offset } = props;
@@ -45,21 +51,8 @@ const Column = (props: ColumnProps) => {
   for (let i = 0; i < 40; i++) {
     const index = i % cards.length;
     const [color, emoji, title, isColorLight] = cards[index];
-    let widths = [];
-    for (let i = 0; i < 3; i++) {
-      const barWidth = Math.floor(Math.random() * 100) + 20;
-      widths.push(`${barWidth}px`);
-    }
-    cardsComponent.push(
-      <CardBlog
-        key={i}
-        color={color}
-        emoji={emoji}
-        title={title}
-        isColorLight={isColorLight}
-        widths={widths}
-      />
-    );
+    const widths = BAR_WIDTH[index % BAR_WIDTH.length].map((barWidth) => `${barWidth}px`);
+    cardsComponent.push(<CardBlog key={i} color={color} emoji={emoji} title={title} isColorLight={isColorLight} widths={widths} />);
   }
 
   return (

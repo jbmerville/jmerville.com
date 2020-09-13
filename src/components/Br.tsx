@@ -1,9 +1,9 @@
 import React from 'react';
 
-interface BrProps {
-  count: number;
-}
-const Br = (props: BrProps) => {
+const defaultProps = {
+  count: 1,
+};
+const Br = (props: typeof defaultProps) => {
   const { count } = props;
   const brs = [];
   for (let i = 0; i < count; i++) {
@@ -11,5 +11,7 @@ const Br = (props: BrProps) => {
   }
   return <>{brs}</>;
 };
+
+Br.defaultProps = defaultProps;
 
 export default Br;

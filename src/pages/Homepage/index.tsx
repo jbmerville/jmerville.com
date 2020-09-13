@@ -7,7 +7,7 @@ import Header from 'components/Header';
 import Hero from 'components/Hero';
 import PopUp from 'components/PopUp';
 import Section from 'components/Section';
-import Separator from 'components/Separator';
+import Statistics from 'components/Statistics';
 import {
   ICard,
   Styles
@@ -28,15 +28,8 @@ const HomePage = () => {
   };
 
   const sections: any[] = SECTION_CATEGORIES.map((section) => {
-    const sectionContent = SECTION_CONTENT.filter((item) => item.category === section.id).map((item) => (
-      <Card item={item as ICard.Card} />
-    ));
-    return (
-      <>
-        <Section section={section} content={sectionContent} />
-        <Separator />
-      </>
-    );
+    const sectionContent = SECTION_CONTENT.filter((item) => item.category === section.id).map((item) => <Card item={item as ICard.Card} />);
+    return <Section section={section} content={sectionContent} />;
   });
 
   return (
@@ -46,6 +39,7 @@ const HomePage = () => {
       <Hero />
       <Blog />
       {sections}
+      <Statistics />
       <Footer />
     </div>
   );

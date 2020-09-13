@@ -10,7 +10,10 @@ import {
   ICard,
   Styles
 } from 'types';
-import { Colors } from 'values';
+import {
+  Colors,
+  FontSize
+} from 'values';
 
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
@@ -67,7 +70,7 @@ const Card = (props: CardProps) => {
       transform: `matrix(1, 0, 0, 1, 0, ${getAnimationFactor()})`,
     },
     headline: {
-      fontSize: '3em',
+      fontSize: FontSize.XXL,
       lineHeight: '1.125',
       margin: '0px 70px',
       marginBottom: '.5em',
@@ -151,8 +154,8 @@ const Card = (props: CardProps) => {
       <div style={styles.description}>
         {description}
         <div style={styles.buttonContainer}>
-          {projectUrl && getButton('demo-link', 'Project', projectUrl, faExternalLinkSquareAlt)}
           {githubUrl && getButton('code', 'Code', githubUrl, faGithub)}
+          {projectUrl && getButton('demo-link', 'Project', projectUrl, faExternalLinkSquareAlt)}
         </div>
       </div>
     </div>

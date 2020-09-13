@@ -19,4 +19,5 @@ export enum Colors {
   FACEBOOK = '#3B5998',
   SRVICE = '#00569b',
   TRANSPARENT = '#ffffff66',
+  ORANGE = '#ff8f00',
 }

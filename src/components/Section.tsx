@@ -6,6 +6,7 @@ import { Styles } from 'types';
 import { getPaddingsFromWidth } from 'utils';
 import {
   Colors,
+  FontSize,
   MaxWidth
 } from 'values';
 
@@ -38,7 +39,7 @@ const Section = (props: SectionProps) => {
     title: {
       textTransform: 'uppercase',
       fontWeight: 'bold',
-      fontSize: '3.5em',
+      fontSize: FontSize.XXL,
       color: Colors.PRIMARY,
       lineHeight: '1em',
       marginBottom: '100px',
@@ -56,7 +57,7 @@ const Section = (props: SectionProps) => {
     styles.title = {
       textTransform: 'uppercase',
       fontWeight: 'bold',
-      fontSize: '3.5em',
+      fontSize: FontSize.XXL,
       color: Colors.PRIMARY,
     };
     // Overide padding

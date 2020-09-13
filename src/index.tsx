@@ -7,16 +7,19 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import GA from 'utils/GoogleAnalytics';
+import { client } from 'utils/Appolo';
+
+import { ApolloProvider } from '@apollo/client';
 
 export const App = () => {
   return (
-    <BrowserRouter>
-      {GA.init() && <GA.RouteTracker />}
-      <Switch>
-        <Route path="/" component={HomePage} />
-      </Switch>
-    </BrowserRouter>
+    <ApolloProvider client={client}>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={HomePage} />
+        </Switch>
+      </BrowserRouter>
+    </ApolloProvider>
   );
 };
 

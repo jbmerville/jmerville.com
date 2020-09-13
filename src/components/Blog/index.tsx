@@ -64,7 +64,7 @@ const Blog = () => {
     title: {
       textTransform: 'uppercase',
       fontWeight: 'bold',
-      fontSize: FontSize.XL,
+      fontSize: FontSize.XXL,
       color: Colors.PRIMARY,
       marginTop: '-30px',
     },
