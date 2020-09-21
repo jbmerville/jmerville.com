@@ -24,7 +24,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # other
-/public
 .eslintrc.js
 package-lock.json
 package.json

@@ -2,7 +2,6 @@
   "name": "my-website",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://jmerville.com",
   "dependencies": {
     "@apollo/client": "^3.1.5",
     "@brainhubeu/react-carousel": "^1.19.26",

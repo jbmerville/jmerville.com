@@ -1,0 +1,79 @@
+:root {
+  --lightPurple: #dfe6fa;
+  --secondary: #54649f;
+}
+
+body,
+html,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+img {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+.column {
+  animation-name: column;
+  animation-duration: 400s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.column:hover {
+  animation-play-state: paused;
+}
+
+.card-blog {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px, rgba(0, 0, 0, 0.15) 0px 0px 20px 0px;
+}
+.card-blog:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 40px 0 rgba(44, 44, 44, 0.2);
+}
+.animate {
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+.animate-scroll-image {
+  animation-name: image;
+  animation-duration: 0.6s;
+  animation-iteration-count: 1;
+}
+.animate-scroll {
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+  -webkit-transition: opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s,
+    -webkit-transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+  -webkit-transition: opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s,
+    transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+  transition: opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s,
+    transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+@keyframes column {
+  from {
+    top: 0px;
+  }
+  to {
+    top: -10000px;
+  }
+}
+
+@keyframes image {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
