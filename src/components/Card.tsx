@@ -12,7 +12,8 @@ import {
 } from 'types';
 import {
   Colors,
-  FontSize
+  FontSize,
+  MarginType
 } from 'values';
 
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -20,6 +21,9 @@ import {
   faExternalLinkSquareAlt,
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
+
+import Margin from './Margin';
+import StyledText, { TextStyle } from './StyledText';
 
 interface CardProps {
   item: ICard.Card;
@@ -150,14 +154,18 @@ const Card = (props: CardProps) => {
       <div style={styles.imageContainer}>
         <div></div>
       </div>
-      <h3 style={styles.headline}>{title}</h3>
-      <div style={styles.description}>
+      <Margin horizontal={MarginType.REGULAR} vertical={MarginType.REGULAR}>
+        <StyledText color={Colors.TEXT} style={TextStyle.SUBTITLE}>
+          {title}
+        </StyledText>
+      </Margin>
+      <Margin horizontal={MarginType.REGULAR} vertical={MarginType.REGULAR}>
         {description}
         <div style={styles.buttonContainer}>
           {githubUrl && getButton('code', 'Code', githubUrl, faGithub)}
           {projectUrl && getButton('demo-link', 'Project', projectUrl, faExternalLinkSquareAlt)}
         </div>
-      </div>
+      </Margin>
     </div>
   );
 };

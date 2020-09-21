@@ -4,6 +4,8 @@ export interface Styles {
   [name: string]: CSS.Properties;
 }
 
+export type Style = CSS.Properties;
+
 export interface ProcessEnv {
   [key: string]: string;
 }

@@ -37,9 +37,9 @@ export const Paddings: IPaddings = {
 export enum FontSize {
   XS = '0.8em',
   S = '0.9em',
-  M = '1em',
-  L = '1.2em',
-  XL = '2em',
+  M = '1.1em',
+  L = '1.3em',
+  XL = '1.6em',
   XXL = '3em',
   XXXL = '4em',
 }

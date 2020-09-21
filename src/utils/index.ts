@@ -1,18 +1,5 @@
-import {
-  Padding,
-  Paddings
-} from 'values';
-import { ScreenWidth } from 'values/ScreenSizes';
+import adjustMarginFromScreenSize from './adjustMarginFromScreenSize';
+import getPaddingsFromWidth from './getPaddingsFromWidth';
+import getScreenSizeFromWidth from './getScreenSizeFromWidth';
 
-export function getPaddingsFromWidth(currentScreenWidth: number): Padding {
-  if (currentScreenWidth < ScreenWidth.PHONE) {
-    return Paddings.PHONE;
-  }
-  if (currentScreenWidth < ScreenWidth.TABLET) {
-    return Paddings.TABLET;
-  }
-  if (currentScreenWidth < ScreenWidth.COMPUTER) {
-    return Paddings.COMPUTER;
-  }
-  return Paddings.TV;
-}
+export { adjustMarginFromScreenSize, getPaddingsFromWidth, getScreenSizeFromWidth };

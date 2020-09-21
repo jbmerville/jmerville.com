@@ -4,16 +4,19 @@ import React, {
 } from 'react';
 
 import Button from 'components/Button';
+import Margin from 'components/Margin';
+import StyledText, { TextStyle } from 'components/StyledText';
 import UseWindowSize from 'hooks/WindowSize';
 import { Styles } from 'types';
 import { getPaddingsFromWidth } from 'utils';
 import {
   Colors,
   FontSize,
+  MarginType,
   MaxWidth,
-  Paddings
+  Paddings,
+  ScreenSize
 } from 'values';
-import { ScreenWidth } from 'values/ScreenSizes';
 
 import { CONTENT } from './hero-config';
 
@@ -114,7 +117,7 @@ const Hero = () => {
   };
 
   // Mobile style
-  if (width < ScreenWidth.PHONE) {
+  if (width < ScreenSize.PHONE) {
     styles.outerContainer = {
       position: 'relative',
       backgroundColor: Colors.BACKGROUND,
@@ -157,7 +160,7 @@ const Hero = () => {
       lineHeight: '1.8em',
       color: Colors.TEXT,
     };
-  } else if (width < ScreenWidth.TABLET) {
+  } else if (width < ScreenSize.TABLET) {
     styles.imageContainer = {
       position: 'relative',
       display: 'flex',
@@ -187,8 +190,12 @@ const Hero = () => {
     <section style={styles.outerContainer}>
       <div style={styles.innerContainer}>
         <div style={styles.textContainer}>
-          <div className={animationClasses} style={styles.title}>
-            {CONTENT.title.primary}
+          <div className={animationClasses}>
+            <Margin horizontal={MarginType.ZERO} vertical={MarginType.ZERO}>
+              <StyledText color={Colors.PRIMARY} style={TextStyle.TITLE}>
+                {CONTENT.title.primary}
+              </StyledText>
+            </Margin>
           </div>
           <div className={animationClasses} style={styles.secondaryTitle}>
             {CONTENT.title.secondary}

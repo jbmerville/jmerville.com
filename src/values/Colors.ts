@@ -1,4 +1,4 @@
-export enum Colors {
+enum Colors {
   BACKGROUND = '#FFFFFF',
   PRIMARY = '#414e7f',
   SECONDARY = '#54649f',
@@ -21,3 +21,5 @@ export enum Colors {
   TRANSPARENT = '#ffffff66',
   ORANGE = '#ff8f00',
 }
+
+export default Colors;
