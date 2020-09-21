@@ -1,47 +1,22 @@
 import React from 'react';
 
-import Br from 'components/Br';
-import moment from 'moment';
 import { Styles } from 'types';
-import { GITHUB_QUERY } from 'utils/Appolo';
 import {
   Colors,
   FontSize,
-  MaxWidth
+  MaxWidth,
+  repoLinesStats
 } from 'values';
 
-import { useQuery } from '@apollo/client';
+const colorText = (text: string | number, color: Colors): JSX.Element => <span style={{ color, fontWeight: 'bold' }}>{text}</span>;
 
-const getColoredText = (text: string | number, color: Colors): JSX.Element => <span style={{ color, fontWeight: 'bold' }}>{text}</span>;
-
-interface DataGithub {
-  loading?: any;
-  error?: any;
-  data?: {
-    repository: any;
-  };
-}
-
-const GetGithubStats = (): JSX.Element => {
-  const { loading, error, data }: DataGithub = useQuery(GITHUB_QUERY);
-  if (loading) return getColoredText('Loading...', Colors.ORANGE);
-  let commitCount: number;
-  let howLongAgoWasLastBuild: number;
-  try {
-    if (error) throw error;
-    const { repository } = data!;
-    commitCount = repository.object.history.totalCount;
-    const lastBuildUpdateDate = moment(repository.deployments.nodes[0].updatedAt);
-    const currentDate = moment();
-    howLongAgoWasLastBuild = currentDate.diff(lastBuildUpdateDate, 'd');
-  } catch (err) {
-    return getColoredText('Error loading Github statistics :(', Colors.RED);
-  }
+const renderGithubStatistics = (): JSX.Element => {
+  const { comment, code, nFiles } = repoLinesStats.TypeScript;
   return (
-    <>
-      The last build of this site was {getColoredText(howLongAgoWasLastBuild, Colors.GREEN)} days ago and the master branch has{' '}
-      {getColoredText(commitCount, Colors.GREEN)} commits.
-    </>
+    <div>
+      The last build of this website contains {colorText(code, Colors.BLUE)} lines of TypeScript code, and {colorText(comment, Colors.BLUE)}{' '}
+      comments, across {colorText(nFiles, Colors.BLUE)} files.
+    </div>
   );
 };
 
@@ -79,11 +54,7 @@ const Statistics = () => {
       <div style={styles.innerContainer}>
         <div style={styles.textContainer}>
           <div style={styles.headline}>Statistics</div>
-          You are among {getColoredText('0', Colors.RED)} people currently visiting the site.
-          <Br />
-          The site has received {getColoredText('0', Colors.FACEBOOK)} page views across {getColoredText('0', Colors.FACEBOOK)} sessions.
-          <Br />
-          {GetGithubStats()}
+          {renderGithubStatistics()}
         </div>
       </div>
     </div>

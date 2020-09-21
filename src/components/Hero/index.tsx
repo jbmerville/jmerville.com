@@ -181,16 +181,6 @@ const Hero = () => {
       justifyContent: 'center',
       height: '400px',
     };
-    // styles.outerContainer= {
-    //   position: 'relative',
-    //   display: 'grid',
-    //   backgroundColor: Colors.BACKGROUND,
-    //   width: '100%',
-    //   height: '100%',
-    //   minHeight:
-    //   minHeight: 'fit-content',
-    //   overflow: 'hidden',
-    // };
   }
 
   return (

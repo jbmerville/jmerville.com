@@ -39,7 +39,7 @@ const Section = (props: SectionProps) => {
     title: {
       textTransform: 'uppercase',
       fontWeight: 'bold',
-      fontSize: FontSize.XXL,
+      fontSize: FontSize.XXXL,
       color: Colors.PRIMARY,
       lineHeight: '1em',
       marginBottom: '100px',

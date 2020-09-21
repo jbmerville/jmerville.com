@@ -12,6 +12,8 @@ jobs:
         uses: actions/checkout@master
       - name: Install Dependencies
         run: npm install
+      - name: Cloc
+        run: npm run cloc
       - name: Build
         run: npm run-script build
       - name: Build Production Artifact
