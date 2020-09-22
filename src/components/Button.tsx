@@ -29,7 +29,7 @@ interface ButtonProps {
 const defaultProps = {
   background: {
     offHoverColor: Colors.PRIMARY,
-    onHoverColor: Colors.FACEBOOK,
+    onHoverColor: Colors.SECONDARY,
   },
   showShadow: false,
   showShadowHover: true,
@@ -62,8 +62,8 @@ const Button = (props: ButtonProps & typeof defaultProps) => {
           ? '0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08)'
           : ''
         : showShadow || showShadow === undefined
-        ? '0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08)'
-        : '',
+          ? '0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08)'
+          : '',
       transition: 'all .15s ease',
       transform: isHover ? 'translateY(-1px)' : '',
     },

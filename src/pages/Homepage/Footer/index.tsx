@@ -24,15 +24,14 @@ const Footer = () => {
       overflow: 'hidden',
       position: 'relative',
       display: 'flex',
-      verticalAlign: 'center',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
       height: '400px',
     },
     innerContainer: {
       position: 'relative',
-      maxWidth: MaxWidth,
-      width: '100%',
+      width: 'fit-content',
       height: 'fit-content',
-      margin: getPaddingsFromWidth(width).ALL,
     },
     buttonContainer: {
       height: 'fit-content',
@@ -77,7 +76,7 @@ const Footer = () => {
   return (
     <div style={styles.outerContainer}>
       <div style={styles.innerContainer}>
-        <Margin bottom={'SMALL'}>
+        <Margin bottom={'SMALL'} right={'REGULAR'}>
           <StyledText color={Colors.PRIMARY} style="TITLE">
             Find me here!
           </StyledText>

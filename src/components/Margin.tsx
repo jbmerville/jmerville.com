@@ -34,6 +34,8 @@ const Margin = (props: MarginProps & typeof defaultProps) => {
   };
   const style: Style = {
     margin: `${margins.top}px ${margins.right}px ${margins.bottom}px ${margins.left}px`,
+    width: 'fit-content',
+    height: 'fit-content',
   };
 
   return <div style={style}>{children}</div>;
