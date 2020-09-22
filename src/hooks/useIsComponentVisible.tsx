@@ -3,7 +3,7 @@ import {
   useState
 } from 'react';
 
-const IsComponentVisible = (ref: React.RefObject<any>, offset: number) => {
+const useIsComponentVisible = (ref: React.RefObject<any>, offset: number) => {
   const [visible, setVisible] = useState(0);
   useEffect(() => {
     const isVisible = () => {
@@ -25,4 +25,4 @@ const IsComponentVisible = (ref: React.RefObject<any>, offset: number) => {
   return visible > 0 ? 'animate-scroll' : 'animate';
 };
 
-export default IsComponentVisible;
+export default useIsComponentVisible;

@@ -9,40 +9,35 @@ import {
 interface StyledTextProps {
   color: Colors;
   style: TextStyle;
-  children: string;
+  children: string | JSX.Element | Array<string | JSX.Element>;
 }
 
-export enum TextStyle {
-  DESCRIPTION,
-  TITLE,
-  SUBTITLE,
-  BUTTON,
-}
+export type TextStyle = 'DESCRIPTION' | 'TITLE' | 'SUBTITLE' | 'BUTTON';
 
 const getCSSFromStyle = (style: TextStyle): Style => {
   switch (style) {
-    case TextStyle.DESCRIPTION:
+    case 'DESCRIPTION':
       return {
         fontSize: FontSize.M,
         lineHeight: FontSize.XL,
       };
-    case TextStyle.TITLE:
+    case 'TITLE':
       return {
         fontSize: FontSize.XXXL,
         lineHeight: FontSize.S,
         textTransform: 'uppercase',
         fontWeight: 'bold',
       };
-    case TextStyle.SUBTITLE:
+    case 'SUBTITLE':
       return {
-        fontSize: FontSize.XXL,
+        fontSize: FontSize.XL,
         lineHeight: FontSize.XL,
-        fontWeight: 'bold',
       };
-    case TextStyle.BUTTON:
+    case 'BUTTON':
       return {
         fontSize: FontSize.M,
         lineHeight: FontSize.XL,
+        fontWeight: 'normal',
       };
     default:
       throw Error;

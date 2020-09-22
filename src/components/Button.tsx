@@ -1,46 +1,59 @@
 import React, { useState } from 'react';
 
 import {
+  Icon,
   Link,
   Styles
 } from 'types';
+import { Colors } from 'values';
 
-import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import StyledText from './StyledText';
+
 interface ButtonProps {
-  link: Link;
-  backgrounColor: string;
-  textColor: string;
-  hoverColor: string;
+  background?: {
+    offHoverColor: Colors;
+    onHoverColor: Colors;
+  };
+  text: {
+    link: Link;
+    color: Colors;
+  };
+  icon?: Icon;
   showShadow?: boolean;
   showShadowHover?: boolean;
-  capitalize?: boolean;
-  icon?: {
-    fontAwesomeIcon: IconDefinition;
-    size?: string;
-  };
-  size?: '0.8em' | '1em' | '1.2em';
-  width?: string;
   onClick?: Function;
 }
 
-const Button = (props: ButtonProps) => {
-  const { icon, size, link, backgrounColor, textColor, capitalize, hoverColor, showShadow, showShadowHover, width, onClick } = props;
+const defaultProps = {
+  background: {
+    offHoverColor: Colors.PRIMARY,
+    onHoverColor: Colors.FACEBOOK,
+  },
+  showShadow: false,
+  showShadowHover: true,
+};
+
+const Button = (props: ButtonProps & typeof defaultProps) => {
+  const { icon, text, background, showShadow, showShadowHover, onClick } = props;
+  const { offHoverColor, onHoverColor } = background;
+  const { link, color } = text;
+
   const [isHover, setIsHover] = useState(false);
   let styles: Styles = {
     button: {
       verticalAlign: 'middle',
       textAlign: 'center',
-      padding: '13px 14px',
-      fontSize: size ? size : '1em',
+      padding: '10px 14px',
+      fontSize: '1em',
       textDecoration: 'none',
-      textTransform: capitalize ? 'uppercase' : undefined,
-      color: textColor,
-      background: isHover ? hoverColor : backgrounColor,
+      textTransform: 'uppercase',
+      color: color,
+      background: isHover ? onHoverColor : offHoverColor,
       letterSpacing: '.025em',
       borderRadius: '4px',
-      width: width ? width : 'fit-content',
+      width: '110px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -60,7 +73,7 @@ const Button = (props: ButtonProps) => {
       fontSize: icon && icon.size ? icon.size : '20px',
       textAlign: 'center',
       verticalAlign: 'middle',
-      color: textColor,
+      color: color,
     },
   };
   return (
@@ -76,9 +89,13 @@ const Button = (props: ButtonProps) => {
           <FontAwesomeIcon icon={icon.fontAwesomeIcon} size="lg" />
         </div>
       )}
-      {link.label.toUpperCase()}
+      <StyledText color={color} style="BUTTON">
+        {link.label.toUpperCase()}
+      </StyledText>
     </a>
   );
 };
+
+Button.defaultProps = defaultProps;
 
 export default Button;

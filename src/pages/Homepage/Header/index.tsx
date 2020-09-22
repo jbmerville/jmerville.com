@@ -2,8 +2,9 @@ import './style.css';
 
 import React from 'react';
 
+import { Margin } from 'components';
 import Button from 'components/Button';
-import UseWindowSize from 'hooks/WindowSize';
+import { useWindowSize } from 'hooks';
 import { Styles } from 'types';
 import { Colors } from 'values';
 
@@ -13,7 +14,7 @@ import { LINKS } from './header-config';
 const style = require('./style.css');
 
 const Header = () => {
-  const [width] = UseWindowSize();
+  const [width] = useWindowSize();
 
   const styles: Styles = {
     container: {
@@ -33,7 +34,6 @@ const Header = () => {
       alignItems: 'center',
     },
     link: {
-      margin: '0 25px',
       textDecoration: 'none',
       color: Colors.PRIMARY,
       letterSpacing: '.025em',
@@ -49,24 +49,22 @@ const Header = () => {
     <Hamburger />
   ) : (
     <header style={styles.container}>
-      <nav style={styles.innerContainer}>
-        {LINKS.map((link) => {
-          return link.isButton ? (
-            <div style={styles.button}>
-              <Button
-                link={{ ...link, label: link.label }}
-                backgrounColor={Colors.PRIMARY}
-                textColor={Colors.BACKGROUND}
-                hoverColor={Colors.SECONDARY}
-              ></Button>
-            </div>
-          ) : (
-            <a className="linkHover" key={link.id} style={styles.link} href={link.url}>
-              {link.label}
-            </a>
-          );
-        })}
-      </nav>
+      <Margin right="SMALL">
+        <nav style={styles.innerContainer}>
+          {LINKS.map((item) => {
+            const { link, isButton } = item;
+            return isButton ? (
+              <Button text={{ link, color: Colors.BACKGROUND }} />
+            ) : (
+              <Margin right="REGULAR">
+                <a className="linkHover" key={link.id} style={styles.link} href={link.url}>
+                  {link.label}
+                </a>
+              </Margin>
+            );
+          })}
+        </nav>
+      </Margin>
     </header>
   );
 };

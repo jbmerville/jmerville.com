@@ -1,11 +1,12 @@
 import React, { useRef } from 'react';
 
-import IsComponentVisible from 'hooks/ComponentVisibility';
-import UseWindowSize from 'hooks/WindowSize';
+import { Margin } from 'components';
+import StyledText from 'components/StyledText';
+import { useWindowSize } from 'hooks';
+import IsComponentVisible from 'hooks/useIsComponentVisible';
 import { Styles } from 'types';
 import {
   Colors,
-  FontSize,
   MaxWidth,
   Paddings
 } from 'values';
@@ -13,7 +14,7 @@ import {
 import Column from './Column';
 
 const Blog = () => {
-  const [width] = UseWindowSize();
+  const [width] = useWindowSize();
   const ref = useRef(null);
   const isVisible = IsComponentVisible(ref, 300);
 
@@ -61,20 +62,6 @@ const Blog = () => {
       position: 'relative',
     },
     textContainer: {},
-    title: {
-      textTransform: 'uppercase',
-      fontWeight: 'bold',
-      fontSize: FontSize.XXL,
-      color: Colors.PRIMARY,
-      marginTop: '-30px',
-    },
-    secondaryTitle: {
-      marginTop: '20px',
-      fontWeight: 'normal',
-      fontSize: '1em',
-      color: Colors.TEXT,
-      transitionDelay: '.1s',
-    },
   };
 
   // Mobile style
@@ -111,20 +98,6 @@ const Blog = () => {
       position: 'relative',
       paddingLeft: '20px',
     };
-    styles.title = {
-      textTransform: 'uppercase',
-      fontWeight: 'bold',
-      fontSize: '1.2em',
-      color: Colors.PRIMARY,
-      marginTop: '-30px',
-    };
-    styles.secondaryTitle = {
-      marginTop: '20px',
-      fontWeight: 'normal',
-      fontSize: '1em',
-      color: Colors.TEXT,
-      transitionDelay: '.1s',
-    };
   }
 
   const columns =
@@ -145,11 +118,17 @@ const Blog = () => {
         {columns}
         <div style={styles.rightContainer}>
           <div style={styles.textContainer}>
-            <div className={isVisible} style={styles.title}>
-              Articles & Blog Posts
+            <div className={isVisible}>
+              <Margin bottom={'SMALL'}>
+                <StyledText color={Colors.PRIMARY} style="TITLE">
+                  Blog posts
+                </StyledText>
+              </Margin>
             </div>
-            <div className={isVisible} style={styles.secondaryTitle}>
-              Coming soon!
+            <div className={isVisible}>
+              <StyledText color={Colors.TEXT} style="DESCRIPTION">
+                Coming soon!
+              </StyledText>
             </div>
           </div>
         </div>

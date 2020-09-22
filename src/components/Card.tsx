@@ -5,16 +5,13 @@ import React, {
 } from 'react';
 
 import Button from 'components/Button';
-import UseWindowSize from 'hooks/WindowSize';
+import { useWindowSize } from 'hooks';
 import {
   ICard,
+  Link,
   Styles
 } from 'types';
-import {
-  Colors,
-  FontSize,
-  MarginType
-} from 'values';
+import { Colors } from 'values';
 
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
@@ -23,7 +20,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import Margin from './Margin';
-import StyledText, { TextStyle } from './StyledText';
+import StyledText from './StyledText';
 
 interface CardProps {
   item: ICard.Card;
@@ -31,7 +28,7 @@ interface CardProps {
 }
 
 const Card = (props: CardProps) => {
-  const [width, height] = UseWindowSize();
+  const [width, height] = useWindowSize();
   const ref = useRef<HTMLDivElement>(null);
   const [scrollTop, setScrollTop] = useState(0);
 
@@ -70,23 +67,7 @@ const Card = (props: CardProps) => {
       minHeight: '600px',
       width: 'webkit-fill-available',
       background: Colors.GRAY_LIGHT,
-      margin: '400px 0',
       transform: `matrix(1, 0, 0, 1, 0, ${getAnimationFactor()})`,
-    },
-    headline: {
-      fontSize: FontSize.XXL,
-      lineHeight: '1.125',
-      margin: '0px 70px',
-      marginBottom: '.5em',
-      color: Colors.TEXT,
-      gridColumn: 'headline-start/headline-end',
-      gridRow: 'headline-start/headline-end',
-    },
-    description: {
-      margin: '0px 70px',
-      gridColumn: 'excerpt-start/excerpt-end',
-      gridRow: 'excerpt-start/excerpt-end',
-      lineHeight: '1.5',
     },
     imageContainer: {
       gridColumn: 'media-start/media-end',
@@ -132,34 +113,25 @@ const Card = (props: CardProps) => {
     styles.buttonContainer.padding = '20px 0';
     styles.buttonContainer.bottom = '0px';
     styles.button.padding = '10px 0';
-    styles.description.margin = '20px';
-    styles.headline.margin = '20px';
   }
-  const getButton = (id: string, label: string, url: string, icon: IconDefinition) => (
-    <div style={styles.button}>
-      <Button
-        link={{ id, label, url }}
-        backgrounColor={Colors.PRIMARY}
-        textColor={Colors.BACKGROUND}
-        hoverColor={Colors.SECONDARY}
-        showShadow={false}
-        width={'110px'}
-        icon={{ fontAwesomeIcon: icon }}
-      />
-    </div>
-  );
+  const getButton = (id: string, label: string, url: string, icon: IconDefinition) => {
+    const link: Link = { id, label, url };
+    return (
+      <div style={styles.button}>
+        <Button text={{ link, color: Colors.BACKGROUND }} showShadow={false} icon={{ fontAwesomeIcon: icon }} />
+      </div>
+    );
+  };
 
   return (
     <div style={styles.container} ref={ref}>
-      <div style={styles.imageContainer}>
-        <div></div>
-      </div>
-      <Margin horizontal={MarginType.REGULAR} vertical={MarginType.REGULAR}>
-        <StyledText color={Colors.TEXT} style={TextStyle.SUBTITLE}>
+      <div style={styles.imageContainer}></div>
+      <Margin horizontal="REGULAR" vertical="REGULAR">
+        <StyledText color={Colors.TEXT} style="SUBTITLE">
           {title}
         </StyledText>
       </Margin>
-      <Margin horizontal={MarginType.REGULAR} vertical={MarginType.REGULAR}>
+      <Margin horizontal="REGULAR" vertical="REGULAR">
         {description}
         <div style={styles.buttonContainer}>
           {githubUrl && getButton('code', 'Code', githubUrl, faGithub)}

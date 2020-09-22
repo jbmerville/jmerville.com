@@ -1,13 +1,9 @@
 import React from 'react';
 
-import CSS from 'csstype';
-import UseWindowSize from 'hooks/WindowSize';
+import { useWindowSize } from 'hooks';
+import { Styles } from 'types';
 
 import CardBlog from './CardBlog';
-
-interface Styles {
-  column: CSS.Properties;
-}
 
 interface ColumnProps {
   cards: any[];
@@ -21,7 +17,7 @@ const BAR_WIDTH = [
 ];
 
 const Column = (props: ColumnProps) => {
-  const [width] = UseWindowSize();
+  const [width] = useWindowSize();
   const { cards, offset } = props;
   const styles: Styles = {
     column: {

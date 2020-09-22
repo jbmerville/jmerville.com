@@ -1,37 +1,32 @@
-export enum MarginType {
-  ZERO = 'ZERO',
-  SMALL = 'SMALL',
-  REGULAR = 'REGULAR',
-  LARGE = 'LARGE',
-  VLARGE = 'VLARGE',
-}
-export interface MarginHoriVertNumber {
+export type MarginType = 'ZERO' | 'SMALL' | 'REGULAR' | 'LARGE' | 'VLARGE';
+
+export interface MarginHorVert {
   HORIZONTAL: number;
   VERTICAL: number;
 }
 
 const MARGIN_VALUE: {
-  [key in keyof typeof MarginType]: MarginHoriVertNumber;
+  [key in MarginType]: MarginHorVert;
 } = {
   ZERO: {
     HORIZONTAL: 0,
     VERTICAL: 0,
   },
   SMALL: {
-    HORIZONTAL: 30,
-    VERTICAL: 30,
+    HORIZONTAL: 20,
+    VERTICAL: 20,
   },
   REGULAR: {
     HORIZONTAL: 70,
     VERTICAL: 70,
   },
   LARGE: {
-    HORIZONTAL: 70,
-    VERTICAL: 70,
+    HORIZONTAL: 150,
+    VERTICAL: 150,
   },
   VLARGE: {
-    HORIZONTAL: 70,
-    VERTICAL: 70,
+    HORIZONTAL: 250,
+    VERTICAL: 250,
   },
 };
 

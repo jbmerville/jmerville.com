@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { Button } from 'components';
 import { Styles } from 'types';
 import {
   Colors,
@@ -83,9 +84,12 @@ const Hamburger = () => {
           <FontAwesomeIcon icon={faTimes} size="sm" />
         </div>
         <div style={styles.linkContainer}>
-          {LINKS.map((link) => {
-            return (
-              <a key={link.id} style={{ background: link.isButton ? Colors.GRAY_LIGHT : '', ...styles.link }} href={link.url}>
+          {LINKS.map((item) => {
+            const { link, isButton } = item;
+            return isButton ? (
+              <Button text={{ link, color: Colors.BACKGROUND }} />
+            ) : (
+              <a key={link.id} style={{ background: Colors.GRAY_LIGHT, ...styles.link }} href={link.url}>
                 {link.label}
               </a>
             );

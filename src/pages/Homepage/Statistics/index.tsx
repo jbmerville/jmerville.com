@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Margin } from 'components';
+import StyledText from 'components/StyledText';
 import { Styles } from 'types';
 import {
   Colors,
@@ -13,10 +15,10 @@ const colorText = (text: string | number, color: Colors): JSX.Element => <span s
 const renderGithubStatistics = (): JSX.Element => {
   const { comment, code, nFiles } = repoLinesStats.TypeScript;
   return (
-    <div>
+    <StyledText color={Colors.TEXT} style="DESCRIPTION">
       The last build of this website contains {colorText(code, Colors.BLUE)} lines of TypeScript code, and {colorText(comment, Colors.BLUE)}{' '}
       comments, across {colorText(nFiles, Colors.BLUE)} files.
-    </div>
+    </StyledText>
   );
 };
 
@@ -53,7 +55,11 @@ const Statistics = () => {
     <div style={styles.outerContainer}>
       <div style={styles.innerContainer}>
         <div style={styles.textContainer}>
-          <div style={styles.headline}>Statistics</div>
+          <Margin bottom={'SMALL'}>
+            <StyledText color={Colors.PRIMARY} style="TITLE">
+              Statistics
+            </StyledText>
+          </Margin>
           {renderGithubStatistics()}
         </div>
       </div>

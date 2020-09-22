@@ -1,5 +1,7 @@
 import CSS from 'csstype';
 
+import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+
 export interface Styles {
   [name: string]: CSS.Properties;
 }
@@ -14,5 +16,9 @@ export interface Link {
   id: string;
   label: string;
   url: string;
-  isButton?: boolean;
+}
+
+export interface Icon {
+  fontAwesomeIcon: IconDefinition;
+  size?: string;
 }

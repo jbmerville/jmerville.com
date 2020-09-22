@@ -1,7 +1,11 @@
 import React from 'react';
 
+import {
+  Margin,
+  StyledText
+} from 'components';
 import Button from 'components/Button';
-import UseWindowSize from 'hooks/WindowSize';
+import { useWindowSize } from 'hooks';
 import { Styles } from 'types';
 import { getPaddingsFromWidth } from 'utils';
 import {
@@ -13,7 +17,7 @@ import {
 import { BUTTONS } from './footer-config';
 
 const Footer = () => {
-  const [width] = UseWindowSize();
+  const [width] = useWindowSize();
 
   const styles: Styles = {
     outerContainer: {
@@ -29,23 +33,6 @@ const Footer = () => {
       width: '100%',
       height: 'fit-content',
       margin: getPaddingsFromWidth(width).ALL,
-    },
-    title: {
-      width: '-webkit-fill-available',
-      textTransform: 'uppercase',
-      fontWeight: 'bold',
-      fontSize: '3em',
-      marginBottom: '20px',
-      color: Colors.PRIMARY,
-    },
-    description: {
-      marginTop: '25px',
-      height: 'fit-content',
-      fontWeight: 'lighter',
-      fontSize: '1.2em',
-      lineHeight: '1.5em',
-      width: '500px',
-      color: Colors.PRIMARY,
     },
     buttonContainer: {
       height: 'fit-content',
@@ -90,18 +77,15 @@ const Footer = () => {
   return (
     <div style={styles.outerContainer}>
       <div style={styles.innerContainer}>
-        <div style={styles.title}>Find me here!</div>
+        <Margin bottom={'SMALL'}>
+          <StyledText color={Colors.PRIMARY} style="TITLE">
+            Find me here!
+          </StyledText>
+        </Margin>
         <div style={styles.buttonContainer}>
           {BUTTONS.map((button) => (
             <div style={styles.button}>
-              <Button
-                link={button.link}
-                icon={button.icon}
-                width="110px"
-                backgrounColor={Colors.PRIMARY}
-                textColor={Colors.BACKGROUND}
-                hoverColor={Colors.SECONDARY}
-              />
+              <Button text={{ link: button.link, color: Colors.BACKGROUND }} icon={button.icon} />
             </div>
           ))}
         </div>

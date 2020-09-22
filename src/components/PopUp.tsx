@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import UseWindowSize from 'hooks/WindowSize';
+import { useWindowSize } from 'hooks';
 import { Styles } from 'types';
 import { Colors } from 'values';
 
@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const PopUp = () => {
   const [isClicked, setClicked] = useState(false);
   const [isHover, setHover] = useState(false);
-  const [width] = UseWindowSize();
+  const [width] = useWindowSize();
 
   let styles: Styles = {
     outerContainer: {

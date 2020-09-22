@@ -1,18 +1,8 @@
 import React from 'react';
 
-import CSS from 'csstype';
-
-import UseWindowSize from '../../hooks/WindowSize';
-import { Colors } from '../../values';
-
-interface Styles {
-  outerContainer: CSS.Properties;
-  innerContainer: CSS.Properties;
-  emoji: CSS.Properties;
-  title: CSS.Properties;
-  barContainer: CSS.Properties;
-  bar: CSS.Properties;
-}
+import { useWindowSize } from 'hooks';
+import { Styles } from 'types';
+import { Colors } from 'values';
 
 interface CardBlogProps {
   color: string;
@@ -24,9 +14,9 @@ interface CardBlogProps {
 
 const CardBlog = (props: CardBlogProps) => {
   const { color, emoji, title, isColorLight, widths } = props;
-  const [width] = UseWindowSize();
+  const [width] = useWindowSize();
 
-  let styles: Styles = {
+  const styles: Styles = {
     outerContainer: {
       transition: 'transform 0.5s cubic-bezier(0.215,0.61,0.355,1) 0s',
       cursor: 'pointer',

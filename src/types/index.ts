@@ -1,10 +1,11 @@
 import * as ICard from './ICard';
 import {
+  Icon,
   Link,
   ProcessEnv,
   Style,
   Styles
 } from './other';
 
-export type { Link, ProcessEnv, Style, Styles };
+export type { Icon, Link, ProcessEnv, Style, Styles };
 export { ICard };

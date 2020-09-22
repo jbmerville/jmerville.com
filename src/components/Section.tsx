@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 
-import IsComponentVisible from 'hooks/ComponentVisibility';
-import UseWindowSize from 'hooks/WindowSize';
+import { useWindowSize } from 'hooks';
+import IsComponentVisible from 'hooks/useIsComponentVisible';
 import { Styles } from 'types';
 import { getPaddingsFromWidth } from 'utils';
 import {
@@ -19,7 +19,7 @@ interface SectionProps {
 }
 
 const Section = (props: SectionProps) => {
-  const [width] = UseWindowSize();
+  const [width] = useWindowSize();
   const ref = useRef(null);
   const isVisible = IsComponentVisible(ref, 300);
 

@@ -1,33 +1,29 @@
 import { getScreenSizeFromWidth } from 'utils';
 import { ScreenSize } from 'values';
-import { MarginHoriVertNumber } from 'values/Margins';
+import { MarginHorVert } from 'values/Margins';
 
-export interface MarginHoriVertString {
-  HORIZONTAL: string;
-  VERTICAL: string;
-}
-const adjustMarginFromWidth = (width: number, margin: MarginHoriVertNumber): MarginHoriVertString => {
+const adjustMarginFromWidth = (width: number, margin: MarginHorVert): MarginHorVert => {
   const screenSize = getScreenSizeFromWidth(width);
   switch (screenSize) {
     case ScreenSize.PHONE:
       return {
-        HORIZONTAL: `${Math.max(margin.HORIZONTAL - 10, 0)}px`,
-        VERTICAL: `${Math.max(margin.HORIZONTAL - 10, 0)}px`,
+        HORIZONTAL: Math.max(margin.HORIZONTAL - 50, 0),
+        VERTICAL: Math.max(margin.HORIZONTAL - 50, 0),
       };
     case ScreenSize.TABLET:
       return {
-        HORIZONTAL: `${Math.max(margin.HORIZONTAL - 5, 0)}px`,
-        VERTICAL: `${Math.max(margin.HORIZONTAL - 5, 0)}px`,
+        HORIZONTAL: Math.max(margin.HORIZONTAL - 5, 0),
+        VERTICAL: Math.max(margin.HORIZONTAL - 5, 0),
       };
     case ScreenSize.TV:
       return {
-        HORIZONTAL: `${Math.max(margin.HORIZONTAL + 10, 0)}px`,
-        VERTICAL: `${Math.max(margin.HORIZONTAL + 10, 0)}px`,
+        HORIZONTAL: Math.max(margin.HORIZONTAL + 10, 0),
+        VERTICAL: Math.max(margin.HORIZONTAL + 10, 0),
       };
     default:
       return {
-        HORIZONTAL: `${margin.HORIZONTAL}px`,
-        VERTICAL: `${margin.HORIZONTAL}px`,
+        HORIZONTAL: margin.HORIZONTAL,
+        VERTICAL: margin.HORIZONTAL,
       };
   }
 };

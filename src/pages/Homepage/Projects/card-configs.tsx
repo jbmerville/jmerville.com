@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Br from 'components/Br';
-import StyledText, { TextStyle } from 'components/StyledText';
+import StyledText from 'components/StyledText';
 import { ICard } from 'types';
 import { Colors } from 'values';
 
@@ -24,11 +24,11 @@ export const SECTION_CATEGORIES = [
 const renderTwoParagraphs = (topText: string, bottomText: string): JSX.Element => {
   return (
     <>
-      <StyledText color={Colors.TEXT} style={TextStyle.DESCRIPTION}>
+      <StyledText color={Colors.TEXT} style="DESCRIPTION">
         {topText}
       </StyledText>
       <Br count={1} />
-      <StyledText color={Colors.TEXT} style={TextStyle.DESCRIPTION}>
+      <StyledText color={Colors.TEXT} style="DESCRIPTION">
         {bottomText}
       </StyledText>
     </>
@@ -40,11 +40,10 @@ export const SECTION_CONTENT: ICard.Card[] = [
     id: 'amazon',
     category: Categories.WORK_HISTORY,
     projectUrl: 'https://www.amazon.jobs/en/working/working-amazon',
-    title: 'Amazon · Upcoming Software Engineer Intern',
+    title: 'Amazon ·  Software Engineer Intern',
     description: (
-      <StyledText color={Colors.TEXT} style={TextStyle.DESCRIPTION}>
-        I am currently interning with the Amazon Prime Video team in London, UK. Where I am working on adding searching capabilities to
-        internal websites using ElasticSearch.
+      <StyledText color={Colors.TEXT} style="DESCRIPTION">
+        I interned at Amazon Prime Video, where I worked on improving the search capabilities of Internal data using ElasticSearch.
       </StyledText>
     ),
     image: {
@@ -58,7 +57,7 @@ export const SECTION_CONTENT: ICard.Card[] = [
     projectUrl: 'https://www.srvice.ca/',
     title: 'Srvice · Full-Stack Developer',
     description: (
-      <StyledText color={Colors.TEXT} style={TextStyle.DESCRIPTION}>
+      <StyledText color={Colors.TEXT} style="DESCRIPTION">
         Since fall 2019 I have been an active developer at Srvice’s. Srvice’s vision is to bring customers closer to local services with the
         help of technology. Using agile methodologies I build iOS and Android applications with frameworks like React and React-Native.
       </StyledText>
@@ -74,7 +73,7 @@ export const SECTION_CONTENT: ICard.Card[] = [
     projectUrl: 'https://lassonde.yorku.ca/',
     title: 'York University · Teacher Assistant',
     description: (
-      <StyledText color={Colors.TEXT} style={TextStyle.DESCRIPTION}>
+      <StyledText color={Colors.TEXT} style="DESCRIPTION">
         Led weekly classes for undergraduate Computer Science students, teaching object-oriented programming for mobile application
         development.
       </StyledText>
