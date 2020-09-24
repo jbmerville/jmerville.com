@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
-import { Margin } from 'components';
+import {
+  Animate,
+  Margin
+} from 'components';
 import StyledText from 'components/StyledText';
+import { useIsComponentVisible } from 'hooks';
 import { Styles } from 'types';
 import {
   Colors,
@@ -23,6 +27,9 @@ const renderGithubStatistics = (): JSX.Element => {
 };
 
 const Statistics = () => {
+  const ref = useRef(null);
+  const isVisible = useIsComponentVisible(ref, 300);
+
   const styles: Styles = {
     outerContainer: {
       overflow: 'hidden',
@@ -52,15 +59,19 @@ const Statistics = () => {
   };
 
   return (
-    <div style={styles.outerContainer}>
+    <div ref={ref} style={styles.outerContainer}>
       <div style={styles.innerContainer}>
         <div style={styles.textContainer}>
           <Margin bottom={'SMALL'}>
-            <StyledText color={Colors.PRIMARY} style="TITLE">
-              Statistics
-            </StyledText>
+            <Animate direction={'LEFT'} isVisible={isVisible}>
+              <StyledText color={Colors.PRIMARY} style="TITLE">
+                Statistics
+              </StyledText>
+            </Animate>
           </Margin>
-          {renderGithubStatistics()}
+          <Animate direction={'LEFT'} isVisible={isVisible} speed="1.5x">
+            {renderGithubStatistics()}
+          </Animate>
         </div>
       </div>
     </div>

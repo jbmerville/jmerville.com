@@ -15,7 +15,7 @@ interface MarginProps {
   right?: MarginType;
   top?: MarginType;
   bottom?: MarginType;
-  children: string | JSX.Element | Array<JSX.Element | string>;
+  children: string | JSX.Element | Array<JSX.Element | string> | any;
 }
 
 const defaultProps = {
@@ -36,6 +36,7 @@ const Margin = (props: MarginProps & typeof defaultProps) => {
     margin: `${margins.top}px ${margins.right}px ${margins.bottom}px ${margins.left}px`,
     width: 'fit-content',
     height: 'fit-content',
+    display: 'inline-block',
   };
 
   return <div style={style}>{children}</div>;

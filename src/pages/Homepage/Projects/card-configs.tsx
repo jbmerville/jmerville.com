@@ -27,7 +27,7 @@ const renderTwoParagraphs = (topText: string, bottomText: string): JSX.Element =
       <StyledText color={Colors.TEXT} style="DESCRIPTION">
         {topText}
       </StyledText>
-      <Br count={1} />
+      <Br />
       <StyledText color={Colors.TEXT} style="DESCRIPTION">
         {bottomText}
       </StyledText>

@@ -46,7 +46,7 @@ const getCSSFromStyle = (style: TextStyle): Style => {
 
 const getStyle = (style: TextStyle, color: Colors): Style => {
   const textStyle = getCSSFromStyle(style);
-  return { ...textStyle, color };
+  return { ...textStyle, color, display: 'inline-block' };
 };
 
 const StyledText = (props: StyledTextProps): JSX.Element => {

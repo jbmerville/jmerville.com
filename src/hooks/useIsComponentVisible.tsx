@@ -22,7 +22,7 @@ const useIsComponentVisible = (ref: React.RefObject<any>, offset: number) => {
     return () => window.removeEventListener('scroll', isVisible);
   }, []);
 
-  return visible > 0 ? 'animate-scroll' : 'animate';
+  return visible > 0;
 };
 
 export default useIsComponentVisible;

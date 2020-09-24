@@ -1,7 +1,9 @@
 import React, { useRef } from 'react';
 
-import { useWindowSize } from 'hooks';
-import IsComponentVisible from 'hooks/useIsComponentVisible';
+import {
+  useIsComponentVisible,
+  useWindowSize
+} from 'hooks';
 import { Styles } from 'types';
 import { getPaddingsFromWidth } from 'utils';
 import {
@@ -9,6 +11,10 @@ import {
   FontSize,
   MaxWidth
 } from 'values';
+
+import Animate from './Animate';
+import Margin from './Margin';
+import StyledText from './StyledText';
 
 interface SectionProps {
   section: {
@@ -21,7 +27,7 @@ interface SectionProps {
 const Section = (props: SectionProps) => {
   const [width] = useWindowSize();
   const ref = useRef(null);
-  const isVisible = IsComponentVisible(ref, 300);
+  const isVisible = useIsComponentVisible(ref, 300);
 
   let styles: Styles = {
     outerContainer: {
@@ -68,9 +74,13 @@ const Section = (props: SectionProps) => {
   return (
     <section ref={ref} key={props.section.id} style={styles.outerContainer}>
       <div style={styles.innerContainer}>
-        <div className={isVisible} style={styles.title}>
-          {props.section.title}
-        </div>
+        <Margin bottom="REGULAR">
+          <Animate direction={'BOTTOM'} isVisible={isVisible}>
+            <StyledText color={Colors.PRIMARY} style="TITLE">
+              {props.section.title}
+            </StyledText>
+          </Animate>
+        </Margin>
         {props.content}
       </div>
     </section>

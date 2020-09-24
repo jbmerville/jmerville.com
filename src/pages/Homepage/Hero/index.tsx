@@ -4,6 +4,7 @@ import React, {
 } from 'react';
 
 import {
+  Animate,
   Button,
   Margin,
   SeparationBar,
@@ -23,22 +24,18 @@ import { CONTENT } from './hero-config';
 
 const Hero = () => {
   const [width] = useWindowSize();
-  const [animationClasses, setAnimationClasses] = useState('animate');
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setAnimationClasses('animate animate-scroll');
-    }, 100);
-    return () => clearInterval(timeout);
-  }, []);
-
+    setTimeout(() => setIsVisible(true));
+  });
   const styles: Styles = {
     outerContainer: {
       position: 'relative',
       display: 'grid',
       backgroundColor: Colors.BACKGROUND,
       width: '100%',
-      height: '100%',
+      height: '90%',
       minHeight: 'fit-content',
       overflow: 'hidden',
       maxHeight: '800px',
@@ -51,6 +48,8 @@ const Hero = () => {
       padding: getPaddingsFromWidth(width).ALL,
     },
     textContainer: {
+      background: Colors.GRAY_LIGHT,
+      borderRadius: '15px',
       float: 'left',
       width: '45%',
       height: 'auto',
@@ -75,12 +74,11 @@ const Hero = () => {
       position: 'absolute',
       left: '50%',
       top: '50%',
-      transform: 'translate(-40%, -40%)',
+      transform: 'translate(-40%, -30%)',
     },
     callForAction: {
       position: 'relative',
-      transitionDelay: '.7s',
-      transitionDuration: '1.5s',
+      transitionDuration: '1s',
       width: 'fit-content',
       marginTop: '30px',
       zIndex: 100,
@@ -152,36 +150,46 @@ const Hero = () => {
   const renderTextSection = (): JSX.Element => {
     return (
       <div style={styles.textContainer}>
-        <div className={animationClasses}>
-          <StyledText color={Colors.PRIMARY} style="TITLE">
-            {CONTENT.title.primary}
-          </StyledText>
-        </div>
-        <div className={animationClasses}>
-          <Margin vertical="SMALL">
-            <StyledText color={Colors.TEXT} style="SUBTITLE">
-              {CONTENT.title.secondary}
+        <Margin horizontal={'SMALL'} vertical="SMALL">
+          <Animate direction={'BOTTOM'} isVisible={isVisible} speed="0.5x">
+            <StyledText color={Colors.PRIMARY} style="TITLE">
+              {CONTENT.title.primary}
             </StyledText>
+          </Animate>
+          <Animate direction={'BOTTOM'} isVisible={isVisible}>
+            <Margin vertical="SMALL">
+              <StyledText color={Colors.TEXT} style="SUBTITLE">
+                {CONTENT.title.secondary}
+              </StyledText>
+            </Margin>
+          </Animate>
+          <Margin bottom="SMALL">
+            <Animate direction={'BOTTOM'} isVisible={isVisible}>
+              <SeparationBar />
+            </Animate>
           </Margin>
-        </div>
-        <Margin bottom="SMALL">
-          <div className={animationClasses}>
-            <SeparationBar />
-          </div>
+          <Animate direction={'BOTTOM'} isVisible={isVisible}>
+            <StyledText color={Colors.TEXT} style="DESCRIPTION">
+              {CONTENT.description}
+            </StyledText>
+          </Animate>
+          {width > 600 && (
+            <Animate direction={'BOTTOM'} isVisible={isVisible} speed="1.5x">
+              <Margin top="SMALL">
+                <Margin right="SMALL">
+                  <Button
+                    text={{ link: { id: 'projects', label: 'Projects', url: '' }, color: Colors.BACKGROUND }}
+                    background={{ offHoverColor: Colors.GRAY_DARK, onHoverColor: Colors.SECONDARY }}
+                  />
+                </Margin>
+                <Button
+                  text={{ link: { id: 'experience', label: 'Experience', url: '' }, color: Colors.BACKGROUND }}
+                  background={{ offHoverColor: Colors.GRAY_DARK, onHoverColor: Colors.SECONDARY }}
+                />
+              </Margin>
+            </Animate>
+          )}
         </Margin>
-        <div className={animationClasses} style={styles.description}>
-          <StyledText color={Colors.TEXT} style="DESCRIPTION">
-            {CONTENT.description}
-          </StyledText>
-        </div>
-        {width > 600 && (
-          <div className={animationClasses} style={styles.callForAction}>
-            <Button
-              text={{ link: { id: 'callForAction', label: 'Projects', url: '' }, color: Colors.PRIMARY }}
-              background={{ offHoverColor: Colors.GRAY, onHoverColor: Colors.GRAY_LIGHT }}
-            />
-          </div>
-        )}
       </div>
     );
   };

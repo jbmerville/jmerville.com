@@ -1,7 +1,7 @@
 import React from 'react';
 
 const defaultProps = {
-  count: 1,
+  count: 2,
 };
 const Br = (props: typeof defaultProps) => {
   const { count } = props;

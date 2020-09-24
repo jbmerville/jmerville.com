@@ -1,9 +1,14 @@
 import React, { useRef } from 'react';
 
-import { Margin } from 'components';
-import StyledText from 'components/StyledText';
-import { useWindowSize } from 'hooks';
-import IsComponentVisible from 'hooks/useIsComponentVisible';
+import {
+  Animate,
+  Margin,
+  StyledText
+} from 'components';
+import {
+  useIsComponentVisible,
+  useWindowSize
+} from 'hooks';
 import { Styles } from 'types';
 import {
   Colors,
@@ -16,7 +21,7 @@ import Column from './Column';
 const Blog = () => {
   const [width] = useWindowSize();
   const ref = useRef(null);
-  const isVisible = IsComponentVisible(ref, 300);
+  const isVisible = useIsComponentVisible(ref, 300);
 
   const leftColumn = [
     [Colors.GRAY_DARK, '🤖', 'Placeholder', true],
@@ -118,18 +123,18 @@ const Blog = () => {
         {columns}
         <div style={styles.rightContainer}>
           <div style={styles.textContainer}>
-            <div className={isVisible}>
+            <Animate direction={'RIGHT'} isVisible={isVisible}>
               <Margin bottom={'SMALL'}>
                 <StyledText color={Colors.PRIMARY} style="TITLE">
                   Blog posts
                 </StyledText>
               </Margin>
-            </div>
-            <div className={isVisible}>
+            </Animate>
+            <Animate direction={'RIGHT'} isVisible={isVisible} speed="1.5x">
               <StyledText color={Colors.TEXT} style="DESCRIPTION">
                 Coming soon!
               </StyledText>
-            </div>
+            </Animate>
           </div>
         </div>
       </div>

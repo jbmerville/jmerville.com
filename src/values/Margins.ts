@@ -13,16 +13,16 @@ const MARGIN_VALUE: {
     VERTICAL: 0,
   },
   SMALL: {
-    HORIZONTAL: 20,
-    VERTICAL: 20,
+    HORIZONTAL: 30,
+    VERTICAL: 30,
   },
   REGULAR: {
     HORIZONTAL: 70,
     VERTICAL: 70,
   },
   LARGE: {
-    HORIZONTAL: 150,
-    VERTICAL: 150,
+    HORIZONTAL: 120,
+    VERTICAL: 120,
   },
   VLARGE: {
     HORIZONTAL: 250,

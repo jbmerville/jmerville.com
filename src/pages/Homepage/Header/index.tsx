@@ -52,25 +52,25 @@ const Header = () => {
   return width < 600 ? (
     <Hamburger />
   ) : (
-      <header style={styles.container}>
-        <Margin right="SMALL">
-          <nav style={styles.innerContainer}>
-            {LINKS.map((item) => {
-              const { link, isButton } = item;
-              return isButton ? (
-                <Button text={{ link, color: Colors.BACKGROUND }} />
-              ) : (
-                  <Margin right="REGULAR">
-                    <a className="linkHover" key={link.id} style={styles.link} href={link.url}>
-                      {link.label}
-                    </a>
-                  </Margin>
-                );
-            })}
-          </nav>
-        </Margin>
-      </header>
-    );
+    <header style={styles.container}>
+      <Margin right="SMALL">
+        <nav style={styles.innerContainer}>
+          {LINKS.map((item) => {
+            const { link, isButton } = item;
+            return isButton ? (
+              <Button text={{ link, color: Colors.BACKGROUND }} showShadow={true} />
+            ) : (
+              <Margin right="REGULAR">
+                <a className="linkHover" key={link.id} style={styles.link} href={link.url}>
+                  {link.label}
+                </a>
+              </Margin>
+            );
+          })}
+        </nav>
+      </Margin>
+    </header>
+  );
 };
 
 export default Header;

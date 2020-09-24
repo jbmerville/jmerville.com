@@ -4,7 +4,7 @@ enum Colors {
   SECONDARY = '#54649f',
   TEXT = '#2a0217',
   GRAY_LIGHT = '#ecedf6',
-  GRAY_DARK = '#929eaa',
+  GRAY_DARK = '#7d8792',
   GRAY = '#e0e1ec',
   BLUE_LIGHT = '#2770a9',
   BLUE = '#00579a',

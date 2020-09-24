@@ -11,7 +11,10 @@ import {
   Link,
   Styles
 } from 'types';
-import { Colors } from 'values';
+import {
+  Colors,
+  ScreenSize
+} from 'values';
 
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
@@ -19,6 +22,7 @@ import {
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 
+import Br from './Br';
 import Margin from './Margin';
 import StyledText from './StyledText';
 
@@ -28,6 +32,9 @@ interface CardProps {
 }
 
 const Card = (props: CardProps) => {
+  const { item } = props;
+  const { title, description, image, projectUrl, githubUrl } = item;
+  const { url, backgroundColor } = image;
   const [width, height] = useWindowSize();
   const ref = useRef<HTMLDivElement>(null);
   const [scrollTop, setScrollTop] = useState(0);
@@ -50,11 +57,16 @@ const Card = (props: CardProps) => {
     return isMobile ? getBoundary(0, 1, 1 - calc / 250) : getBoundary(0, 100, calc);
   };
 
-  const { item } = props;
-  const { title, description, image, projectUrl, githubUrl } = item;
-  const { url, backgroundColor } = image;
+  const getButton = (id: string, label: string, url: string, icon: IconDefinition) => {
+    const link: Link = { id, label, url };
+    return (
+      <div style={styles.button}>
+        <Button text={{ link, color: Colors.BACKGROUND }} showShadow={false} icon={{ fontAwesomeIcon: icon }} />
+      </div>
+    );
+  };
 
-  let styles: Styles = {
+  const styles: Styles = {
     container: {
       display: 'grid',
       gridTemplateColumns:
@@ -91,7 +103,7 @@ const Card = (props: CardProps) => {
   };
 
   // Mobile style
-  if (width < 600) {
+  if (width < ScreenSize.PHONE) {
     styles.container = {
       display: 'block',
       gridTemplateColumns:
@@ -114,29 +126,25 @@ const Card = (props: CardProps) => {
     styles.buttonContainer.bottom = '0px';
     styles.button.padding = '10px 0';
   }
-  const getButton = (id: string, label: string, url: string, icon: IconDefinition) => {
-    const link: Link = { id, label, url };
-    return (
-      <div style={styles.button}>
-        <Button text={{ link, color: Colors.BACKGROUND }} showShadow={false} icon={{ fontAwesomeIcon: icon }} />
-      </div>
-    );
-  };
 
   return (
     <div style={styles.container} ref={ref}>
       <div style={styles.imageContainer}></div>
       <Margin horizontal="REGULAR" vertical="REGULAR">
-        <StyledText color={Colors.TEXT} style="SUBTITLE">
-          {title}
-        </StyledText>
-      </Margin>
-      <Margin horizontal="REGULAR" vertical="REGULAR">
+        <Margin bottom="SMALL">
+          <StyledText color={Colors.TEXT} style="SUBTITLE">
+            {title}
+          </StyledText>
+        </Margin>
         {description}
         <div style={styles.buttonContainer}>
           {githubUrl && getButton('code', 'Code', githubUrl, faGithub)}
           {projectUrl && getButton('demo-link', 'Project', projectUrl, faExternalLinkSquareAlt)}
         </div>
+        <Br />
+        <StyledText color={Colors.TEXT} style="DESCRIPTION">
+          Last pushed to repo on July, 3rd 2020.
+        </StyledText>
       </Margin>
     </div>
   );

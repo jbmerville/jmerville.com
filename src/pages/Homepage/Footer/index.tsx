@@ -7,7 +7,6 @@ import {
 import Button from 'components/Button';
 import { useWindowSize } from 'hooks';
 import { Styles } from 'types';
-import { getPaddingsFromWidth } from 'utils';
 import {
   Colors,
   MaxWidth,
@@ -23,15 +22,25 @@ const Footer = () => {
     outerContainer: {
       overflow: 'hidden',
       position: 'relative',
-      display: 'flex',
-      justifyContent: 'flex-end',
-      alignItems: 'center',
+
       height: '400px',
     },
     innerContainer: {
       position: 'relative',
-      width: 'fit-content',
+      maxWidth: MaxWidth,
+      height: '100%',
+      margin: '0 auto',
+      display: 'flex',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+    },
+    card: {
+      background: Colors.GRAY,
+      borderRadius: '15px',
+      position: 'relative',
       height: 'fit-content',
+      maxWidth: MaxWidth,
+      zIndex: 3,
     },
     buttonContainer: {
       height: 'fit-content',
@@ -76,17 +85,25 @@ const Footer = () => {
   return (
     <div style={styles.outerContainer}>
       <div style={styles.innerContainer}>
-        <Margin bottom={'SMALL'} right={'REGULAR'}>
-          <StyledText color={Colors.PRIMARY} style="TITLE">
-            Find me here!
-          </StyledText>
-        </Margin>
-        <div style={styles.buttonContainer}>
-          {BUTTONS.map((button) => (
-            <div style={styles.button}>
-              <Button text={{ link: button.link, color: Colors.BACKGROUND }} icon={button.icon} />
+        <div style={styles.card}>
+          <Margin horizontal="REGULAR" vertical="REGULAR">
+            <Margin bottom="SMALL">
+              <StyledText color={Colors.PRIMARY} style="TITLE">
+                Find me here!
+              </StyledText>
+            </Margin>
+            <div style={styles.buttonContainer}>
+              {BUTTONS.map((button) => (
+                <div style={styles.button}>
+                  <Button
+                    text={{ link: button.link, color: Colors.BACKGROUND }}
+                    background={{ onHoverColor: Colors.SECONDARY, offHoverColor: Colors.GRAY_DARK }}
+                    icon={button.icon}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
+          </Margin>
         </div>
       </div>
     </div>

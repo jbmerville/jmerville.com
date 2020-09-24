@@ -54,25 +54,21 @@ const Button = (props: ButtonProps & typeof defaultProps) => {
       letterSpacing: '.025em',
       borderRadius: '4px',
       width: '110px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+      display: 'inline-block',
       boxShadow: isHover
         ? showShadowHover || showShadowHover === undefined
           ? '0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08)'
           : ''
         : showShadow || showShadow === undefined
-          ? '0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08)'
-          : '',
+        ? '0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08)'
+        : '',
       transition: 'all .15s ease',
       transform: isHover ? 'translateY(-1px)' : '',
     },
     icon: {
       marginRight: '10px',
       display: 'inline-block',
-      fontSize: icon && icon.size ? icon.size : '20px',
-      textAlign: 'center',
-      verticalAlign: 'middle',
+      fontSize: icon && icon.size ? icon.size : '15px',
       color: color,
     },
   };
