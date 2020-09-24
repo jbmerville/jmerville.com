@@ -43,9 +43,10 @@ const Button = (props: ButtonProps & typeof defaultProps) => {
   const [isHover, setIsHover] = useState(false);
   let styles: Styles = {
     button: {
+      height: '50px',
       verticalAlign: 'middle',
       textAlign: 'center',
-      padding: '10px 14px',
+      // padding: '0px 14px',
       fontSize: '1em',
       textDecoration: 'none',
       textTransform: 'uppercase',
@@ -53,7 +54,7 @@ const Button = (props: ButtonProps & typeof defaultProps) => {
       background: isHover ? onHoverColor : offHoverColor,
       letterSpacing: '.025em',
       borderRadius: '4px',
-      width: '110px',
+      width: '130px',
       display: 'inline-block',
       boxShadow: isHover
         ? showShadowHover || showShadowHover === undefined
@@ -64,6 +65,12 @@ const Button = (props: ButtonProps & typeof defaultProps) => {
         : '',
       transition: 'all .15s ease',
       transform: isHover ? 'translateY(-1px)' : '',
+    },
+    innerContainer: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '100%',
     },
     icon: {
       marginRight: '10px',
@@ -80,14 +87,16 @@ const Button = (props: ButtonProps & typeof defaultProps) => {
       style={styles.button}
       onClick={() => onClick}
     >
-      {icon && (
-        <div style={styles.icon}>
-          <FontAwesomeIcon icon={icon.fontAwesomeIcon} size="lg" />
-        </div>
-      )}
-      <StyledText color={color} style="BUTTON">
-        {link.label.toUpperCase()}
-      </StyledText>
+      <div style={styles.innerContainer}>
+        {icon && (
+          <div style={styles.icon}>
+            <FontAwesomeIcon icon={icon.fontAwesomeIcon} size="lg" />
+          </div>
+        )}
+        <StyledText color={color} style="BUTTON">
+          {link.label.toUpperCase()}
+        </StyledText>
+      </div>
     </a>
   );
 };

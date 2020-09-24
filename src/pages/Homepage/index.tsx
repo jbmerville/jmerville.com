@@ -1,9 +1,12 @@
 import React from 'react';
 
-import { PopUp } from 'components';
-import Blog from 'pages/Homepage/Blog';
+import {
+  PopUp,
+  ThemeProvider
+} from 'components';
 import { Styles } from 'types';
 
+import Blog from './Blog';
 import Footer from './Footer';
 import Header from './Header';
 import Hero from './Hero';
@@ -21,13 +24,15 @@ const HomePage = () => {
 
   return (
     <div style={styles.container}>
-      <PopUp />
-      <Header />
-      <Hero />
-      <Blog />
-      <Projects />
-      <Statistics />
-      <Footer />
+      <ThemeProvider>
+        <PopUp />
+        <Header />
+        <Hero />
+        <Blog />
+        <Projects />
+        <Statistics />
+        <Footer />
+      </ThemeProvider>
     </div>
   );
 };

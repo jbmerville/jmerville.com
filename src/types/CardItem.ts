@@ -5,19 +5,12 @@ export interface Image {
   backgroundColor: Colors;
 }
 
-export interface Card {
+export interface CardItem {
   id: string;
   projectUrl?: string;
   githubUrl?: string;
-  description: string | JSX.Element;
+  description: string[];
   category: string;
   title: string;
   image: Image;
 }
-
-// export interface Section {
-//   image: string;
-//   imageWidth?: string;
-//   title: string;
-//   caption?: string;
-// }

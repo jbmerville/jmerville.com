@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { useWindowSize } from 'hooks';
 import { Style } from 'types';
@@ -15,7 +15,7 @@ interface MarginProps {
   right?: MarginType;
   top?: MarginType;
   bottom?: MarginType;
-  children: string | JSX.Element | Array<JSX.Element | string> | any;
+  children: ReactNode;
 }
 
 const defaultProps = {

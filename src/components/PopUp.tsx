@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
-import { useWindowSize } from 'hooks';
+import {
+  useTheme,
+  useWindowSize
+} from 'hooks';
 import { Styles } from 'types';
 import { Colors } from 'values';
 
@@ -11,6 +14,7 @@ const PopUp = () => {
   const [isClicked, setClicked] = useState(false);
   const [isHover, setHover] = useState(false);
   const [width] = useWindowSize();
+  const { theme } = useTheme();
 
   let styles: Styles = {
     outerContainer: {
@@ -28,7 +32,7 @@ const PopUp = () => {
       display: 'grid',
       alignItems: 'center',
       boxShadow: '0 13px 27px -5px rgba(50,50,93,0.25),0 8px 16px -8px rgba(0,0,0,0.3)',
-      background: Colors.BACKGROUND,
+      background: theme.background,
       gridTemplateColumns: 'auto 1fr',
     },
     shadow: {
@@ -50,6 +54,7 @@ const PopUp = () => {
       padding: '16px 24px 16px 0',
       fontSize: '0.9em',
       lineHeight: '1.5em',
+      color: theme.text,
     },
     button: {
       padding: '16px',

@@ -5,7 +5,10 @@ import {
   Margin
 } from 'components';
 import StyledText from 'components/StyledText';
-import { useIsComponentVisible } from 'hooks';
+import {
+  useIsComponentVisible,
+  useTheme
+} from 'hooks';
 import { Styles } from 'types';
 import {
   Colors,
@@ -16,26 +19,27 @@ import {
 
 const colorText = (text: string | number, color: Colors): JSX.Element => <span style={{ color, fontWeight: 'bold' }}>{text}</span>;
 
-const renderGithubStatistics = (): JSX.Element => {
-  const { comment, code, nFiles } = repoLinesStats.TypeScript;
-  return (
-    <StyledText color={Colors.TEXT} style="DESCRIPTION">
-      The last build of this website contains {colorText(code, Colors.BLUE)} lines of TypeScript code, and {colorText(comment, Colors.BLUE)}{' '}
-      comments, across {colorText(nFiles, Colors.BLUE)} files.
-    </StyledText>
-  );
-};
-
 const Statistics = () => {
   const ref = useRef(null);
   const isVisible = useIsComponentVisible(ref, 300);
+  const { theme } = useTheme();
+
+  const renderGithubStatistics = (): JSX.Element => {
+    const { comment, code, nFiles } = repoLinesStats.TypeScript;
+    return (
+      <StyledText color={theme.text} style="DESCRIPTION">
+        The last build of this website contains {colorText(code, Colors.BLUE)} lines of TypeScript code, and{' '}
+        {colorText(comment, Colors.BLUE)} comments, across {colorText(nFiles, Colors.BLUE)} files.
+      </StyledText>
+    );
+  };
 
   const styles: Styles = {
     outerContainer: {
       overflow: 'hidden',
       position: 'relative',
       height: '400px',
-      background: Colors.GRAY_LIGHT,
+      background: theme.card,
     },
     innerContainer: {
       position: 'relative',
@@ -64,7 +68,7 @@ const Statistics = () => {
         <div style={styles.textContainer}>
           <Margin bottom={'SMALL'}>
             <Animate direction={'LEFT'} isVisible={isVisible}>
-              <StyledText color={Colors.PRIMARY} style="TITLE">
+              <StyledText color={theme.primary} style="TITLE">
                 Statistics
               </StyledText>
             </Animate>

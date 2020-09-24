@@ -10,7 +10,10 @@ import {
   SeparationBar,
   StyledText
 } from 'components';
-import { useWindowSize } from 'hooks';
+import {
+  useTheme,
+  useWindowSize
+} from 'hooks';
 import { Styles } from 'types';
 import { getPaddingsFromWidth } from 'utils';
 import {
@@ -25,6 +28,7 @@ import { CONTENT } from './hero-config';
 const Hero = () => {
   const [width] = useWindowSize();
   const [isVisible, setIsVisible] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     setTimeout(() => setIsVisible(true));
@@ -33,7 +37,7 @@ const Hero = () => {
     outerContainer: {
       position: 'relative',
       display: 'grid',
-      backgroundColor: Colors.BACKGROUND,
+      backgroundColor: theme.background,
       width: '100%',
       height: '90%',
       minHeight: 'fit-content',
@@ -48,7 +52,7 @@ const Hero = () => {
       padding: getPaddingsFromWidth(width).ALL,
     },
     textContainer: {
-      background: Colors.GRAY_LIGHT,
+      background: theme.card,
       borderRadius: '15px',
       float: 'left',
       width: '45%',
@@ -152,13 +156,13 @@ const Hero = () => {
       <div style={styles.textContainer}>
         <Margin horizontal={'SMALL'} vertical="SMALL">
           <Animate direction={'BOTTOM'} isVisible={isVisible} speed="0.5x">
-            <StyledText color={Colors.PRIMARY} style="TITLE">
+            <StyledText color={theme.primary} style="TITLE">
               {CONTENT.title.primary}
             </StyledText>
           </Animate>
           <Animate direction={'BOTTOM'} isVisible={isVisible}>
             <Margin vertical="SMALL">
-              <StyledText color={Colors.TEXT} style="SUBTITLE">
+              <StyledText color={theme.text} style="SUBTITLE">
                 {CONTENT.title.secondary}
               </StyledText>
             </Margin>
@@ -169,7 +173,7 @@ const Hero = () => {
             </Animate>
           </Margin>
           <Animate direction={'BOTTOM'} isVisible={isVisible}>
-            <StyledText color={Colors.TEXT} style="DESCRIPTION">
+            <StyledText color={theme.text} style="DESCRIPTION">
               {CONTENT.description}
             </StyledText>
           </Animate>
@@ -179,12 +183,12 @@ const Hero = () => {
                 <Margin right="SMALL">
                   <Button
                     text={{ link: { id: 'projects', label: 'Projects', url: '' }, color: Colors.BACKGROUND }}
-                    background={{ offHoverColor: Colors.GRAY_DARK, onHoverColor: Colors.SECONDARY }}
+                    background={{ offHoverColor: theme.highlight, onHoverColor: Colors.SECONDARY }}
                   />
                 </Margin>
                 <Button
                   text={{ link: { id: 'experience', label: 'Experience', url: '' }, color: Colors.BACKGROUND }}
-                  background={{ offHoverColor: Colors.GRAY_DARK, onHoverColor: Colors.SECONDARY }}
+                  background={{ offHoverColor: theme.highlight, onHoverColor: Colors.SECONDARY }}
                 />
               </Margin>
             </Animate>

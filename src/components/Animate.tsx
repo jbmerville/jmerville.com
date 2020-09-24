@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { Style } from 'types';
 
@@ -8,7 +8,7 @@ interface AnimateProps {
   direction: Direction;
   speed?: Speed;
   isVisible: boolean;
-  children?: string | JSX.Element | Array<string | JSX.Element>;
+  children?: ReactNode;
 }
 
 const getTransformFromAnimation = (direction: Direction | 'DEFAULT'): string => {

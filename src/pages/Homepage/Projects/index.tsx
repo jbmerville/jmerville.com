@@ -5,7 +5,6 @@ import {
   Margin,
   Section
 } from 'components';
-import { ICard } from 'types';
 
 import {
   SECTION_CATEGORIES,
@@ -20,11 +19,11 @@ const Projects = () => {
           if (index < array.length - 1) {
             return (
               <Margin bottom={'VLARGE'}>
-                <Card item={item as ICard.Card} />
+                <Card item={item} />
               </Margin>
             );
           }
-          return <Card item={item as ICard.Card} />;
+          return <Card item={item} />;
         });
         return <Section section={section} content={sectionContent} />;
       })}

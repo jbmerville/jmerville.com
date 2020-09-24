@@ -7,6 +7,7 @@ import {
 } from 'components';
 import {
   useIsComponentVisible,
+  useTheme,
   useWindowSize
 } from 'hooks';
 import { Styles } from 'types';
@@ -22,6 +23,7 @@ const Blog = () => {
   const [width] = useWindowSize();
   const ref = useRef(null);
   const isVisible = useIsComponentVisible(ref, 300);
+  const { theme } = useTheme();
 
   const leftColumn = [
     [Colors.GRAY_DARK, '🤖', 'Placeholder', true],
@@ -39,7 +41,7 @@ const Blog = () => {
       overflow: 'hidden',
       position: 'relative',
       height: '400px',
-      background: Colors.GRAY_LIGHT,
+      background: theme.card,
     },
     innerContainer: {
       position: 'relative',
@@ -125,13 +127,13 @@ const Blog = () => {
           <div style={styles.textContainer}>
             <Animate direction={'RIGHT'} isVisible={isVisible}>
               <Margin bottom={'SMALL'}>
-                <StyledText color={Colors.PRIMARY} style="TITLE">
+                <StyledText color={theme.primary} style="TITLE">
                   Blog posts
                 </StyledText>
               </Margin>
             </Animate>
             <Animate direction={'RIGHT'} isVisible={isVisible} speed="1.5x">
-              <StyledText color={Colors.TEXT} style="DESCRIPTION">
+              <StyledText color={theme.text} style="DESCRIPTION">
                 Coming soon!
               </StyledText>
             </Animate>

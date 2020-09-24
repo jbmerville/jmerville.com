@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { Style } from 'types';
 import {
@@ -9,7 +9,7 @@ import {
 interface StyledTextProps {
   color: Colors;
   style: TextStyle;
-  children: string | JSX.Element | Array<string | JSX.Element>;
+  children: ReactNode;
 }
 
 export type TextStyle = 'DESCRIPTION' | 'TITLE' | 'SUBTITLE' | 'BUTTON';

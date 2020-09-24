@@ -5,9 +5,12 @@ import React, {
 } from 'react';
 
 import Button from 'components/Button';
-import { useWindowSize } from 'hooks';
 import {
-  ICard,
+  useTheme,
+  useWindowSize
+} from 'hooks';
+import {
+  CardItem,
   Link,
   Styles
 } from 'types';
@@ -27,7 +30,7 @@ import Margin from './Margin';
 import StyledText from './StyledText';
 
 interface CardProps {
-  item: ICard.Card;
+  item: CardItem;
   onClick?: () => void;
 }
 
@@ -38,6 +41,7 @@ const Card = (props: CardProps) => {
   const [width, height] = useWindowSize();
   const ref = useRef<HTMLDivElement>(null);
   const [scrollTop, setScrollTop] = useState(0);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => {
@@ -61,10 +65,25 @@ const Card = (props: CardProps) => {
     const link: Link = { id, label, url };
     return (
       <div style={styles.button}>
-        <Button text={{ link, color: Colors.BACKGROUND }} showShadow={false} icon={{ fontAwesomeIcon: icon }} />
+        <Button
+          text={{ link, color: Colors.BACKGROUND }}
+          background={{ offHoverColor: theme.highlight, onHoverColor: theme.highlight }}
+          showShadow={false}
+          icon={{ fontAwesomeIcon: icon }}
+        />
       </div>
     );
   };
+
+  const getDescription = () =>
+    description.map((item) => (
+      <>
+        <StyledText color={theme.text} style="DESCRIPTION">
+          {item}
+        </StyledText>
+        <Br />
+      </>
+    ));
 
   const styles: Styles = {
     container: {
@@ -78,7 +97,7 @@ const Card = (props: CardProps) => {
       position: 'relative',
       minHeight: '600px',
       width: 'webkit-fill-available',
-      background: Colors.GRAY_LIGHT,
+      background: theme.card,
       transform: `matrix(1, 0, 0, 1, 0, ${getAnimationFactor()})`,
     },
     imageContainer: {
@@ -132,17 +151,16 @@ const Card = (props: CardProps) => {
       <div style={styles.imageContainer}></div>
       <Margin horizontal="REGULAR" vertical="REGULAR">
         <Margin bottom="SMALL">
-          <StyledText color={Colors.TEXT} style="SUBTITLE">
+          <StyledText color={theme.primary} style="SUBTITLE">
             {title}
           </StyledText>
         </Margin>
-        {description}
+        {getDescription()}
         <div style={styles.buttonContainer}>
           {githubUrl && getButton('code', 'Code', githubUrl, faGithub)}
           {projectUrl && getButton('demo-link', 'Project', projectUrl, faExternalLinkSquareAlt)}
         </div>
-        <Br />
-        <StyledText color={Colors.TEXT} style="DESCRIPTION">
+        <StyledText color={theme.text} style="DESCRIPTION">
           Last pushed to repo on July, 3rd 2020.
         </StyledText>
       </Margin>

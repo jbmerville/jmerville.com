@@ -1,11 +1,14 @@
-import * as ICard from './ICard';
 import {
-  Icon,
-  Link,
-  ProcessEnv,
+  CardItem,
+  Image
+} from './CardItem';
+import { Icon } from './Icon';
+import Link from './Link';
+import ProcessEnv from './ProcessEnv';
+import {
   Style,
   Styles
-} from './other';
+} from './Style';
+import Theme from './Theme';
 
-export type { Icon, Link, ProcessEnv, Style, Styles };
-export { ICard };
+export type { CardItem, Icon, Image, Link, ProcessEnv, Style, Styles, Theme };

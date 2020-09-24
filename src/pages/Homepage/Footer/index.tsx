@@ -5,7 +5,10 @@ import {
   StyledText
 } from 'components';
 import Button from 'components/Button';
-import { useWindowSize } from 'hooks';
+import {
+  useTheme,
+  useWindowSize
+} from 'hooks';
 import { Styles } from 'types';
 import {
   Colors,
@@ -17,12 +20,13 @@ import { BUTTONS } from './footer-config';
 
 const Footer = () => {
   const [width] = useWindowSize();
+  const { theme } = useTheme();
 
   const styles: Styles = {
     outerContainer: {
+      background: theme.background,
       overflow: 'hidden',
       position: 'relative',
-
       height: '400px',
     },
     innerContainer: {
@@ -35,7 +39,7 @@ const Footer = () => {
       alignItems: 'center',
     },
     card: {
-      background: Colors.GRAY,
+      background: theme.card,
       borderRadius: '15px',
       position: 'relative',
       height: 'fit-content',
@@ -88,7 +92,7 @@ const Footer = () => {
         <div style={styles.card}>
           <Margin horizontal="REGULAR" vertical="REGULAR">
             <Margin bottom="SMALL">
-              <StyledText color={Colors.PRIMARY} style="TITLE">
+              <StyledText color={theme.primary} style="TITLE">
                 Find me here!
               </StyledText>
             </Margin>

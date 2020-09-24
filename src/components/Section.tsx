@@ -2,15 +2,12 @@ import React, { useRef } from 'react';
 
 import {
   useIsComponentVisible,
+  useTheme,
   useWindowSize
 } from 'hooks';
 import { Styles } from 'types';
 import { getPaddingsFromWidth } from 'utils';
-import {
-  Colors,
-  FontSize,
-  MaxWidth
-} from 'values';
+import { MaxWidth } from 'values';
 
 import Animate from './Animate';
 import Margin from './Margin';
@@ -28,12 +25,13 @@ const Section = (props: SectionProps) => {
   const [width] = useWindowSize();
   const ref = useRef(null);
   const isVisible = useIsComponentVisible(ref, 300);
+  const { theme } = useTheme();
 
   let styles: Styles = {
     outerContainer: {
       position: 'relative',
       height: 'fit-content',
-      background: Colors.BACKGROUND,
+      background: theme.background,
     },
     innerContainer: {
       position: 'relative',
@@ -42,30 +40,10 @@ const Section = (props: SectionProps) => {
       padding: '100px 0',
       margin: `0 ${getPaddingsFromWidth(width).LEFTRIGHT}`,
     },
-    title: {
-      textTransform: 'uppercase',
-      fontWeight: 'bold',
-      fontSize: FontSize.XXXL,
-      color: Colors.PRIMARY,
-      lineHeight: '1em',
-      marginBottom: '100px',
-    },
-    titleBar: {
-      marginTop: '7px',
-      height: '1px',
-      width: 'auto',
-      background: Colors.PRIMARY,
-    },
   };
 
   // Mobile style
   if (width < 600) {
-    styles.title = {
-      textTransform: 'uppercase',
-      fontWeight: 'bold',
-      fontSize: FontSize.XXL,
-      color: Colors.PRIMARY,
-    };
     // Overide padding
     styles.outerContainer.padding = '10px';
     styles.innerContainer.margin = '0';
@@ -76,7 +54,7 @@ const Section = (props: SectionProps) => {
       <div style={styles.innerContainer}>
         <Margin bottom="REGULAR">
           <Animate direction={'BOTTOM'} isVisible={isVisible}>
-            <StyledText color={Colors.PRIMARY} style="TITLE">
+            <StyledText color={theme.primary} style="TITLE">
               {props.section.title}
             </StyledText>
           </Animate>

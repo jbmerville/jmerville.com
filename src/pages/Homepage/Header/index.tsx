@@ -1,21 +1,23 @@
-import './style.css';
-
 import React from 'react';
 
-import { Margin } from 'components';
+import {
+  Margin,
+  Switch
+} from 'components';
 import Button from 'components/Button';
-import { useWindowSize } from 'hooks';
+import {
+  useTheme,
+  useWindowSize
+} from 'hooks';
 import { Styles } from 'types';
 import { Colors } from 'values';
 
 import Hamburger from './Hamburger';
 import { LINKS } from './header-config';
 
-const style = require('./style.css');
-
 const Header = () => {
   const [width] = useWindowSize();
-
+  const { isLight } = useTheme();
   const styles: Styles = {
     container: {
       left: '0',
@@ -53,7 +55,9 @@ const Header = () => {
     <Hamburger />
   ) : (
     <header style={styles.container}>
-      <Margin right="SMALL">
+      <Switch on={{ color: Colors.GRAY_LIGHT, text: 'Light' }} off={{ color: Colors.PRIMARY, text: 'Dark' }} isDefaultOn={isLight} />
+
+      <Margin horizontal="SMALL">
         <nav style={styles.innerContainer}>
           {LINKS.map((item) => {
             const { link, isButton } = item;
