@@ -65,12 +65,12 @@ const HeroTextSection = (props: HeroTextSectionProp) => {
               <Margin right="SMALL">
                 <Button
                   text={{ link: { id: 'projects', label: 'Projects', url: '' }, color: Colors.BACKGROUND }}
-                  background={{ offHoverColor: theme.highlight, onHoverColor: Colors.SECONDARY }}
+                  background={{ offHoverColor: theme.highlight, onHoverColor: theme.highlight }}
                 />
               </Margin>
               <Button
                 text={{ link: { id: 'experience', label: 'Experience', url: '' }, color: Colors.BACKGROUND }}
-                background={{ offHoverColor: theme.highlight, onHoverColor: Colors.SECONDARY }}
+                background={{ offHoverColor: theme.highlight, onHoverColor: theme.highlight }}
               />
             </Margin>
           </Animate>

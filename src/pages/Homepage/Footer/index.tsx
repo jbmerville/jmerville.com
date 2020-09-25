@@ -50,10 +50,10 @@ const Footer = () => {
       height: 'fit-content',
       width: '-webkit-fill-available',
       position: 'relative',
-      display: 'block',
+      display: 'flex',
+      justifyContent: 'space-between',
     },
     button: {
-      marginRight: '20px',
       display: 'inline-block',
     },
   };

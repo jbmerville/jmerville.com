@@ -28,8 +28,8 @@ const Statistics = () => {
     const { comment, code, nFiles } = repoLinesStats.TypeScript;
     return (
       <StyledText color={theme.text} style="DESCRIPTION">
-        The last build of this website contains {colorText(code, Colors.BLUE)} lines of TypeScript code, and{' '}
-        {colorText(comment, Colors.BLUE)} comments, across {colorText(nFiles, Colors.BLUE)} files.
+        The last build of this website contains {colorText(code, Colors.GREEN)} lines of TypeScript code, and{' '}
+        {colorText(comment, Colors.GREEN)} comments, across {colorText(nFiles, Colors.GREEN)} files.
       </StyledText>
     );
   };
