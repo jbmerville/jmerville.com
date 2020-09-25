@@ -11,10 +11,10 @@ export const themeLight: Theme = {
   highlight: Colors.GRAY_DARK,
 };
 export const themeDark: Theme = {
-  background: Colors.SECONDARY,
+  background: Colors.NIGHT,
   primary: Colors.BACKGROUND,
   secondary: Colors.SECONDARY,
   text: Colors.GRAY_LIGHT,
   card: Colors.PRIMARY,
-  highlight: Colors.TEXT,
+  highlight: Colors.NIGHT,
 };

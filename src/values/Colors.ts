@@ -20,6 +20,7 @@ enum Colors {
   SRVICE = '#00569b',
   TRANSPARENT = '#ffffff66',
   ORANGE = '#ff8f00',
+  NIGHT = '#1d2240',
 }
 
 export default Colors;

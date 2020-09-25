@@ -9,6 +9,7 @@ interface AnimateProps {
   speed?: Speed;
   isVisible: boolean;
   children?: ReactNode;
+  center?: boolean;
 }
 
 const getTransformFromAnimation = (direction: Direction | 'DEFAULT'): string => {
@@ -46,7 +47,7 @@ const getTranstitionFromSpeed = (speed: Speed | 'DEFAULT'): string => {
 };
 
 const Animate = (props: AnimateProps) => {
-  const { direction, speed, isVisible, children } = props;
+  const { direction, speed, isVisible, children, center } = props;
   const directionOrDefault = isVisible ? 'DEFAULT' : direction;
   const speedOrDefault = speed || 'DEFAULT';
 
@@ -55,6 +56,11 @@ const Animate = (props: AnimateProps) => {
     position: 'relative',
     transform: getTransformFromAnimation(directionOrDefault),
     transition: isVisible ? getTranstitionFromSpeed(speedOrDefault) : '',
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    justifyContent: center ? 'center' : 'flex-start',
+    alignItems: 'center',
   };
 
   return <div style={style}>{children}</div>;
