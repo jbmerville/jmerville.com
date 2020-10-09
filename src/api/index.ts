@@ -1,4 +1,8 @@
-import client from './downstream';
-import { GITHUB_QUERY } from './queries';
+import client from './client';
+import {
+  ALL_QUERY,
+  GITHUB_QUERY,
+  TRAFFIC_QUERY
+} from './queries';
 
-export { client, GITHUB_QUERY };
+export { ALL_QUERY, client, GITHUB_QUERY, TRAFFIC_QUERY };

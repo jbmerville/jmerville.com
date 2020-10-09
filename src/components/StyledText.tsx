@@ -1,10 +1,6 @@
 import React, { ReactNode } from 'react';
-
 import { Style } from 'types';
-import {
-  Colors,
-  FontSize
-} from 'values';
+import { Colors, FontSize } from 'values';
 
 interface StyledTextProps {
   color: Colors;
@@ -12,7 +8,6 @@ interface StyledTextProps {
   children: ReactNode;
   isLoading?: boolean;
   isError?: boolean;
-  errorMessage?: string;
 }
 
 export type TextStyle = 'PARAGRAPH' | 'TITLE' | 'SUBTITLE' | 'BUTTON' | 'UNDERTEXT';
@@ -58,12 +53,12 @@ const getStyle = (style: TextStyle, color: Colors): Style => {
 };
 
 const StyledText = (props: StyledTextProps): JSX.Element => {
-  const { color, style, children, isError, isLoading, errorMessage } = props;
+  const { color, style, children, isError, isLoading } = props;
   if (isLoading) {
     return <div style={getStyle(style, Colors.ORANGE)}>Loading...</div>;
   }
   if (isError) {
-    return <div style={getStyle(style, Colors.RED)}>{errorMessage || 'Error loading data.'}</div>;
+    return <div style={getStyle(style, Colors.RED)}>Error loading data.</div>;
   }
   return <div style={getStyle(style, color)}>{children}</div>;
 };

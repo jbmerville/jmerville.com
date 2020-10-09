@@ -8,3 +8,27 @@ export const GITHUB_QUERY = gql`
     }
   }
 `;
+
+export const TRAFFIC_QUERY = gql`
+  query traffic {
+    userCount
+    sessionCount
+    pageViews
+    avgSessionDuration
+  }
+`;
+
+export const ALL_QUERY = gql`
+  query GetGithubStats($repository: String!) {
+    githubStats(repository: $repository) {
+      commitCount
+      lastPushedAt
+    }
+    traffic {
+      userCount
+      sessionCount
+      pageViews
+      # avgSessionDuration
+    }
+  }
+`;
