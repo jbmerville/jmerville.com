@@ -1,4 +1,7 @@
-import React, { useRef } from 'react';
+import React, {
+  ReactNode,
+  useRef
+} from 'react';
 
 import {
   useIsComponentVisible,
@@ -18,10 +21,12 @@ interface SectionProps {
     id: string;
     title: string;
   };
-  content: JSX.Element[];
+  children: ReactNode;
+  justifyContent?: 'flex-end' | 'flex-start';
 }
 
 const Section = (props: SectionProps) => {
+  const { justifyContent, children, section } = props;
   const [width] = useWindowSize();
   const ref = useRef(null);
   const isVisible = useIsComponentVisible(ref, 300);
@@ -36,7 +41,10 @@ const Section = (props: SectionProps) => {
     innerContainer: {
       position: 'relative',
       maxWidth: MaxWidth,
+      display: 'flex',
+      justifyContent: justifyContent,
       height: '100%',
+      flexFlow: 'wrap',
       padding: '100px 0',
       margin: `0 ${getPaddingsFromWidth(width).LEFTRIGHT}`,
     },
@@ -59,10 +67,14 @@ const Section = (props: SectionProps) => {
             </StyledText>
           </Animate>
         </Margin>
-        {props.content}
+        {props.children}
       </div>
     </section>
   );
+};
+
+Section.defaultProps = {
+  justifyContent: 'flex-start',
 };
 
 export default Section;

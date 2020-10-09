@@ -25,9 +25,10 @@ import {
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 
-import Br from './Br';
-import Margin from './Margin';
-import StyledText from './StyledText';
+import Br from '../Br';
+import Margin from '../Margin';
+import StyledText from '../StyledText';
+import JmervilleData from './JmervilleData';
 
 interface CardProps {
   item: CardItem;
@@ -36,7 +37,7 @@ interface CardProps {
 
 const Card = (props: CardProps) => {
   const { item } = props;
-  const { title, description, image, projectUrl, githubUrl } = item;
+  const { title, description, image, projectUrl, githubProjectName } = item;
   const { url, backgroundColor } = image;
   const [width, height] = useWindowSize();
   const ref = useRef<HTMLDivElement>(null);
@@ -78,7 +79,7 @@ const Card = (props: CardProps) => {
   const getDescription = () =>
     description.map((item) => (
       <>
-        <StyledText color={theme.text} style="DESCRIPTION">
+        <StyledText color={theme.text} style="PARAGRAPH">
           {item}
         </StyledText>
         <Br />
@@ -154,15 +155,13 @@ const Card = (props: CardProps) => {
           <StyledText color={theme.primary} style="SUBTITLE">
             {title}
           </StyledText>
+          <JmervilleData repository={githubProjectName} />
         </Margin>
         {getDescription()}
         <div style={styles.buttonContainer}>
-          {githubUrl && getButton('code', 'Code', githubUrl, faGithub)}
+          {githubProjectName && getButton('code', 'Code', 'https://github.com/jbmerville/' + githubProjectName, faGithub)}
           {projectUrl && getButton('demo-link', 'Project', projectUrl, faExternalLinkSquareAlt)}
         </div>
-        <StyledText color={theme.text} style="DESCRIPTION">
-          Last pushed to repo on July, 3rd 2020.
-        </StyledText>
       </Margin>
     </div>
   );

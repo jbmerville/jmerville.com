@@ -25,7 +25,7 @@ const Projects = () => {
           }
           return <Card item={item} />;
         });
-        return <Section section={section} content={sectionContent} />;
+        return <Section section={section}>{sectionContent}</Section>;
       })}
     </>
   );

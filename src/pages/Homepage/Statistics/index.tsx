@@ -2,9 +2,9 @@ import React, { useRef } from 'react';
 
 import {
   Animate,
-  Margin
+  Margin,
+  StyledText
 } from 'components';
-import StyledText from 'components/StyledText';
 import {
   useIsComponentVisible,
   useTheme
@@ -13,26 +13,15 @@ import { Styles } from 'types';
 import {
   Colors,
   FontSize,
-  MaxWidth,
-  repoLinesStats
+  MaxWidth
 } from 'values';
 
-const colorText = (text: string | number, color: Colors): JSX.Element => <span style={{ color, fontWeight: 'bold' }}>{text}</span>;
+import JmervilleData from './JmervilleData';
 
 const Statistics = () => {
   const ref = useRef(null);
   const isVisible = useIsComponentVisible(ref, 300);
   const { theme } = useTheme();
-
-  const renderGithubStatistics = (): JSX.Element => {
-    const { comment, code, nFiles } = repoLinesStats.TypeScript;
-    return (
-      <StyledText color={theme.text} style="DESCRIPTION">
-        The last build of this website contains {colorText(code, Colors.GREEN)} lines of TypeScript code, and{' '}
-        {colorText(comment, Colors.GREEN)} comments, across {colorText(nFiles, Colors.GREEN)} files.
-      </StyledText>
-    );
-  };
 
   const styles: Styles = {
     outerContainer: {
@@ -74,7 +63,7 @@ const Statistics = () => {
             </Animate>
           </Margin>
           <Animate direction={'LEFT'} isVisible={isVisible} speed="1.5x">
-            {renderGithubStatistics()}
+            <JmervilleData />
           </Animate>
         </div>
       </div>

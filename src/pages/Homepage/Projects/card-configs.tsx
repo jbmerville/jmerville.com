@@ -24,11 +24,11 @@ export const SECTION_CATEGORIES = [
 const renderTwoParagraphs = (topText: string, bottomText: string): JSX.Element => {
   return (
     <>
-      <StyledText color={Colors.TEXT} style="DESCRIPTION">
+      <StyledText color={Colors.TEXT} style="PARAGRAPH">
         {topText}
       </StyledText>
       <Br />
-      <StyledText color={Colors.TEXT} style="DESCRIPTION">
+      <StyledText color={Colors.TEXT} style="PARAGRAPH">
         {bottomText}
       </StyledText>
     </>
@@ -36,45 +36,45 @@ const renderTwoParagraphs = (topText: string, bottomText: string): JSX.Element =
 };
 
 export const SECTION_CONTENT: CardItem[] = [
-  {
-    id: 'amazon',
-    category: Categories.WORK_HISTORY,
-    projectUrl: 'https://www.amazon.jobs/en/working/working-amazon',
-    title: 'Amazon ·  Software Engineer Intern',
-    description: [
-      'I interned at Amazon Prime Video, where I worked on improving the search capabilities of Internal data using ElasticSearch.',
-    ],
-    image: {
-      url: 'amazon.png',
-      backgroundColor: Colors.GRAY_LIGHT,
-    },
-  },
-  {
-    id: 'srvice',
-    category: Categories.WORK_HISTORY,
-    projectUrl: 'https://www.srvice.ca/',
-    title: 'Srvice · Full-Stack Developer',
-    description: [
-      'Since fall 2019 I have been an active developer at Srvice’s. Srvice’s vision is to bring customers closer to local services with the help of technology. Using agile methodologies I build iOS and Android applications with frameworks like React and React-Native.',
-    ],
-    image: {
-      url: 'srvice.png',
-      backgroundColor: Colors.SRVICE,
-    },
-  },
-  {
-    id: 'yorku',
-    category: Categories.WORK_HISTORY,
-    projectUrl: 'https://lassonde.yorku.ca/',
-    title: 'York University · Teacher Assistant',
-    description: [
-      'Led weekly classes for undergraduate Computer Science students, teaching object-oriented programming for mobile application development.',
-    ],
-    image: {
-      url: 'yorku.png',
-      backgroundColor: Colors.GRAY_LIGHT,
-    },
-  },
+  // {
+  //   id: 'amazon',
+  //   category: Categories.WORK_HISTORY,
+  //   projectUrl: 'https://www.amazon.jobs/en/working/working-amazon',
+  //   title: 'Amazon ·  Software Engineer Intern',
+  //   description: [
+  //     'I interned at Amazon Prime Video, where I worked on improving the search capabilities of Internal data using ElasticSearch.',
+  //   ],
+  //   image: {
+  //     url: 'amazon.png',
+  //     backgroundColor: Colors.GRAY_LIGHT,
+  //   },
+  // },
+  // {
+  //   id: 'srvice',
+  //   category: Categories.WORK_HISTORY,
+  //   projectUrl: 'https://www.srvice.ca/',
+  //   title: 'Srvice · Full-Stack Developer',
+  //   description: [
+  //     'Since fall 2019 I have been an active developer at Srvice’s. Srvice’s vision is to bring customers closer to local services with the help of technology. Using agile methodologies I build iOS and Android applications with frameworks like React and React-Native.',
+  //   ],
+  //   image: {
+  //     url: 'srvice.png',
+  //     backgroundColor: Colors.SRVICE,
+  //   },
+  // },
+  // {
+  //   id: 'yorku',
+  //   category: Categories.WORK_HISTORY,
+  //   projectUrl: 'https://lassonde.yorku.ca/',
+  //   title: 'York University · Teacher Assistant',
+  //   description: [
+  //     'Led weekly classes for undergraduate Computer Science students, teaching object-oriented programming for mobile application development.',
+  //   ],
+  //   image: {
+  //     url: 'yorku.png',
+  //     backgroundColor: Colors.GRAY_LIGHT,
+  //   },
+  // },
   {
     id: 'jmerville',
     category: Categories.PROJECTS,
@@ -87,7 +87,7 @@ export const SECTION_CONTENT: CardItem[] = [
       url: 'images/jmerville.png',
       backgroundColor: Colors.GRAY_DARK,
     },
-    githubUrl: 'https://github.com/jbmerville/jmerville.com',
+    githubProjectName: 'jmerville.com',
   },
   {
     id: 'sortingVisualizer',
@@ -101,7 +101,7 @@ export const SECTION_CONTENT: CardItem[] = [
       url: 'images/sorting-visualizer.png',
       backgroundColor: Colors.YELLOW,
     },
-    githubUrl: 'https://github.com/jbmerville/sort-visualizer',
+    githubProjectName: 'sort-visualizer',
     projectUrl: 'https://sort-visualizer.jmerville.com/',
   },
   {
@@ -116,7 +116,7 @@ export const SECTION_CONTENT: CardItem[] = [
       url: 'images/cs-bot.png',
       backgroundColor: Colors.FACEBOOK,
     },
-    githubUrl: 'https://github.com/jbmerville/CSBot',
+    githubProjectName: 'CSBot',
   },
   {
     id: 'maze',
@@ -130,7 +130,7 @@ export const SECTION_CONTENT: CardItem[] = [
       url: 'images/path-finder.png',
       backgroundColor: Colors.PURPLE_LIGHT,
     },
-    githubUrl: 'https://github.com/jbmerville/MazeApp',
+    githubProjectName: 'MazeApp',
     projectUrl: 'path-finder.jmerville.com/',
   },
   {
@@ -145,6 +145,6 @@ export const SECTION_CONTENT: CardItem[] = [
       url: 'images/hide-your-notes.png',
       backgroundColor: Colors.GREEN,
     },
-    githubUrl: 'https://github.com/jbmerville/HideYourNotes',
+    githubProjectName: 'HideYourNotes',
   },
 ];

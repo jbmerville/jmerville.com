@@ -55,7 +55,7 @@ const HeroTextSection = (props: HeroTextSectionProp) => {
           </Animate>
         </Margin>
         <Animate direction={'BOTTOM'} isVisible={isVisible}>
-          <StyledText color={theme.text} style="DESCRIPTION">
+          <StyledText color={theme.text} style="PARAGRAPH">
             {CONTENT.description}
           </StyledText>
         </Animate>

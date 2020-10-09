@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { client } from 'api';
 import HomePage from 'pages/Homepage';
 import {
   BrowserRouter,
   Route,
   Switch
 } from 'react-router-dom';
-import { client } from 'utils/Appolo';
 
 import { ApolloProvider } from '@apollo/client';
 
@@ -23,4 +23,4 @@ export const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+ReactDOM.render(<App />, document.getElementById('root'));

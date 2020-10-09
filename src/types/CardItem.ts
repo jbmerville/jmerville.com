@@ -8,7 +8,7 @@ export interface Image {
 export interface CardItem {
   id: string;
   projectUrl?: string;
-  githubUrl?: string;
+  githubProjectName: string;
   description: string[];
   category: string;
   title: string;

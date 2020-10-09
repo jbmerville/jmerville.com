@@ -60,7 +60,7 @@ const Animate = (props: AnimateProps) => {
     width: '100%',
     display: 'flex',
     justifyContent: center ? 'center' : 'flex-start',
-    alignItems: 'center',
+    flexFlow: 'column',
   };
 
   return <div style={style}>{children}</div>;

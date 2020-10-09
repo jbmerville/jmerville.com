@@ -133,7 +133,7 @@ const Blog = () => {
               </Margin>
             </Animate>
             <Animate direction={'RIGHT'} isVisible={isVisible} speed="1.5x">
-              <StyledText color={theme.text} style="DESCRIPTION">
+              <StyledText color={theme.text} style="PARAGRAPH">
                 Coming soon!
               </StyledText>
             </Animate>
