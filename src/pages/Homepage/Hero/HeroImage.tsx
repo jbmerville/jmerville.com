@@ -19,7 +19,8 @@ const HeroImage = (props: HeroImageProps) => {
       margin: '50px',
       width: '-webkit-fill-available',
       maxWidth: '900px',
-      height: '-webkit-fill-available',
+      height: '100%',
+      maxHeight: '600px',
     },
     imageInnerContainer: {
       position: 'absolute',
@@ -63,16 +64,12 @@ const HeroImage = (props: HeroImageProps) => {
     <div style={styles.imageContainer}>
       <div style={styles.imageInnerContainer}>
         <Animate direction="LEFT" isVisible={isLight} center={true}>
-          <img
-            style={{ ...styles.image }}
-            alt="If you see this follow me on github and linkedin :)"
-            src="images/flame-watching-rocket-launch.png"
-          />
+          <img style={{ ...styles.image }} alt="If you see this follow me on github and linkedin :)" src="images/3236267.jpg" />
         </Animate>
       </div>
       <div style={styles.imageInnerContainer}>
         <Animate direction="RIGHT" isVisible={!isLight} center={true}>
-          <img style={{ ...styles.image }} alt="If you see this follow me on github and linkedin :)" src="images/flame-no-connection.png" />
+          <img style={{ ...styles.image }} alt="If you see this follow me on github and linkedin :)" src="images/3236267.jpg" />
         </Animate>
       </div>
     </div>

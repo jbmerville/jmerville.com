@@ -17,17 +17,19 @@ interface MarginProps {
   bottom?: MarginType;
   children: ReactNode;
   size?: 'fit-content' | '100%';
+  display?: 'block' | 'inline-block';
 }
 
 const defaultProps = {
   horizontal: 'ZERO',
   vertical: 'ZERO',
   size: 'fit-content',
+  display: 'block',
 };
 
 const Margin = (props: MarginProps & typeof defaultProps) => {
   const [width] = useWindowSize();
-  const { horizontal, vertical, children, left, right, top, bottom, size } = props;
+  const { horizontal, vertical, children, left, right, top, bottom, size, display } = props;
   const margins = {
     // Override veritcal and horizontal values if top/bottom/left/right are specified.
     top: adjustMarginFromScreenSize(width, MARGIN_VALUE[top ? top : vertical]).VERTICAL,
@@ -39,6 +41,7 @@ const Margin = (props: MarginProps & typeof defaultProps) => {
     margin: `${margins.top}px ${margins.right}px ${margins.bottom}px ${margins.left}px`,
     width: size,
     height: size,
+    display,
   };
 
   return <div style={style}>{children}</div>;

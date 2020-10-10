@@ -10,7 +10,10 @@ import {
 } from 'hooks';
 import { Styles } from 'types';
 import { getMaxWidthFromScreenWidth } from 'utils';
-import { Colors } from 'values';
+import {
+  Colors,
+  ScreenSize
+} from 'values';
 
 import Animate from './Animate';
 import Margin from './Margin';
@@ -58,6 +61,10 @@ const Section = forwardRef((props: SectionProps, ref: any) => {
       height: '100%',
     },
   };
+
+  if (width < ScreenSize.PHONE) {
+    styles.innerContainer.margin = '0 10px';
+  }
 
   return (
     <section ref={ref} style={styles.outerContainer}>

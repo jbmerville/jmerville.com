@@ -53,7 +53,7 @@ const getCSSFromStyle = (styleType: TextStyle): Style => {
 
 const getStyle = (styleType: TextStyle, color: Colors): Style => {
   const textStyle = getCSSFromStyle(styleType);
-  return { ...textStyle, color, display: 'block' };
+  return { ...textStyle, color };
 };
 
 const StyledText = (props: StyledTextProps): JSX.Element => {

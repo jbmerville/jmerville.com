@@ -6,7 +6,7 @@ import {
 
 import getScreenSizeFromWidth from './getScreenSizeFromWidth';
 
-function getPaddingsFromWidth(width: number): Padding {
+function getPaddingFromWidth(width: number): Padding {
   switch (getScreenSizeFromWidth(width)) {
     case ScreenSize.PHONE:
       return Paddings.PHONE;
@@ -19,4 +19,4 @@ function getPaddingsFromWidth(width: number): Padding {
   }
 }
 
-export default getPaddingsFromWidth;
+export default getPaddingFromWidth;

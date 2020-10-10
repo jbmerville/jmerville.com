@@ -1,6 +1,6 @@
 import { ScreenSize } from 'values';
 
-function getPaddingsFromWidth(screenSize: number): ScreenSize {
+function getScreenSizeFromWidth(screenSize: number): ScreenSize {
   if (screenSize < ScreenSize.PHONE) {
     return ScreenSize.PHONE;
   }
@@ -13,4 +13,4 @@ function getPaddingsFromWidth(screenSize: number): ScreenSize {
   return ScreenSize.TV;
 }
 
-export default getPaddingsFromWidth;
+export default getScreenSizeFromWidth;

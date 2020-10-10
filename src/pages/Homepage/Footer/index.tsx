@@ -5,83 +5,80 @@ import {
   Section,
   StyledText
 } from 'components';
-import Button from 'components/Button';
 import {
   useTheme,
   useWindowSize
 } from 'hooks';
 import { Styles } from 'types';
-import { Colors } from 'values';
 
-import { BUTTONS } from './footer-config';
+import {
+  faGithub,
+  faLinkedin
+} from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Footer = () => {
   const [width] = useWindowSize();
   const { theme } = useTheme();
 
   const styles: Styles = {
-    card: {
-      background: theme.card,
-      borderRadius: '15px',
-      position: 'relative',
+    container: {
+      height: '100%',
+      width: '100%',
       display: 'flex',
-      height: 'fit-content',
-      maxWidth: '800px',
-      zIndex: 3,
     },
-    buttonContainer: {
-      height: 'fit-content',
-      width: '-webkit-fill-available',
-      position: 'relative',
+    section: {
+      height: '100%',
+      width: '300px',
       display: 'flex',
-      justifyContent: 'space-between',
+      flexDirection: 'column',
+      marginRight: '20px',
     },
-    button: {
-      display: 'inline-block',
+    link: {
+      color: theme.accent,
     },
   };
 
-  // Mobile style
-  if (width < 600) {
-    styles.button.padding = '20px 0';
-    styles.title = {
-      marginTop: '40px',
-      textTransform: 'uppercase',
-      fontWeight: 'bold',
-      fontSize: '1.5em',
-      color: Colors.PRIMARY,
-    };
-    styles.description = {
-      marginTop: '15px',
-      height: 'fit-content',
-      fontWeight: 'lighter',
-      fontSize: '1.2em',
-      color: Colors.PRIMARY,
-    };
-  }
-
   return (
     <Section justifyContent="flex-end">
-      <Margin vertical="REGULAR">
-        <div style={styles.card}>
-          <Margin horizontal="REGULAR" vertical="REGULAR">
-            <Margin bottom="SMALL">
-              <StyledText color={theme.primary} styleType="TITLE">
-                Find me here!
-              </StyledText>
-            </Margin>
-            <div style={styles.buttonContainer}>
-              {BUTTONS.map((button) => (
-                <div style={styles.button} key={button.link.id}>
-                  <Button
-                    text={{ link: button.link, color: Colors.WHITE }}
-                    background={{ onHoverColor: Colors.SECONDARY, offHoverColor: Colors.GRAY_DARK }}
-                    icon={button.icon}
-                  />
-                </div>
-              ))}
-            </div>
-          </Margin>
+      <Margin vertical="SMALL">
+        <div style={styles.container}>
+          <div style={styles.section}>
+            <StyledText styleType="SUBTITLE" color={theme.text}>
+              About
+            </StyledText>
+            <StyledText styleType="PARAGRAPH" color={theme.text}>
+              Hero image designed by Stories -
+              <a style={styles.link} href="https://www.freepik.com">
+                {' '}
+                Freepik.com{' '}
+              </a>
+            </StyledText>
+          </div>
+          <div style={styles.section}>
+            <StyledText styleType="SUBTITLE" color={theme.text}>
+              Connect
+            </StyledText>
+            <StyledText styleType="PARAGRAPH" color={theme.text}>
+              Connect with me on social medias and lets start a conversation!
+            </StyledText>
+            <StyledText styleType="PARAGRAPH" color={theme.text}>
+              <Margin right="SMALL" display="inline-block">
+                <a href="https://www.linkedin.com/in/jbmerville/">
+                  <FontAwesomeIcon icon={faLinkedin} size="lg" color={theme.text} />
+                </a>
+              </Margin>
+              <Margin right="SMALL" display="inline-block">
+                <a href="https://github.com/jbmerville">
+                  <FontAwesomeIcon icon={faGithub} size="lg" color={theme.text} />
+                </a>
+              </Margin>
+              <a href="mailto:jb.merville@gmail.com">
+                <FontAwesomeIcon icon={faEnvelope} size="lg" color={theme.text} />
+              </a>
+            </StyledText>
+          </div>
         </div>
       </Margin>
     </Section>

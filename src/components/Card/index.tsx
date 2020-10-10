@@ -105,10 +105,6 @@ const Card = (props: CardProps) => {
       backgroundImage: `url("${url}")`,
       backgroundSize: 'cover',
     },
-    buttonContainer: {
-      position: 'absolute',
-      bottom: '60px',
-    },
     button: {
       display: 'inline-block',
       marginRight: '20px',
@@ -134,27 +130,23 @@ const Card = (props: CardProps) => {
     };
     styles.imageContainer.height = '400px';
     styles.imageContainer.marginBottom = '50px';
-    styles.buttonContainer.position = 'relative';
-    styles.buttonContainer.padding = '20px 0';
-    styles.buttonContainer.bottom = '0px';
-    styles.button.padding = '10px 0';
   }
 
   return (
     <div style={styles.container} ref={ref}>
       <div style={styles.imageContainer}></div>
       <Margin horizontal="REGULAR" vertical="REGULAR">
-        <Margin bottom="REGULAR">
+        <Margin bottom="SMALL">
           <StyledText color={theme.primary} styleType="SUBTITLE">
             {title}
           </StyledText>
           <JmervilleData repository={githubProjectName} />
         </Margin>
         {getDescription()}
-        <div style={styles.buttonContainer}>
+        <Margin top="SMALL">
           {githubProjectName && getButton('code', 'Code', 'https://github.com/jbmerville/' + githubProjectName, faGithub)}
           {projectUrl && getButton('demo-link', 'Project', projectUrl, faExternalLinkSquareAlt)}
-        </div>
+        </Margin>
       </Margin>
     </div>
   );
