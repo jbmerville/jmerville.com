@@ -16,11 +16,11 @@ import { Colors } from 'values';
 
 import { CONTENT } from './hero-config';
 
-interface HeroTextSectionProp {
+interface HeroCardProp {
   isVisible: boolean;
 }
 
-const HeroTextSection = (props: HeroTextSectionProp) => {
+const HeroCard = (props: HeroCardProp) => {
   const [width] = useWindowSize();
   const { theme } = useTheme();
   const { isVisible } = props;
@@ -81,4 +81,4 @@ const HeroTextSection = (props: HeroTextSectionProp) => {
   );
 };
 
-export default HeroTextSection;
+export default HeroCard;

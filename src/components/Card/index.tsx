@@ -65,12 +65,7 @@ const Card = (props: CardProps) => {
     const link: Link = { id, label, url };
     return (
       <div style={styles.button}>
-        <Button
-          text={{ link, color: Colors.WHITE }}
-          background={{ offHoverColor: theme.highlight, onHoverColor: theme.highlight }}
-          showShadow={false}
-          icon={{ fontAwesomeIcon: icon }}
-        />
+        <Button text={{ link, color: Colors.WHITE }} showShadow={false} icon={{ fontAwesomeIcon: icon }} />
       </div>
     );
   };

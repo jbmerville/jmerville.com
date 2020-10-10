@@ -15,7 +15,7 @@ const useIsComponentVisible = (ref: React.RefObject<any>, offset: number) => {
         setVisible(2);
       }
     };
-    if (ref.current) {
+    if (ref && ref.current) {
       // initial visible check
       window.addEventListener('scroll', isVisible);
     }

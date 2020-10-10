@@ -1,10 +1,22 @@
+import React, {
+  useEffect,
+  useState
+} from 'react';
+
 import { Section } from 'components';
-import { useTheme, useWindowSize } from 'hooks';
-import React, { useEffect, useState } from 'react';
+import {
+  useTheme,
+  useWindowSize
+} from 'hooks';
 import { Styles } from 'types';
-import { Colors, Paddings, ScreenSize } from 'values';
-import HeroImageSection from './HeroImageSection';
-import HeroTextSection from './HeroTextSection';
+import {
+  Colors,
+  Paddings,
+  ScreenSize
+} from 'values';
+
+import HeroCard from './HeroCard';
+import HeroImage from './HeroImage';
 
 const Hero = () => {
   const [width] = useWindowSize();
@@ -64,8 +76,8 @@ const Hero = () => {
   return (
     <Section height="90%">
       <div style={styles.innerContainer}>
-        <HeroTextSection isVisible={isVisible} />
-        <HeroImageSection />
+        <HeroCard isVisible={isVisible} />
+        <HeroImage />
       </div>
     </Section>
   );

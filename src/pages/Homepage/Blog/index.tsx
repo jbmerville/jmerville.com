@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import {
   Animate,
   Margin,
+  Section,
   StyledText
 } from 'components';
 import {
@@ -11,18 +12,14 @@ import {
   useWindowSize
 } from 'hooks';
 import { Styles } from 'types';
-import {
-  Colors,
-  MaxWidth,
-  Paddings
-} from 'values';
+import { Colors } from 'values';
 
 import Column from './Column';
 
 const Blog = () => {
   const [width] = useWindowSize();
   const ref = useRef(null);
-  const isVisible = useIsComponentVisible(ref, 300);
+  const isVisible = useIsComponentVisible(ref, 400);
   const { theme } = useTheme();
 
   const leftColumn = [
@@ -37,21 +34,8 @@ const Blog = () => {
   ];
 
   const styles: Styles = {
-    outerContainer: {
-      overflow: 'hidden',
-      position: 'relative',
-      height: '400px',
-      background: theme.card,
-    },
-    innerContainer: {
-      position: 'relative',
-      maxWidth: MaxWidth,
-      height: '100%',
-      margin: '0 auto',
-    },
     leftContainer: {
-      float: 'left',
-      width: '70%',
+      width: 'fit-content',
       height: '100%',
       display: 'flex',
       flexDirection: 'row',
@@ -61,49 +45,28 @@ const Blog = () => {
     },
     rightContainer: {
       display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'right',
-      float: 'right',
-      width: '30%',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      width: '215px',
       height: '100%',
       position: 'relative',
     },
-    textContainer: {},
   };
 
   // Mobile style
   if (width < 600) {
-    styles.outerContainer = {
-      overflow: 'hidden',
-      position: 'relative',
-      height: '400px',
-      padding: Paddings.PHONE.ALL,
-      paddingTop: '0 !important',
-      paddingBottom: '0 !important',
-      background: Colors.GRAY_LIGHT,
-    };
     styles.leftContainer = {
-      float: 'left',
-      width: '50%',
       height: '100%',
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'center',
-      position: 'relative',
-      zIndex: 1,
+      width: 'fit-content',
     };
     styles.rightContainer = {
       display: 'flex',
+      flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'right',
-      float: 'right',
-      width: '50%',
+      width: 'fit-content',
       height: '100%',
       position: 'relative',
-    };
-    styles.textContainer = {
-      position: 'relative',
-      paddingLeft: '20px',
     };
   }
 
@@ -120,27 +83,25 @@ const Blog = () => {
     );
 
   return (
-    <div ref={ref} style={styles.outerContainer}>
-      <div style={styles.innerContainer}>
-        {columns}
-        <div style={styles.rightContainer}>
-          <div style={styles.textContainer}>
-            <Animate direction={'RIGHT'} isVisible={isVisible}>
-              <Margin bottom={'SMALL'}>
-                <StyledText color={theme.primary} styleType="TITLE">
-                  Blog posts
-                </StyledText>
-              </Margin>
-            </Animate>
-            <Animate direction={'RIGHT'} isVisible={isVisible} speed="1.5x">
-              <StyledText color={theme.text} styleType="PARAGRAPH">
-                Coming soon!
-              </StyledText>
-            </Animate>
-          </div>
-        </div>
+    <Section height="400px" background={theme.card} justifyContent="space-between" flexDirection="row">
+      {columns}
+      <div ref={ref} style={styles.rightContainer}>
+        <Margin bottom={'SMALL'}>
+          <Animate direction={'RIGHT'} isVisible={isVisible}>
+            <StyledText color={theme.primary} styleType="TITLE">
+              Blog posts
+            </StyledText>
+          </Animate>
+        </Margin>
+        <Margin bottom={'SMALL'}>
+          <Animate direction={'RIGHT'} isVisible={isVisible} speed="1.5x">
+            <StyledText color={theme.text} styleType="PARAGRAPH">
+              Coming soon!
+            </StyledText>
+          </Animate>
+        </Margin>
       </div>
-    </div>
+    </Section>
   );
 };
 

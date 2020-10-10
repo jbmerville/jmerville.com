@@ -1,6 +1,6 @@
 import React, {
-  ReactNode,
-  useRef
+  forwardRef,
+  ReactNode
 } from 'react';
 
 import {
@@ -10,6 +10,7 @@ import {
 } from 'hooks';
 import { Styles } from 'types';
 import { getMaxWidthFromScreenWidth } from 'utils';
+import { Colors } from 'values';
 
 import Animate from './Animate';
 import Margin from './Margin';
@@ -18,19 +19,22 @@ import StyledText from './StyledText';
 interface SectionProps {
   title?: string;
   children: ReactNode;
-  justifyContent?: 'flex-end' | 'flex-start';
-  height?: 'fit-content' | '90%';
+  flexDirection?: 'row' | 'column';
+  justifyContent?: 'flex-end' | 'flex-start' | 'space-between' | 'center';
+  height?: 'fit-content' | '90%' | '400px';
+  background?: Colors;
 }
 
-const defaultProps = {
+const defaultProps: { height: 'fit-content'; justifyContent: 'center'; flexDirection: 'column' } = {
   height: 'fit-content',
-  justifyContent: 'flex-start',
+  justifyContent: 'center',
+  flexDirection: 'column',
 };
 
-const Section = (props: SectionProps) => {
-  const { justifyContent, children, title, height } = props;
+// eslint-disable-next-line react/display-name
+const Section = forwardRef((props: SectionProps, ref: any) => {
+  const { justifyContent, children, title, height, background, flexDirection } = props;
   const [width] = useWindowSize();
-  const ref = useRef(null);
   const isVisible = useIsComponentVisible(ref, 300);
   const { theme } = useTheme();
   const sectionMaxWidth = getMaxWidthFromScreenWidth(width);
@@ -41,15 +45,17 @@ const Section = (props: SectionProps) => {
       height,
       display: 'flex',
       justifyContent: 'center',
-      background: theme.background,
+      background: background ? background : theme.background,
+      overflow: 'hidden',
     },
     innerContainer: {
       position: 'relative',
       width: sectionMaxWidth,
       display: 'flex',
-      justifyContent: justifyContent,
+      alignItems: 'baseline',
+      flexDirection,
+      justifyContent,
       height: '100%',
-      flexFlow: 'wrap',
     },
   };
 
@@ -69,7 +75,7 @@ const Section = (props: SectionProps) => {
       </div>
     </section>
   );
-};
+});
 
 Section.defaultProps = defaultProps;
 export default Section;

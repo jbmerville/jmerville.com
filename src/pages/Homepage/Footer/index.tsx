@@ -24,6 +24,7 @@ const Footer = () => {
       background: theme.card,
       borderRadius: '15px',
       position: 'relative',
+      display: 'flex',
       height: 'fit-content',
       maxWidth: '800px',
       zIndex: 3,
@@ -61,26 +62,28 @@ const Footer = () => {
 
   return (
     <Section justifyContent="flex-end">
-      <div style={styles.card}>
-        <Margin horizontal="REGULAR" vertical="REGULAR">
-          <Margin bottom="SMALL">
-            <StyledText color={theme.primary} styleType="TITLE">
-              Find me here!
-            </StyledText>
+      <Margin vertical="REGULAR">
+        <div style={styles.card}>
+          <Margin horizontal="REGULAR" vertical="REGULAR">
+            <Margin bottom="SMALL">
+              <StyledText color={theme.primary} styleType="TITLE">
+                Find me here!
+              </StyledText>
+            </Margin>
+            <div style={styles.buttonContainer}>
+              {BUTTONS.map((button) => (
+                <div style={styles.button} key={button.link.id}>
+                  <Button
+                    text={{ link: button.link, color: Colors.WHITE }}
+                    background={{ onHoverColor: Colors.SECONDARY, offHoverColor: Colors.GRAY_DARK }}
+                    icon={button.icon}
+                  />
+                </div>
+              ))}
+            </div>
           </Margin>
-          <div style={styles.buttonContainer}>
-            {BUTTONS.map((button) => (
-              <div style={styles.button} key={button.link.id}>
-                <Button
-                  text={{ link: button.link, color: Colors.WHITE }}
-                  background={{ onHoverColor: Colors.SECONDARY, offHoverColor: Colors.GRAY_DARK }}
-                  icon={button.icon}
-                />
-              </div>
-            ))}
-          </div>
-        </Margin>
-      </div>
+        </div>
+      </Margin>
     </Section>
   );
 };

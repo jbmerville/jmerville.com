@@ -8,15 +8,15 @@ import {
 import { Styles } from 'types';
 import { ScreenSize } from 'values';
 
-interface HeroImageSectionProps {}
+interface HeroImageProps {}
 
-const HeroImageSection = (props: HeroImageSectionProps) => {
+const HeroImage = (props: HeroImageProps) => {
   const [width] = useWindowSize();
   const { isLight } = useTheme();
   const styles: Styles = {
     imageContainer: {
       position: 'relative',
-      margin: '100px',
+      margin: '50px',
       width: '-webkit-fill-available',
       maxWidth: '900px',
       height: '-webkit-fill-available',
@@ -79,4 +79,4 @@ const HeroImageSection = (props: HeroImageSectionProps) => {
   );
 };
 
-export default HeroImageSection;
+export default HeroImage;

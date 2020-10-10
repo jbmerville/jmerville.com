@@ -44,7 +44,7 @@ const Column = (props: ColumnProps) => {
   }
 
   let cardsComponent = [];
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 20; i++) {
     const index = i % cards.length;
     const [color, emoji, title, isColorLight] = cards[index];
     const widths = BAR_WIDTH[index % BAR_WIDTH.length].map((barWidth) => `${barWidth}px`);
