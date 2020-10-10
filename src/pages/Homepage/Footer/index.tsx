@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {
+  Link,
   Margin,
   Section,
   StyledText
@@ -50,10 +51,9 @@ const Footer = () => {
             </StyledText>
             <StyledText styleType="PARAGRAPH" color={theme.text}>
               Hero image designed by Stories -
-              <a style={styles.link} href="https://www.freepik.com">
-                {' '}
-                Freepik.com{' '}
-              </a>
+              <Link url="https://www.freepik.com" onHoverColor={theme.accent}>
+                Freepik.com
+              </Link>
             </StyledText>
           </div>
           <div style={styles.section}>
@@ -65,18 +65,18 @@ const Footer = () => {
             </StyledText>
             <StyledText styleType="PARAGRAPH" color={theme.text}>
               <Margin right="SMALL" display="inline-block">
-                <a href="https://www.linkedin.com/in/jbmerville/">
-                  <FontAwesomeIcon icon={faLinkedin} size="lg" color={theme.text} />
-                </a>
+                <Link url="https://www.linkedin.com/in/jbmerville/" onHoverColor={theme.accent}>
+                  <FontAwesomeIcon icon={faLinkedin} size="lg" />
+                </Link>
               </Margin>
               <Margin right="SMALL" display="inline-block">
-                <a href="https://github.com/jbmerville">
-                  <FontAwesomeIcon icon={faGithub} size="lg" color={theme.text} />
-                </a>
+                <Link url="https://github.com/jbmerville" onHoverColor={theme.accent}>
+                  <FontAwesomeIcon icon={faGithub} size="lg" />
+                </Link>
               </Margin>
-              <a href="mailto:jb.merville@gmail.com">
-                <FontAwesomeIcon icon={faEnvelope} size="lg" color={theme.text} />
-              </a>
+              <Link url="mailto:jb.merville@gmail.com" onHoverColor={theme.accent}>
+                <FontAwesomeIcon icon={faEnvelope} size="lg" />
+              </Link>
             </StyledText>
           </div>
         </div>
