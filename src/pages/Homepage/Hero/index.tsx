@@ -3,7 +3,7 @@ import React, {
   useState
 } from 'react';
 
-import { Margin } from 'components';
+import { Section } from 'components';
 import {
   useTheme,
   useWindowSize
@@ -36,7 +36,6 @@ const Hero = () => {
       height: '90%',
       minHeight: 'fit-content',
       overflow: 'hidden',
-      maxHeight: '800px',
     },
     innerContainer: {
       position: 'relative',
@@ -44,6 +43,7 @@ const Hero = () => {
       width: '100%',
       display: 'flex',
       justifyContent: 'space-around',
+      alignItems: 'center',
     },
   };
 
@@ -74,14 +74,12 @@ const Hero = () => {
   }
 
   return (
-    <section style={styles.outerContainer}>
-      <Margin horizontal="LARGE">
-        <div style={styles.innerContainer}>
-          <HeroTextSection isVisible={isVisible} />
-          <HeroImageSection />
-        </div>
-      </Margin>
-    </section>
+    <Section height="90%">
+      <div style={styles.innerContainer}>
+        <HeroTextSection isVisible={isVisible} />
+        <HeroImageSection />
+      </div>
+    </Section>
   );
 };
 

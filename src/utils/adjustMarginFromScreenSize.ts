@@ -7,18 +7,18 @@ const adjustMarginFromWidth = (width: number, margin: MarginHorVert): MarginHorV
   switch (screenSize) {
     case ScreenSize.PHONE:
       return {
-        HORIZONTAL: Math.max(margin.HORIZONTAL - 50, 5),
-        VERTICAL: Math.max(margin.HORIZONTAL - 50, 5),
+        HORIZONTAL: Math.max(margin.HORIZONTAL - 50, 0),
+        VERTICAL: Math.max(margin.HORIZONTAL - 50, 0),
       };
     case ScreenSize.TABLET:
       return {
-        HORIZONTAL: Math.max(margin.HORIZONTAL - 5, 10),
-        VERTICAL: Math.max(margin.HORIZONTAL - 5, 10),
+        HORIZONTAL: Math.max(margin.HORIZONTAL - 5, 0),
+        VERTICAL: Math.max(margin.HORIZONTAL - 5, 0),
       };
     case ScreenSize.TV:
       return {
-        HORIZONTAL: Math.max(margin.HORIZONTAL + 10, 50),
-        VERTICAL: Math.max(margin.HORIZONTAL + 10, 50),
+        HORIZONTAL: Math.max(margin.HORIZONTAL, 0),
+        VERTICAL: Math.max(margin.HORIZONTAL, 0),
       };
     default:
       return {

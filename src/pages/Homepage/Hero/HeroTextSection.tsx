@@ -11,7 +11,7 @@ import {
   useTheme,
   useWindowSize
 } from 'hooks';
-import { Style } from 'types';
+import { Styles } from 'types';
 import { Colors } from 'values';
 
 import { CONTENT } from './hero-config';
@@ -25,17 +25,22 @@ const HeroTextSection = (props: HeroTextSectionProp) => {
   const { theme } = useTheme();
   const { isVisible } = props;
 
-  const style: Style = {
-    background: theme.card,
-    borderRadius: '15px',
-    float: 'left',
-    width: '45%',
-    height: 'auto',
-    position: 'relative',
+  const styles: Styles = {
+    cardContainer: {
+      background: theme.card,
+      borderRadius: '15px',
+      maxWidth: '515px',
+      height: 'fit-content',
+      position: 'relative',
+    },
+    buttonContainer: {
+      display: 'flex',
+      flexFlow: 'row',
+    },
   };
 
   return (
-    <div style={style}>
+    <div style={styles.cardContainer}>
       <Margin horizontal={'SMALL'} vertical="SMALL">
         <Animate direction={'BOTTOM'} isVisible={isVisible} speed="0.5x">
           <StyledText color={theme.primary} style="TITLE">
@@ -62,16 +67,18 @@ const HeroTextSection = (props: HeroTextSectionProp) => {
         {width > 600 && (
           <Animate direction={'BOTTOM'} isVisible={isVisible} speed="1.5x">
             <Margin top="SMALL">
-              <Margin right="SMALL">
+              <div style={styles.buttonContainer}>
+                <Margin right="SMALL">
+                  <Button
+                    text={{ link: { id: 'projects', label: 'Projects', url: '' }, color: Colors.BACKGROUND }}
+                    background={{ offHoverColor: theme.highlight, onHoverColor: theme.highlight }}
+                  />
+                </Margin>
                 <Button
-                  text={{ link: { id: 'projects', label: 'Projects', url: '' }, color: Colors.BACKGROUND }}
+                  text={{ link: { id: 'experience', label: 'Experience', url: '' }, color: Colors.BACKGROUND }}
                   background={{ offHoverColor: theme.highlight, onHoverColor: theme.highlight }}
                 />
-              </Margin>
-              <Button
-                text={{ link: { id: 'experience', label: 'Experience', url: '' }, color: Colors.BACKGROUND }}
-                background={{ offHoverColor: theme.highlight, onHoverColor: theme.highlight }}
-              />
+              </div>
             </Margin>
           </Animate>
         )}

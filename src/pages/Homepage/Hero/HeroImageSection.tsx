@@ -13,16 +13,13 @@ interface HeroImageSectionProps {}
 const HeroImageSection = (props: HeroImageSectionProps) => {
   const [width] = useWindowSize();
   const { isLight } = useTheme();
-  console.log(isLight);
   const styles: Styles = {
     imageContainer: {
       position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      float: 'right',
-      width: '55%',
-      height: 'auto',
+      margin: '100px',
+      width: '-webkit-fill-available',
+      maxWidth: '900px',
+      height: '-webkit-fill-available',
     },
     imageInnerContainer: {
       position: 'absolute',
@@ -32,7 +29,8 @@ const HeroImageSection = (props: HeroImageSectionProps) => {
       width: '100%',
     },
     image: {
-      width: '100%',
+      height: '100%',
+      objectFit: 'contain',
       position: 'relative',
     },
   };
@@ -74,11 +72,7 @@ const HeroImageSection = (props: HeroImageSectionProps) => {
       </div>
       <div style={styles.imageInnerContainer}>
         <Animate direction="RIGHT" isVisible={!isLight} center={true}>
-          <img
-            style={{ ...styles.image, width: '70%' }}
-            alt="If you see this follow me on github and linkedin :)"
-            src="images/eastwood-school-bag.png"
-          />
+          <img style={{ ...styles.image }} alt="If you see this follow me on github and linkedin :)" src="images/eastwood-school-bag.png" />
         </Animate>
       </div>
     </div>

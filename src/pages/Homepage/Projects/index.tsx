@@ -23,9 +23,9 @@ const Projects = () => {
               </Margin>
             );
           }
-          return <Card item={item} />;
+          return <Card key={item.id} item={item} />;
         });
-        return <Section section={section}>{sectionContent}</Section>;
+        return <Section key={section.id}>{sectionContent}</Section>;
       })}
     </>
   );

@@ -60,7 +60,7 @@ const Footer = () => {
   }
 
   return (
-    <Section section={{ id: 'footer', title: '' }} justifyContent="flex-end">
+    <Section justifyContent="flex-end">
       <div style={styles.card}>
         <Margin horizontal="REGULAR" vertical="REGULAR">
           <Margin bottom="SMALL">
@@ -70,7 +70,7 @@ const Footer = () => {
           </Margin>
           <div style={styles.buttonContainer}>
             {BUTTONS.map((button) => (
-              <div style={styles.button}>
+              <div style={styles.button} key={button.link.id}>
                 <Button
                   text={{ link: button.link, color: Colors.BACKGROUND }}
                   background={{ onHoverColor: Colors.SECONDARY, offHoverColor: Colors.GRAY_DARK }}

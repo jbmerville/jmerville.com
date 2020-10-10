@@ -87,7 +87,7 @@ const Hamburger = () => {
           {LINKS.map((item) => {
             const { link, isButton } = item;
             return isButton ? (
-              <Button text={{ link, color: Colors.BACKGROUND }} />
+              <Button key={link.id} text={{ link, color: Colors.BACKGROUND }} />
             ) : (
               <a key={link.id} style={{ background: Colors.GRAY_LIGHT, ...styles.link }} href={link.url}>
                 {link.label}

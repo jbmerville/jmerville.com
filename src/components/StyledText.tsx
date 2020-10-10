@@ -1,6 +1,10 @@
 import React, { ReactNode } from 'react';
+
 import { Style } from 'types';
-import { Colors, FontSize } from 'values';
+import {
+  Colors,
+  FontSize
+} from 'values';
 
 interface StyledTextProps {
   color: Colors;
