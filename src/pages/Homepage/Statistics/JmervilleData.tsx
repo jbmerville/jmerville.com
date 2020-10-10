@@ -1,10 +1,15 @@
-import { useQuery } from '@apollo/client';
+import React from 'react';
+
 import { ALL_QUERY } from 'api';
 import { StyledText } from 'components';
 import { useTheme } from 'hooks';
 import moment from 'moment';
-import React from 'react';
-import { Colors, repoLinesStats } from 'values';
+import {
+  Colors,
+  repoLinesStats
+} from 'values';
+
+import { useQuery } from '@apollo/client';
 
 const colorText = (text: string | number, color: Colors): JSX.Element => <span style={{ color, fontWeight: 'bold' }}>{text}</span>;
 
@@ -35,7 +40,7 @@ const JmervilleData = () => {
 
   return (
     <>
-      <StyledText color={theme.text} style="PARAGRAPH" isLoading={loading} isError={error ? true : false}>
+      <StyledText color={theme.text} styleType="PARAGRAPH" isLoading={loading} isError={error ? true : false}>
         {text}
       </StyledText>
     </>

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   Margin,
-  Switch
+  Toggle
 } from 'components';
 import Button from 'components/Button';
 import {
@@ -17,7 +17,7 @@ import { LINKS } from './header-config';
 
 const Header = () => {
   const [width] = useWindowSize();
-  const { isLight } = useTheme();
+  const { theme } = useTheme();
   const styles: Styles = {
     container: {
       left: '0',
@@ -55,22 +55,18 @@ const Header = () => {
     <Hamburger />
   ) : (
     <header style={styles.container}>
-      <Switch on={{ color: Colors.GRAY_LIGHT, text: 'Light' }} off={{ color: Colors.PRIMARY, text: 'Dark' }} isDefaultOn={isLight} />
+      <Toggle onText="Light" offText="Dark" />
 
       <Margin horizontal="SMALL">
         <nav style={styles.innerContainer}>
-          {LINKS.map((item) => {
-            const { link, isButton } = item;
-            return isButton ? (
-              <Button text={{ link, color: Colors.BACKGROUND }} showShadow={true} />
-            ) : (
-              <Margin right="REGULAR">
-                <a className="linkHover" key={link.id} style={styles.link} href={link.url}>
-                  {link.label}
-                </a>
-              </Margin>
-            );
-          })}
+          {LINKS.map((item) => (
+            <Button
+              key={item.link.id}
+              text={{ link: item.link, color: Colors.WHITE }}
+              background={{ offHoverColor: theme.highlight, onHoverColor: theme.secondary }}
+              showShadow={true}
+            />
+          ))}
         </nav>
       </Margin>
     </header>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { useTheme } from 'hooks';
 import {
   Icon,
   Link,
@@ -27,17 +28,19 @@ interface ButtonProps {
 }
 
 const defaultProps = {
-  background: {
-    offHoverColor: Colors.PRIMARY,
-    onHoverColor: Colors.SECONDARY,
-  },
   showShadow: false,
   showShadowHover: true,
 };
 
 const Button = (props: ButtonProps & typeof defaultProps) => {
   const { icon, text, background, showShadow, showShadowHover, onClick } = props;
-  const { offHoverColor, onHoverColor } = background;
+  const { theme } = useTheme();
+  let offHoverColor = theme.highlight;
+  let onHoverColor = theme.secondary;
+  if (background) {
+    offHoverColor = background.offHoverColor;
+    onHoverColor = background.onHoverColor;
+  }
   const { link, color } = text;
 
   const [isHover, setIsHover] = useState(false);
@@ -93,7 +96,7 @@ const Button = (props: ButtonProps & typeof defaultProps) => {
             <FontAwesomeIcon icon={icon.fontAwesomeIcon} size="lg" />
           </div>
         )}
-        <StyledText color={color} style="BUTTON">
+        <StyledText color={color} styleType="BUTTON">
           {link.label.toUpperCase()}
         </StyledText>
       </div>

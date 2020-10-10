@@ -64,7 +64,7 @@ const Footer = () => {
       <div style={styles.card}>
         <Margin horizontal="REGULAR" vertical="REGULAR">
           <Margin bottom="SMALL">
-            <StyledText color={theme.primary} style="TITLE">
+            <StyledText color={theme.primary} styleType="TITLE">
               Find me here!
             </StyledText>
           </Margin>
@@ -72,7 +72,7 @@ const Footer = () => {
             {BUTTONS.map((button) => (
               <div style={styles.button} key={button.link.id}>
                 <Button
-                  text={{ link: button.link, color: Colors.BACKGROUND }}
+                  text={{ link: button.link, color: Colors.WHITE }}
                   background={{ onHoverColor: Colors.SECONDARY, offHoverColor: Colors.GRAY_DARK }}
                   icon={button.icon}
                 />

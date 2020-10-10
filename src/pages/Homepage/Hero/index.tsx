@@ -1,20 +1,8 @@
-import React, {
-  useEffect,
-  useState
-} from 'react';
-
 import { Section } from 'components';
-import {
-  useTheme,
-  useWindowSize
-} from 'hooks';
+import { useTheme, useWindowSize } from 'hooks';
+import React, { useEffect, useState } from 'react';
 import { Styles } from 'types';
-import {
-  Colors,
-  Paddings,
-  ScreenSize
-} from 'values';
-
+import { Colors, Paddings, ScreenSize } from 'values';
 import HeroImageSection from './HeroImageSection';
 import HeroTextSection from './HeroTextSection';
 
@@ -51,7 +39,7 @@ const Hero = () => {
   if (width < ScreenSize.PHONE) {
     styles.outerContainer = {
       position: 'relative',
-      backgroundColor: Colors.BACKGROUND,
+      backgroundColor: Colors.WHITE,
       width: '100%',
       height: '100%',
       overflow: 'hidden',

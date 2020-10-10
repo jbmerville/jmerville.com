@@ -1,12 +1,11 @@
 import Colors from 'values/Colors';
 
-interface Theme {
+export interface Theme {
   background: Colors;
   primary: Colors;
   secondary: Colors;
   text: Colors;
   card: Colors;
   highlight: Colors;
+  accent: Colors;
 }
-
-export default Theme;

@@ -6,8 +6,8 @@ import {
 } from 'hooks';
 import { Theme } from 'types';
 import {
-  themeDark,
-  themeLight
+  darkTheme,
+  lightTheme
 } from 'values';
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
@@ -24,9 +24,9 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   const getTheme = (isLight: boolean): Theme => {
     if (isLight) {
-      return themeLight;
+      return lightTheme;
     }
-    return themeDark;
+    return darkTheme;
   };
 
   const toggle = () => {

@@ -1,7 +1,4 @@
-import React from 'react';
-
-import Br from 'components/Br';
-import StyledText from 'components/StyledText';
+/* eslint-disable quotes */
 import { CardItem } from 'types';
 import { Colors } from 'values';
 
@@ -10,71 +7,7 @@ enum Categories {
   PROJECTS = 'PROJECTS',
 }
 
-export const SECTION_CATEGORIES = [
-  // {
-  //   id: Categories.WORK_HISTORY,
-  //   title: 'Work history',
-  // },
-  {
-    id: Categories.PROJECTS,
-    title: 'Projects',
-  },
-];
-
-const renderTwoParagraphs = (topText: string, bottomText: string): JSX.Element => {
-  return (
-    <>
-      <StyledText color={Colors.TEXT} style="PARAGRAPH">
-        {topText}
-      </StyledText>
-      <Br />
-      <StyledText color={Colors.TEXT} style="PARAGRAPH">
-        {bottomText}
-      </StyledText>
-    </>
-  );
-};
-
 export const SECTION_CONTENT: CardItem[] = [
-  // {
-  //   id: 'amazon',
-  //   category: Categories.WORK_HISTORY,
-  //   projectUrl: 'https://www.amazon.jobs/en/working/working-amazon',
-  //   title: 'Amazon ·  Software Engineer Intern',
-  //   description: [
-  //     'I interned at Amazon Prime Video, where I worked on improving the search capabilities of Internal data using ElasticSearch.',
-  //   ],
-  //   image: {
-  //     url: 'amazon.png',
-  //     backgroundColor: Colors.GRAY_LIGHT,
-  //   },
-  // },
-  // {
-  //   id: 'srvice',
-  //   category: Categories.WORK_HISTORY,
-  //   projectUrl: 'https://www.srvice.ca/',
-  //   title: 'Srvice · Full-Stack Developer',
-  //   description: [
-  //     'Since fall 2019 I have been an active developer at Srvice’s. Srvice’s vision is to bring customers closer to local services with the help of technology. Using agile methodologies I build iOS and Android applications with frameworks like React and React-Native.',
-  //   ],
-  //   image: {
-  //     url: 'srvice.png',
-  //     backgroundColor: Colors.SRVICE,
-  //   },
-  // },
-  // {
-  //   id: 'yorku',
-  //   category: Categories.WORK_HISTORY,
-  //   projectUrl: 'https://lassonde.yorku.ca/',
-  //   title: 'York University · Teacher Assistant',
-  //   description: [
-  //     'Led weekly classes for undergraduate Computer Science students, teaching object-oriented programming for mobile application development.',
-  //   ],
-  //   image: {
-  //     url: 'yorku.png',
-  //     backgroundColor: Colors.GRAY_LIGHT,
-  //   },
-  // },
   {
     id: 'jmerville',
     category: Categories.PROJECTS,

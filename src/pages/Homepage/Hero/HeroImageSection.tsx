@@ -64,15 +64,15 @@ const HeroImageSection = (props: HeroImageSectionProps) => {
       <div style={styles.imageInnerContainer}>
         <Animate direction="LEFT" isVisible={isLight} center={true}>
           <img
-            style={{ ...styles.image, top: '50px' }}
+            style={{ ...styles.image }}
             alt="If you see this follow me on github and linkedin :)"
-            src="images/eastwood-come-back-later.png"
+            src="images/flame-watching-rocket-launch.png"
           />
         </Animate>
       </div>
       <div style={styles.imageInnerContainer}>
         <Animate direction="RIGHT" isVisible={!isLight} center={true}>
-          <img style={{ ...styles.image }} alt="If you see this follow me on github and linkedin :)" src="images/eastwood-school-bag.png" />
+          <img style={{ ...styles.image }} alt="If you see this follow me on github and linkedin :)" src="images/flame-no-connection.png" />
         </Animate>
       </div>
     </div>

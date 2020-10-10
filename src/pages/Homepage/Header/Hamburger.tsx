@@ -1,18 +1,9 @@
-import React, { useState } from 'react';
-
-import { Button } from 'components';
-import { Styles } from 'types';
-import {
-  Colors,
-  Paddings
-} from 'values';
-
-import {
-  faBars,
-  faTimes
-} from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { Button } from 'components';
+import React, { useState } from 'react';
+import { Styles } from 'types';
+import { Colors, Paddings } from 'values';
 import { LINKS } from './header-config';
 
 const Hamburger = () => {
@@ -32,7 +23,7 @@ const Hamburger = () => {
       width: '-webkit-fill-available',
       height: 'fit-content',
       borderRadius: '4px',
-      background: Colors.BACKGROUND,
+      background: Colors.WHITE,
       zIndex: isClicked ? 101 : -1,
       boxShadow:
         'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgb(50 50 93 / 51%) -1px 0px 100px -20px',
@@ -87,7 +78,7 @@ const Hamburger = () => {
           {LINKS.map((item) => {
             const { link, isButton } = item;
             return isButton ? (
-              <Button key={link.id} text={{ link, color: Colors.BACKGROUND }} />
+              <Button key={link.id} text={{ link, color: Colors.WHITE }} />
             ) : (
               <a key={link.id} style={{ background: Colors.GRAY_LIGHT, ...styles.link }} href={link.url}>
                 {link.label}

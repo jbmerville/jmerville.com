@@ -39,7 +39,7 @@ export enum FontSize {
   S = '0.9em',
   M = '1.1em',
   L = '1.4em',
-  XL = '1.9em',
+  XL = '2.1em',
   XXL = '3em',
   XXXL = '4em',
 }

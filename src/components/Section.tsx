@@ -12,6 +12,7 @@ import { Styles } from 'types';
 import { getMaxWidthFromScreenWidth } from 'utils';
 
 import Animate from './Animate';
+import Margin from './Margin';
 import StyledText from './StyledText';
 
 interface SectionProps {
@@ -56,11 +57,13 @@ const Section = (props: SectionProps) => {
     <section ref={ref} style={styles.outerContainer}>
       <div style={styles.innerContainer}>
         {title && (
-          <Animate direction={'BOTTOM'} isVisible={isVisible}>
-            <StyledText color={theme.primary} style="TITLE">
-              {title}
-            </StyledText>
-          </Animate>
+          <Margin vertical="REGULAR">
+            <Animate direction={'BOTTOM'} isVisible={isVisible}>
+              <StyledText color={theme.primary} styleType="TITLE">
+                {title}
+              </StyledText>
+            </Animate>
+          </Margin>
         )}
         {children}
       </div>

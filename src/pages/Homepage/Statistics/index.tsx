@@ -57,7 +57,7 @@ const Statistics = () => {
         <div style={styles.textContainer}>
           <Margin bottom={'SMALL'}>
             <Animate direction={'LEFT'} isVisible={isVisible}>
-              <StyledText color={theme.primary} style="TITLE">
+              <StyledText color={theme.primary} styleType="TITLE">
                 Statistics
               </StyledText>
             </Animate>

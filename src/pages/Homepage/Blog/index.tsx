@@ -127,13 +127,13 @@ const Blog = () => {
           <div style={styles.textContainer}>
             <Animate direction={'RIGHT'} isVisible={isVisible}>
               <Margin bottom={'SMALL'}>
-                <StyledText color={theme.primary} style="TITLE">
+                <StyledText color={theme.primary} styleType="TITLE">
                   Blog posts
                 </StyledText>
               </Margin>
             </Animate>
             <Animate direction={'RIGHT'} isVisible={isVisible} speed="1.5x">
-              <StyledText color={theme.text} style="PARAGRAPH">
+              <StyledText color={theme.text} styleType="PARAGRAPH">
                 Coming soon!
               </StyledText>
             </Animate>

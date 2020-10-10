@@ -1,8 +1,11 @@
-import { useQuery } from '@apollo/client';
+import React from 'react';
+
 import { GITHUB_QUERY } from 'api';
 import { useTheme } from 'hooks';
 import moment from 'moment';
-import React from 'react';
+
+import { useQuery } from '@apollo/client';
+
 import StyledText from '../StyledText';
 
 interface JmervilleDataProps {
@@ -17,7 +20,7 @@ const JmervilleData = (props: JmervilleDataProps) => {
   });
 
   return (
-    <StyledText color={theme.secondary} style="UNDERTEXT" isLoading={loading} isError={error ? true : false}>
+    <StyledText color={theme.secondary} styleType="UNDERTEXT" isLoading={loading} isError={error ? true : false}>
       {data ? `Last updated ${moment(data.githubStats.lastPushedAt).fromNow()}` : ''}
     </StyledText>
   );

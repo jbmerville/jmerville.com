@@ -43,13 +43,13 @@ const HeroTextSection = (props: HeroTextSectionProp) => {
     <div style={styles.cardContainer}>
       <Margin horizontal={'SMALL'} vertical="SMALL">
         <Animate direction={'BOTTOM'} isVisible={isVisible} speed="0.5x">
-          <StyledText color={theme.primary} style="TITLE">
+          <StyledText color={theme.primary} styleType="TITLE">
             {CONTENT.title.primary}
           </StyledText>
         </Animate>
         <Animate direction={'BOTTOM'} isVisible={isVisible}>
           <Margin vertical="SMALL">
-            <StyledText color={theme.text} style="SUBTITLE">
+            <StyledText color={theme.text} styleType="SUBTITLE">
               {CONTENT.title.secondary}
             </StyledText>
           </Margin>
@@ -60,7 +60,7 @@ const HeroTextSection = (props: HeroTextSectionProp) => {
           </Animate>
         </Margin>
         <Animate direction={'BOTTOM'} isVisible={isVisible}>
-          <StyledText color={theme.text} style="PARAGRAPH">
+          <StyledText color={theme.text} styleType="PARAGRAPH">
             {CONTENT.description}
           </StyledText>
         </Animate>
@@ -69,15 +69,9 @@ const HeroTextSection = (props: HeroTextSectionProp) => {
             <Margin top="SMALL">
               <div style={styles.buttonContainer}>
                 <Margin right="SMALL">
-                  <Button
-                    text={{ link: { id: 'projects', label: 'Projects', url: '' }, color: Colors.BACKGROUND }}
-                    background={{ offHoverColor: theme.highlight, onHoverColor: theme.highlight }}
-                  />
+                  <Button text={{ link: { id: 'projects', label: 'Projects', url: '' }, color: Colors.WHITE }} />
                 </Margin>
-                <Button
-                  text={{ link: { id: 'experience', label: 'Experience', url: '' }, color: Colors.BACKGROUND }}
-                  background={{ offHoverColor: theme.highlight, onHoverColor: theme.highlight }}
-                />
+                <Button text={{ link: { id: 'experience', label: 'Experience', url: '' }, color: Colors.WHITE }} />
               </div>
             </Margin>
           </Animate>

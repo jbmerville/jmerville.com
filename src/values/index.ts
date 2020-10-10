@@ -9,12 +9,12 @@ import {
   Paddings
 } from './Style';
 import {
-  themeDark,
-  themeLight
+  darkTheme,
+  lightTheme
 } from './Themes';
 
 // Enums, consts
-export { Colors, FontSize, MARGIN_VALUE, MaxWidth, Paddings, repoLinesStats, ScreenSize, themeDark, themeLight };
+export { Colors, darkTheme, FontSize, lightTheme, MARGIN_VALUE, MaxWidth, Paddings, repoLinesStats, ScreenSize };
 
 // Types
 export type Padding = P;

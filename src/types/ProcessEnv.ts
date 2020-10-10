@@ -1,5 +1,3 @@
-interface ProcessEnv {
+export interface ProcessEnv {
   [key: string]: string;
 }
-
-export default ProcessEnv;

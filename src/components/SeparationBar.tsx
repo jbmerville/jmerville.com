@@ -1,20 +1,15 @@
 import React from 'react';
 
+import { useTheme } from 'hooks';
 import { Style } from 'types';
-import { Colors } from 'values';
 
-interface SeparationBarProps {
-  color?: Colors;
-}
-
-const SeparationBar = (props: SeparationBarProps) => {
-  const { color } = props;
-
+const SeparationBar = () => {
+  const { theme } = useTheme();
   const style: Style = {
     height: '3px',
     width: '120px',
     transitionDelay: '.1s',
-    background: color ? color : Colors.SECONDARY,
+    background: theme.accent,
   };
 
   return <div style={style}></div>;

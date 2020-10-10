@@ -47,7 +47,7 @@ const CardBlog = (props: CardBlogProps) => {
       fontWeight: 'bold',
       fontSize: '1em',
       paddingTop: '20px',
-      color: isColorLight ? Colors.BACKGROUND : Colors.TEXT,
+      color: isColorLight ? Colors.WHITE : Colors.TEXT,
     },
     barContainer: {
       paddingTop: '20px',

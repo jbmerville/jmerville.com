@@ -25,7 +25,6 @@ import {
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 
-import Br from '../Br';
 import Margin from '../Margin';
 import StyledText from '../StyledText';
 import JmervilleData from './JmervilleData';
@@ -67,7 +66,7 @@ const Card = (props: CardProps) => {
     return (
       <div style={styles.button}>
         <Button
-          text={{ link, color: Colors.BACKGROUND }}
+          text={{ link, color: Colors.WHITE }}
           background={{ offHoverColor: theme.highlight, onHoverColor: theme.highlight }}
           showShadow={false}
           icon={{ fontAwesomeIcon: icon }}
@@ -78,12 +77,11 @@ const Card = (props: CardProps) => {
 
   const getDescription = () =>
     description.map((item) => (
-      <>
-        <StyledText color={theme.text} style="PARAGRAPH">
+      <Margin key={item} top="SMALL">
+        <StyledText key={item} color={theme.text} styleType="PARAGRAPH">
           {item}
         </StyledText>
-        <Br />
-      </>
+      </Margin>
     ));
 
   const styles: Styles = {
@@ -151,8 +149,8 @@ const Card = (props: CardProps) => {
     <div style={styles.container} ref={ref}>
       <div style={styles.imageContainer}></div>
       <Margin horizontal="REGULAR" vertical="REGULAR">
-        <Margin bottom="SMALL">
-          <StyledText color={theme.primary} style="SUBTITLE">
+        <Margin bottom="REGULAR">
+          <StyledText color={theme.primary} styleType="SUBTITLE">
             {title}
           </StyledText>
           <JmervilleData repository={githubProjectName} />

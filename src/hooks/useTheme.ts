@@ -3,10 +3,10 @@ import {
   useContext
 } from 'react';
 
-import { themeLight } from 'values';
+import { lightTheme } from 'values';
 
 const defaultContextData = {
-  theme: themeLight,
+  theme: lightTheme,
   toggle: () => {},
   isLight: true,
 };
