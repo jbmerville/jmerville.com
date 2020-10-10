@@ -71,7 +71,7 @@ const HeroCard = (props: HeroCardProp) => {
                 <Margin right="SMALL">
                   <Button text={{ link: { id: 'projects', label: 'Projects', url: '' }, color: Colors.WHITE }} />
                 </Margin>
-                <Button text={{ link: { id: 'experience', label: 'Experience', url: '' }, color: Colors.WHITE }} />
+                <Button text={{ link: { id: 'cool-stats', label: 'Cool stats', url: '' }, color: Colors.WHITE }} />
               </div>
             </Margin>
           </Animate>

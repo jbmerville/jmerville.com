@@ -4,25 +4,32 @@ import { useTheme } from 'hooks';
 import { Styles } from 'types';
 import { Colors } from 'values';
 
+import {
+  faCircle,
+  faMoon
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 interface ToggleProps {
   onText: string;
   offText: string;
 }
 
 const Toggle = (props: ToggleProps) => {
-  const { onText, offText } = props;
   const { toggle, isLight, theme } = useTheme();
+  const borderRadius = '50px';
+
   const styles: Styles = {
     outerContainer: {
-      width: '160px',
-      height: '50px',
+      width: '100px',
+      height: '40px',
       background: theme.highlight,
-      borderRadius: '5px',
+      borderRadius,
     },
     toggle: {
       height: '-webkit-fill-available',
       width: '50%',
-      borderRadius: '5px',
+      borderRadius,
       background: theme.card,
       zIndex: 2,
       transition: '0.2s ease-in',
@@ -35,17 +42,19 @@ const Toggle = (props: ToggleProps) => {
       width: '100%',
       alignItems: 'center',
       position: 'relative',
-      top: '-50px',
+      top: '-40px',
       justifyContent: 'space-around',
       color: Colors.WHITE,
       zIndex: 3,
       cursor: 'pointer',
     },
     leftContainer: {
-      padding: '15px',
+      padding: '10px',
+      color: isLight ? Colors.WHITE : Colors.ORANGE,
     },
     rightContainer: {
       padding: '10px',
+      color: isLight ? Colors.YELLOW : Colors.WHITE,
     },
   };
 
@@ -53,8 +62,12 @@ const Toggle = (props: ToggleProps) => {
     <div style={styles.outerContainer}>
       <div style={styles.toggle}></div>
       <div style={styles.textContainer} onClick={toggle}>
-        <div style={styles.leftContainer}>{onText}</div>
-        <div style={styles.rightContainer}>{offText}</div>
+        <div style={styles.leftContainer}>
+          <FontAwesomeIcon icon={faCircle} size="lg" />
+        </div>
+        <div style={styles.rightContainer}>
+          <FontAwesomeIcon icon={faMoon} size="lg" />
+        </div>
       </div>
     </div>
   );

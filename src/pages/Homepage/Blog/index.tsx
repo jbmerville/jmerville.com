@@ -37,6 +37,7 @@ const Blog = () => {
     leftContainer: {
       width: 'fit-content',
       height: '100%',
+      top: '-60px',
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'left',

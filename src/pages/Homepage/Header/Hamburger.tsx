@@ -1,9 +1,18 @@
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button } from 'components';
 import React, { useState } from 'react';
+
+import { Button } from 'components';
 import { Styles } from 'types';
-import { Colors, Paddings } from 'values';
+import {
+  Colors,
+  Paddings
+} from 'values';
+
+import {
+  faBars,
+  faTimes
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { LINKS } from './header-config';
 
 const Hamburger = () => {

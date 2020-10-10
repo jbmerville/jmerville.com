@@ -9,20 +9,6 @@ enum Categories {
 
 export const SECTION_CONTENT: CardItem[] = [
   {
-    id: 'jmerville',
-    category: Categories.PROJECTS,
-    title: 'jmerville.com',
-    description: [
-      "This website! jmerville is my personal website, I'm usually experimenting with it.",
-      'For example, in the lastest update, I added repository statistics to each project.',
-    ],
-    image: {
-      url: 'images/jmerville.png',
-      backgroundColor: Colors.GRAY_DARK,
-    },
-    githubProjectName: 'jmerville.com',
-  },
-  {
     id: 'sortingVisualizer',
     category: Categories.PROJECTS,
     title: 'Sorting Visualizer',
@@ -79,5 +65,19 @@ export const SECTION_CONTENT: CardItem[] = [
       backgroundColor: Colors.GREEN,
     },
     githubProjectName: 'HideYourNotes',
+  },
+  {
+    id: 'jmerville',
+    category: Categories.PROJECTS,
+    title: 'jmerville.com',
+    description: [
+      "This website! jmerville is my personal website, I'm usually experimenting with it.",
+      'For example, in the lastest update, I added repository statistics to each project.',
+    ],
+    image: {
+      url: 'images/jmerville.png',
+      backgroundColor: Colors.GRAY_DARK,
+    },
+    githubProjectName: 'jmerville.com',
   },
 ];

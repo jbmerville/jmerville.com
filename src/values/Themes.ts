@@ -9,7 +9,7 @@ export const lightTheme: Theme = {
   text: Colors.TEXT,
   card: Colors.GRAY_LIGHT,
   highlight: Colors.GRAY_DARK,
-  accent: Colors.YELLOW,
+  accent: Colors.ORANGE,
 };
 export const darkTheme: Theme = {
   background: Colors.NIGHT,
@@ -18,5 +18,5 @@ export const darkTheme: Theme = {
   text: Colors.GRAY_LIGHT,
   card: Colors.BLUE_DARK,
   highlight: Colors.GRAY_DARK,
-  accent: Colors.GREEN,
+  accent: Colors.YELLOW,
 };

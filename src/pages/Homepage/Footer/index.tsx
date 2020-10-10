@@ -6,10 +6,7 @@ import {
   Section,
   StyledText
 } from 'components';
-import {
-  useTheme,
-  useWindowSize
-} from 'hooks';
+import { useTheme } from 'hooks';
 import { Styles } from 'types';
 
 import {
@@ -20,7 +17,6 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Footer = () => {
-  const [width] = useWindowSize();
   const { theme } = useTheme();
 
   const styles: Styles = {

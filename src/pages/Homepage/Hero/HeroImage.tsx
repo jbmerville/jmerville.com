@@ -1,9 +1,6 @@
 import React from 'react';
 
-import {
-  useTheme,
-  useWindowSize
-} from 'hooks';
+import { useWindowSize } from 'hooks';
 import { Styles } from 'types';
 import { ScreenSize } from 'values';
 
@@ -11,7 +8,6 @@ interface HeroImageProps {}
 
 const HeroImage = (props: HeroImageProps) => {
   const [width] = useWindowSize();
-  const { isLight } = useTheme();
   const styles: Styles = {
     imageContainer: {
       position: 'relative',
