@@ -28,6 +28,7 @@ interface SectionProps {
   height?: 'fit-content' | '90%' | '400px';
   background?: Colors;
   alignItems?: 'center' | 'baseline';
+  animate?: boolean;
 }
 
 const defaultProps: { height: 'fit-content'; justifyContent: 'center'; flexDirection: 'column'; alignItems: 'center' } = {
@@ -39,7 +40,7 @@ const defaultProps: { height: 'fit-content'; justifyContent: 'center'; flexDirec
 
 // eslint-disable-next-line react/display-name
 const Section = forwardRef((props: SectionProps, ref: any) => {
-  const { justifyContent, children, title, height, background, flexDirection, alignItems } = props;
+  const { justifyContent, children, title, height, background, flexDirection, alignItems, animate } = props;
   const [width] = useWindowSize();
   const titleRef = useRef(null);
   const isVisible = useIsComponentVisible(titleRef, 300);
@@ -70,16 +71,24 @@ const Section = forwardRef((props: SectionProps, ref: any) => {
     styles.innerContainer.margin = '20px';
   }
 
+  const Title = (
+    <StyledText color={theme.primary} styleType="TITLE">
+      {title}
+    </StyledText>
+  );
+
   return (
     <section ref={ref} style={styles.outerContainer}>
       <div ref={titleRef} style={styles.innerContainer}>
         {title && (
           <Margin vertical="LARGE">
-            <Animate direction={'BOTTOM'} isVisible={isVisible}>
-              <StyledText color={theme.primary} styleType="TITLE">
-                {title}
-              </StyledText>
-            </Animate>
+            {animate ? (
+              <Animate direction={'BOTTOM'} isVisible={isVisible}>
+                {Title}
+              </Animate>
+            ) : (
+              Title
+            )}
           </Margin>
         )}
         {children}

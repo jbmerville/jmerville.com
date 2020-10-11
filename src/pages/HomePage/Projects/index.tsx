@@ -10,7 +10,7 @@ import ProjectCard from './ProjectCard';
 
 const Projects = forwardRef((props: {}, ref: any) => {
   return (
-    <Section ref={ref} title="Projects" alignItems="baseline">
+    <Section ref={ref} title="Projects" alignItems="baseline" animate>
       {SECTION_CONTENT.map((item) => (
         <Margin key={item.id} bottom={'VLARGE'}>
           <ProjectCard item={item} />

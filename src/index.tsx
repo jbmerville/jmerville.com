@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { client } from 'api';
-import HomePage from 'pages/HomePage';
-import NotFound from 'pages/NotFound';
+import {
+  HomePage,
+  NotFound
+} from 'pages';
 import {
   BrowserRouter,
   Route,

@@ -24,7 +24,6 @@ const Header = () => {
       left: '0',
       top: '20px',
       right: '0',
-      perspective: '2000px',
       position: 'absolute',
       height: '50px',
       width: '100%',
