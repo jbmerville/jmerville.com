@@ -38,7 +38,8 @@ const Footer = () => {
       display: 'flex',
       flexDirection: 'column',
       marginRight: '20px',
-      marginBottom: '20px',
+      marginBottom: '10px',
+      marginTop: '10px',
     },
     link: {
       color: theme.accent,
@@ -66,7 +67,7 @@ const Footer = () => {
           </div>
           <div style={styles.section}>
             <StyledText styleType="SUBTITLE" color={theme.text}>
-              Connect
+              Social
             </StyledText>
             <StyledText styleType="PARAGRAPH" color={theme.text}>
               Connect with me on social medias and lets start a conversation!

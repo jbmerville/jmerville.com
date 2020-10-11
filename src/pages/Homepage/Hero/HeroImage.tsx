@@ -9,23 +9,23 @@ const HeroImage = () => {
   const styles: Styles = {
     imageContainer: {
       position: 'relative',
-      margin: '50px',
       width: '-webkit-fill-available',
       maxWidth: '900px',
       height: '100%',
       maxHeight: '600px',
     },
     imageInnerContainer: {
-      position: 'absolute',
-      top: 0,
-      right: 0,
-      height: '100%',
+      position: 'relative',
+      display: 'flex',
       width: '100%',
+      height: '100%',
+      justifyContent: 'flex-end',
     },
     image: {
       height: '100%',
       objectFit: 'contain',
       position: 'relative',
+      left: '50px',
     },
   };
   if (width < ScreenSize.PHONE) {
@@ -39,7 +39,6 @@ const HeroImage = () => {
       width: '100%',
       height: '400px',
       alignItems: 'flex-end',
-      zIndex: 1,
     };
   }
 

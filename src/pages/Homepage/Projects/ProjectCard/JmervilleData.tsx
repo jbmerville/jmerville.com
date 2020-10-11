@@ -1,12 +1,11 @@
 import React from 'react';
 
 import { GITHUB_QUERY } from 'api';
+import { StyledText } from 'components';
 import { useTheme } from 'hooks';
 import moment from 'moment';
 
 import { useQuery } from '@apollo/client';
-
-import StyledText from '../StyledText';
 
 interface JmervilleDataProps {
   repository: string;

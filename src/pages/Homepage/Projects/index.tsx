@@ -1,23 +1,25 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import {
-  Card,
   Margin,
   Section
 } from 'components';
 
 import { SECTION_CONTENT } from './card-configs';
+import ProjectCard from './ProjectCard';
 
-const Projects = () => {
+const Projects = forwardRef((props: {}, ref: any) => {
   return (
-    <Section title="Project">
+    <Section ref={ref} title="Projects" alignItems="baseline">
       {SECTION_CONTENT.map((item) => (
         <Margin key={item.id} bottom={'VLARGE'}>
-          <Card item={item} />
+          <ProjectCard item={item} />
         </Margin>
       ))}
     </Section>
   );
-};
+});
+
+Projects.displayName = 'Projects';
 
 export default Projects;

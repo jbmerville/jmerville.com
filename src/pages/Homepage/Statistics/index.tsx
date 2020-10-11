@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { forwardRef } from 'react';
 
 import {
   Animate,
@@ -13,8 +13,7 @@ import {
 
 import JmervilleData from './JmervilleData';
 
-const Statistics = () => {
-  const ref = useRef(null);
+const Statistics = forwardRef((props: {}, ref: any) => {
   const isVisible = useIsComponentVisible(ref, 300);
   const { theme } = useTheme();
 
@@ -34,6 +33,8 @@ const Statistics = () => {
       </Margin>
     </Section>
   );
-};
+});
+
+Statistics.displayName = 'Statistics';
 
 export default Statistics;

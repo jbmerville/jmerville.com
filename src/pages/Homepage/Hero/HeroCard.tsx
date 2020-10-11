@@ -12,21 +12,20 @@ import {
   useWindowSize
 } from 'hooks';
 import { Styles } from 'types';
-import {
-  Colors,
-  ScreenSize
-} from 'values';
+import { ScreenSize } from 'values';
 
 import { CONTENT } from './hero-config';
 
 interface HeroCardProp {
   isVisible: boolean;
+  projectsRef: any;
+  statisticsRef: any;
 }
 
 const HeroCard = (props: HeroCardProp) => {
   const [width] = useWindowSize();
   const { theme } = useTheme();
-  const { isVisible } = props;
+  const { isVisible, projectsRef, statisticsRef } = props;
 
   const styles: Styles = {
     cardContainer: {
@@ -76,10 +75,20 @@ const HeroCard = (props: HeroCardProp) => {
         <Animate direction={'BOTTOM'} isVisible={isVisible} speed="1.5x">
           <div style={styles.buttonContainer}>
             <Margin right="SMALL" vertical="SMALL">
-              <Button text={{ link: { id: 'projects', label: 'Projects', url: '' }, color: Colors.WHITE }} />
+              <Button
+                text="Projects"
+                onClick={() => {
+                  projectsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+              />
             </Margin>
             <Margin top="SMALL">
-              <Button text={{ link: { id: 'cool-stats', label: 'Cool stats', url: '' }, color: Colors.WHITE }} />
+              <Button
+                text="Cool stats"
+                onClick={() => {
+                  statisticsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+              />
             </Margin>
           </div>
         </Animate>

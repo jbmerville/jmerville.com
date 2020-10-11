@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { client } from 'api';
-import HomePage from 'pages/Homepage';
+import HomePage from 'pages/HomePage';
+import NotFound from 'pages/NotFound';
 import {
   BrowserRouter,
   Route,
@@ -16,7 +17,8 @@ export const App = () => {
     <ApolloProvider client={client}>
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={HomePage} />
+          <Route exact path="/" component={HomePage} />
+          <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
     </ApolloProvider>

@@ -1,6 +1,7 @@
 import React, {
   forwardRef,
-  ReactNode
+  ReactNode,
+  useRef
 } from 'react';
 
 import {
@@ -40,7 +41,8 @@ const defaultProps: { height: 'fit-content'; justifyContent: 'center'; flexDirec
 const Section = forwardRef((props: SectionProps, ref: any) => {
   const { justifyContent, children, title, height, background, flexDirection, alignItems } = props;
   const [width] = useWindowSize();
-  const isVisible = useIsComponentVisible(ref, 300);
+  const titleRef = useRef(null);
+  const isVisible = useIsComponentVisible(titleRef, 300);
   const { theme } = useTheme();
   const sectionMaxWidth = getMaxWidthFromScreenWidth(width);
 
@@ -70,9 +72,9 @@ const Section = forwardRef((props: SectionProps, ref: any) => {
 
   return (
     <section ref={ref} style={styles.outerContainer}>
-      <div style={styles.innerContainer}>
+      <div ref={titleRef} style={styles.innerContainer}>
         {title && (
-          <Margin vertical="REGULAR">
+          <Margin vertical="LARGE">
             <Animate direction={'BOTTOM'} isVisible={isVisible}>
               <StyledText color={theme.primary} styleType="TITLE">
                 {title}
@@ -87,4 +89,5 @@ const Section = forwardRef((props: SectionProps, ref: any) => {
 });
 
 Section.defaultProps = defaultProps;
+
 export default Section;

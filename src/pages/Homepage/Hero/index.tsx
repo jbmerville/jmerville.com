@@ -10,7 +10,12 @@ import { ScreenSize } from 'values';
 import HeroCard from './HeroCard';
 import HeroImage from './HeroImage';
 
-const Hero = () => {
+interface HeroProps {
+  projectsRef: any;
+  statisticsRef: any;
+}
+const Hero = (props: HeroProps) => {
+  const { projectsRef, statisticsRef } = props;
   const [width] = useWindowSize();
   const [isVisible, setIsVisible] = useState(false);
   const isScreenTypeMobile = width < ScreenSize.PHONE;
@@ -21,10 +26,12 @@ const Hero = () => {
 
   return (
     <Section height={isScreenTypeMobile ? 'fit-content' : '90%'} flexDirection={isScreenTypeMobile ? 'column' : 'row'}>
-      <HeroCard isVisible={isVisible} />
+      <HeroCard statisticsRef={statisticsRef} projectsRef={projectsRef} isVisible={isVisible} />
       <HeroImage />
     </Section>
   );
 };
+
+Hero.displayName = 'Hero';
 
 export default Hero;

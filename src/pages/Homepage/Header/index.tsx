@@ -13,11 +13,12 @@ import { Styles } from 'types';
 import { Colors } from 'values';
 
 import Hamburger from './Hamburger';
-import { LINKS } from './header-config';
+import { RESUME } from './header-config';
 
 const Header = () => {
   const [width] = useWindowSize();
   const { theme } = useTheme();
+  const { label, url } = RESUME;
   const styles: Styles = {
     container: {
       left: '0',
@@ -56,17 +57,9 @@ const Header = () => {
   ) : (
     <header style={styles.container}>
       <Toggle onText="Light" offText="Dark" />
-
       <Margin horizontal="SMALL">
         <nav style={styles.innerContainer}>
-          {LINKS.map((item) => (
-            <Button
-              key={item.link.id}
-              text={{ link: item.link, color: Colors.WHITE }}
-              background={{ offHoverColor: theme.highlight, onHoverColor: theme.secondary }}
-              showShadow={true}
-            />
-          ))}
+          <Button text={label} url={url} background={{ offHoverColor: theme.highlight, onHoverColor: theme.secondary }} showShadow={true} />
         </nav>
       </Margin>
     </header>

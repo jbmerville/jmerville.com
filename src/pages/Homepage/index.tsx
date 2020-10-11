@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { ThemeProvider } from 'components';
 import { Styles } from 'types';
@@ -11,6 +11,8 @@ import Projects from './Projects';
 import Statistics from './Statistics';
 
 const HomePage = () => {
+  const projectsRef = useRef(null);
+  const statisticsRef = useRef(null);
   const styles: Styles = {
     container: {
       height: '100%',
@@ -24,10 +26,10 @@ const HomePage = () => {
       <ThemeProvider>
         {/* <PopUp /> */}
         <Header />
-        <Hero />
+        <Hero projectsRef={projectsRef} statisticsRef={statisticsRef} />
         <Blog />
-        <Projects />
-        <Statistics />
+        <Projects ref={projectsRef} />
+        <Statistics ref={statisticsRef} />
         <Footer />
       </ThemeProvider>
     </div>

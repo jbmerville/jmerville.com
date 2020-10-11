@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useTheme } from 'hooks';
 import {
   Icon,
-  Link,
   Styles
 } from 'types';
 import { Colors } from 'values';
@@ -17,10 +16,8 @@ interface ButtonProps {
     offHoverColor: Colors;
     onHoverColor: Colors;
   };
-  text: {
-    link: Link;
-    color: Colors;
-  };
+  text: string;
+  url?: string;
   icon?: Icon;
   showShadow?: boolean;
   showShadowHover?: boolean;
@@ -33,15 +30,15 @@ const defaultProps = {
 };
 
 const Button = (props: ButtonProps & typeof defaultProps) => {
-  const { icon, text, background, showShadow, showShadowHover, onClick } = props;
+  const { icon, text, background, showShadow, showShadowHover, onClick, url } = props;
   const { theme } = useTheme();
   let offHoverColor = theme.highlight;
   let onHoverColor = theme.secondary;
+
   if (background) {
     offHoverColor = background.offHoverColor;
     onHoverColor = background.onHoverColor;
   }
-  const { link, color } = text;
 
   const [isHover, setIsHover] = useState(false);
   let styles: Styles = {
@@ -49,11 +46,10 @@ const Button = (props: ButtonProps & typeof defaultProps) => {
       height: '50px',
       verticalAlign: 'middle',
       textAlign: 'center',
-      // padding: '0px 14px',
+      cursor: 'pointer',
       fontSize: '1em',
       textDecoration: 'none',
       textTransform: 'uppercase',
-      color: color,
       background: isHover ? onHoverColor : offHoverColor,
       letterSpacing: '.025em',
       borderRadius: '4px',
@@ -79,27 +75,32 @@ const Button = (props: ButtonProps & typeof defaultProps) => {
       marginRight: '10px',
       display: 'inline-block',
       fontSize: icon && icon.size ? icon.size : '15px',
-      color: color,
     },
   };
-  return (
-    <a
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-      href={link.url}
-      style={styles.button}
-      onClick={() => onClick}
-    >
-      <div style={styles.innerContainer}>
-        {icon && (
-          <div style={styles.icon}>
-            <FontAwesomeIcon icon={icon.fontAwesomeIcon} size="lg" />
-          </div>
-        )}
-        <StyledText color={color} styleType="BUTTON">
-          {link.label.toUpperCase()}
-        </StyledText>
+
+  const ButtonContent = (
+    <div style={styles.innerContainer}>
+      {icon && (
+        <div style={styles.icon}>
+          <FontAwesomeIcon color={Colors.WHITE} icon={icon.fontAwesomeIcon} size="lg" />
+        </div>
+      )}
+      <StyledText color={Colors.WHITE} styleType="BUTTON">
+        {text.toUpperCase()}
+      </StyledText>
+    </div>
+  );
+
+  if (onClick) {
+    return (
+      <div onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} style={styles.button} onClick={() => onClick()}>
+        {ButtonContent}
       </div>
+    );
+  }
+  return (
+    <a onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} style={styles.button} href={url}>
+      {ButtonContent}
     </a>
   );
 };

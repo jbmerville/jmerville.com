@@ -4,20 +4,20 @@ import React, {
   useState
 } from 'react';
 
-import Button from 'components/Button';
+import {
+  Button,
+  Margin,
+  StyledText
+} from 'components';
 import {
   useTheme,
   useWindowSize
 } from 'hooks';
 import {
   CardItem,
-  Link,
   Styles
 } from 'types';
-import {
-  Colors,
-  ScreenSize
-} from 'values';
+import { ScreenSize } from 'values';
 
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
@@ -25,16 +25,14 @@ import {
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 
-import Margin from '../Margin';
-import StyledText from '../StyledText';
 import JmervilleData from './JmervilleData';
 
-interface CardProps {
+interface ProjectCardProps {
   item: CardItem;
   onClick?: () => void;
 }
 
-const Card = (props: CardProps) => {
+const ProjectCard = (props: ProjectCardProps) => {
   const { item } = props;
   const { title, description, image, projectUrl, githubProjectName } = item;
   const { url, backgroundColor } = image;
@@ -62,11 +60,10 @@ const Card = (props: CardProps) => {
     return isMobile ? getBoundary(0, 1, 1 - calc / 250) : getBoundary(0, 100, calc);
   };
 
-  const getButton = (id: string, label: string, url: string, icon: IconDefinition) => {
-    const link: Link = { id, label, url };
+  const getButton = (label: string, url: string, icon: IconDefinition) => {
     return (
       <Margin right="SMALL" top="SMALL" display="inline-block">
-        <Button text={{ link, color: Colors.WHITE }} showShadow={false} icon={{ fontAwesomeIcon: icon }} />
+        <Button text={label} url={url} showShadow={false} icon={{ fontAwesomeIcon: icon }} />
       </Margin>
     );
   };
@@ -135,7 +132,7 @@ const Card = (props: CardProps) => {
     <div style={styles.container} ref={ref}>
       <div style={styles.imageContainer}></div>
       <Margin horizontal={isScreenTypeMobile ? 'SMALL' : 'REGULAR'} vertical={isScreenTypeMobile ? 'SMALL' : 'REGULAR'}>
-        <Margin bottom="SMALL">
+        <Margin bottom="REGULAR">
           <StyledText color={theme.primary} styleType="SUBTITLE">
             {title}
           </StyledText>
@@ -143,12 +140,12 @@ const Card = (props: CardProps) => {
         </Margin>
         {getDescription()}
         <Margin bottom="REGULAR" top="SMALL">
-          {githubProjectName && getButton('code', 'Code', 'https://github.com/jbmerville/' + githubProjectName, faGithub)}
-          {projectUrl && getButton('demo-link', 'Project', projectUrl, faExternalLinkSquareAlt)}
+          {githubProjectName && getButton('Code', 'https://github.com/jbmerville/' + githubProjectName, faGithub)}
+          {projectUrl && getButton('Project', projectUrl, faExternalLinkSquareAlt)}
         </Margin>
       </Margin>
     </div>
   );
 };
 
-export default Card;
+export default ProjectCard;
