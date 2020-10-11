@@ -12,7 +12,10 @@ import {
   useWindowSize
 } from 'hooks';
 import { Styles } from 'types';
-import { Colors } from 'values';
+import {
+  Colors,
+  ScreenSize
+} from 'values';
 
 import { CONTENT } from './hero-config';
 
@@ -39,16 +42,22 @@ const HeroCard = (props: HeroCardProp) => {
     },
   };
 
+  if (width < ScreenSize.PHONE) {
+    styles.cardContainer.padding = '20px';
+  }
+
   return (
     <div style={styles.cardContainer}>
-      <Margin horizontal={'SMALL'} vertical="SMALL">
+      <Margin horizontal="SMALL" vertical="SMALL">
         <Animate direction={'BOTTOM'} isVisible={isVisible} speed="0.5x">
-          <StyledText color={theme.primary} styleType="TITLE">
-            {CONTENT.title.primary}
-          </StyledText>
+          <Margin top="SMALL">
+            <StyledText color={theme.primary} styleType="TITLE">
+              {CONTENT.title.primary}
+            </StyledText>
+          </Margin>
         </Animate>
         <Animate direction={'BOTTOM'} isVisible={isVisible}>
-          <Margin vertical="SMALL">
+          <Margin vertical="REGULAR">
             <StyledText color={theme.text} styleType="SUBTITLE">
               {CONTENT.title.secondary}
             </StyledText>
@@ -64,18 +73,16 @@ const HeroCard = (props: HeroCardProp) => {
             {CONTENT.description}
           </StyledText>
         </Animate>
-        {width > 600 && (
-          <Animate direction={'BOTTOM'} isVisible={isVisible} speed="1.5x">
-            <Margin top="SMALL">
-              <div style={styles.buttonContainer}>
-                <Margin right="SMALL">
-                  <Button text={{ link: { id: 'projects', label: 'Projects', url: '' }, color: Colors.WHITE }} />
-                </Margin>
-                <Button text={{ link: { id: 'cool-stats', label: 'Cool stats', url: '' }, color: Colors.WHITE }} />
-              </div>
+        <Animate direction={'BOTTOM'} isVisible={isVisible} speed="1.5x">
+          <div style={styles.buttonContainer}>
+            <Margin right="SMALL" vertical="SMALL">
+              <Button text={{ link: { id: 'projects', label: 'Projects', url: '' }, color: Colors.WHITE }} />
             </Margin>
-          </Animate>
-        )}
+            <Margin top="SMALL">
+              <Button text={{ link: { id: 'cool-stats', label: 'Cool stats', url: '' }, color: Colors.WHITE }} />
+            </Margin>
+          </div>
+        </Animate>
       </Margin>
     </div>
   );

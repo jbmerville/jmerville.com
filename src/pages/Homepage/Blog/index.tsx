@@ -60,15 +60,7 @@ const Blog = () => {
       height: '100%',
       width: 'fit-content',
     };
-    styles.rightContainer = {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'right',
-      width: 'fit-content',
-      height: '100%',
-      position: 'relative',
-    };
+    styles.rightContainer.paddingLeft = '10px';
   }
 
   const columns =

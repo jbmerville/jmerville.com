@@ -33,7 +33,6 @@ const getCSSFromStyle = (styleType: TextStyle): Style => {
     case 'SUBTITLE':
       return {
         fontSize: FontSize.XL,
-        lineHeight: FontSize.XL,
       };
     case 'BUTTON':
       return {

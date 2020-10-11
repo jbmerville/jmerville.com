@@ -6,8 +6,12 @@ import {
   Section,
   StyledText
 } from 'components';
-import { useTheme } from 'hooks';
+import {
+  useTheme,
+  useWindowSize
+} from 'hooks';
 import { Styles } from 'types';
+import { ScreenSize } from 'values';
 
 import {
   faGithub,
@@ -18,6 +22,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Footer = () => {
   const { theme } = useTheme();
+  const [width] = useWindowSize();
+
+  const isScreenTypeMobile = width < ScreenSize.PHONE;
 
   const styles: Styles = {
     container: {
@@ -31,14 +38,19 @@ const Footer = () => {
       display: 'flex',
       flexDirection: 'column',
       marginRight: '20px',
+      marginBottom: '20px',
     },
     link: {
       color: theme.accent,
     },
   };
 
+  if (isScreenTypeMobile) {
+    styles.container.flexDirection = 'column';
+  }
+
   return (
-    <Section justifyContent="flex-end">
+    <Section justifyContent="flex-end" alignItems="baseline">
       <Margin vertical="SMALL">
         <div style={styles.container}>
           <div style={styles.section}>
@@ -62,16 +74,16 @@ const Footer = () => {
             <StyledText styleType="PARAGRAPH" color={theme.text}>
               <Margin right="SMALL" display="inline-block">
                 <Link url="https://www.linkedin.com/in/jbmerville/" onHoverColor={theme.accent}>
-                  <FontAwesomeIcon icon={faLinkedin} size="lg" />
+                  <FontAwesomeIcon icon={faLinkedin} size="2x" />
                 </Link>
               </Margin>
               <Margin right="SMALL" display="inline-block">
                 <Link url="https://github.com/jbmerville" onHoverColor={theme.accent}>
-                  <FontAwesomeIcon icon={faGithub} size="lg" />
+                  <FontAwesomeIcon icon={faGithub} size="2x" />
                 </Link>
               </Margin>
               <Link url="mailto:jb.merville@gmail.com" onHoverColor={theme.accent}>
-                <FontAwesomeIcon icon={faEnvelope} size="lg" />
+                <FontAwesomeIcon icon={faEnvelope} size="2x" />
               </Link>
             </StyledText>
           </div>

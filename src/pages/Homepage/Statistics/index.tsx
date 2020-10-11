@@ -19,7 +19,7 @@ const Statistics = () => {
   const { theme } = useTheme();
 
   return (
-    <Section ref={ref} height="400px" background={theme.card}>
+    <Section ref={ref} height="400px" background={theme.card} alignItems="baseline">
       <Margin bottom={'SMALL'}>
         <Animate direction={'LEFT'} isVisible={isVisible}>
           <StyledText color={theme.primary} styleType="TITLE">

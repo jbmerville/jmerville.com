@@ -1,9 +1,6 @@
 import React from 'react';
 
-import {
-  PopUp,
-  ThemeProvider
-} from 'components';
+import { ThemeProvider } from 'components';
 import { Styles } from 'types';
 
 import Blog from './Blog';
@@ -25,7 +22,7 @@ const HomePage = () => {
   return (
     <div style={styles.container}>
       <ThemeProvider>
-        <PopUp />
+        {/* <PopUp /> */}
         <Header />
         <Hero />
         <Blog />

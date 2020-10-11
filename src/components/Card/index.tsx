@@ -42,6 +42,7 @@ const Card = (props: CardProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [scrollTop, setScrollTop] = useState(0);
   const { theme } = useTheme();
+  const isScreenTypeMobile = width < ScreenSize.PHONE;
 
   useEffect(() => {
     const onScroll = () => {
@@ -64,9 +65,9 @@ const Card = (props: CardProps) => {
   const getButton = (id: string, label: string, url: string, icon: IconDefinition) => {
     const link: Link = { id, label, url };
     return (
-      <div style={styles.button}>
+      <Margin right="SMALL" top="SMALL" display="inline-block">
         <Button text={{ link, color: Colors.WHITE }} showShadow={false} icon={{ fontAwesomeIcon: icon }} />
-      </div>
+      </Margin>
     );
   };
 
@@ -111,21 +112,19 @@ const Card = (props: CardProps) => {
     },
   };
 
-  // Mobile style
-  if (width < ScreenSize.PHONE) {
+  if (isScreenTypeMobile) {
     styles.container = {
       display: 'block',
       gridTemplateColumns:
-        '[margin-start] 38px [headline-start excerpt-start cta-start] 1fr [media-start headline-end excerpt-end cta-end copy-start] 1fr [margin-end media-end]',
+        '[margin-start] 10px [headline-start excerpt-start cta-start] 1fr [media-start headline-end excerpt-end cta-end copy-start] 1fr [margin-end media-end]',
       gridTemplateRows:
-        '[margin-start media-start] 96px [headline-start copy-start] max-content [headline-end excerpt-start] auto [excerpt-end copy-end cta-start] max-content [cta-end] 40px [margin-end media-end]',
+        '[margin-start media-start] 10px [headline-start copy-start] max-content [headline-end excerpt-start] auto [excerpt-end copy-end cta-start] max-content [cta-end] 40px [margin-end media-end]',
       borderRadius: '30px',
       overflow: 'hidden',
       position: 'relative',
       minHeight: '600px',
       width: 'webkit-fill-available',
-      background: Colors.GRAY_LIGHT,
-      margin: '100px 0px',
+      background: theme.card,
       transform: `matrix(${getAnimationFactor(true)}, 0, 0, ${getAnimationFactor(true)}, 0, 0)`,
     };
     styles.imageContainer.height = '400px';
@@ -135,7 +134,7 @@ const Card = (props: CardProps) => {
   return (
     <div style={styles.container} ref={ref}>
       <div style={styles.imageContainer}></div>
-      <Margin horizontal="REGULAR" vertical="REGULAR">
+      <Margin horizontal={isScreenTypeMobile ? 'SMALL' : 'REGULAR'} vertical={isScreenTypeMobile ? 'SMALL' : 'REGULAR'}>
         <Margin bottom="SMALL">
           <StyledText color={theme.primary} styleType="SUBTITLE">
             {title}
@@ -143,7 +142,7 @@ const Card = (props: CardProps) => {
           <JmervilleData repository={githubProjectName} />
         </Margin>
         {getDescription()}
-        <Margin top="SMALL">
+        <Margin bottom="REGULAR" top="SMALL">
           {githubProjectName && getButton('code', 'Code', 'https://github.com/jbmerville/' + githubProjectName, faGithub)}
           {projectUrl && getButton('demo-link', 'Project', projectUrl, faExternalLinkSquareAlt)}
         </Margin>

@@ -2,7 +2,7 @@ import { getScreenSizeFromWidth } from 'utils';
 import { ScreenSize } from 'values';
 
 const WIDTHS = {
-  [ScreenSize.PHONE]: 'fit-content',
+  [ScreenSize.PHONE]: '100%',
   [ScreenSize.TABLET]: '500px',
   [ScreenSize.COMPUTER]: '1000px',
   [ScreenSize.TV]: '1400px',

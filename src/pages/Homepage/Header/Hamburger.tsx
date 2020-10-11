@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Button } from 'components';
+import { Toggle } from 'components';
 import { Styles } from 'types';
 import {
   Colors,
@@ -12,8 +12,6 @@ import {
   faTimes
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import { LINKS } from './header-config';
 
 const Hamburger = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -84,16 +82,7 @@ const Hamburger = () => {
           <FontAwesomeIcon icon={faTimes} size="sm" />
         </div>
         <div style={styles.linkContainer}>
-          {LINKS.map((item) => {
-            const { link, isButton } = item;
-            return isButton ? (
-              <Button key={link.id} text={{ link, color: Colors.WHITE }} />
-            ) : (
-              <a key={link.id} style={{ background: Colors.GRAY_LIGHT, ...styles.link }} href={link.url}>
-                {link.label}
-              </a>
-            );
-          })}
+          <Toggle onText="Light" offText="Dark" />
         </div>
       </div>
     </>

@@ -4,9 +4,7 @@ import { useWindowSize } from 'hooks';
 import { Styles } from 'types';
 import { ScreenSize } from 'values';
 
-interface HeroImageProps {}
-
-const HeroImage = (props: HeroImageProps) => {
+const HeroImage = () => {
   const [width] = useWindowSize();
   const styles: Styles = {
     imageContainer: {
@@ -39,19 +37,9 @@ const HeroImage = (props: HeroImageProps) => {
       position: 'relative',
       display: 'flex',
       width: '100%',
-      height: '-webkit-fill-available',
+      height: '400px',
       alignItems: 'flex-end',
       zIndex: 1,
-    };
-  } else if (width < ScreenSize.TABLET) {
-    styles.imageContainer = {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      float: 'right',
-      width: '55%',
-      height: 'auto',
     };
   }
 
