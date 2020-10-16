@@ -6,6 +6,7 @@ import {
   HomePage,
   NotFound
 } from 'pages';
+import ReactGA from 'react-ga';
 import {
   BrowserRouter,
   Route,
@@ -13,6 +14,8 @@ import {
 } from 'react-router-dom';
 
 import { ApolloProvider } from '@apollo/client';
+
+ReactGA.initialize('UA-175122635-1');
 
 export const App = () => {
   return (
@@ -26,5 +29,7 @@ export const App = () => {
     </ApolloProvider>
   );
 };
+
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 ReactDOM.render(<App />, document.getElementById('root'));

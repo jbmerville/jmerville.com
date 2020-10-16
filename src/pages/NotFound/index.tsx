@@ -13,7 +13,7 @@ const NotFound = () => {
     <>
       <Section background={Colors.GRAY_LIGHT} title="404 page not found :(" height="90%">
         <StyledText color={Colors.PRIMARY} styleType="PARAGRAPH">
-          Are you lost? Go back to the <Link url="/">home page</Link>.
+          Are you lost? Find your way back to the <Link url="/">home page</Link>.
         </StyledText>
       </Section>
       <Footer></Footer>

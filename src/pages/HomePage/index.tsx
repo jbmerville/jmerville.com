@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 
 import { ThemeProvider } from 'components';
+import ReactGA from 'react-ga';
 import { Styles } from 'types';
 
 import Blog from './Blog';
@@ -11,6 +12,8 @@ import Projects from './Projects';
 import Statistics from './Statistics';
 
 const HomePage = () => {
+  ReactGA.pageview(window.location.pathname + window.location.search);
+
   const projectsRef = useRef(null);
   const statisticsRef = useRef(null);
   const styles: Styles = {

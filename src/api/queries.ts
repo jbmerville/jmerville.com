@@ -25,10 +25,11 @@ export const ALL_QUERY = gql`
       lastPushedAt
     }
     traffic {
+      activeVisitorCount
       userCount
       sessionCount
       pageViews
-      # avgSessionDuration
+      avgSessionDuration
     }
   }
 `;
