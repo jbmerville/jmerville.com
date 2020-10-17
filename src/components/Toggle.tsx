@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useTheme } from 'hooks';
+import ReactGA from 'react-ga';
 import { Styles } from 'types';
 import { Colors } from 'values';
 
@@ -58,10 +59,19 @@ const Toggle = (props: ToggleProps) => {
     },
   };
 
+  const onToggleClick = () => {
+    toggle();
+    ReactGA.event({
+      category: 'Button',
+      action: 'Toggle',
+      label: 'ToggleTheme',
+    });
+  };
+
   return (
     <div style={styles.outerContainer}>
       <div style={styles.toggle}></div>
-      <div style={styles.textContainer} onClick={toggle}>
+      <div style={styles.textContainer} onClick={onToggleClick}>
         <div style={styles.leftContainer}>
           <FontAwesomeIcon icon={faCircle} size="lg" />
         </div>
