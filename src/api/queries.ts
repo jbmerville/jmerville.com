@@ -30,6 +30,7 @@ export const ALL_QUERY = gql`
       sessionCount
       pageViews
       avgSessionDuration
+      toggleCount
     }
   }
 `;
