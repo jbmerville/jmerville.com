@@ -7,7 +7,7 @@ enum Categories {
   PROJECTS = 'PROJECTS',
 }
 
-export const SECTION_CONTENT: CardItem[] = [
+export const CONTENT: CardItem[] = [
   {
     id: 'sortingVisualizer',
     category: Categories.PROJECTS,

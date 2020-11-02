@@ -14,9 +14,12 @@ import {
 import { Styles } from 'types';
 import { ScreenSize } from 'values';
 
-import { CONTENT } from './hero-config';
-
 interface HeroCardProp {
+  title: {
+    primary: string;
+    secondary: string;
+  }
+  description: string;
   isVisible: boolean;
   projectsRef: any;
   statisticsRef: any;
@@ -25,7 +28,8 @@ interface HeroCardProp {
 const HeroCard = (props: HeroCardProp) => {
   const [width] = useWindowSize();
   const { theme } = useTheme();
-  const { isVisible, projectsRef, statisticsRef } = props;
+  const { isVisible, projectsRef, statisticsRef, title, description } = props;
+  const { primary, secondary } = title;
 
   const styles: Styles = {
     cardContainer: {
@@ -51,14 +55,14 @@ const HeroCard = (props: HeroCardProp) => {
         <Animate direction={'BOTTOM'} isVisible={isVisible} speed="0.5x">
           <Margin top="SMALL">
             <StyledText color={theme.primary} styleType="TITLE">
-              {CONTENT.title.primary}
+              {primary}
             </StyledText>
           </Margin>
         </Animate>
         <Animate direction={'BOTTOM'} isVisible={isVisible}>
           <Margin vertical="REGULAR">
             <StyledText color={theme.text} styleType="SUBTITLE">
-              {CONTENT.title.secondary}
+              {secondary}
             </StyledText>
           </Margin>
         </Animate>
@@ -69,7 +73,7 @@ const HeroCard = (props: HeroCardProp) => {
         </Margin>
         <Animate direction={'BOTTOM'} isVisible={isVisible}>
           <StyledText color={theme.text} styleType="PARAGRAPH">
-            {CONTENT.description}
+            {description}
           </StyledText>
         </Animate>
         <Animate direction={'BOTTOM'} isVisible={isVisible} speed="1.5x">

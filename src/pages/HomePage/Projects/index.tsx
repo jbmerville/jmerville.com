@@ -5,17 +5,23 @@ import {
   Section
 } from 'components';
 
-import { SECTION_CONTENT } from './card-configs';
+import { CONTENT } from './config';
 import ProjectCard from './ProjectCard';
 
 const Projects = forwardRef((props: {}, ref: any) => {
   return (
-    <Section ref={ref} title="Projects" alignItems="baseline" animate>
-      {SECTION_CONTENT.map((item) => (
-        <Margin key={item.id} bottom={'VLARGE'}>
+    <Section ref={ref} title="Projects">
+      {CONTENT.map((item, index) => {
+        const isLastItem = index === CONTENT.length - 1;
+
+        return isLastItem ? (
           <ProjectCard item={item} />
-        </Margin>
-      ))}
+        ) : (
+          <Margin key={item.id} bottom={'VLARGE'}>
+            <ProjectCard item={item} />
+          </Margin>
+        );
+      })}
     </Section>
   );
 });

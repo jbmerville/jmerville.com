@@ -8,13 +8,17 @@ import {
 
 interface StyledTextProps {
   color: Colors;
-  styleType: 'PARAGRAPH' | 'TITLE' | 'SUBTITLE' | 'BUTTON' | 'UNDERTEXT';
+  styleType: TextStyle;
   children: ReactNode;
   isLoading?: boolean;
+  bold?: boolean;
   isError?: boolean;
 }
+const defaultProps = {
+  bold: false,
+};
 
-export type TextStyle = 'PARAGRAPH' | 'TITLE' | 'SUBTITLE' | 'BUTTON' | 'UNDERTEXT';
+export type TextStyle = 'PARAGRAPH' | 'TITLE' | 'SUBTITLE' | 'BUTTON' | 'UNDERTEXT' | 'DESCRIPTION';
 
 const getCSSFromStyle = (styleType: TextStyle): Style => {
   switch (styleType) {
@@ -45,25 +49,32 @@ const getCSSFromStyle = (styleType: TextStyle): Style => {
         fontSize: FontSize.S,
         fontStyle: 'italic',
       };
+    case 'DESCRIPTION':
+      return {
+        fontSize: FontSize.M,
+        lineHeight: FontSize.L,
+      };
     default:
       throw Error;
   }
 };
 
-const getStyle = (styleType: TextStyle, color: Colors): Style => {
+const getStyle = (styleType: TextStyle, color: Colors, isBold: boolean): Style => {
   const textStyle = getCSSFromStyle(styleType);
-  return { ...textStyle, color };
+  return { ...textStyle, color, fontWeight: isBold ? 'bold' : 'normal', textAlign: 'match-parent' };
 };
 
-const StyledText = (props: StyledTextProps): JSX.Element => {
-  const { color, styleType, children, isError, isLoading } = props;
+const StyledText = (props: StyledTextProps & typeof defaultProps): JSX.Element => {
+  const { color, styleType, children, isError, isLoading, bold } = props;
   if (isLoading) {
-    return <div style={getStyle(styleType, Colors.ORANGE)}>Loading...</div>;
+    return <div style={getStyle(styleType, Colors.ORANGE, bold)}>Loading...</div>;
   }
   if (isError) {
-    return <div style={getStyle(styleType, Colors.RED)}>Error loading data.</div>;
+    return <div style={getStyle(styleType, Colors.RED, bold)}>Error loading data.</div>;
   }
-  return <div style={getStyle(styleType, color)}>{children}</div>;
+  return <div style={getStyle(styleType, color, bold)}>{children}</div>;
 };
+
+StyledText.defaultProps = defaultProps;
 
 export default StyledText;

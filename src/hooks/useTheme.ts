@@ -8,7 +8,7 @@ import { lightTheme } from 'values';
 const defaultContextData = {
   theme: lightTheme,
   toggle: () => {},
-  isLight: true,
+  isDark: true,
 };
 
 export const ThemeContext = createContext(defaultContextData);

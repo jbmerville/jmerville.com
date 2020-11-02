@@ -14,9 +14,9 @@ const PopUp = () => {
   const [isClicked, setClicked] = useState(false);
   const [isHover, setHover] = useState(false);
   const [width] = useWindowSize();
-  const { theme, isLight } = useTheme();
+  const { theme, isDark } = useTheme();
 
-  let styles: Styles = {
+  const styles: Styles = {
     outerContainer: {
       padding: '20px',
       position: 'fixed',
@@ -31,14 +31,14 @@ const PopUp = () => {
       borderRadius: '4px',
       display: 'grid',
       alignItems: 'center',
-      boxShadow: !isLight
+      boxShadow: !isDark
         ? '0 13px 27px -5px rgba(50,50,93,0.25),0 8px 16px -8px rgba(0,0,0,0.3)'
         : '#18181840 0px 13px 27px -5px, rgb(0 0 0 / 0.8) 0px 8px 16px -8px',
       background: theme.background,
       gridTemplateColumns: 'auto 1fr',
     },
     shadow: {
-      background: isLight
+      background: isDark
         ? 'linear-gradient(0deg,rgba(10,37,64,.2) 0,rgba(10,37,64,0))'
         : 'linear-gradient(0deg, rgb(43 70 96 / 20%) 0px, rgba(10, 37, 64, 0))',
       transformOrigin: 'bottom center',

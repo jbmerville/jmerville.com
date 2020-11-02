@@ -18,7 +18,7 @@ const Statistics = forwardRef((props: {}, ref: any) => {
   const { theme } = useTheme();
 
   return (
-    <Section ref={ref} height="400px" background={theme.card} alignItems="baseline">
+    <Section ref={ref} height="400px" background={theme.card}>
       <Margin bottom={'SMALL'}>
         <Animate direction={'LEFT'} isVisible={isVisible}>
           <StyledText color={theme.primary} styleType="TITLE">

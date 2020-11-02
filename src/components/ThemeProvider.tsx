@@ -22,8 +22,8 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
     return <div />;
   }
 
-  const getTheme = (isLight: boolean): Theme => {
-    if (isLight) {
+  const getTheme = (isDark: boolean): Theme => {
+    if (isDark) {
       return lightTheme;
     }
     return darkTheme;
@@ -41,7 +41,7 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
       value={{
         theme: getTheme(!themeState.dark),
         toggle,
-        isLight: themeState.dark,
+        isDark: themeState.dark,
       }}
     >
       {children}

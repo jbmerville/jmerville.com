@@ -4,7 +4,7 @@ import {
 } from 'react';
 
 const defaultContextData = {
-  isLight: false,
+  isDark: false,
   toggle: () => {},
 };
 

@@ -13,12 +13,9 @@ import {
 import { Styles } from 'types';
 import { ScreenSize } from 'values';
 
-import {
-  faGithub,
-  faLinkedin
-} from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { CONTENT } from './config';
 
 const Footer = () => {
   const { theme } = useTheme();
@@ -51,7 +48,7 @@ const Footer = () => {
   }
 
   return (
-    <Section justifyContent="flex-end" alignItems="baseline">
+    <Section justifyContent="flex-end">
       <Margin vertical="SMALL">
         <div style={styles.container}>
           <div style={styles.section}>
@@ -73,19 +70,22 @@ const Footer = () => {
               Connect with me on social medias and lets start a conversation!
             </StyledText>
             <StyledText styleType="PARAGRAPH" color={theme.text}>
-              <Margin right="SMALL" display="inline-block">
-                <Link url="https://www.linkedin.com/in/jbmerville/" onHoverColor={theme.accent}>
-                  <FontAwesomeIcon icon={faLinkedin} size="2x" />
-                </Link>
-              </Margin>
-              <Margin right="SMALL" display="inline-block">
-                <Link url="https://github.com/jbmerville" onHoverColor={theme.accent}>
-                  <FontAwesomeIcon icon={faGithub} size="2x" />
-                </Link>
-              </Margin>
-              <Link url="mailto:jb.merville@gmail.com" onHoverColor={theme.accent}>
-                <FontAwesomeIcon icon={faEnvelope} size="2x" />
-              </Link>
+              {CONTENT.map((item, index) => {
+                const isLastItem = index === CONTENT.length - 1;
+                const { icon, link } = item;
+
+                return isLastItem ? (
+                  <Link url={link.url} onHoverColor={theme.accent}>
+                    <FontAwesomeIcon icon={icon} size="2x" />
+                  </Link>
+                ) : (
+                  <Margin key={link.label} right="SMALL" display="inline-block">
+                    <Link url={link.url} onHoverColor={theme.accent}>
+                      <FontAwesomeIcon icon={icon} size="2x" />
+                    </Link>
+                  </Margin>
+                );
+              })}
             </StyledText>
           </div>
         </div>

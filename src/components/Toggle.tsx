@@ -17,7 +17,7 @@ interface ToggleProps {
 }
 
 const Toggle = (props: ToggleProps) => {
-  const { toggle, isLight, theme } = useTheme();
+  const { toggle, isDark, theme } = useTheme();
   const borderRadius = '50px';
 
   const styles: Styles = {
@@ -34,7 +34,7 @@ const Toggle = (props: ToggleProps) => {
       background: theme.card,
       zIndex: 2,
       transition: '0.2s ease-in',
-      marginLeft: isLight ? '50%' : '0px',
+      marginLeft: isDark ? '50%' : '0px',
     },
     textContainer: {
       userSelect: 'none',
@@ -51,11 +51,11 @@ const Toggle = (props: ToggleProps) => {
     },
     leftContainer: {
       padding: '10px',
-      color: isLight ? Colors.WHITE : Colors.ORANGE,
+      color: isDark ? Colors.WHITE : Colors.ORANGE,
     },
     rightContainer: {
       padding: '10px',
-      color: isLight ? Colors.YELLOW : Colors.WHITE,
+      color: isDark ? Colors.YELLOW : Colors.WHITE,
     },
   };
 

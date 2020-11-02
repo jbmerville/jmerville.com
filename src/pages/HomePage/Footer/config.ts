@@ -4,36 +4,26 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-export const BUTTONS = [
+export const CONTENT = [
   {
     link: {
-      id: 'github',
       url: 'https://github.com/jbmerville',
       label: 'GitHub',
     },
-    icon: {
-      fontAwesomeIcon: faGithub,
-    },
+    icon: faGithub,
   },
   {
     link: {
-      id: 'linkedin',
       url: 'https://www.linkedin.com/in/jbmerville/',
       label: 'LinkedIn',
     },
-    icon: {
-      fontAwesomeIcon: faLinkedin,
-    },
+    icon: faLinkedin,
   },
   {
     link: {
-      id: 'email',
-      url: 'mailto:jbmer@my.yorku.ca',
+      url: 'mailto:jb.merville@gmail.com',
       label: 'Email',
     },
-    icon: {
-      fontAwesomeIcon: faEnvelope,
-      size: '20px',
-    },
+    icon: faEnvelope,
   },
 ];

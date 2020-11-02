@@ -37,6 +37,7 @@ const Margin = (props: MarginProps & typeof defaultProps) => {
     left: adjustMarginFromScreenSize(width, MARGIN_VALUE[left ? left : horizontal]).HORIZONTAL,
     right: adjustMarginFromScreenSize(width, MARGIN_VALUE[right ? right : horizontal]).HORIZONTAL,
   };
+
   const style: Style = {
     margin: `${margins.top}px ${margins.right}px ${margins.bottom}px ${margins.left}px`,
     width: size,

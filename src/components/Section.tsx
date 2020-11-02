@@ -27,20 +27,18 @@ interface SectionProps {
   justifyContent?: 'flex-end' | 'flex-start' | 'space-between' | 'center';
   height?: 'fit-content' | '90%' | '400px';
   background?: Colors;
-  alignItems?: 'center' | 'baseline';
-  animate?: boolean;
+  alignItems?: 'center' | 'flex-end' | 'flex-start';
 }
 
-const defaultProps: { height: 'fit-content'; justifyContent: 'center'; flexDirection: 'column'; alignItems: 'center' } = {
+const defaultProps: { height: 'fit-content'; justifyContent: 'center'; flexDirection: 'column'; alignItems: 'flex-start' } = {
   height: 'fit-content',
   justifyContent: 'center',
   flexDirection: 'column',
-  alignItems: 'center',
+  alignItems: 'flex-start',
 };
 
-// eslint-disable-next-line react/display-name
 const Section = forwardRef((props: SectionProps, ref: any) => {
-  const { justifyContent, children, title, height, background, flexDirection, alignItems, animate } = props;
+  const { justifyContent, children, title, height, background, flexDirection, alignItems } = props;
   const [width] = useWindowSize();
   const titleRef = useRef(null);
   const isVisible = useIsComponentVisible(titleRef, 300);
@@ -72,31 +70,34 @@ const Section = forwardRef((props: SectionProps, ref: any) => {
   }
 
   const Title = (
-    <StyledText color={theme.primary} styleType="TITLE">
-      {title}
-    </StyledText>
+    <Margin vertical="LARGE" size="fit-content">
+      <Animate direction={'BOTTOM'} isVisible={isVisible}>
+        <StyledText color={theme.primary} styleType="TITLE">
+          {title}
+        </StyledText>
+      </Animate>
+    </Margin>
   );
 
   return (
     <section ref={ref} style={styles.outerContainer}>
       <div ref={titleRef} style={styles.innerContainer}>
-        {title && (
-          <Margin vertical="LARGE">
-            {animate ? (
-              <Animate direction={'BOTTOM'} isVisible={isVisible}>
-                {Title}
-              </Animate>
-            ) : (
-              Title
-            )}
-          </Margin>
+        {title ? (
+          <>
+            {Title}
+            <Margin bottom="LARGE" size="fit-content">
+              {children}
+            </Margin>
+          </>
+        ) : (
+          children
         )}
-        {children}
       </div>
     </section>
   );
 });
 
 Section.defaultProps = defaultProps;
+Section.displayName = 'Section';
 
 export default Section;

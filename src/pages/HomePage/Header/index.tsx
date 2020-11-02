@@ -12,8 +12,8 @@ import {
 import { Styles } from 'types';
 import { Colors } from 'values';
 
+import { RESUME } from './config';
 import Hamburger from './Hamburger';
-import { RESUME } from './header-config';
 
 const Header = () => {
   const [width] = useWindowSize();
