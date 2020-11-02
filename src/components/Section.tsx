@@ -62,6 +62,7 @@ const Section = forwardRef((props: SectionProps, ref: any) => {
       flexDirection,
       justifyContent,
       height: '100%',
+      minHeight: 'fit-content',
     },
   };
 

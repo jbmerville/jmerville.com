@@ -34,7 +34,7 @@ export const CONTENT: Experience[] = [
   },
   {
     company: 'Srvice Inc.',
-    title: 'Full-Stack engineer',
+    title: 'Mobile Engineer Intern',
     location: 'Toronto, Canada',
     startDate: 'Oct 2020',
     endDate: 'Apr 2020',

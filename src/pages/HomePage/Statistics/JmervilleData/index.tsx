@@ -4,10 +4,7 @@ import React, {
 } from 'react';
 
 import { ALL_QUERY } from 'api';
-import {
-  Margin,
-  StyledText
-} from 'components';
+import { StyledText } from 'components';
 import { useTheme } from 'hooks';
 import moment from 'moment';
 import {
@@ -61,8 +58,8 @@ const JmervilleData = () => {
 
   return (
     <StyledText color={theme.text} styleType="PARAGRAPH" isLoading={loading} isError={error ? true : false}>
+      {text}
       <RefreshTimer color={theme.secondary} lastRefreshedAt={lastRefreshTime}></RefreshTimer>
-      <Margin top="SMALL">{text}</Margin>
     </StyledText>
   );
 };

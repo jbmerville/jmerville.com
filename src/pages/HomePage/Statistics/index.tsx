@@ -3,8 +3,7 @@ import React, { forwardRef } from 'react';
 import {
   Animate,
   Margin,
-  Section,
-  StyledText
+  Section
 } from 'components';
 import {
   useIsComponentVisible,
@@ -18,14 +17,7 @@ const Statistics = forwardRef((props: {}, ref: any) => {
   const { theme } = useTheme();
 
   return (
-    <Section ref={ref} height="400px" background={theme.card}>
-      <Margin bottom={'SMALL'}>
-        <Animate direction={'LEFT'} isVisible={isVisible}>
-          <StyledText color={theme.primary} styleType="TITLE">
-            Statistics
-          </StyledText>
-        </Animate>
-      </Margin>
+    <Section ref={ref} title="Statistics" background={theme.card}>
       <Margin bottom={'SMALL'}>
         <Animate direction={'LEFT'} isVisible={isVisible} speed="1.5x">
           <JmervilleData />
