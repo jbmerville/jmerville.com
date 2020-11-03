@@ -1,16 +1,10 @@
-import React, {
-  useEffect,
-  useState
-} from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { ALL_QUERY } from 'api';
 import { StyledText } from 'components';
 import { useTheme } from 'hooks';
 import moment from 'moment';
-import {
-  Colors,
-  repoLinesStats
-} from 'values';
+import { Colors, repoLinesStats } from 'values';
 
 import { useQuery } from '@apollo/client';
 
@@ -36,7 +30,7 @@ const JmervilleData = () => {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  });
 
   let text = <></>;
   if (data) {

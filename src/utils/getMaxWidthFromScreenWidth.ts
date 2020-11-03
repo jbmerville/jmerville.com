@@ -5,7 +5,7 @@ const WIDTHS = {
   [ScreenSize.PHONE]: '100%',
   [ScreenSize.TABLET]: '500px',
   [ScreenSize.COMPUTER]: '1000px',
-  [ScreenSize.TV]: '1400px',
+  [ScreenSize.TV]: '1100px',
 };
 
 const getMaxWidthFromScreenWidth = (width: number): string => {

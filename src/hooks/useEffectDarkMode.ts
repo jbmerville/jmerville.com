@@ -3,11 +3,6 @@ import {
   useState
 } from 'react';
 
-const defaultContextData = {
-  isDark: false,
-  toggle: () => {},
-};
-
 interface ThemeState {
   dark: boolean;
   hasThemeLoaded: boolean;

@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useTheme } from 'hooks';
-import {
-  Icon,
-  Styles
-} from 'types';
+import { Icon, Styles } from 'types';
 import { Colors } from 'values';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -22,6 +19,7 @@ interface ButtonProps {
   showShadow?: boolean;
   showShadowHover?: boolean;
   onClick?: Function;
+  popUp?: string;
 }
 
 const defaultProps = {
@@ -30,18 +28,24 @@ const defaultProps = {
 };
 
 const Button = (props: ButtonProps & typeof defaultProps) => {
-  const { icon, text, background, showShadow, showShadowHover, onClick, url } = props;
-  const { theme } = useTheme();
-  let offHoverColor = theme.highlight;
-  let onHoverColor = theme.secondary;
+  const { icon, text, background, showShadow, showShadowHover, onClick, url, popUp } = props;
 
-  if (background) {
-    offHoverColor = background.offHoverColor;
-    onHoverColor = background.onHoverColor;
-  }
-
+  const [isPopUpVisible, setIsPopUpVisible] = useState(false);
   const [isHover, setIsHover] = useState(false);
-  let styles: Styles = {
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    if (isPopUpVisible) {
+      setTimeout(() => {
+        setIsPopUpVisible(false);
+      }, 3000);
+    }
+  }, [isPopUpVisible]);
+
+  const offHoverColor = background ? background.offHoverColor : theme.highlight;
+  const onHoverColor = background ? background.onHoverColor : theme.secondary;
+
+  const styles: Styles = {
     button: {
       height: '50px',
       verticalAlign: 'middle',
@@ -76,6 +80,25 @@ const Button = (props: ButtonProps & typeof defaultProps) => {
       display: 'inline-block',
       fontSize: icon && icon.size ? icon.size : '15px',
     },
+    popUp: {
+      position: 'absolute',
+      background: theme.card,
+      color: theme.text,
+      padding: '10px 15px',
+      borderRadius: '4px',
+      zIndex: 100,
+      top: '60px',
+    },
+    popUpArrow: {
+      position: 'absolute',
+      width: 0,
+      height: 0,
+      borderLeft: `8px solid transparent`,
+      borderRight: `8px solid transparent`,
+      borderBottom: `8px solid ${theme.card}`,
+      top: '-7px',
+      right: '60px',
+    },
   };
 
   const ButtonContent = (
@@ -96,6 +119,26 @@ const Button = (props: ButtonProps & typeof defaultProps) => {
       <div onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} style={styles.button} onClick={() => onClick()}>
         {ButtonContent}
       </div>
+    );
+  }
+  if (popUp) {
+    return (
+      <>
+        <div
+          onMouseEnter={() => setIsHover(true)}
+          onMouseLeave={() => setIsHover(false)}
+          style={styles.button}
+          onClick={() => setIsPopUpVisible(true)}
+        >
+          {ButtonContent}
+        </div>
+        {isPopUpVisible && (
+          <div style={styles.popUp}>
+            <div style={styles.popUpArrow}></div>
+            {popUp}
+          </div>
+        )}
+      </>
     );
   }
   return (

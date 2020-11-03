@@ -1,15 +1,7 @@
 import React from 'react';
 
-import {
-  Link,
-  Margin,
-  Section,
-  StyledText
-} from 'components';
-import {
-  useTheme,
-  useWindowSize
-} from 'hooks';
+import { Link, Margin, Section, StyledText } from 'components';
+import { useTheme, useWindowSize } from 'hooks';
 import { Styles } from 'types';
 import { ScreenSize } from 'values';
 
@@ -75,7 +67,7 @@ const Footer = () => {
                 const { icon, link } = item;
 
                 return isLastItem ? (
-                  <Link url={link.url} onHoverColor={theme.accent}>
+                  <Link key={link.label} url={link.url} onHoverColor={theme.accent}>
                     <FontAwesomeIcon icon={icon} size="2x" />
                   </Link>
                 ) : (

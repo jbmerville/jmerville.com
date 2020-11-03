@@ -1,7 +1,4 @@
-import {
-  useEffect,
-  useState
-} from 'react';
+import { useEffect, useState } from 'react';
 
 const useIsComponentVisible = (ref: React.RefObject<any>, offset: number) => {
   const [visible, setVisible] = useState(0);
@@ -20,7 +17,7 @@ const useIsComponentVisible = (ref: React.RefObject<any>, offset: number) => {
       window.addEventListener('scroll', isVisible);
     }
     return () => window.removeEventListener('scroll', isVisible);
-  }, []);
+  });
 
   return visible > 0;
 };

@@ -1,24 +1,20 @@
 import React from 'react';
 
-import {
-  Margin,
-  Toggle
-} from 'components';
+import { Margin, Section, Toggle } from 'components';
 import Button from 'components/Button';
-import {
-  useTheme,
-  useWindowSize
-} from 'hooks';
+import { useTheme, useWindowSize } from 'hooks';
 import { Styles } from 'types';
-import { Colors } from 'values';
+import { Colors, ScreenSize } from 'values';
 
 import { RESUME } from './config';
-import Hamburger from './Hamburger';
 
 const Header = () => {
   const [width] = useWindowSize();
   const { theme } = useTheme();
   const { label, url } = RESUME;
+
+  const isScreenTypeMobile = width < ScreenSize.PHONE;
+
   const styles: Styles = {
     container: {
       left: '0',
@@ -51,14 +47,22 @@ const Header = () => {
     },
   };
 
-  return width < 600 ? (
-    <Hamburger />
+  return isScreenTypeMobile ? (
+    <Section alignItems="flex-end">
+      <Toggle onText="Light" offText="Dark" />
+    </Section>
   ) : (
     <header style={styles.container}>
       <Toggle onText="Light" offText="Dark" />
       <Margin horizontal="SMALL">
         <nav style={styles.innerContainer}>
-          <Button text={label} url={url} background={{ offHoverColor: theme.highlight, onHoverColor: theme.secondary }} showShadow={true} />
+          <Button
+            text={label}
+            url={url}
+            background={{ offHoverColor: theme.highlight, onHoverColor: theme.secondary }}
+            popUp="Coming soon!"
+            showShadow
+          />
         </nav>
       </Margin>
     </header>

@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 
-import {
-  useTheme,
-  useWindowSize
-} from 'hooks';
+import { useTheme, useWindowSize } from 'hooks';
 import { Styles } from 'types';
 import { Colors } from 'values';
 
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const PopUp = () => {
+const Cookie = () => {
   const [isClicked, setClicked] = useState(false);
   const [isHover, setHover] = useState(false);
   const [width] = useWindowSize();
@@ -94,4 +91,4 @@ const PopUp = () => {
   );
 };
 
-export default PopUp;
+export default Cookie;

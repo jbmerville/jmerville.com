@@ -29,7 +29,7 @@ const HomePage = () => {
   return (
     <div style={styles.container}>
       <ThemeProvider>
-        {/* <PopUp /> */}
+        {/* <Cookie /> */}
         <Header />
         <Hero projectsRef={projectsRef} statisticsRef={statisticsRef} />
         <AboutMe />

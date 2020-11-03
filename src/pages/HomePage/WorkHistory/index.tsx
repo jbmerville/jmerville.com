@@ -11,7 +11,7 @@ const WorkHistory = () => {
   const ref = useRef(null);
 
   return (
-    <Section ref={ref} title="Experience" background={theme.background}>
+    <Section ref={ref} title="Experience" background={theme.background} alignItems="center">
       {CONTENT.map((experience, index) => {
         const floatLeft = index % 2 === 0;
         const isFirstCard = index === 0;

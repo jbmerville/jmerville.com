@@ -1,9 +1,6 @@
 import React, { forwardRef } from 'react';
 
-import {
-  Margin,
-  Section
-} from 'components';
+import { Margin, Section } from 'components';
 
 import { CONTENT } from './config';
 import ProjectCard from './ProjectCard';
@@ -15,7 +12,7 @@ const Projects = forwardRef((props: {}, ref: any) => {
         const isLastItem = index === CONTENT.length - 1;
 
         return isLastItem ? (
-          <ProjectCard item={item} />
+          <ProjectCard key={item.id} item={item} />
         ) : (
           <Margin key={item.id} bottom={'VLARGE'}>
             <ProjectCard item={item} />
