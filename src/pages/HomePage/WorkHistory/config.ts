@@ -1,10 +1,21 @@
 export const CONTENT: Experience[] = [
+    {
+    company: 'Amazon',
+    title: 'Software Development Engineer',
+    location: 'London, UK',
+    startDate: 'July 2021',
+    endDate: 'Present',
+    description:
+      'Getting started.',
+    link: 'https://www.primevideo.com/',
+    logoPath: 'images/amazon_logo.png',
+  },
   {
     company: 'York University',
     title: 'Teaching Assistant',
     location: 'Toronto, Canada',
     startDate: 'Sept 2020',
-    endDate: 'Present',
+    endDate: 'Apr 2021',
     description:
       'Lead weekly classes for undergraduate Computer Science students, teaching object-oriented programming for mobile application development.',
     link: 'https://www.yorku.ca/',
@@ -12,7 +23,7 @@ export const CONTENT: Experience[] = [
   },
   {
     company: 'Amazon',
-    title: 'Software Engineer Intern',
+    title: 'Software Development Engineer Intern',
     location: 'London, UK',
     startDate: 'May 2020',
     endDate: 'Sept 2020',

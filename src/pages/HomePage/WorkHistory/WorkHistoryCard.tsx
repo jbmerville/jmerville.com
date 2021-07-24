@@ -55,7 +55,7 @@ const WorkHistoryCard = (props: WorkHistoryCard) => {
       margin: '20px 0',
       borderRadius: '10px',
       background: theme.card,
-      maxWidth: '450px',
+      width: '450px',
       textAlign: floatLeftOrMobile ? 'left' : 'right',
       textDecoration: 'none',
       boxShadow: isHover

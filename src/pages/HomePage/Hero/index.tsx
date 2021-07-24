@@ -12,11 +12,10 @@ import HeroCard from './HeroCard';
 import HeroImage from './HeroImage';
 
 interface HeroProps {
-  projectsRef: any;
+  aboutMeRef: any;
   statisticsRef: any;
 }
 const Hero = (props: HeroProps) => {
-  const { projectsRef, statisticsRef } = props;
   const [width] = useWindowSize();
   const [isVisible, setIsVisible] = useState(false);
   const isScreenTypeMobile = width < ScreenSize.PHONE;
@@ -33,7 +32,7 @@ const Hero = (props: HeroProps) => {
       justifyContent="center"
       alignItems="center"
     >
-      <HeroCard title={title} description={description} statisticsRef={statisticsRef} projectsRef={projectsRef} isVisible={isVisible} />
+      <HeroCard title={title} description={description} isVisible={isVisible} {...props}/>
       <HeroImage />
     </Section>
   );

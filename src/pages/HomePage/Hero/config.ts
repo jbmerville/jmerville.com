@@ -1,7 +1,7 @@
 export const CONTENT = {
   title: {
     primary: 'Jean Merville',
-    secondary: 'Developer & Student',
+    secondary: 'Developer',
   },
-  description: 'Hello! My name is Jean and welcome to my website. I am currently a Senior Computer Scientist student at York University.',
+  description: 'Hello! My name is Jean and welcome to my website. I am currently working at Amazon as a Software Development Engineer.',
 };

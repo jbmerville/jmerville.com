@@ -1,13 +1,13 @@
-import React, { useRef } from 'react';
+import React, { forwardRef } from 'react';
 
 import { Br, Section, StyledText } from 'components';
 import { useTheme } from 'hooks';
 
 import { CONTENT } from './config';
 
-const AboutMe = () => {
+
+const AboutMe = forwardRef((props: {}, ref: any) => {
   const { theme } = useTheme();
-  const ref = useRef(null);
 
   return (
     <Section ref={ref} title="About me" background={theme.card}>
@@ -21,6 +21,9 @@ const AboutMe = () => {
       </StyledText>
     </Section>
   );
-};
+});
+
+AboutMe.displayName = 'AboutMe';
+
 
 export default AboutMe;

@@ -121,6 +121,7 @@ const Button = (props: ButtonProps & typeof defaultProps) => {
       </div>
     );
   }
+
   if (popUp) {
     return (
       <>

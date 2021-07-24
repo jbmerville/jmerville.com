@@ -21,14 +21,14 @@ interface HeroCardProp {
   }
   description: string;
   isVisible: boolean;
-  projectsRef: any;
+  aboutMeRef: any;
   statisticsRef: any;
 }
 
 const HeroCard = (props: HeroCardProp) => {
   const [width] = useWindowSize();
   const { theme } = useTheme();
-  const { isVisible, projectsRef, statisticsRef, title, description } = props;
+  const { isVisible, statisticsRef, aboutMeRef, title, description } = props;
   const { primary, secondary } = title;
 
   const styles: Styles = {
@@ -80,9 +80,9 @@ const HeroCard = (props: HeroCardProp) => {
           <div style={styles.buttonContainer}>
             <Margin right="SMALL" vertical="SMALL">
               <Button
-                text="Projects"
+                text="About me"
                 onClick={() => {
-                  projectsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  aboutMeRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }}
               />
             </Margin>

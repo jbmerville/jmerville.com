@@ -18,6 +18,8 @@ const HomePage = () => {
 
   const projectsRef = useRef(null);
   const statisticsRef = useRef(null);
+  const aboutMeRef = useRef(null);
+
   const styles: Styles = {
     container: {
       height: '100%',
@@ -31,8 +33,8 @@ const HomePage = () => {
       <ThemeProvider>
         {/* <Cookie /> */}
         <Header />
-        <Hero projectsRef={projectsRef} statisticsRef={statisticsRef} />
-        <AboutMe />
+        <Hero aboutMeRef={aboutMeRef} statisticsRef={statisticsRef} />
+        <AboutMe ref={aboutMeRef}/>
         <WorkHistory />
         <Blog />
         <Projects ref={projectsRef} />
