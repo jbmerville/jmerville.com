@@ -2,10 +2,12 @@
 
 import { useEffect, useRef, useState, type Ref } from 'react';
 
+import { useSectionTimeTracking } from '../../_hooks/useSectionTimeTracking';
 import { CONTENT } from './config';
 
 const AboutMe = ({ ref }: { ref?: Ref<HTMLElement> }) => {
   const sectionRef = useRef<HTMLElement>(null);
+  const trackingRef = useSectionTimeTracking('about_me');
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -28,6 +30,7 @@ const AboutMe = ({ ref }: { ref?: Ref<HTMLElement> }) => {
     <section
       ref={(node) => {
         sectionRef.current = node;
+        trackingRef.current = node;
         if (typeof ref === 'function') ref(node);
         else if (ref) (ref as React.RefObject<HTMLElement | null>).current = node;
       }}
