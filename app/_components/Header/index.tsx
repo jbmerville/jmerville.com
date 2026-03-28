@@ -5,13 +5,16 @@ import { useTheme } from 'next-themes';
 const Header = () => {
   return (
     <>
-      {/* Mobile: toggle only */}
-      <div className="flex justify-end sm:hidden">
+      {/* Mobile */}
+      <div className="section-content flex items-center justify-between pt-4 sm:hidden">
         <Toggle />
+        <div className="text-[18px] tracking-wide cursor-pointer no-underline transition-all duration-150 hover:opacity-70">
+          Resume
+        </div>
       </div>
 
       {/* Desktop */}
-      <header className="h-[50px] w-full sm:flex">
+      <header className="hidden h-12.5 w-full sm:flex pt-4">
         <div className="section-content flex items-center justify-end">
           <Toggle />
           <nav className="ml-6 flex flex-row items-center justify-end">

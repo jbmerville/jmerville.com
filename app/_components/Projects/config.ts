@@ -5,6 +5,7 @@ export interface CardItem {
   image: {
     url: string;
     backgroundColor?: string;
+    objectFit?: 'contain' | 'cover';
   };
   githubProjectName?: string;
   projectUrl?: string;
@@ -20,7 +21,11 @@ export const CONTENT: CardItem[] = [
       'The coin flip game lets players bet on heads or tails, doubling their money on a correct guess.',
       'The project was built with Solidity for the smart contract backend and React with Next.js for the frontend. It showcases full-stack Web3 development, combining on-chain game logic with a modern, responsive user interface.',
     ],
-    image: { url: '/images/moonvegas.png', backgroundColor: '#1a1035' },
+    image: {
+      url: '/images/moonvegas-logo.png',
+      backgroundColor: '#1a1035',
+      objectFit: 'contain',
+    },
     githubProjectName: 'moonvegas',
     projectUrl: 'https://moonvegas.jmerville.com/',
   },

@@ -22,7 +22,7 @@ const Hero = ({ aboutMeRef, contactMeRef }: HeroProps) => {
 
   return (
     <section className="w-full min-h-[80vh] flex flex-col py-8">
-      <div className="section-content flex flex-1 flex-col items-center justify-center gap-6 sm:flex-row sm:justify-between">
+      <div className="section-content flex flex-1 flex-col-reverse items-center justify-center gap-6 sm:flex-row sm:justify-between">
         <HeroCard
           title={title}
           description={description}

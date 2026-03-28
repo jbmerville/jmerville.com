@@ -12,7 +12,7 @@ import { type CardItem } from './config';
 
 const ProjectCard = ({ item }: { item: CardItem }) => {
   const { title, description, image, projectUrl, githubProjectName } = item;
-  const { url, backgroundColor } = image;
+  const { url, backgroundColor, objectFit = 'cover' } = image;
   const ref = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState<string | undefined>(undefined);
 
@@ -53,19 +53,9 @@ const ProjectCard = ({ item }: { item: CardItem }) => {
       const { top: cardTop, height: cardHeight } =
         ref.current.getBoundingClientRect();
       const vh = window.innerHeight;
-      const isMobile = window.innerWidth < 640;
       const translateY = getTranslateY(cardTop, cardHeight, vh);
 
-      if (isMobile) {
-        // On mobile: scale the card in/out instead of translating
-        const scale =
-          translateY >= 0
-            ? clamp(0, 1, 1 - translateY / 100) // entrance
-            : clamp(0, 1, 1 + translateY / cardHeight); // exit
-        setTransform(`matrix(${scale}, 0, 0, ${scale}, 0, 0)`);
-      } else {
-        setTransform(`matrix(1, 0, 0, 1, 0, ${translateY})`);
-      }
+      setTransform(`matrix(1, 0, 0, 1, 0, ${translateY})`);
     };
 
     window.addEventListener('scroll', updateTransform);
@@ -101,7 +91,9 @@ const ProjectCard = ({ item }: { item: CardItem }) => {
           alt={title}
           fill
           sizes="(max-width: 640px) 100vw, 50vw"
-          className="object-cover"
+          className={
+            objectFit === 'contain' ? 'object-contain' : 'object-cover'
+          }
         />
       </div>
 

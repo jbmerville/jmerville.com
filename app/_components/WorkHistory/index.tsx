@@ -4,7 +4,7 @@ import WorkHistoryCard from './WorkHistoryCard';
 const WorkHistory = () => (
   <section className="w-full py-24">
     <div className="section-content flex flex-col items-center">
-      <h2 className="mb-6 text-2xl font-bold uppercase tracking-wide text-gray-800 dark:text-gray-100">
+      <h2 className="mb-6 sm:mb-20 text-2xl font-bold uppercase tracking-wide text-gray-800 dark:text-gray-100">
         Work Experience
       </h2>
       {CONTENT.map((experience, index) => (

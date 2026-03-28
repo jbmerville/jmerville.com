@@ -76,14 +76,8 @@ const WorkHistoryCard = ({
       const isMobile = window.innerWidth < 640;
       const progress = getProgress(rowTop, vh);
 
-      if (isMobile) {
-        setCardTransform(undefined);
-        setDateTransform(undefined);
-        return;
-      }
-
-      // Card on right (floatLeft) slides from right (+X); card on left slides from left (-X)
-      const direction = floatLeft ? 1 : -1;
+      // On mobile all cards are on the left side, so always slide from left
+      const direction = isMobile ? -1 : floatLeft ? 1 : -1;
       const offset = direction * progress * 150;
       setCardTransform(`translateX(${offset}px)`);
       setDateTransform(`translateX(${-offset}px)`);
@@ -117,7 +111,7 @@ const WorkHistoryCard = ({
         <div
           className={`w-[3px] flex-1 ${isFirstCard ? 'bg-transparent' : 'bg-secondary'}`}
         />
-        <div className="relative mx-5 my-2 flex h-20 w-20 items-center justify-center rounded-full bg-white p-2 dark:bg-gray-800">
+        <div className="relative mx-5 my-2 flex h-14 w-14 items-center justify-center rounded-full bg-white p-2 dark:bg-gray-800 sm:h-20 sm:w-20">
           <Image
             src={logoPath}
             alt={`${company} logo`}
@@ -137,7 +131,7 @@ const WorkHistoryCard = ({
         target="_blank"
         rel="noopener noreferrer"
         style={{ transform: cardTransform }}
-        className={`my-12 w-[450px] rounded-[10px] bg-white px-5 py-5 no-underline transition-shadow duration-150 hover:-translate-y-px hover:shadow-lg dark:bg-gray-800 dark:hover:shadow-[0_7px_14px_rgb(18_18_18/55%),0_3px_6px_rgba(0,0,0,0.08)] ${floatLeft ? 'text-left' : 'text-right'} max-sm:text-left`}
+        className={`mb-12 w-[450px] rounded-[10px] bg-white px-5 py-5 no-underline transition-shadow duration-150 hover:-translate-y-px hover:shadow-lg dark:bg-gray-800 dark:hover:shadow-[0_7px_14px_rgb(18_18_18/55%),0_3px_6px_rgba(0,0,0,0.08)] ${isFirstCard ? 'mt-0' : 'mt-12'} ${floatLeft ? 'text-left' : 'text-right'} max-sm:text-left`}
       >
         <p className="text-base font-bold leading-6 text-gray-800 dark:text-gray-200">
           {company}
@@ -145,6 +139,12 @@ const WorkHistoryCard = ({
         <p className="text-base font-bold leading-6 text-gray-800 dark:text-gray-200">
           {title}
         </p>
+        <div className="sm:hidden mt-1 mb-4 border-b border-gray-200 pb-4 dark:border-gray-700">
+          <p className="text-sm leading-6 text-gray-700 dark:text-gray-300">
+            {startDate} - {endDate}
+          </p>
+          <p className="text-sm text-gray-700 dark:text-gray-300">{location}</p>
+        </div>
         <p className="text-sm leading-7 text-gray-700 dark:text-gray-300">
           {description}
         </p>

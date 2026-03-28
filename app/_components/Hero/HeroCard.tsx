@@ -21,11 +21,9 @@ const HeroCard = ({
 
   return (
     <div className="relative h-fit max-w-[515px] rounded-[15px] bg-white px-5 py-5 dark:bg-gray-800 sm:px-0">
-      <div className="px-5 py-5">
+      <div className="p-5 sm:p-10">
         {/* Title */}
-        <div
-          className={`mt-4 ${isVisible ? 'animate-fade-up-fast' : 'opacity-0'}`}
-        >
+        <div className={`${isVisible ? 'animate-fade-up-fast' : 'opacity-0'}`}>
           <p className="text-3xl font-bold uppercase tracking-wide text-secondary">
             {primary}
           </p>
