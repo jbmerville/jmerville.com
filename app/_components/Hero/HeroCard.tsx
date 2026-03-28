@@ -1,6 +1,7 @@
 'use client';
 
 import { type RefObject } from 'react';
+import { usePostHog } from '../PostHogProvider';
 
 interface HeroCardProps {
   title: { primary: string; secondary: string };
@@ -18,6 +19,7 @@ const HeroCard = ({
   contactMeRef,
 }: HeroCardProps) => {
   const { primary, secondary } = title;
+  const posthog = usePostHog();
 
   return (
     <div className="relative h-fit max-w-[515px] rounded-[15px] bg-white px-5 py-5 dark:bg-gray-800 sm:px-0">
@@ -52,12 +54,13 @@ const HeroCard = ({
         >
           <div className="mr-3 mt-4">
             <button
-              onClick={() =>
+              onClick={() => {
+                posthog.capture('button_clicked', { button: 'about_me' });
                 aboutMeRef.current?.scrollIntoView({
                   behavior: 'smooth',
                   block: 'start',
-                })
-              }
+                });
+              }}
               className="cursor-pointer rounded-md bg-secondary px-4 py-2 text-white transition-opacity hover:opacity-80"
             >
               About me
@@ -65,12 +68,13 @@ const HeroCard = ({
           </div>
           <div className="mr-3 mt-4">
             <button
-              onClick={() =>
+              onClick={() => {
+                posthog.capture('button_clicked', { button: 'contact_me' });
                 contactMeRef.current?.scrollIntoView({
                   behavior: 'smooth',
                   block: 'start',
-                })
-              }
+                });
+              }}
               className="cursor-pointer rounded-md bg-secondary px-4 py-2 text-white transition-opacity hover:opacity-80"
             >
               Contact me
