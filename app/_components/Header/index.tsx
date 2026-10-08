@@ -1,5 +1,7 @@
 'use client';
 
+import { useSyncExternalStore } from 'react';
+
 import { useTheme } from 'next-themes';
 import { usePostHog } from '../PostHogProvider';
 
@@ -43,7 +45,15 @@ const Header = () => {
 const Toggle = () => {
   const { resolvedTheme, setTheme } = useTheme();
   const posthog = usePostHog();
-  const nextTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
+  // The theme is only known on the client; render a neutral label until mounted
+  // so the server and client markup match.
+  const isMounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
+  const isDark = isMounted && resolvedTheme === 'dark';
+  const nextTheme = isDark ? 'light' : 'dark';
   return (
     <button
       type="button"
@@ -51,9 +61,9 @@ const Toggle = () => {
         setTheme(nextTheme);
         posthog.capture('theme_changed', { theme: nextTheme });
       }}
-      className="cursor-pointer rounded-full px-3 py-1 text-m ring-1 ring-gray-300 transition-colors hover:bg-gray-100 dark:ring-gray-600 dark:hover:bg-gray-800"
+      className="min-w-[7.5rem] cursor-pointer rounded-full px-3 py-1 text-m ring-1 ring-gray-300 transition-colors hover:bg-gray-100 dark:ring-gray-600 dark:hover:bg-gray-800"
     >
-      {resolvedTheme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+      {isMounted ? (isDark ? 'Light Mode' : 'Dark Mode') : 'Theme'}
     </button>
   );
 };

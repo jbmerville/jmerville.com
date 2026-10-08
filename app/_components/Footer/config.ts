@@ -3,7 +3,8 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 export const CONTENT = {
   title: 'Contact',
-  description: "Feel free to reach out — whether it's about a project, an opportunity, or just to say hi.",
+  description:
+    "Feel free to reach out — whether it's about a project, an opportunity, or just to say hi.",
   links: [
     {
       icon: faGithub,

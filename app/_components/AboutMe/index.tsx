@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type Ref } from 'react';
 
 import { useSectionTimeTracking } from '../../_hooks/useSectionTimeTracking';
+import SectionTitle from '../SectionTitle';
 import { CONTENT } from './config';
 
 const AboutMe = ({ ref }: { ref?: Ref<HTMLElement> }) => {
@@ -32,25 +33,24 @@ const AboutMe = ({ ref }: { ref?: Ref<HTMLElement> }) => {
         sectionRef.current = node;
         trackingRef.current = node;
         if (typeof ref === 'function') ref(node);
-        else if (ref) (ref as React.RefObject<HTMLElement | null>).current = node;
+        else if (ref)
+          (ref as React.RefObject<HTMLElement | null>).current = node;
       }}
-      className="w-full bg-white py-24 dark:bg-gray-900"
+      className="w-full bg-white py-16 dark:bg-gray-900 sm:py-24"
     >
       <div className="section-content flex flex-col items-start">
-        <h2
-          className={`mb-4 text-2xl font-bold uppercase tracking-wide text-gray-800 dark:text-gray-100 ${isVisible ? 'animate-fade-up-fast' : 'opacity-0'}`}
-        >
-          About me
-        </h2>
-        <div className="text-base leading-7 text-justify text-gray-700 dark:text-gray-300">
+        <SectionTitle isVisible={isVisible}>About me</SectionTitle>
+        <div className="max-w-3xl text-base leading-7 text-gray-700 dark:text-gray-300 sm:text-justify">
           {CONTENT.map((item, index) => (
             <div
               key={item}
               className={isVisible ? 'animate-fade-up' : 'opacity-0'}
-              style={{ animationDelay: `${(index + 1) * 150}ms`, animationFillMode: 'both' }}
+              style={{
+                animationDelay: `${(index + 1) * 150}ms`,
+                animationFillMode: 'both',
+              }}
             >
-              {item}
-              <br />
+              <p className="mb-4">{item}</p>
             </div>
           ))}
         </div>

@@ -8,6 +8,7 @@ import Image from 'next/image';
 
 import { useSectionTimeTracking } from '../../_hooks/useSectionTimeTracking';
 import { usePostHog } from '../PostHogProvider';
+import SectionTitle from '../SectionTitle';
 import { CONTENT } from './config';
 
 const Memoir = () => {
@@ -48,14 +49,10 @@ const Memoir = () => {
         sectionRef.current = node;
         trackingRef.current = node;
       }}
-      className="w-full py-24"
+      className="w-full py-16 sm:py-24"
     >
       <div className="section-content flex flex-col items-start">
-        <h2
-          className={`mb-4 text-2xl font-bold uppercase tracking-wide text-gray-800 dark:text-gray-100 ${isVisible ? 'animate-fade-up-fast' : 'opacity-0'}`}
-        >
-          {title}
-        </h2>
+        <SectionTitle isVisible={isVisible}>{title}</SectionTitle>
 
         <div
           style={fadeUp(150).style}
@@ -78,7 +75,7 @@ const Memoir = () => {
               {tagline}
             </p>
             <hr className="my-4 w-24 border-t-2 border-secondary" />
-            <div className="text-base leading-7 text-justify text-gray-700 dark:text-gray-300">
+            <div className="text-base leading-7 text-gray-700 dark:text-gray-300 sm:text-justify">
               {paragraphs.map((paragraph, index) => (
                 <p
                   key={paragraph}

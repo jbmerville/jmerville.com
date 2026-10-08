@@ -1,17 +1,16 @@
 'use client';
 
 import { useSectionTimeTracking } from '../../_hooks/useSectionTimeTracking';
+import SectionTitle from '../SectionTitle';
 import { CONTENT } from './config';
 import WorkHistoryCard from './WorkHistoryCard';
 
 const WorkHistory = () => {
   const ref = useSectionTimeTracking('work_experience');
   return (
-    <section ref={ref} className="w-full py-24">
-      <div className="section-content flex flex-col items-center">
-        <h2 className="mb-6 sm:mb-20 text-2xl font-bold uppercase tracking-wide text-gray-800 dark:text-gray-100">
-          Work Experience
-        </h2>
+    <section ref={ref} className="w-full overflow-x-clip py-16 sm:py-24">
+      <div className="section-content flex flex-col items-start">
+        <SectionTitle>Work Experience</SectionTitle>
         {CONTENT.map((experience, index) => (
           <WorkHistoryCard
             key={experience.startDate}

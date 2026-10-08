@@ -3,6 +3,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useSectionTimeTracking } from '../../_hooks/useSectionTimeTracking';
+import SectionTitle from '../SectionTitle';
 import { CONTENT } from './config';
 
 interface FooterProps {
@@ -17,13 +18,11 @@ const Footer: React.FC<FooterProps> = ({ contactMeRef }) => {
         trackingRef.current = node;
         contactMeRef.current = node;
       }}
-      className="w-full py-24"
+      className="w-full py-16 sm:py-24"
     >
       <div className="section-content flex flex-col items-start">
-        <h2 className="mb-4 text-2xl font-bold uppercase tracking-wide text-gray-800 dark:text-gray-100">
-          {CONTENT.title}
-        </h2>
-        <p className="mb-8 text-base leading-7 text-gray-700 dark:text-gray-300">
+        <SectionTitle>{CONTENT.title}</SectionTitle>
+        <p className="mb-8 max-w-2xl text-base leading-7 text-gray-700 dark:text-gray-300">
           {CONTENT.description}
         </p>
         <div className="flex flex-col gap-4">
@@ -40,6 +39,9 @@ const Footer: React.FC<FooterProps> = ({ contactMeRef }) => {
             </a>
           ))}
         </div>
+        <p className="mt-16 w-full border-t border-gray-200 pt-6 text-sm text-gray-500 dark:border-gray-800 dark:text-gray-400">
+          © {new Date().getFullYear()} Jean Merville
+        </p>
       </div>
     </section>
   );

@@ -3,6 +3,7 @@
 import { type Ref } from 'react';
 
 import { useSectionTimeTracking } from '../../_hooks/useSectionTimeTracking';
+import SectionTitle from '../SectionTitle';
 import { CONTENT } from './config';
 import ProjectCard from './ProjectCard';
 
@@ -16,20 +17,14 @@ const Projects = ({ ref }: { ref?: Ref<HTMLElement> }) => {
         else if (ref)
           (ref as React.RefObject<HTMLElement | null>).current = node;
       }}
-      className="w-full bg-white py-24 dark:bg-gray-900"
+      className="w-full bg-white py-16 dark:bg-gray-900 sm:py-24"
     >
-      <div className="section-content flex flex-col items-center">
-        <h2 className="mb-6 sm:mb-20 text-2xl font-bold uppercase tracking-wide text-gray-800 dark:text-gray-100">
-          Side Projects
-        </h2>
-        <div className="flex flex-col">
-          {CONTENT.map((item) => {
-            return (
-              <div key={item.id} className="mb-24">
-                <ProjectCard item={item} />
-              </div>
-            );
-          })}
+      <div className="section-content flex flex-col items-start">
+        <SectionTitle>Side Projects</SectionTitle>
+        <div className="flex w-full flex-col gap-10 sm:gap-16">
+          {CONTENT.map((item) => (
+            <ProjectCard key={item.id} item={item} />
+          ))}
         </div>
       </div>
     </section>
