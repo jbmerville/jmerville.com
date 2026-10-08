@@ -3,6 +3,7 @@ import React from 'react';
 import { Margin, Section, Toggle } from 'components';
 import Button from 'components/Button';
 import { useTheme, useWindowSize } from 'hooks';
+import ReactGA from 'react-ga';
 import { Styles } from 'types';
 import { Colors, ScreenSize } from 'values';
 
@@ -60,7 +61,8 @@ const Header = () => {
             text={label}
             url={url}
             background={{ offHoverColor: theme.highlight, onHoverColor: theme.secondary }}
-            popUp="Coming soon!"
+            newTab
+            onClickLink={() => ReactGA.event({ category: 'Header', action: 'Open resume' })}
             showShadow
           />
         </nav>

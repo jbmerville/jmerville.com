@@ -9,6 +9,7 @@ import Blog from './Blog';
 import Footer from './Footer';
 import Header from './Header';
 import Hero from './Hero';
+import Memoir from './Memoir';
 import Projects from './Projects';
 import Statistics from './Statistics';
 import WorkHistory from './WorkHistory';
@@ -19,6 +20,7 @@ const HomePage = () => {
   const projectsRef = useRef(null);
   const statisticsRef = useRef(null);
   const aboutMeRef = useRef(null);
+  const memoirRef = useRef(null);
 
   const styles: Styles = {
     container: {
@@ -35,6 +37,7 @@ const HomePage = () => {
         <Header />
         <Hero aboutMeRef={aboutMeRef} statisticsRef={statisticsRef} />
         <AboutMe ref={aboutMeRef}/>
+        <Memoir ref={memoirRef} />
         <WorkHistory />
         <Blog />
         <Projects ref={projectsRef} />

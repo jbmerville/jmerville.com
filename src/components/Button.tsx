@@ -19,6 +19,8 @@ interface ButtonProps {
   showShadow?: boolean;
   showShadowHover?: boolean;
   onClick?: Function;
+  onClickLink?: Function;
+  newTab?: boolean;
   popUp?: string;
 }
 
@@ -28,7 +30,7 @@ const defaultProps = {
 };
 
 const Button = (props: ButtonProps & typeof defaultProps) => {
-  const { icon, text, background, showShadow, showShadowHover, onClick, url, popUp } = props;
+  const { icon, text, background, showShadow, showShadowHover, onClick, onClickLink, newTab, url, popUp } = props;
 
   const [isPopUpVisible, setIsPopUpVisible] = useState(false);
   const [isHover, setIsHover] = useState(false);
@@ -143,7 +145,15 @@ const Button = (props: ButtonProps & typeof defaultProps) => {
     );
   }
   return (
-    <a onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} style={styles.button} href={url}>
+    <a
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+      onClick={() => onClickLink && onClickLink()}
+      style={styles.button}
+      href={url}
+      target={newTab ? '_blank' : undefined}
+      rel={newTab ? 'noopener noreferrer' : undefined}
+    >
       {ButtonContent}
     </a>
   );

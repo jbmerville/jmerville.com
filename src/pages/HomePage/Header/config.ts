@@ -1,4 +1,4 @@
 export const RESUME = {
   label: 'Resume',
-  url: '/',
+  url: '/jbmerville-resume.pdf',
 };
