@@ -6,12 +6,15 @@ import { usePostHog } from '../PostHogProvider';
 const ResumeButton = () => {
   const posthog = usePostHog();
   return (
-    <div
+    <a
+      href="/jbmerville-resume.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
       className="text-[18px] tracking-wide cursor-pointer no-underline transition-all duration-150 hover:opacity-70"
       onClick={() => posthog.capture('button_clicked', { button: 'resume' })}
     >
       Resume
-    </div>
+    </a>
   );
 };
 

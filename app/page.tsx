@@ -5,6 +5,7 @@ import Footer from './_components/Footer';
 import Header from './_components/Header';
 import AboutMe from './_components/AboutMe';
 import Hero from './_components/Hero';
+import Memoir from './_components/Memoir';
 import WorkHistory from './_components/WorkHistory';
 import Projects from './_components/Projects';
 
@@ -18,6 +19,7 @@ const HomePage = () => {
       <Header />
       <Hero aboutMeRef={aboutMeRef} contactMeRef={contactMeRef} />
       <AboutMe ref={aboutMeRef} />
+      <Memoir />
       <WorkHistory />
       {/* <Blog /> */}
       <Projects />
