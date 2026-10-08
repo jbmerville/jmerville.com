@@ -8,6 +8,14 @@ if (typeof window !== 'undefined') {
     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
     capture_pageview: true,
     capture_pageleave: true,
+    loaded: (ph) => {
+      if (process.env.NODE_ENV === 'development') {
+        ph.opt_out_capturing();
+      }
+      if (localStorage.getItem('is_internal') === 'true') {
+        ph.register({ is_internal: true });
+      }
+    },
   });
 }
 
